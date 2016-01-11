@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
+<suite name="DOT Mobile Regression Test Suite" verbose="2">
+  <!--Mobile HomePage Test-->
+  <test name="Mobile HomePage on Android">
+	<parameter name="browser" value="Android">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileHomePage"/>
+    </classes>
+  </test>
+  <test name="Mobile HomePage on iOS">
+	<parameter name="browser" value="iOS">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileHomePage"/>
+    </classes>
+  </test>
+  <!--Mobile PDP Test-->
+  <test name="PDP Mobile on Android">
+	<parameter name="browser" value="Android">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobilePDP"/>
+    </classes>
+  </test>
+  <test name="PDP Mobile on iOS">
+	<parameter name="browser" value="iOS">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobilePDP"/>
+    </classes>
+  </test>
+  <!--Mobile Browse Event Test-->
+  <test name="Mobile Events on Android">
+	<parameter name="browser" value="Android">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileBrowseEvent"/>
+    </classes>
+  </test>
+  <test name="Mobile Events on iOS">
+	<parameter name="browser" value="iOS">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileBrowseEvent"/>
+    </classes>
+  </test>
+  <!--Mobile Web Account Registration-->
+  <test name="Mobile Web Account Registration on iOS">
+	<parameter name="browser" value="iOS">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileWebRegistration"/>
+    </classes>
+  </test>
+  <!--Mobile Store Locator-->
+  <test name="Mobile Store Locator on Android">
+	<parameter name="browser" value="Android">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileStoreLocator"/>
+    </classes>
+  </test>
+  <test name="Mobile Store Locator on iOS">
+	<parameter name="browser" value="iOS">
+	</parameter>
+    <classes>
+	   <class name="com.totalwine.test.mobile.MobileStoreLocator"/>
+    </classes>
+  </test>
+  <!--Email Test Results-->
+  <test name="Emailing Test Results">
+    <classes>
+	   <class name="com.totalwine.test.config.TestResults"/>
+    </classes>
+  </test>
+</suite>
