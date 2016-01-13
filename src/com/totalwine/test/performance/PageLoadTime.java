@@ -10,39 +10,43 @@ import java.util.Objects;
 
 import jxl.write.WriteException;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
 
-public class PageLoadTime extends Browser {
-	
-	@Test (invocationCount=5)
+public class PageLoadTime /*extends Browser*/ {
+	protected WebDriver driver;
+	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
-		//int count=10;
+		int count=1;
 		//int count500=0;
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
 		writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Checkout Tab 1,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
 		writer.newLine();
-		//do {
-			//try {
+		do {
+			try {
 				String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-				//File file = new File("C:/totalwine/Library/chromedriver.exe");
-				//System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-				//DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-				//capabilities.setCapability("userAgent", "twmcustomchrome");
-				//driver = new ChromeDriver(capabilities);
-				//WebDriver driver=new FirefoxDriver();
+				File file = new File("C:/totalwine/Library/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 				
 				long start = System.currentTimeMillis();
 				//Initial Load
-				//driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0");
 				driver.get("http://www.totalwine.com/?remoteTestIPAddress=98.169.134.0");
 				long finish = System.currentTimeMillis();
 				long totalTime = finish-start;
@@ -128,9 +132,9 @@ public class PageLoadTime extends Browser {
 		        driver.findElement(By.linkText("Sign into your account")).click();
 		        driver.switchTo().frame("iframe-signin-overlay");
 		        driver.findElement(By.id("j_username")).clear();
-			    driver.findElement(By.id("j_username")).sendKeys("rsud@totalwine.com");
+			    driver.findElement(By.id("j_username")).sendKeys("rsud@live.com");
 			    driver.findElement(By.id("j_password")).clear();
-			    driver.findElement(By.id("j_password")).sendKeys("grapes123");
+			    driver.findElement(By.id("j_password")).sendKeys("yoyo55");
 				start = System.currentTimeMillis();
 				driver.findElement(By.xpath("//button[@type='button']")).click();
 				finish = System.currentTimeMillis();
@@ -148,13 +152,11 @@ public class PageLoadTime extends Browser {
 				}
 				
 				//ATC
-			    //driver.get("http://www.totalwine.com/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
 			    driver.get("http://www.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
 			    Thread.sleep(2000);
 			    String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 				Thread.sleep(1000);
 			    start = System.currentTimeMillis();
-			    //driver.findElement(By.xpath("(//button[@id='110892750-1'])[2]")).click();
 			    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click();
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -179,7 +181,9 @@ public class PageLoadTime extends Browser {
 				String ISPOption="StandardPickup24Hr";
 				WebElement scroll = driver.findElement(By.id("checkout"));
 			    scroll.sendKeys(Keys.PAGE_DOWN);
+			    Thread.sleep(2000);
 			    driver.findElement(By.cssSelector("#deliveryModeInStore > div.customselect > span.itemval")).click();
+			    Thread.sleep(2000);
 			    driver.findElement(By.cssSelector("li[data-val="+ISPOption+"]")).click();
 			    Thread.sleep(3000);
 
@@ -333,24 +337,35 @@ public class PageLoadTime extends Browser {
 				writer.write(s+",");
 				
 				Thread.sleep(2000);
-				//count--;
+				count--;
 				writer.write(timestamp+",");
 				writer.newLine();
-			//}
-			/*catch (Exception e) {
+			}
+			catch (Exception e) {
 				System.out.println(e.getMessage());
 				//pass=true;
 				count--;
 				writer.newLine();
-				//writer.close();
-			}*/
-		//driver.close();
-		//}
+				writer.close();
+			}
+		driver.close();
+		}
 		//while (pass);
-		//while (count>=0);
+		while (count>=0);
 		//System.out.println("No. of occurences of HTTP500 Errors: "+count500);
 		writer.close();
 	}
+	
+	@AfterMethod
+	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException, InterruptedException { 
+		if(testResult.getStatus() == ITestResult.FAILURE) { 
+			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\Performance\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
+			
+		}
+		//driver.close();
+	}
+	
 	//Function to detect HTTP500
 	public static int catch500(int count500) {
 		//String pageTitle = driver.getTitle();
