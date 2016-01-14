@@ -23,7 +23,7 @@ import org.testng.annotations.Test;
 import com.totalwine.test.config.ConfigurationFunctions;
 
 
-public class PageLoadTime /*esxtends Browser*/ {
+public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
