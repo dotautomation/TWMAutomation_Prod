@@ -3,11 +3,11 @@
 
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
 <suite name="MultiBrowserSuite" verbose="2">
-   <test name="Product List Sort">
-	<parameter name="browser" value="FF">
+   <test name="Page Load">
+	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.productlist.DefaultTabsBehavior"/>
+       <class name="com.totalwine.test.performance.PageLoadTime"/>
     </classes>
   </test>
  </suite>
