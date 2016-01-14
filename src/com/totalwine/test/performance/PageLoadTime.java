@@ -30,7 +30,7 @@ public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
-		int count=9;
+		int count=9;//Take 10 measures
 		//int count500=0;
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
