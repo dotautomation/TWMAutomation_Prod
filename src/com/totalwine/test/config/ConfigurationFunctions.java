@@ -42,6 +42,8 @@ public class ConfigurationFunctions {
 	public static final FirefoxProfile testProfile = profile.getProfile("WebDriver");
 	public static final String csCockpitURL = "http://backoffice.totalwine.com/cscockpit";
 	public static final String resourcePath = "C:\\twmautomation\\TWMAutomation_Prod\\Resources\\AutomatedFlows.xls";
+	public static final String CHROMEDRIVERPATH = "C:/twmautomation/lib/lib/chromedriver.exe";
+	public static final String IEDRIVERPATH = "C:/twmautomation/lib/lib/IEDriverServer.exe";
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
 	
 	public static void DeleteCookies() {

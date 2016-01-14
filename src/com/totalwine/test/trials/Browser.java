@@ -59,7 +59,8 @@ public class Browser {
 		}
 		//IE
 		if (browser.equalsIgnoreCase("IE")) {
-			File file = new File("C:/totalwine/Library/IEDriverServer.exe");
+			//File file = new File("C:/totalwine/Library/IEDriverServer.exe");
+			File file = new File(ConfigurationFunctions.IEDRIVERPATH);
 			System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
 			DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
 			caps.setCapability("ignoreZoomSetting", true);
@@ -79,13 +80,15 @@ public class Browser {
 		}
 		//Chrome
 		if (browser.equalsIgnoreCase("Chrome")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			//File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			driver = new ChromeDriver();
 		}
 		//iOS (iPhone 6)
 		if (browser.equalsIgnoreCase("iOS")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			//File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("deviceName", "Apple iPhone 6");
@@ -97,7 +100,8 @@ public class Browser {
 		}
 		//Android (Samsung Galaxy S4)
 		if (browser.equalsIgnoreCase("Android")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			//File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("deviceName", "Samsung Galaxy S4");
@@ -109,7 +113,8 @@ public class Browser {
 		}
 		//Android (Samsung Galaxy S4)
 		if (browser.equalsIgnoreCase("CUA")) {
-			File file = new File("C:/totalwine/Library/chromedriver.exe");
+			//File file = new File("C:/totalwine/Library/chromedriver.exe");
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			Map<String, String> mobileEmulation = new HashMap<String, String>();
 			mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19");

@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.config.ConfigurationFunctions;
+
 import jxl.*; 
 import jxl.read.biff.BiffException;
 
@@ -19,7 +21,8 @@ public class CachePrimerTest {
 	
 	@Test
 	public void CachePrimer () throws InterruptedException, BiffException, IOException  {
-		File file = new File("C:/totalwine/Library/chromedriver.exe");
+		//File file = new File("C:/totalwine/Library/chromedriver.exe");
+		File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 		Workbook workbook = Workbook.getWorkbook(new File("Top100.xls"));
 		Sheet sheet = workbook.getSheet(0);
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
