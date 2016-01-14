@@ -38,7 +38,8 @@ public class PageLoadTime /*extends Browser*/ {
 		do {
 			try {
 				String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-				File file = new File("C:/totalwine/Library/chromedriver.exe");
+				//File file = new File("C:/totalwine/Library/chromedriver.exe");
+				File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 				System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
