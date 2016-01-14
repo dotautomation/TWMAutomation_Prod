@@ -30,13 +30,12 @@ public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
-		int count=9;
+		int count=1;
 		//int count500=0;
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
-		//writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Checkout Tab 1,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
-		writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
+		writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Checkout Tab 1,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
 		writer.newLine();
 		do {
 			try {
@@ -177,7 +176,7 @@ public class PageLoadTime /*extends Browser*/ {
 				writer.write(s+",");
 				
 				Thread.sleep(2000);
-				/* Commenting due to script issue
+				
 				//Checkout Tab 1
 				String ISPOption="StandardPickup24Hr";
 				WebElement scroll = driver.findElement(By.id("checkout"));
@@ -205,7 +204,7 @@ public class PageLoadTime /*extends Browser*/ {
 			    scroll1.sendKeys(Keys.PAGE_DOWN); ////Laptop Mode
 			    driver.findElement(By.cssSelector("a#RemoveProduct_0")).click();
 			    Thread.sleep(2000);
-				*/
+				
 				//Change Store Modal
 				driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).click();
 				Thread.sleep(5000);
