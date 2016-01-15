@@ -82,6 +82,15 @@ public class Browser {
 		}
 		//Chrome
 		if (browser.equalsIgnoreCase("Chrome")) {
+			Runtime rt = Runtime.getRuntime();
+			try {
+				rt.exec("taskkill /f /im chromedriver.exe /t");
+				Thread.sleep(7000); //Wait till cookies clear
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			driver = new ChromeDriver();
