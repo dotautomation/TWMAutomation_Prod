@@ -25,9 +25,24 @@ import com.totalwine.test.config.ConfigurationFunctions;
 
 public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
+	
+	
+	
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
 		int count=9;//Take 10 measures
+		
+		Runtime rt = Runtime.getRuntime();
+		try {
+			rt.exec("taskkill /f /im chromedriver.exe /t");
+			rt.exec("taskkill /f /im chrome.exe /t");
+			Thread.sleep(7000); //Wait till cookies clear
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		//int count500=0;
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
@@ -347,7 +362,7 @@ public class PageLoadTime /*extends Browser*/ {
 				writer.newLine();
 				writer.close();
 			}
-		driver.close();
+		driver.quit();
 		}
 		//while (pass);
 		while (count>=0);
@@ -362,7 +377,7 @@ public class PageLoadTime /*extends Browser*/ {
 			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\Performance\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
 			
 		}
-		//driver.close();
+		//driver.quit();
 	}
 	
 	//Function to detect HTTP500
