@@ -21,7 +21,6 @@ public class CachePrimerTest {
 	
 	@Test
 	public void CachePrimer () throws InterruptedException, BiffException, IOException  {
-		//File file = new File("C:/totalwine/Library/chromedriver.exe");
 		File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
 		Workbook workbook = Workbook.getWorkbook(new File("Top100.xls"));
 		Sheet sheet = workbook.getSheet(0);
