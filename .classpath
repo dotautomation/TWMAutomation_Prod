@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="C:/twmautomation/lib/lib/selenium-server-standalone-2.49.0.jar"/>
 	<classpathentry kind="lib" path="C:/twmautomation/lib/lib/testng-6.8.21.jar"/>
 	<classpathentry kind="lib" path="C:/twmautomation/lib/lib/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/twmautomation/lib/lib/commons-lang3-3.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
