@@ -124,6 +124,14 @@
        <class name="com.totalwine.test.shoppinglist.ShoppingListBrowse"/>
     </classes>
   </test>
+  <!--Add/Delete SL/Item in a Shopping List-->
+  <test name="Shopping List Add/Delete">
+	<parameter name="browser" value="Chrome">
+	</parameter>
+    <classes>
+       <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/>
+    </classes>
+  </test>
     <!--Age Gating Test (executed on Cross-Browsers)-->
     <test name="AgeGate on FF">
 	<parameter name="browser" value="FF">
@@ -204,6 +212,13 @@
 	</parameter>
     <classes>
 	   <class name="com.totalwine.test.brandpages.BrandList"/>
+    </classes>
+  </test>
+   <test name="Site Navigation">
+	<parameter name="browser" value="Chrome">
+	</parameter>
+    <classes>
+       <class name="com.totalwine.test.sitenav.LeftNavigation"/>
     </classes>
   </test>
 </suite>

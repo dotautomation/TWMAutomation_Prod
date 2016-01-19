@@ -4,10 +4,10 @@
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
 <suite name="MultiBrowserSuite" verbose="2">
    <test name="Product List Sort">
-	<parameter name="browser" value="IE">
+	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.pdp.PDPTabs"/>
+       <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/>
     </classes>
   </test>
  </suite>
