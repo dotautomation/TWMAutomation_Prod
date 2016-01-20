@@ -54,6 +54,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String wineclplink : wineclplinks) {
+			System.out.println(wineclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+wineclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+wineclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -77,6 +78,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String beerclplink : beerclplinks) {
+			System.out.println(beerclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+beerclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+beerclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -100,6 +102,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String spiritsclplink : spiritsclplinks) {
+			System.out.println(spiritsclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+spiritsclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+spiritsclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -124,6 +127,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String accclplink : accclplinks) {
+			System.out.println(accclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+accclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+accclplink+"\"]")).click();
 			Thread.sleep(3000);
