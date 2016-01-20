@@ -44,10 +44,10 @@ public class LeftNavigation extends Browser {
 	    //Navigate to Wine CLP and validate left nav
 	    String[] wineclplinks = {"/c/000009","/c/000002","/c/000005","/c/000024","/c/000063","/c/000262","/c/000270","/c/000278","/c/000263","/c/000279"};
 	    Actions action=new Actions(driver);
-		WebElement toplevelnav = driver.findElement(By.xpath("//a[contains(@href,'/c/c0020')]")); //Wine
-		action.moveToElement(toplevelnav).build().perform();
+	    WebElement toplevelnav = driver.findElement(By.xpath("//a[contains(@href,'/c/c0020')]")); //Wine
+		action.moveToElement(toplevelnav).build().perform(); //Hover over Wine
 		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("arguments[0].click();", toplevelnav);
+		js.executeScript("arguments[0].click();", toplevelnav); //Click on Wine to display CLP
 		Thread.sleep(5000);
 		
 		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
@@ -63,7 +63,6 @@ public class LeftNavigation extends Browser {
 			js.executeScript("arguments[0].click();", toplevelnav);
 			Thread.sleep(3000);
 		}
-		
 		
 	    //Navigate to Beer CLP and validate left nav
 		String[] beerclplinks = {"/c/001172","/c/001169","/c/001165","/c/001283","/c/001161","/c/001304","/c/001358","/c/001353","/c/001366","/c/001351"};
