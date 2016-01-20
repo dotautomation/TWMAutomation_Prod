@@ -237,4 +237,11 @@
 			<class name="com.totalwine.test.storelocator.SLSearch" />
 		</classes>
 	</test>
+	<test name="Store Locator Browse by state dropdown">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.storelocator.SLBrowseState" />
+		</classes>
+	</test>
 </suite>
