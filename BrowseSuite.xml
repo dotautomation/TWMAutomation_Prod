@@ -1,209 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Browse Test Suite" verbose="2">
-  <!--Mobile HomePage Test-->
- 
-  <!--Mobile PDP Test-->
-  <test name="PDP Mobile on Android">
-	<parameter name="browser" value="Android">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobilePDP"/>
-    </classes>
-  </test>
-  <test name="PDP Mobile on iOS">
-	<parameter name="browser" value="iOS">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobilePDP"/>
-    </classes>
-  </test>
-  <!--Mobile Browse Event Test-->
-  <test name="Mobile Events on Android">
-	<parameter name="browser" value="Android">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobileBrowseEvent"/>
-    </classes>
-  </test>
-  <test name="Mobile Events on iOS">
-	<parameter name="browser" value="iOS">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobileBrowseEvent"/>
-    </classes>
-  </test>
-  <!--Mobile Store Locator-->
-  <test name="Mobile Store Locator on Android">
-	<parameter name="browser" value="Android">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobileStoreLocator"/>
-    </classes>
-  </test>
-  <test name="Mobile Store Locator on iOS">
-	<parameter name="browser" value="iOS">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.mobile.MobileStoreLocator"/>
-    </classes>
-  </test>
-  <!--Browse Events (executed on Cross-Browsers)-->
-  <test name="Browse Events on FF">
-   <parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.events.BrowseEvent"/>
-    </classes>
-  </test>
-  <test name="Browse Events on Chrome">
-   <parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.events.BrowseEvent"/>
-    </classes>
-  </test>
-  <!--Filtering using facets on the Product List-->
-   <test name="Product List Filter">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.productlist.Filter"/>
-    </classes>
-  </test>
-  <!--Sorting options on the Product List-->
-  <test name="Product List Sort">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.productlist.Sort"/>
-    </classes>
-  </test>
-   <test name="Site Search on FF">
-   <parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.search.Search"/>
-    </classes>
-  </test>
-  <!--Site Search (executed on Cross-Browsers)-->
-  <test name="Site Search on Chrome">
-   <parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.search.Search"/>
-    </classes>
-  </test>
-  <test name="Site Search on IE">
-   <parameter name="browser" value="IE">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.search.Search"/>
-    </classes>
-  </test>
-  <!--Category Landing Navigation (executed on Cross-Browsers)-->
-  <test name="Category Landing on FF">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.categorylanding.CatLandNav"/>
-    </classes>
-  </test>
-  <test name="Category Landing on Chrome">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.categorylanding.CatLandNav"/>
-    </classes>
-  </test>
-  <!--Browsing through a Shopping List-->
-  <test name="Shopping List">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-       <class name="com.totalwine.test.shoppinglist.ShoppingListBrowse"/>
-    </classes>
-  </test>
-    <!--Age Gating Test (executed on Cross-Browsers)-->
-    <test name="AgeGate on FF">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.agegating.AgeGate"/>
-    </classes>
-  </test>
-  <test name="AgeGate on Chrome">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.agegating.AgeGate"/>
-    </classes>
-  </test>
-  <test name="AgeGate on IE">
-	<parameter name="browser" value="IE">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.agegating.AgeGate"/>
-    </classes>
-  </test>
-  <test name="PDP on FF">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.pdp.PDPTabs"/>
-    </classes>
-  </test>
-  <test name="PDP on Chrome">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.pdp.PDPTabs"/>
-    </classes>
-  </test>
-  <!--PLP Default Behaviour-->
-  <test name="PLP Default Tabs Behaviour on Chrome">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.productlist.DefaultTabsBehavior"/>
-    </classes>
-  </test>
-  <!--LARE Rules-->
-  <test name="LARE Rules">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.lare.LARERules"/>
-    </classes>
-  </test>
-  <test name="LARE Rules FF">
-	<parameter name="browser" value="FF">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.lare.LARERules"/>
-    </classes>
-  </test>
-  <!--Price Validation-->
-  <test name="Pricing Validation on PLP/PDP/Cart/ELP/EDP">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.pricingpromos.Pricing"/>
-    </classes>
-  </test>
-  <!--Brand Pages-->
-  <test name="Brand Story Telling Page">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.brandpages.BrandStoryTelling"/>
-    </classes>
-  </test>
-  <test name="Brand List Page">
-	<parameter name="browser" value="Chrome">
-	</parameter>
-    <classes>
-	   <class name="com.totalwine.test.brandpages.BrandList"/>
-    </classes>
-  </test>
+	<!--Mobile HomePage Test -->
+
+	<!--Mobile PDP Test -->
+	<test name="PDP Mobile on Android">
+		<parameter name="browser" value="Android">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobilePDP" />
+		</classes>
+	</test>
+	<test name="PDP Mobile on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobilePDP" />
+		</classes>
+	</test>
+	<!--Mobile Browse Event Test -->
+	<test name="Mobile Events on Android">
+		<parameter name="browser" value="Android">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileBrowseEvent" />
+		</classes>
+	</test>
+	<test name="Mobile Events on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileBrowseEvent" />
+		</classes>
+	</test>
+	<!--Mobile Store Locator -->
+	<test name="Mobile Store Locator on Android">
+		<parameter name="browser" value="Android">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileStoreLocator" />
+		</classes>
+	</test>
+	<test name="Mobile Store Locator on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileStoreLocator" />
+		</classes>
+	</test>
+	<!--Browse Events (executed on Cross-Browsers) -->
+	<test name="Browse Events on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.events.BrowseEvent" />
+		</classes>
+	</test>
+	<test name="Browse Events on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.events.BrowseEvent" />
+		</classes>
+	</test>
+	<!--Filtering using facets on the Product List -->
+	<test name="Product List Filter">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.productlist.Filter" />
+		</classes>
+	</test>
+	<!--Sorting options on the Product List -->
+	<test name="Product List Sort">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.productlist.Sort" />
+		</classes>
+	</test>
+	<test name="Site Search on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.search.Search" />
+		</classes>
+	</test>
+	<!--Site Search (executed on Cross-Browsers) -->
+	<test name="Site Search on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.search.Search" />
+		</classes>
+	</test>
+	<test name="Site Search on IE">
+		<parameter name="browser" value="IE">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.search.Search" />
+		</classes>
+	</test>
+	<!--Category Landing Navigation (executed on Cross-Browsers) -->
+	<test name="Category Landing on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.categorylanding.CatLandNav" />
+		</classes>
+	</test>
+	<test name="Category Landing on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.categorylanding.CatLandNav" />
+		</classes>
+	</test>
+	<!--Browsing through a Shopping List -->
+	<test name="Shopping List">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListBrowse" />
+		</classes>
+	</test>
+	<!--Add/Delete SL/Item in a Shopping List -->
+	<test name="Shopping List Add/Delete">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListAddItem" />
+		</classes>
+	</test>
+	<!--Age Gating Test (executed on Cross-Browsers) -->
+	<test name="AgeGate on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.agegating.AgeGate" />
+		</classes>
+	</test>
+	<test name="AgeGate on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.agegating.AgeGate" />
+		</classes>
+	</test>
+	<test name="AgeGate on IE">
+		<parameter name="browser" value="IE">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.agegating.AgeGate" />
+		</classes>
+	</test>
+	<test name="PDP on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.pdp.PDPTabs" />
+		</classes>
+	</test>
+	<test name="PDP on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.pdp.PDPTabs" />
+		</classes>
+	</test>
+	<!--PLP Default Behaviour -->
+	<test name="PLP Default Tabs Behaviour on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.productlist.DefaultTabsBehavior" />
+		</classes>
+	</test>
+	<!--LARE Rules -->
+	<test name="LARE Rules">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.lare.LARERules" />
+		</classes>
+	</test>
+	<test name="LARE Rules FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.lare.LARERules" />
+		</classes>
+	</test>
+	<!--Price Validation -->
+	<test name="Pricing Validation on PLP/PDP/Cart/ELP/EDP">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.pricingpromos.Pricing" />
+		</classes>
+	</test>
+	<!--Brand Pages -->
+	<test name="Brand Story Telling Page">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.brandpages.BrandStoryTelling" />
+		</classes>
+	</test>
+	<test name="Brand List Page">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.brandpages.BrandList" />
+		</classes>
+	</test>
+	<!--Site Navigation -->
+	<test name="Site Navigation">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.sitenav.LeftNavigation" />
+		</classes>
+	</test>
+	<!--Store Locator -->
+	<test name="Store Locator">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.storelocator.SLGeoLocate" />
+		</classes>
+	</test>
+	<test name="Store Locator Search">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.storelocator.SLSearch" />
+		</classes>
+	</test>
+	<test name="Store Locator Browse by state dropdown">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.storelocator.SLBrowseState" />
+		</classes>
+	</test>
 </suite>
