@@ -21,6 +21,7 @@ package com.totalwine.test.storelocator;
  */
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -54,6 +55,12 @@ public class SLPages extends Browser {
 		//Access Corporate Philantropy page
 		driver.findElement(By.cssSelector("a[href*=\"/about-us/corporate-philanthropy\"]")).click(); //Corporate Philantropy
 		Thread.sleep(3000);
+		
+		WebElement scroll = driver.findElement(By.cssSelector("a.btn.btn-red.analyticsDownloadForm")); //Page Down
+	    scroll.sendKeys(Keys.ARROW_DOWN);
+	    scroll.sendKeys(Keys.ARROW_DOWN);
+	    scroll.sendKeys(Keys.ARROW_DOWN);
+		
 		driver.findElement(By.cssSelector("a[href*=\"/about-us/donation-requests\"]")).click(); //Donation Requests
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElements(By.cssSelector("a[href*=\"totalwine.requestitem.com\"]")).isEmpty(),false); //Submit a request button

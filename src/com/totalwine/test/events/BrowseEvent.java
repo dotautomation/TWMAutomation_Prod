@@ -23,8 +23,6 @@ package com.totalwine.test.events;
 import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;

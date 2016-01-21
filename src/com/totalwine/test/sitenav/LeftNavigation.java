@@ -42,7 +42,8 @@ public class LeftNavigation extends Browser {
 	    Thread.sleep(5000);
 	    
 	    //Navigate to Wine CLP and validate left nav
-	    String[] wineclplinks = {"/c/000009","/c/000002","/c/000005","/c/000024","/c/000063","/c/000262","/c/000270","/c/000278","/c/000263","/c/000279"};
+	    //String[] wineclplinks = {"/c/000009","/c/000002","/c/000005","/c/000024","/c/000063","/c/000262","/c/000270","/c/000278","/c/000263","/c/000279"};
+	    String[] wineclplinks = {"/c/000009","/c/000002","/c/000005","/c/000024","/c/000063","/c/000262"};
 	    Actions action=new Actions(driver);
 	    WebElement toplevelnav = driver.findElement(By.xpath("//a[contains(@href,'/c/c0020')]")); //Wine
 		action.moveToElement(toplevelnav).build().perform(); //Hover over Wine
@@ -53,8 +54,10 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
+		String viewMoreLink = "li:nth-child(2) > div > ul > li.show-more.nav-links > a > span";
+		
 		for (String wineclplink : wineclplinks) {
-			System.out.println(wineclplink);
+			System.out.println("Wine: "+wineclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+wineclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+wineclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -66,8 +69,9 @@ public class LeftNavigation extends Browser {
 		}
 		
 	    //Navigate to Beer CLP and validate left nav
-		String[] beerclplinks = {"/c/001172","/c/001169","/c/001165","/c/001283","/c/001161","/c/001304","/c/001358","/c/001353","/c/001366","/c/001351"};
-	    action=new Actions(driver);
+		//String[] beerclplinks = {"/c/001172","/c/001169","/c/001165","/c/001283","/c/001161","/c/001304","/c/001358","/c/001353","/c/001366","/c/001351"};
+		String[] beerclplinks = {"/c/001172","/c/001169","/c/001165","/c/001283","/c/001161","/c/001304"};
+		action=new Actions(driver);
 		toplevelnav = driver.findElement(By.xpath("//a[contains(@href,'/c/c0010')]")); //Beer
 		action.moveToElement(toplevelnav).build().perform();
 		js = (JavascriptExecutor)driver;
@@ -78,7 +82,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String beerclplink : beerclplinks) {
-			System.out.println(beerclplink);
+			System.out.println("Beer: "+beerclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+beerclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+beerclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -90,8 +94,9 @@ public class LeftNavigation extends Browser {
 		}
 	    
 	    //Navigate to Spirits CLP and validate left nav
-		String[] spiritsclplinks = {"/c/000897","/c/000885","/c/000871","/c/000778","/c/000773","/c/001016","/c/001011","/c/001068","/c/001024","/c/001050"};
-	    action=new Actions(driver);
+		//String[] spiritsclplinks = {"/c/000897","/c/000885","/c/000871","/c/000778","/c/000773","/c/001016","/c/001011","/c/001068","/c/001024","/c/001050"};
+		String[] spiritsclplinks = {"/c/000897","/c/000885","/c/000871","/c/000778","/c/000773","/c/001016"};
+		action=new Actions(driver);
 		toplevelnav = driver.findElement(By.xpath("//a[contains(@href,'/c/c0030')]")); //Spirits
 		action.moveToElement(toplevelnav).build().perform();
 		js = (JavascriptExecutor)driver;
@@ -102,7 +107,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String spiritsclplink : spiritsclplinks) {
-			System.out.println(spiritsclplink);
+			System.out.println("Spirits: "+spiritsclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+spiritsclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+spiritsclplink+"\"]")).click();
 			Thread.sleep(3000);
@@ -127,7 +132,7 @@ public class LeftNavigation extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String accclplink : accclplinks) {
-			System.out.println(accclplink);
+			System.out.println("Accessory: "+accclplink);
 			Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+accclplink+"\"]")).isEmpty(),false);
 			driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li > a[href*=\""+accclplink+"\"]")).click();
 			Thread.sleep(3000);

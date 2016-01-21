@@ -24,8 +24,6 @@ package com.totalwine.test.productlist;
  */
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
@@ -101,7 +99,7 @@ public class Filter extends Browser {
 	    	Thread.sleep(3000);
 	    	
 		//Country
-	    WebElement scroll_Country = driver.findElement(By.linkText("Country & State"));
+	    WebElement scroll_Country = driver.findElement(By.linkText("Country/State"));
 	    scroll_Country.sendKeys(Keys.ARROW_DOWN);
 	    //driver.findElement(By.xpath("//a[contains(text(),'Country')]")).click();
 	    driver.findElement(By.id("check_box_showmoreCaliforniastate")).click();
@@ -138,8 +136,8 @@ public class Filter extends Browser {
 	    driver.findElement(By.xpath("//a[contains(text(),'Rating Source')]")).click();
 	    Thread.sleep(2000);
 	    //driver.findElement(By.xpath("//a[contains(text(),'ratingsource')]")).click();
-	    driver.findElement(By.id("check_box_showmoreWine Enthusiastratingsource")).click();
-	    //driver.findElement(By.id("check_box_showmoreAntonio Galloniratingsource")).click();
+	    //driver.findElement(By.id("check_box_showmoreWine Enthusiastratingsource")).click();
+	    driver.findElement(By.id("check_box_showmoreAntonio Galloniratingsource")).click();
 	    Thread.sleep(3000);
 	    facetValue = driver.findElement(By.cssSelector("span.filter-value")).getText();
 	    Assert.assertEquals(facetValue, driver.findElement(By.cssSelector("span.plp-product-desc-winespec-desc-title")).getText());

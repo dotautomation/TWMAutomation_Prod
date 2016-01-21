@@ -20,19 +20,12 @@ package com.totalwine.test.shoppinglist;
  * 			Quit webdriver
  */
 
-import java.io.File;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

@@ -7,7 +7,7 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.storelocator.SLPages"/>
+       <class name="com.totalwine.test.sitenav.LeftNavigation"/>
     </classes>
   </test>
  </suite>

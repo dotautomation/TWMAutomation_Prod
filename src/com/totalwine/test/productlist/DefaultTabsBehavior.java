@@ -73,7 +73,7 @@ public class DefaultTabsBehavior extends Browser {
 		
 	    //Click a link under the "Wine Category"
 		//driver.findElement(By.linkText("red wine")).click(); //Red Wine
-		driver.findElement(By.xpath("//a[contains(@href,'productType=red-wine&viewall=true')]")).click(); //Red Wine
+		driver.findElement(By.xpath("//a[contains(@href,'/c/000270?producttype=red-wine&viewall=true')]")).click(); //Red Wine
 	    
 	    //Validate the appearance of the Wine PLP (DPS-1930: Site Navigation | 500 error when trying to subcategory from CLP)
 		Assert.assertEquals(driver.findElements(By.cssSelector("li.active > h2 > a#plp-aty-tab")).isEmpty(),false);
