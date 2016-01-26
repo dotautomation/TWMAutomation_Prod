@@ -4,16 +4,11 @@ package com.totalwine.test.performance;
  */
 
 import java.io.*;
-import java.util.concurrent.*;
 import java.lang.InterruptedException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PagePerformanceMeasurement  {
     public static void main(String[] args) throws IOException, InterruptedException {
