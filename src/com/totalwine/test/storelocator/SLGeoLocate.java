@@ -79,7 +79,8 @@ public class SLGeoLocate extends Browser {
 	
 	@Test //International
 	public void SLGeolocateInternationalTest () throws InterruptedException {
-		String IP = "131.228.17.26";
+		//String IP = "131.228.17.26";
+		String IP = "85.90.227.224";
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);

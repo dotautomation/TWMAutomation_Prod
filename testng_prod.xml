@@ -7,7 +7,7 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/>
+       <class name="com.totalwine.test.productlist.PLPGridView"/>
     </classes>
   </test>
  </suite>
