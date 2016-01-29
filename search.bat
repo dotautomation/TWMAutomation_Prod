@@ -1,1 +1,1 @@
-java -cp bin;lib/* org.testng.TestNG Search.xml
+java -cp bin;lib/* org.testng.TestNG search.xml
