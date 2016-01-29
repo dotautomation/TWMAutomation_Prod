@@ -37,12 +37,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeMethod;
 
+import com.relevantcodes.extentreports.DisplayOrder;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.totalwine.test.config.ConfigurationFunctions;
 
 public class Browser {
 
 	protected WebDriver driver;
 	protected String hubURL = "http://prt-6rkhd12.totalwine.com:5566/wd/hub";
+	protected ExtentTest logger;
+	protected static ExtentReports report = getReporter(); //Reporting v2
 	
 	@BeforeMethod
 	
@@ -187,5 +192,13 @@ public class Browser {
 	@AfterClass
 	public void quit() throws IOException { 
 		driver.quit();	
+	}
+	
+	public static synchronized ExtentReports getReporter() {
+		if (report == null) {
+			//report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"BugfixTestResults "+ConfigurationFunctions.now()+".html", true, DisplayOrder.NEWEST_FIRST);
+			report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"ProductionTestResults.html", true, DisplayOrder.NEWEST_FIRST);
+		}
+		return report;
 	}
 }
