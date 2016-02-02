@@ -63,18 +63,29 @@ public class SearchNullTerms {
 		    driver.findElement(By.cssSelector("a[class=\"search-right-cont-mini-search-logo analyticsSearch\"]")).click();
 		    Thread.sleep(3000);
 		    //String allStoreCount = driver.findElement(By.cssSelector("ul.plp-product-tabs-wrapper > li:nth-child(2) > h2 > a.analyticsPLPDisp")).getText();
-		    if (driver.findElements(By.cssSelector("img[alt=\"logo.png\"]")).size()!=0)
-		    	writer.write(driver.getCurrentUrl());
-		    else if (driver.findElements(By.cssSelector("a.last[href*=\"totalwine.com/customer-service\"]")).size()!=0)
-		    	writer.write(driver.getCurrentUrl());
-		    else if (driver.findElements(By.cssSelector(" a.last[href*=\"totalwine.com/about-us\"]")).size()!=0)
-		    	writer.write(driver.getCurrentUrl());
-		    else {
+		    //if (driver.findElements(By.cssSelector("img[alt=\"logo.png\"]")).size()!=0)
+		    if (driver.findElements(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).size()!=0)
+		    	//writer.write(driver.getCurrentUrl());
+		    //else if (driver.findElements(By.cssSelector("a.last[href*=\"totalwine.com/customer-service\"]")).size()!=0)
+		    	//writer.write(driver.getCurrentUrl());
+		    //else if (driver.findElements(By.cssSelector(" a.last[href*=\"totalwine.com/about-us\"]")).size()!=0)
+		    	//writer.write(driver.getCurrentUrl());
+		    //else 
+		    {
 			    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText();
 			    System.out.println(searchTerm+":"+allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")")));
 			    String s = Objects.toString(allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")")), null);
 				writer.write(s);
 		    }
+		    else if (driver.findElement(By.cssSelector("h1")).getText().contains("Oops, we are experiencing")) {
+		    	driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0");
+		    	Thread.sleep(3000);
+		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+		    	Thread.sleep(3000);
+		    	writer.write("HTTP500");
+		    }
+		    else
+		    	writer.write(driver.getCurrentUrl());
 			writer.newLine();
 	    }
 		driver.close();
