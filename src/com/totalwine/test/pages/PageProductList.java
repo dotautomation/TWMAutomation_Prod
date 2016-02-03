@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class PageProductList {
 	
 	@FindBy(id="plp-aty-tab")
-	WebElement PLPATY1Tab;
+	//WebElement PLPATY1Tab;
 	
 	By PLPATYTab = By.id("plp-aty-tab");
 	By PLPAllStoresTab = By.id("plp-productfull-tabs");
