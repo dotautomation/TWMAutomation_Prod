@@ -7,7 +7,7 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.aml.OrderHistory"/>
+       <class name="com.totalwine.test.storelocator.SLBrowseByRadius"/>
     </classes>
   </test>
  </suite>
