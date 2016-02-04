@@ -62,6 +62,12 @@ public class OrderHistory extends Browser {
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
 	    Thread.sleep(6000);
 	    
+	    //Check for presence of merge cart modal
+	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
+	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
+	    	Thread.sleep(2000);
+	    }
+	    
 	    //Navigate to the Online order history
 	    driver.findElement(PageOrderHistory.OnlineOrderHistory).click();
 	    Thread.sleep(3000);
