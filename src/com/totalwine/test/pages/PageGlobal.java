@@ -18,11 +18,16 @@ import org.openqa.selenium.By;
 		public static final By TopNavAccount = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-not-wrapper]");
 		public static final By TopNavAccountLoggedin = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-wrapper]");
 		public static final By TopNavShoppingList = By.cssSelector("a.analyticsHeaderLink[href*=\"/shoppinglist\"]");
+		public static final By StoreSelection = By.cssSelector("span.store-details-store-name.flyover-src");
+		public static final By MiniCart = By.cssSelector("div.search-right-cont-add-to-cart.analyticsViewCart");
 		
 		//Search Bar
 		
 		//Top Level Menu
 		
 		//Footer
-	
+		
+		//Location Intercept
+		public static final By LocationInterceptNo = By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray");
+		
 }
