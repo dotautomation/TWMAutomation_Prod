@@ -265,12 +265,35 @@
 			<class name="com.totalwine.test.storelocator.StoreDetail" />
 		</classes>
 	</test>
+	<test name="Store Locator Radius Browse">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.storelocator.SLBrowseByRadius" />
+		</classes>
+	</test>
 	<!-- Email/Password Combinations -->
 	<test name="Good/Bad Email/Password Combinations">
 		<parameter name="browser" value="Chrome">
 		</parameter>
 		<classes>
 			<class name="com.totalwine.test.aml.GoodBadPassword" />
+		</classes>
+	</test>
+	<!-- Order History -->
+	<test name="Online/ISP Order History">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.aml.OrderHistory" />
+		</classes>
+	</test>
+	<!-- Site Navigation -->
+	<test name="Top Level Menu">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.global.TopLevelMenu" />
 		</classes>
 	</test>
 </suite>

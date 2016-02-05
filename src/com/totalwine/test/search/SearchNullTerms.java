@@ -1,7 +1,9 @@
 package com.totalwine.test.search;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -12,37 +14,24 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import com.totalwine.test.config.ConfigurationFunctions;
 
+import jxl.*;
+import jxl.read.biff.BiffException;
 
 public class SearchNullTerms {
 	
 	@Test
-	public void SearchNullTermsTest () throws InterruptedException, IOException {
-	//public static void main (String[] args) throws InterruptedException, IOException {
-		
-		String[] searchTerms={"johnny walker","Pliny","louis jadot","suntory","Champagne and Sparkling Wine Celebrate Today","non alcoholic wine","kettle one",
-				"peter michael","Pliny the elder","Johnny walker blue","case discount","pineapple sculpin","casillero del diablo","seven falls","grey goose vodka",
-				"johnny walker black","the old liquor store","singani","louis latour","Alaska distillery","Cakebread Chardonnay Napa","lowenbrau",
-				"Chateau St Michelle Wine Tasting featuring their Chardonnay Canoe Ridge and Riesling Eroica","J Lohr Cabernet Seven Oaks",
-				"Gentleman Jack Whiskey, Woodford Reserve Bourbon","albino armani","ommegang-game-of-thrones-fire-and-blood-red-ale","Reisetbauer","gift certificate",
-				"motorhead","rewards program","cantina zaccagnini","suze","limerick lane","jim bean","bombay gin","seven deadly zins","Request Missing Points",
-				"Belvedere vodka","return policy","boones farm","non-alcoholic wine","Champagne splits","Jack Daniels Tasting (Honey, Fire, Gentleman, Black)",
-				"blantons bourbon","torre de ona","gray goose","dammit jim","not your fathers rootbeer","pera manca","hook and ladder",
-				"Macallan Single Malts Experience: From the Smallest Stills in Speyside","Smith and hook","Joseph drouhin","total discovery","kettle one vodka",
-				"FRANCISCAN ESTATE","1/6 keg","Glenmorangie Scotch Tasting","missing points","Voulet","very old barton","the federalist","seven daughters","japanese whiskey",
-				"lafinca","Cake read","Bella glos","employment","johny walker","benovia","beaulieu vineyard","champagne split","lost angel pinot noir","Castello del Poggio",
-				"ketel one vodka","jack daniels 1.75","kegerator","Skyfall","Cakebread Cabernet, 2012","Menage a trois","Wycliff","Old grandad","rip van winkle","3 floyds",
-				"Tessellae","michele chiarlo","bud lite","helium","Chateau Ste. Michelle - Grand Opening Tasting","catuaba","McCallen Scotch Tasting","Liano","helium infused wine",
-				"Kings ginger","Pabst blue ribbon","domaine chandon","alpha estate","wineberry"};
-		
+	public void SearchNullTermsTest () throws InterruptedException, IOException, BiffException {
+	
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
 		
 		//Instantiate output file
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
-		//writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Checkout Tab 1,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
-		writer.write("Search term,All stores count");
+		writer.write("Search term,Search Type,All stores count,Did you mean?,Top results");
 		writer.newLine();
 		
 		File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
@@ -55,7 +44,116 @@ public class SearchNullTerms {
 		Thread.sleep(5000);
 	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 	    Thread.sleep(5000);
-
+	    
+	    
+	    //Input file (excel)
+	    Workbook inputWorkbook = Workbook.getWorkbook(new File("Search.xls"));
+	    Sheet inputSheet = inputWorkbook.getSheet(0);
+	    int rowCount = inputSheet.getRows();
+	    String SearchTerm,SearchType; //SearchType Options = all,product,event,content
+	    for (int i=1;i<rowCount;i++) { //Consider title row
+	    	SearchTerm = inputSheet.getCell(0,i).getContents();
+	    	SearchType = inputSheet.getCell(1,i).getContents();
+	    	//System.out.println(SearchTerm+","+SearchType);
+	    	writer.write(SearchTerm+",");
+	    	writer.write(SearchType+",");
+	    	//Select Search Type
+	    	driver.findElement(By.cssSelector("span.search-left-cont-three-Lines")).click();
+	    	Thread.sleep(2000);
+	    	driver.findElement(By.cssSelector("div.suggestion.flyover > a[data-href=\""+SearchType+"\"]")).click();
+	    	Thread.sleep(2000);
+			driver.findElement(By.id("header-search-text")).clear();
+		    driver.findElement(By.id("header-search-text")).sendKeys(SearchTerm); //Enter Search Term in box
+		    driver.findElement(By.cssSelector("a[class=\"search-right-cont-mini-search-logo analyticsSearch\"]")).click(); //Click search button
+		    Thread.sleep(3000);
+		    if (driver.findElements(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).size()!=0) //Check for All stores tab
+		    {
+			    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText(); //Extract text from All stores tab
+			    //System.out.println(SearchTerm+":"+allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")"))); 
+			    String s = Objects.toString(allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")")), null); //Extract count of search results from All store tab
+				writer.write(s+",");
+				//Did you mean?
+				if (driver.findElements(By.cssSelector("div.result-count > a > span")).size()!=0)
+					writer.write(driver.findElement(By.cssSelector("div.result-count > a > span")).getText()+",");
+				else
+					writer.write(""+",");
+				int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
+				String searchResult = "";
+				for (int elementCount=1;elementCount<=searchResultsCount;elementCount++) {
+					searchResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/h2/a")).getText()
+							+"("
+							+driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/div[contains(@class,'plp-product-qty')]")).getText()
+							+")"
+							+",";
+				}
+				//System.out.println(searchResult);
+				writer.write(searchResult);
+		    }
+		  //Check for HTTP500
+		    else if (driver.findElement(By.cssSelector("h1")).getText().contains("Oops, we are experiencing")) { 
+		    	driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
+		    	Thread.sleep(3000);
+		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+		    	Thread.sleep(3000);
+		    	writer.write("HTTP500"); //Indicate HTTP500 occurance for search term in output file 
+		    }
+		  //Events search 
+		    else if (driver.findElements(By.cssSelector("div.js-event-item")).size()!=0) { 
+		    	writer.write(String.valueOf(driver.findElements(By.xpath("//div[contains(@class,'js-event-item')]")).size()));
+		    }
+		    else
+		    	writer.write(driver.getCurrentUrl());
+		    	writer.newLine();
+    	}
+	    	
+	    /*
+	    
+	    //Input file (text)
+	    File inputFile = new File("SearchTerms.txt"); //Input file containing search terms
+		BufferedReader br = new BufferedReader(new FileReader(inputFile)); 
+		    String searchTerm;
+		    while ((searchTerm = br.readLine()) != null) { //Read input file
+		    	writer.write(searchTerm+",");
+				driver.findElement(By.id("header-search-text")).clear();
+			    driver.findElement(By.id("header-search-text")).sendKeys(searchTerm); //Enter Search Term in box
+			    driver.findElement(By.cssSelector("a[class=\"search-right-cont-mini-search-logo analyticsSearch\"]")).click(); //Click search button
+			    Thread.sleep(3000);
+			    if (driver.findElements(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).size()!=0) //Check for All stores tab
+			    {
+				    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText(); //Extract text from All stores tab
+				    System.out.println(searchTerm+":"+allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")"))); 
+				    String s = Objects.toString(allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")")), null); //Extract count of search results from All store tab
+					writer.write(s+",");
+					//Did you mean?
+					if (driver.findElements(By.cssSelector("div.result-count > a > span")).size()!=0)
+						writer.write(driver.findElement(By.cssSelector("div.result-count > a > span")).getText()+",");
+					else
+						writer.write(""+",");
+					int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
+					String searchResult = "";
+					for (int i=1;i<=searchResultsCount;i++) {
+						searchResult+=driver.findElement(By.xpath("//li["+i+"]/div/div/div/h2/a")).getText()
+								+"("
+								+driver.findElement(By.xpath("//li["+i+"]/div/div/div/div/div[contains(@class,'plp-product-qty')]")).getText()
+								+")"
+								+",";
+					}
+					//System.out.println(searchResult);
+					writer.write(searchResult);
+			    }
+			    else if (driver.findElement(By.cssSelector("h1")).getText().contains("Oops, we are experiencing")) { //Check for HTTP500
+			    	driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
+			    	Thread.sleep(3000);
+			    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+			    	Thread.sleep(3000);
+			    	writer.write("HTTP500"); //Indicate HTTP500 occurance for search term in output file 
+			    }
+			    else
+			    	writer.write(driver.getCurrentUrl());
+			    	writer.newLine();
+	    	}
+	    
+/*
 	    for (String searchTerm : searchTerms) {
 	    	writer.write(searchTerm+",");
 			driver.findElement(By.id("header-search-text")).clear();
@@ -87,8 +185,15 @@ public class SearchNullTerms {
 		    else
 		    	writer.write(driver.getCurrentUrl());
 			writer.newLine();
-	    }
+	    } //Close comment block here
+	    
 		driver.close();
-		writer.close();
+		writer.close(); //Close output file
+		br.close(); //Close input text file
+		*/
+	    driver.close();
+		writer.close(); //Close output file
+	    inputWorkbook.close(); //Close input excel file
 	}
+	
 }
