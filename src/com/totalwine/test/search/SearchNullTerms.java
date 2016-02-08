@@ -38,7 +38,7 @@ public class SearchNullTerms {
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0");
+		driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0");
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
@@ -91,7 +91,7 @@ public class SearchNullTerms {
 		    }
 		  //Check for HTTP500
 		    else if (driver.findElement(By.cssSelector("h1")).getText().contains("Oops, we are experiencing")) { 
-		    	driver.get("http://www.totalwine.com/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
+		    	driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
 		    	Thread.sleep(3000);
 		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 		    	Thread.sleep(3000);
