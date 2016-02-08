@@ -47,7 +47,7 @@ public class SearchNullTerms {
 	    
 	    
 	    //Input file (excel)
-	    Workbook inputWorkbook = Workbook.getWorkbook(new File("Search.xls"));
+	    Workbook inputWorkbook = Workbook.getWorkbook(new File("Search1.xls"));
 	    Sheet inputSheet = inputWorkbook.getSheet(0);
 	    int rowCount = inputSheet.getRows();
 	    String SearchTerm,SearchType; //SearchType Options = all,product,event,content
