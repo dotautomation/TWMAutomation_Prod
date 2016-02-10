@@ -7,7 +7,7 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.pdp.PDPCartChange"/>
+       <class name="com.totalwine.test.aml.OrderHistory"/>
     </classes>
   </test>
  </suite>

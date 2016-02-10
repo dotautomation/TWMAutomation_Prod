@@ -99,7 +99,7 @@ public class Filter extends Browser {
 	    	Thread.sleep(3000);
 	    	
 		//Country
-	    WebElement scroll_Country = driver.findElement(By.linkText("Country/State"));
+	    WebElement scroll_Country = driver.findElement(By.linkText("Country & State"));
 	    scroll_Country.sendKeys(Keys.ARROW_DOWN);
 	    //driver.findElement(By.xpath("//a[contains(text(),'Country')]")).click();
 	    driver.findElement(By.id("check_box_showmoreCaliforniastate")).click();

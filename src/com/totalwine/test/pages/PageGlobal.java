@@ -22,6 +22,8 @@ import org.openqa.selenium.By;
 		public static final By MiniCart = By.cssSelector("div.search-right-cont-add-to-cart.analyticsViewCart");
 		
 		//Search Bar
+		public static final By SearchBar = By.cssSelector("input#header-search-text");
+		public static final By SearchButton = By.cssSelector("a.search-right-cont-mini-search-logo.analyticsSearch");
 		
 		//Top Level Menu
 		
