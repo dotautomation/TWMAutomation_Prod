@@ -34,9 +34,10 @@ public class SearchNullTerms {
 		writer.write("Search term,Search Type,All stores count,Did you mean?,Top results");
 		writer.newLine();
 		
-		File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
-		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-		WebDriver driver = new ChromeDriver();
+		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
+		//System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+		//WebDriver driver = new ChromeDriver();
+		WebDriver driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0");
 		Thread.sleep(5000);
