@@ -78,7 +78,10 @@ public class SearchNullTerms {
 					writer.write(driver.findElement(By.cssSelector("div.result-count > a > span")).getText()+",");
 				else
 					writer.write(""+",");
-				driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
+				
+				if (driver.findElement(By.cssSelector("a#plp-productfull-tabs")).isDisplayed())
+					driver.findElement(By.cssSelector("a#plp-productfull-tabs")).click();
+				else driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
 				Thread.sleep(3000);
 				int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
 				String searchResult = "";
