@@ -51,7 +51,7 @@ public class Search extends Browser {
 	
 	@Test (dataProvider = "SearchParameters")
 	public void SearchTest (String searchTerm) throws InterruptedException {
-		
+		logger=report.startTest("Search Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

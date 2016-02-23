@@ -42,7 +42,7 @@ public class AgeGate extends Browser {
 	
 	@Test
 	public void AgeGateTest () throws InterruptedException {
-		
+		logger=report.startTest("Age Gate Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnNo")).click();

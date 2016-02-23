@@ -57,6 +57,7 @@ public class TopLevelMenu extends Browser {
 	
 	@Test (dataProvider = "TopLevelMenuParameters")
 	public void ISPCheckoutTest (String menu,String position,String tlcontent,String contents) throws InterruptedException, IOException {
+		logger=report.startTest("Top Level Menu Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

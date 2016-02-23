@@ -37,7 +37,7 @@ public class MobilePDP extends Browser {
 	
 	@Test 
 	public void MobilePDPTest () throws InterruptedException, AWTException {
-		
+		logger=report.startTest("Mobile PDP Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		if (driver.findElement(By.id("btn-continue")).isDisplayed())

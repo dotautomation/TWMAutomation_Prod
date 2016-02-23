@@ -48,7 +48,7 @@ public class ShoppingListBrowse extends Browser {
 
 	@Test
 	public void ShoppingListBrowseTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("Shopping List Browse Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

@@ -48,7 +48,7 @@ public class Pricing extends Browser {
 	
 	@Test 
 	public void PricingTest () throws InterruptedException, BiffException, IOException, AWTException {
-		
+		logger=report.startTest("Pricing Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

@@ -52,15 +52,12 @@ public class CatLandNav extends Browser {
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
-		//this.driver = ConfigurationFunctions.driver;
-		//driver = new FirefoxDriver(testProfile);
-		//testProfile.setEnableNativeEvents(true);
 	    driver.manage().window().maximize();
 	  }  
 	
 	@Test (dataProvider = "CatLandParameters")
 	public void CatLandNavTest (String toplevel,String plp,String catlandpage) throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("Category Landing Page Test");
 		//ConfigurationFunctions.initialStartUp("71.193.51.0");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);

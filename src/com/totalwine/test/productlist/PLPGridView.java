@@ -50,7 +50,7 @@ public class PLPGridView extends Browser {
 	
 	@Test 
 	public void PLPGridTest () throws InterruptedException, BiffException, IOException, AWTException {
-		
+		logger=report.startTest("PLP Grid View Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

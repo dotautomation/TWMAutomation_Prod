@@ -57,7 +57,7 @@ public class ShoppingListAddItem extends Browser {
 	//Create new shopping list and add item to it
 	@Test
 	public void ShoppingListAddItemNewTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("Shopping List Add New Item to List Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
@@ -121,7 +121,7 @@ public class ShoppingListAddItem extends Browser {
 	//Add item to existing shopping list
 	@Test
 	public void ShoppingListAddItemExistingTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("Shopping List Add Item to Existing List Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

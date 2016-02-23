@@ -40,6 +40,7 @@ public class BrowseEvent extends Browser {
 	
 	@Test 
 	public void BrowseEventTest () throws InterruptedException {
+		logger=report.startTest("Browse Events Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

@@ -50,7 +50,7 @@ public class MobileHomePage extends Browser {
 	
 	@Test
 	public void MobileHomePageTest () throws InterruptedException {
-		
+		logger=report.startTest("Mobile Homepage Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		

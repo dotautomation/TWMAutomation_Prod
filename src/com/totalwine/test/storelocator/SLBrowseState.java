@@ -41,6 +41,7 @@ public class SLBrowseState extends Browser {
 	
 	@Test //Stores by State dropdown
 	public void SLBrowseStateTest () throws InterruptedException {
+		logger=report.startTest("Store Locator Browse by State Test");
 		String IP = "71.193.51.0";
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);

@@ -48,7 +48,7 @@ public class Sort extends Browser {
 	
 	@Test 
 	public void SortTest () throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("PLP Sort Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

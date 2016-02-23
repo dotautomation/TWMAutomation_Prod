@@ -39,7 +39,7 @@ public class PDPCartChange extends Browser {
 	
 	@Test 
 	public void PDPISPToShipTest () throws InterruptedException {
-		
+		logger=report.startTest("PDP Cart Change Test");
 		driver.get(ConfigurationFunctions.locationSet+IP); //Set site to ISP Sacramento
 		Thread.sleep(5000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
