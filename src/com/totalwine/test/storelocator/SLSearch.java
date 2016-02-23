@@ -39,6 +39,7 @@ public class SLSearch extends Browser {
 	@Test //Search by City
 	public void SLCitySearchTest () throws InterruptedException {
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
+		logger=report.startTest("Store Locator Search By City Test");
 		String [] CitySearch = {"las vegas","orlando","phoenix","laurel md","fort myers"};
 		String [] ClosestStores = {"Las Vegas (Summerlin)","Orlando (Colonial Plaza)","Phoenix (Camelback)","Laurel (Corridor)","Fort Myers"};
 		driver.get(ConfigurationFunctions.locationSet+IP);
@@ -72,6 +73,7 @@ public class SLSearch extends Browser {
 		
 	@Test //Search by State
 	public void SLStateSearchTest () throws InterruptedException {
+		logger=report.startTest("Store Locator Search By State Test");
 		String [] ZipSearch = {"95630","33186"};
 		String [] ClosestStores = {"Folsom","Kendall"};
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs
@@ -102,6 +104,7 @@ public class SLSearch extends Browser {
 	
 	@Test //Search by Zip
 	public void SLZipSearchTest () throws InterruptedException {
+		logger=report.startTest("Store Locator Search By Zip Test");
 		String [] StateSearch = {"delaware"};
 		String [] ClosestStores = {"Wilmington"};
 		//Access the site using the remoteTestIPAddress URL parameter for all test IPs

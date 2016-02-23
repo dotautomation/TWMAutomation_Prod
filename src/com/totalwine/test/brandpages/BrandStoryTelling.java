@@ -48,7 +48,7 @@ public class BrandStoryTelling extends Browser {
 	
 	@Test 
 	public void BrandStoryTellingTest () throws InterruptedException, BiffException, IOException, AWTException {
-		
+		logger=report.startTest("Brand Story Telling Page Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

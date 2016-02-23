@@ -47,6 +47,7 @@ public class SLPages extends Browser {
 	
 	@Test //Charity/Donations Page
 	public void SLCharityPageTest () throws InterruptedException {
+		logger=report.startTest("Store Locator Charity Page Test");
 		AccessStoreLocator();
 		//Access footer
 		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
@@ -68,6 +69,7 @@ public class SLPages extends Browser {
 	
 	@Test //Careers Page
 	public void CareersPageTest () throws InterruptedException {
+		logger=report.startTest("Store Locator Careers Page Test");
 		AccessStoreLocator();
 		//Access footer
 		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
@@ -89,6 +91,7 @@ public class SLPages extends Browser {
 	
 	@Test //All Stores Page
 	public void SLAllStoresPageTest () throws InterruptedException {
+		logger=report.startTest("Store Locator All Stores Page Test");
 		AccessStoreLocator();
 		driver.findElement(By.cssSelector("a.analyticsFindAllStores")).click();
 		Thread.sleep(3000);

@@ -54,6 +54,7 @@ public class DefaultTabsBehavior extends Browser {
 	
 	@Test
 	public void CountrySubCatPLPNav () throws InterruptedException {
+		logger=report.startTest("PLP Sub Category Landing Pages Test");
 		String IP="71.193.51.0";
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
@@ -85,7 +86,7 @@ public class DefaultTabsBehavior extends Browser {
 	public void PLPDefaultTabsTest (String IP,String Store,String Wine,String WinePLP,String Beer,String BeerPLP,String Spirits,String SpiritsPLP,
 			String Acc,String AccPLP,String DefaultWine,String DefaultBeer,String DefaultSpirits,String DefaultAcc,String ATYWineSubTab,String ATYBeerSubTab,
 			String ATYSpiritsSubTab,String ATYAccSubTab) throws InterruptedException {
-		
+		logger=report.startTest("PLP Default Tabs Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

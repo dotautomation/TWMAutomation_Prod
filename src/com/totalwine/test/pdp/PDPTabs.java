@@ -52,7 +52,7 @@ public class PDPTabs extends Browser {
 	
 	@Test (dataProvider = "PDPParameters")
 	public void PDPTest (String toplevel,String plp) throws InterruptedException, BiffException, IOException {
-		
+		logger=report.startTest("PDP Tabd Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();

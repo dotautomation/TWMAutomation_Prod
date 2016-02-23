@@ -34,6 +34,7 @@ public class MobileBrowseEvent extends Browser {
 	
 	@Test 
 	public void MobileBrowseEventTest () throws InterruptedException {
+		logger=report.startTest("Mobile Browse Events Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		if (driver.findElement(By.id("btn-continue")).isDisplayed())

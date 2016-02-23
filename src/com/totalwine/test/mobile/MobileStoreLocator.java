@@ -29,6 +29,7 @@ private String IP="98.169.134.0";
 	
 	@Test 
 	public void MobileStoreLocatorTest () throws InterruptedException {
+		logger=report.startTest("Mobile Store Locator Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		if (driver.findElement(By.id("btn-continue")).isDisplayed())

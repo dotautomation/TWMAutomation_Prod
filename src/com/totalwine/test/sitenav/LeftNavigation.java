@@ -32,7 +32,7 @@ public class LeftNavigation extends Browser {
 	//CLP Left Navigation
 	@Test
 	public void CLPLeftNavTest () throws InterruptedException {
-		
+		logger=report.startTest("Site Left Navigation Test");
 		//Access site
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
