@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Browse Test Suite" verbose="2">
+	<!-- Results Archiving -->
+	<test name="Archiving Results">
+		<classes>
+			<class name="com.totalwine.test.trials.Results" />
+		</classes>
+	</test>
 	<!--Mobile HomePage Test -->
-
+	<test name="Mobile HomePage on Android">
+		<parameter name="browser" value="Android">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileHomePage" />
+		</classes>
+	</test>
+	<test name="Mobile HomePage on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileHomePage" />
+		</classes>
+	</test>
 	<!--Mobile PDP Test -->
 	<test name="PDP Mobile on Android">
 		<parameter name="browser" value="Android">
