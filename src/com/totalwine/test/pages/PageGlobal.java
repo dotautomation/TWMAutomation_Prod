@@ -32,4 +32,19 @@ import org.openqa.selenium.By;
 		//Location Intercept
 		public static final By LocationInterceptNo = By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray");
 		
+		//Account Management
+		//Not logged in
+			public static final By SignUp = By.cssSelector("a.btn.btn-redanalyticsSignUp");
+			public static final By SignInto = By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn");
+		//Logged in
+			public static final By LogOut = By.cssSelector("a.analyticsHeaderLink[href*=\"/logout\"]");
+			public static final By AccountProfile = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/profile\"]");
+			public static final By SavedCards = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/payment-details\"]");
+			public static final By AddressBook = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/address-book\"]");
+			public static final By Preferences = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/preferences\"]");
+			public static final By OnlineOrderHistory = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/orders\"]");
+			public static final By InStorePurchaseHistory = By.cssSelector("a.analyticsHeaderLink[href*=\"/my-account/instoreorders\"]");
+			public static final By ShoppingList = By.cssSelector("a.analyticsHeaderLink[href*=\"/shoppinglist\"]");
+			public static final By TotalDiscoveryFAQs = By.cssSelector("a.analyticsHeaderLink[href*=\"/total-discovery/faq\"]");
+		
 }
