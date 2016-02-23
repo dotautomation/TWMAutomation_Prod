@@ -27,6 +27,7 @@ import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -49,45 +50,52 @@ public class Sort extends Browser {
 	public void SortTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("PLP Sort Test");
 		SiteAccess.ActionAccessSite(driver,IP);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
 		
 		//Hover over the "Wine" top-level menu
 		Actions action = new Actions(driver);
 		WebElement wineNav = driver.findElement(By.xpath("//a[contains(@href,'/c0020')]")); 
 		action.moveToElement(wineNav).build().perform(); //Top Level Menu Hover
 		WebElement winePLPNav=driver.findElement(By.xpath("//a[contains(@href,'/white-wine/')]"));
-		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", winePLPNav);
 		Thread.sleep(5000);
 		
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
-		driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
+		//driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
 		Thread.sleep(5000);
 	    
 		//Our Favorites
 		driver.findElement(PageProductList.SortDropdown).click();
-	    driver.findElement(By.cssSelector("div.contSelect > ul > li[data-val=our-favorites]")).click();
+		Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("li[data-val=our-favorites]")).click();
 	    Thread.sleep(2000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("option[value=our-favorites]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.plp-list-img-wdlogo")).isEmpty(),false);
 	    
 	    //Expert Ratings
 	    driver.findElement(PageProductList.SortDropdown).click();
-	    driver.findElement(By.cssSelector("div.contSelect > ul > li[data-val=expert-ratings]")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("li[data-val=expert-ratings]")).click();
 	    Thread.sleep(2000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span.plp-product-desc-winespec-left-badge")).isEmpty(),false);
 	    
 	    
 	    //Name (A-Z)
 	    driver.findElement(PageProductList.SortDropdown).click();
-	    driver.findElement(By.cssSelector("div.contSelect > ul > li[data-val=name-asc]")).click();
+	    Thread.sleep(2000);
+	    //driver.findElement(By.cssSelector("li[data-val=name-asc]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-asc]")));
 	    Thread.sleep(3000);
 	    String ProductNameAlphaSort = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 	    driver.navigate().refresh();
 	    
 	    //Name (Z-A)
 	    driver.findElement(PageProductList.SortDropdown).click();
-	    driver.findElement(By.cssSelector("div.contSelect > ul > li[data-val=name-desc]")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("div.contSelect.jspScrollable")).sendKeys(Keys.ARROW_DOWN);
+	    //driver.findElement(By.cssSelector("li[data-val=name-desc]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-desc]")));
 	    Thread.sleep(3000);
 	    String ProductNameReverseAlphaSort = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 	    
