@@ -116,6 +116,6 @@ public class StoreDetail extends Browser {
 		//Click Make this my store button and validate store session change
 	    driver.findElement(By.cssSelector("button#startInStoreBtn")).click();
 	    Thread.sleep(5000);
-	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(), "McLean , VA");
+	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(), "McLean, VA");
 	}
 }

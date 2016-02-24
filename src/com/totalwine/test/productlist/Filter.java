@@ -82,7 +82,7 @@ public class Filter extends Browser {
 		
 		//Varietal
 	    //driver.findElement(By.xpath("//li[4]/div/ul/li/a/span")).click();
-		//driver.findElement(By.linkText("varietaltype")).click();
+		driver.findElement(By.linkText("Wine Varietal & Type")).click();
 		driver.findElement(By.id("check_box_showmoreChardonnayvarietaltype")).click();
 		//driver.findElement(By.id("check_box_showmoreAlbarinovarietaltype")).click();
 		
@@ -99,8 +99,9 @@ public class Filter extends Browser {
 	    	Thread.sleep(3000);
 	    	
 		//Country
-	    WebElement scroll_Country = driver.findElement(By.linkText("Country & State"));
+	    WebElement scroll_Country = driver.findElement(By.linkText("Country/State"));
 	    scroll_Country.sendKeys(Keys.ARROW_DOWN);
+	    driver.findElement(By.linkText("Country/State")).click();
 	    //driver.findElement(By.xpath("//a[contains(text(),'Country')]")).click();
 	    driver.findElement(By.id("check_box_showmoreCaliforniastate")).click();
 	    //driver.findElement(By.id("check_box_showmoreArgentinastate")).click();

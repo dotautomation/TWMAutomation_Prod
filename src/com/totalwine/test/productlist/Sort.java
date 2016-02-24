@@ -34,9 +34,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageProductList;
 import com.totalwine.test.trials.Browser;
-
+import com.totalwine.test.actions.*;
 public class Sort extends Browser {
 
 	private String IP="71.193.51.0";
@@ -49,69 +49,55 @@ public class Sort extends Browser {
 	@Test 
 	public void SortTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("PLP Sort Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver,IP);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
 		
 		//Hover over the "Wine" top-level menu
 		Actions action = new Actions(driver);
 		WebElement wineNav = driver.findElement(By.xpath("//a[contains(@href,'/c0020')]")); 
 		action.moveToElement(wineNav).build().perform(); //Top Level Menu Hover
 		WebElement winePLPNav=driver.findElement(By.xpath("//a[contains(@href,'/white-wine/')]"));
-		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", winePLPNav);
 		Thread.sleep(5000);
 		
-		//driver.findElement(By.xpath("//a[contains(@href,'/white-wine/c/000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
-		//Thread.sleep(5000);
-		
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
-		
-		
-		//driver.get(ConfigurationFunctions.accessURL+"/white-wine/c/013005");
+		//driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
 		Thread.sleep(5000);
-	    driver.findElement(By.xpath("//div[2]/div/span/span")).click();
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[2]")).click();
+	    
+		//Our Favorites
+		driver.findElement(PageProductList.SortDropdown).click();
+		Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("li[data-val=our-favorites]")).click();
+	    Thread.sleep(2000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("option[value=our-favorites]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div[class=plp-list-img-wdlogo]")).isEmpty(),false);
-	    driver.findElement(By.xpath("//div[2]/div/span/span")).click();
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[3]")).click();
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.plp-list-img-wdlogo")).isEmpty(),false);
+	    
+	    //Expert Ratings
+	    driver.findElement(PageProductList.SortDropdown).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("li[data-val=expert-ratings]")).click();
+	    Thread.sleep(2000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span.plp-product-desc-winespec-left-badge")).isEmpty(),false);
 	    
-	    driver.findElement(By.xpath("//div[2]/div/span/span")).click();
 	    
-	    WebElement scroll = driver.findElement(By.xpath("//div[2]/div/span/span"));
-
-	    //do 
-	    	scroll.sendKeys(Keys.ARROW_DOWN);
-	    //while (driver.findElements(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[7]")).isEmpty()==false);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[7]")).click();
+	    //Name (A-Z)
+	    driver.findElement(PageProductList.SortDropdown).click();
+	    Thread.sleep(2000);
+	    //driver.findElement(By.cssSelector("li[data-val=name-asc]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-asc]")));
 	    Thread.sleep(3000);
-	    String ProductNameAlphaSort = driver.findElement(By.cssSelector("a[class=analyticsProductName]")).getText();
+	    String ProductNameAlphaSort = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 	    driver.navigate().refresh();
-	    driver.findElement(By.xpath("//div[2]/div/span/span")).click();
 	    
-	    //do 
-	    WebElement scroll1 = driver.findElement(By.xpath("//div[2]/div/span/span"));
-	    	scroll1.sendKeys(Keys.ARROW_DOWN);
-	    //while (driver.findElements(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[8]")).isEmpty()==false);
-	    	scroll1.sendKeys(Keys.ARROW_DOWN);
-		    scroll1.sendKeys(Keys.ARROW_DOWN);
-		    scroll1.sendKeys(Keys.ARROW_DOWN);
-		    scroll1.sendKeys(Keys.ARROW_DOWN);
-	    
-	    driver.findElement(By.xpath("//div[2]/div/div[2]/div/div/div/div/ul/li[8]")).click();
+	    //Name (Z-A)
+	    driver.findElement(PageProductList.SortDropdown).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("div.contSelect.jspScrollable")).sendKeys(Keys.ARROW_DOWN);
+	    //driver.findElement(By.cssSelector("li[data-val=name-desc]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-desc]")));
 	    Thread.sleep(3000);
-	    String ProductNameReverseAlphaSort = driver.findElement(By.cssSelector("a[class=analyticsProductName]")).getText();
+	    String ProductNameReverseAlphaSort = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 	    
 	    Assert.assertEquals(ProductNameAlphaSort.startsWith("1"),true);
 	    Assert.assertEquals(ProductNameReverseAlphaSort.startsWith("Z"),true);
