@@ -1,15 +1,19 @@
 package com.totalwine.test.backoffice;
 
 /*
- * OMS Login Workflow
+ * C3 Sanity Workflow
  * Workflow:
- * 1. Access the backoffice
+ * 1. Access the CS Cockpit
  * 2. Login using valid credentials
  * 3. Validate the menus displayed upon a successful login
+ * 4. Find a customer and access it's record
+ * 5. Validate the customer record
+ * 6. Find an order and access it's record
+ * 7. Validate the order record
+ * 8. Log out
  *		
  * Technical Modules:
  * 	1. BeforeMethod (Test Pre-requisites):
- * 			Invoke webdriver
  * 			Maximize browser window
  * 	2. Test (Workflow)
  * 	3. AfterMethod
@@ -38,6 +42,7 @@ public class C3Validation extends Browser {
 		driver.get(ConfigurationFunctions.backofficeURL+"/cscockpit");
 		Thread.sleep(5000);
 		C3Login();
+		System.out.println("Successfully logged in");
 		
 		//Validate Links in left menu
 		Assert.assertEquals(driver.findElements(By.linkText("Find Customer")).isEmpty(), false);
@@ -46,6 +51,7 @@ public class C3Validation extends Browser {
 		Assert.assertEquals(driver.findElements(By.linkText("Find Order")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.linkText("Find Ticket")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.linkText("New Ticket")).isEmpty(), false);
+		System.out.println("CS Cockpit Left Menu contents validated");
 		
 		//Find a customer
 		driver.findElement(By.linkText("Find Customer")).click();
@@ -56,6 +62,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).sendKeys("Sud");
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
 		Thread.sleep(10000);
+		System.out.println("Customer search validated");
 		
 		//Validate Customer search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'WebMember')]]")).isEmpty(), false);
@@ -63,6 +70,7 @@ public class C3Validation extends Browser {
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElements(By.xpath("//span[text()[contains(.,'Customer Email ID')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-rewardsClub")).isEmpty(),false);
+		System.out.println("Customer record validated");
 		
 		//Find an order
 		driver.findElement(By.linkText("Find Order")).click();
@@ -71,6 +79,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys("28122029");
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
 		Thread.sleep(10000);
+		System.out.println("Order search validated");
 		
 		//Validate Order search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'Cancelled')]]")).isEmpty(), false);
@@ -78,10 +87,12 @@ public class C3Validation extends Browser {
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("img.listViewCellImage")).isEmpty(),false);
+		System.out.println("Order record validated");
 		
 		//Logout
 		driver.findElement(By.xpath("//span[text()[contains(.,'Menu')]]")).click();
 		driver.findElement(By.xpath("//a[text()[contains(.,'Logout')]]")).click();
+		System.out.println("Sucessfully logged out");
 	}
 	
 	public void C3Login() throws InterruptedException {

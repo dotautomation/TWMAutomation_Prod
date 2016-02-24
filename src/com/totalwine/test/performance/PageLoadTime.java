@@ -21,6 +21,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 
 
 public class PageLoadTime /*extends Browser*/ {
@@ -74,10 +75,10 @@ public class PageLoadTime /*extends Browser*/ {
 				String s = Objects.toString(totalTime, null);
 				writer.write(s+",");
 				
-				driver.findElement(By.id("btnYes")).click();
+				driver.findElement(PageGlobal.AgeGateYes).click();
 				Thread.sleep(5000);
 				driver.findElement(By.id("doNotShowCheck")).click();
-				driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+				driver.findElement(PageGlobal.NewSiteIntroClose).click();
 			    Thread.sleep(5000);
 			    
 			    
@@ -142,13 +143,13 @@ public class PageLoadTime /*extends Browser*/ {
 				Thread.sleep(2000);
 				
 				//Account Login
-				driver.findElement(By.linkText("Account")).click();
+				driver.findElement(PageGlobal.TopNavAccount).click();
 		        driver.findElement(By.linkText("Sign into your account")).click();
 		        driver.switchTo().frame("iframe-signin-overlay");
 		        driver.findElement(By.id("j_username")).clear();
-			    driver.findElement(By.id("j_username")).sendKeys("rsud@live.com");
+			    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
 			    driver.findElement(By.id("j_password")).clear();
-			    driver.findElement(By.id("j_password")).sendKeys("yoyo55");
+			    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
 				start = System.currentTimeMillis();
 				driver.findElement(By.xpath("//button[@type='button']")).click();
 				finish = System.currentTimeMillis();
