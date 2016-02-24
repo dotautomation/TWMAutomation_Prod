@@ -35,6 +35,7 @@ public class ConfigurationFunctions {
 	
 	//Environment
 	public static final String accessURL="http://www.totalwine.com";
+	public static final String backofficeURL = "http://backoffice.totalwine.com";
 	//Browser Configuration Variables
 	public static final String locationSet = "http://www.totalwine.com/?remoteTestIPAddress=";//Phased Launch
 	public static final String URL = "http://twmuatwebserver:webserveruattwm@uat.totalwine.com/?remoteTestIPAddress=";

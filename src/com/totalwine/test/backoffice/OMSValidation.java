@@ -15,8 +15,6 @@ package com.totalwine.test.backoffice;
  * 	3. AfterMethod
  * 			Take screenshot
  * 			Close webdriver
- * 	4. AfterClass
- * 			Quit webdriver
  */
 
 import org.testng.Assert;
@@ -26,7 +24,6 @@ import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
-import com.totalwine.test.pages.*;
 
 public class OMSValidation extends Browser {
 	
@@ -38,10 +35,9 @@ public class OMSValidation extends Browser {
 	@Test
 	public void OMSLoginTest () throws InterruptedException {
 		logger=report.startTest("OMS Login Test");
-		driver.get("http://backoffice.totalwine.com/backoffice");
+		driver.get(ConfigurationFunctions.backofficeURL+"/backoffice");
 		Thread.sleep(5000);
 		OMSLogin();
-		
 		
 		//OMS Authority Groups Validation
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),false);
@@ -106,5 +102,4 @@ public class OMSValidation extends Browser {
 		driver.findElement(By.cssSelector("div.yw-statusToolbar > div > div > div > div.z-toolbarbutton-cnt")).click();
 		Thread.sleep(3000);
 	}
-
 }
