@@ -44,7 +44,7 @@ public class OMSValidation extends Browser {
 		
 		
 		//OMS Authority Groups Validation
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),true);
+	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'storeuser')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'omsadmin')]]")).isEmpty(),false);
 	    System.out.println("Validated the OMS Authority Groups");
