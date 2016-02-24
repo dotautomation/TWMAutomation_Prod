@@ -15,7 +15,7 @@ import org.openqa.selenium.By;
 		public static final By TopNavClassesEvents = By.cssSelector("a.analyticsHeaderLink[href*=\"/events/\"]");
 		public static final By TopNavGuidesAdvice = By.cssSelector("a[href*=\"/guides-and-advice\"]");
 		public static final By TopNavFindStore = By.cssSelector("a.analyticsHeaderLink[href*=\"/store-finder\"]");
-		public static final By TopNavAccount = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-not-wrapper]");
+		public static final By TopNavAccount = By.cssSelector("a[data-modal-id=loggedin-not-wrapper]");
 		public static final By TopNavAccountLoggedin = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-wrapper]");
 		public static final By TopNavShoppingList = By.cssSelector("a.analyticsHeaderLink[href*=\"/shoppinglist\"]");
 		public static final By StoreSelection = By.cssSelector("span.store-details-store-name.flyover-src");

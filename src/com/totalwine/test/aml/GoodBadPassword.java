@@ -30,6 +30,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 
@@ -60,7 +61,7 @@ public class GoodBadPassword extends Browser {
 	    Thread.sleep(5000);
 	    
 	    //Access the sign in modal
-	    driver.findElement(By.linkText("Account")).click();
+	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
 	    

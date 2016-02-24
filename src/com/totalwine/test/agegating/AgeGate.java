@@ -23,12 +23,18 @@ package com.totalwine.test.agegating;
  * 			Quit webdriver
  */
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 public class AgeGate extends Browser {
@@ -45,7 +51,17 @@ public class AgeGate extends Browser {
 		logger=report.startTest("Age Gate Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnNo")).click();
+		
+		//Validate Date
+		String ageGateDate = driver.findElement(By.cssSelector("div.ageGatingCheck > div.heading-h1")).getText();
+		DateFormat dateFormat = new SimpleDateFormat("MMMM d yyyy");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, -21); //Subtract 21 years from current date
+		Date date = cal.getTime();
+		System.out.println(ageGateDate.replace(",", "")+"|"+dateFormat.format(date));
+		Assert.assertEquals(ageGateDate.replace(",", ""), dateFormat.format(date));
+		
+		driver.findElement(PageGlobal.AgeGateNo).click();
 		Thread.sleep(1000);
 		//Splash screen validation
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.ageGatingError")).isEmpty(),false);
@@ -58,9 +74,9 @@ public class AgeGate extends Browser {
 		
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
+		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
 	    Thread.sleep(5000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#homeCarousel")).isEmpty(),false); //HomePage validation
 	}
