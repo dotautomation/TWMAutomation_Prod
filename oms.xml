@@ -3,7 +3,7 @@
 
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
 <suite name="MultiBrowserSuite" verbose="2">
-   <test name="Product List Sort">
+   <test name="OMS Smoke Test">
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>

@@ -30,6 +30,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 public class ShoppingListBrowse extends Browser {
@@ -91,7 +92,7 @@ public class ShoppingListBrowse extends Browser {
 	    driver.findElement(By.linkText("Welcome, Rajat")).click();
 	    driver.findElement(By.linkText("Log out")).click();
 	    Thread.sleep(5000);
-	    Assert.assertEquals(driver.findElements(By.linkText("Account")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageGlobal.TopNavAccount).isEmpty(),false);
 	}
 	
 	/*@AfterMethod
