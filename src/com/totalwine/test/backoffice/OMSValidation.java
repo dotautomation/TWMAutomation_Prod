@@ -47,6 +47,7 @@ public class OMSValidation extends Browser {
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'storeuser')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'omsadmin')]]")).isEmpty(),false);
+	    System.out.println("Validated the OMS Authority Groups");
 	    
 	    //Inventory Manager Validation
 	    driver.findElement(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).click();
@@ -60,6 +61,7 @@ public class OMSValidation extends Browser {
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Imports')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("input.yw-search-box.z-textbox")).isEmpty(),false);
 	    OMSLogout();
+	    System.out.println("Validated the apperance of the Inventory Manager menu items");
 	    
 	    //Store User Validation
 	    OMSLogin();
@@ -78,6 +80,7 @@ public class OMSValidation extends Browser {
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.z-listcell-cnt")).isEmpty(),false); //to-be-packed table is populated
 	    OMSLogout();
+	    System.out.println("Validated the Store User interface's menu items");
 	    
 	    //OMS Admin Validation
 	    OMSLogin();
@@ -86,6 +89,7 @@ public class OMSValidation extends Browser {
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
 	    OMSLogout();
+	    System.out.println("Validated the OMS Admin's menu items");
 	}
 	
 	public void OMSLogin() throws InterruptedException {
