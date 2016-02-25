@@ -45,7 +45,7 @@ public class ConfigurationFunctions {
 	public static final String resourcePath = "C:\\twmautomation\\TWMAutomation_Prod\\Resources\\AutomatedFlows.xls";
 	public static final String CHROMEDRIVERPATH = "C:/twmautomation/lib/lib/chromedriver.exe";
 	public static final String IEDRIVERPATH = "C:/twmautomation/lib/lib/IEDriverServer.exe";
-	public static final String RESULTSPATH = "C:\\Users\\rsud\\.jenkins\\jobs\\Regression Suite (Production)\\reports\\html\\";
+	public static final String RESULTSPATH = "C:\\autoreports\\";
 	public static final String TESTLOGIN = "rsud@live.com";
 	public static final String TESTPWD = "yoyo55";
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
