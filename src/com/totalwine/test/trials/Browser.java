@@ -197,6 +197,8 @@ public class Browser {
 			logger.log(LogStatus.FAIL,"Error Stack: "+testResult.getThrowable());
 			logger.log(LogStatus.FAIL,"Error Description: "+logOutput);
 		}
+		else if (testResult.getStatus() == ITestResult.SUCCESS)
+			logger.log(LogStatus.PASS,testResult.getName()+" passed");
 		report.endTest(logger);
 		report.flush();
 		driver.close();

@@ -35,12 +35,14 @@ import java.io.IOException;
 import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
@@ -59,12 +61,7 @@ public class ShoppingListAddItem extends Browser {
 	@Test
 	public void ShoppingListAddItemNewTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping List Add New Item to List Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 		//Navigate to PDP
 	    driver.navigate().to(ConfigurationFunctions.accessURL+"/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
@@ -77,15 +74,22 @@ public class ShoppingListAddItem extends Browser {
 	    //Login to Account
 	    driver.switchTo().frame("iframe-signin-overlay");
 	    driver.findElement(By.id("j_username")).clear();
-	    driver.findElement(By.id("j_username")).sendKeys("rsud@live.com");
+	    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
 	    driver.findElement(By.id("j_password")).clear();
-	    driver.findElement(By.id("j_password")).sendKeys("yoyo55");
+	    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
 	    driver.findElement(By.xpath("//button[@type='button']")).click();
 	    Thread.sleep(8000);
 	    
+	    //Merge Cart Modal
+	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
+	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
+	    }
+	    
 		//Add to new shopping list
 	    driver.findElement(By.cssSelector("div#dWishListName > div.customselect")).click();
-	    driver.findElement(By.cssSelector("button.btn.btn-red.btn-create-list")).click();
+	    JavascriptExecutor js = (JavascriptExecutor)driver;
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("button.btn.btn-red.btn-create-list"))); //Force click, even when not visible
+	    //driver.findElement(By.cssSelector("button.btn.btn-red.btn-create-list")).click();
 	    Thread.sleep(2000);
 	    Assert.assertEquals("Your new shopping list has been created!", driver.findElement(By.cssSelector("div.add-list-confirm-right > div.add-list-success")).getText());
 	    driver.findElement(By.cssSelector("button#addToList")).click();
@@ -97,9 +101,7 @@ public class ShoppingListAddItem extends Browser {
 	    Assert.assertEquals(driver.findElements(By.linkText("Cloud Break Chardonnay")).isEmpty(),false);
 	    
 	    //Delete item from Shopping List (so it can be added again)
-	    WebElement scroll_Price = driver.findElement(By.linkText("Cloud Break Chardonnay"));
-	 	scroll_Price.sendKeys(Keys.ARROW_DOWN);
-	 	scroll_Price.sendKeys(Keys.ARROW_DOWN);
+	    driver.findElement(By.linkText("Cloud Break Chardonnay")).sendKeys(Keys.ARROW_DOWN);
 	    driver.findElement(By.cssSelector("a.icon-list-delete.analyticsDeleteList")).click();
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("#frmDeleteProduct > div.send-list-btn > button.btn-red")).click();
@@ -123,12 +125,7 @@ public class ShoppingListAddItem extends Browser {
 	@Test
 	public void ShoppingListAddItemExistingTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping List Add Item to Existing List Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 		//Navigate to PDP
 	    driver.navigate().to(ConfigurationFunctions.accessURL+"/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
@@ -141,11 +138,16 @@ public class ShoppingListAddItem extends Browser {
 		//Login to Account
 	    driver.switchTo().frame("iframe-signin-overlay");
 	    driver.findElement(By.id("j_username")).clear();
-	    driver.findElement(By.id("j_username")).sendKeys("rsud@live.com");
+	    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
 	    driver.findElement(By.id("j_password")).clear();
-	    driver.findElement(By.id("j_password")).sendKeys("yoyo55");
+	    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
 	    driver.findElement(By.xpath("//button[@type='button']")).click();
 	    Thread.sleep(8000);
+	    
+	  //Merge Cart Modal
+	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
+	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
+	    }
 	    
 		//Add to existing shopping list
 	    driver.findElement(By.cssSelector("div#dWishListName > div.customselect")).click();
@@ -159,9 +161,7 @@ public class ShoppingListAddItem extends Browser {
 	    Assert.assertEquals(driver.findElements(By.linkText("Cloud Break Chardonnay")).isEmpty(),false);
 	    
 	    //Delete item from Shopping List (so it can be added again)
-	    WebElement scroll_Price = driver.findElement(By.linkText("Cloud Break Chardonnay"));
-	 	scroll_Price.sendKeys(Keys.ARROW_DOWN);
-	 	scroll_Price.sendKeys(Keys.ARROW_DOWN);
+	    driver.findElement(By.linkText("Cloud Break Chardonnay")).sendKeys(Keys.ARROW_DOWN);
 	    driver.findElement(By.xpath("//a[@onclick=\"setDeleteLineItemForm('110892750-1','205','icongo','Cloud Break Chardonnay')\"]")).click();
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("#frmDeleteProduct > div.send-list-btn > button.btn-red")).click();

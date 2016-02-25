@@ -45,10 +45,7 @@ public class DefaultTabsBehavior extends Browser {
 	@DataProvider(name="PLPTabParameters")
     public Object[][] createData() {
 		Object[][] retObjArr;
-		if (ConfigurationFunctions.locationSet.contains("uat")) {
-			retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PLP", "plptabs");
-		} else
-			retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PLP", "plptabsprod");
+		retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"PLP", "plptabsprod");
         return(retObjArr);
     }
 	
