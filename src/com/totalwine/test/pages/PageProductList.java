@@ -11,6 +11,18 @@ public class PageProductList {
 	public static final By ProductTitle =By.cssSelector("h2.plp-product-title"); //Title
 	public static final By ItemSize = By.cssSelector("div.plp-product-qty"); //Item Size
 	public static final By SortDropdown = By.cssSelector("div.plp-product-sorting-sortby-dropdown > div > span.itemval");
+	public static final By PLPHero = By.cssSelector("div.plp-opt-hero"); //Hero component
+	public static final By PLPATY = By.cssSelector("a#plp-aty-tab"); //ATY
+	public static final By PLPAllStores = By.cssSelector("a#plp-productfull-tabs"); //All stores
+	public static final By ATYISP = By.cssSelector("a[href*=\"tab=aty_isp\"]"); //ATY > ISP
+	public static final By ATYShip = By.cssSelector("a[href*=\"tab=aty_shipping\"]"); //ATY > Ship
+	public static final By ATYBoth = By.cssSelector("a[href*=\"tab=aty_both\"]"); //ATY > Both
+	public static final By ViewDropdown = By.cssSelector("div.plp-product-sorting-view-dropdown"); //Show dropdown
+	public static final By ListView = By.cssSelector("a.analyticsViewAsList"); //View as list
+	public static final By ListViewDefault = By.cssSelector("a.analyticsViewAsList.active.activeicon"); //Default list view
+	public static final By GridView = By.cssSelector("a.analyticsViewAsGrid"); //View as grid
+	
+	
 	
 	//List View
 	public static final By List = By.cssSelector("section.plp-product-content"); //List
@@ -21,7 +33,8 @@ public class PageProductList {
 	public static final By ListReviewCount = By.cssSelector("a.analyticsProductReviews");
 	public static final By ListCountry = By.cssSelector("a.analyticsCountryState");
 	public static final By ListRegion = By.cssSelector("a.analyticsRegion");
-	public static final By ListShippingBadge = By.cssSelector("span.icon-ship-avail.js-ship-avail");
+	public static final By ListShippingAvailBadge = By.cssSelector("span.icon-ship-avail.js-ship-avail");
+	public static final By ListShippingNotAvailBadge = By.cssSelector("span.icon-ship-avail.js-ship-notavail");
 	public static final By ListISPBadge = By.cssSelector("span.icon-pickup-avail.js-pick-avail");
 	public static final By ListATC = By.cssSelector("button.anAddToCartInit");
 	public static final By ListATL = By.cssSelector("button.anAddToListInit");

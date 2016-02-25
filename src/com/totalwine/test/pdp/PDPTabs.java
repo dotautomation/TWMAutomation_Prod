@@ -32,6 +32,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -52,13 +53,8 @@ public class PDPTabs extends Browser {
 	
 	@Test (dataProvider = "PDPParameters")
 	public void PDPTest (String toplevel,String plp) throws InterruptedException, BiffException, IOException {
-		logger=report.startTest("PDP Tabd Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		logger=report.startTest("PDP Tabs Test");
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 		Actions action=new Actions(driver);
 		
