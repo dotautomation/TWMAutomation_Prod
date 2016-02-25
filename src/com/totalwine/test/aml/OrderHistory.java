@@ -41,7 +41,7 @@ public class OrderHistory extends Browser {
 	
 	@Test
 	public void OrderHistoryTest () throws InterruptedException {
-		logger=report.startTest("Age Gate Test");
+		logger=report.startTest("Order History Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(PageGlobal.AgeGateYes).click();

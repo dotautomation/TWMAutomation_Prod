@@ -122,7 +122,8 @@ public class Filter extends Browser {
 	    //scrollPrice.mouseRelease(KeyEvent.VK_PAGE_DOWN);
 	 	driver.findElement(By.xpath("//a[contains(text(),'Price')]")).click();
 	 	//driver.findElement(By.xpath("//a[contains(text(),'plppricevalue')]")).click();
-	    driver.findElement(By.id("check_box_showmoreUp to $10plppricevalue")).click();
+	 	driver.findElement(By.id("check_box_showmoreUp to $10plppricevalue")).sendKeys(Keys.ARROW_DOWN);
+	 	driver.findElement(By.id("check_box_showmoreUp to $10plppricevalue")).click();
 	    Thread.sleep(3000);
 	    facetValue = driver.findElement(By.cssSelector("span.filter-value")).getText();
 	    String priceValue = driver.findElement(By.cssSelector("span.price")).getText();
