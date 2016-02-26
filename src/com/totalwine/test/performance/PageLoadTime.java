@@ -364,6 +364,7 @@ public class PageLoadTime /*extends Browser*/ {
 				writer.close();
 			}
 		driver.quit();
+		System.out.println(">>>>>>>>>>>>>>>>> "+count+" runs remaining");
 		}
 		//while (pass);
 		while (count>=0);
