@@ -247,6 +247,13 @@
 			<class name="com.totalwine.test.brandpages.BrandList" />
 		</classes>
 	</test>
+	<test name="All Brands">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.brandpages.AllBrands" />
+		</classes>
+	</test>
 	<!--Site Navigation -->
 	<test name="Site Navigation">
 		<parameter name="browser" value="Chrome">
