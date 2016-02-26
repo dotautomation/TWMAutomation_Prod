@@ -50,7 +50,7 @@ import com.totalwine.test.trials.Browser;
 public class ShoppingListAddItem extends Browser {
 	
 	public String IP = "71.193.51.0";
-
+	
 
 	@BeforeMethod
 	public void setUp() throws Exception {
@@ -62,7 +62,7 @@ public class ShoppingListAddItem extends Browser {
 	public void ShoppingListAddItemNewTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping List Add New Item to List Test");
 		SiteAccess.ActionAccessSite(driver, IP);
-	    
+		JavascriptExecutor js = (JavascriptExecutor)driver;
 		//Navigate to PDP
 	    driver.navigate().to(ConfigurationFunctions.accessURL+"/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
 	    Thread.sleep(3000);
@@ -80,14 +80,8 @@ public class ShoppingListAddItem extends Browser {
 	    driver.findElement(By.xpath("//button[@type='button']")).click();
 	    Thread.sleep(8000);
 	    
-	    //Merge Cart Modal
-	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    }
-	    
 		//Add to new shopping list
 	    driver.findElement(By.cssSelector("div#dWishListName > div.customselect")).click();
-	    JavascriptExecutor js = (JavascriptExecutor)driver;
 	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("button.btn.btn-red.btn-create-list"))); //Force click, even when not visible
 	    //driver.findElement(By.cssSelector("button.btn.btn-red.btn-create-list")).click();
 	    Thread.sleep(2000);
@@ -98,6 +92,15 @@ public class ShoppingListAddItem extends Browser {
 	    //Validate that item is present in existing shopping list
 	    driver.findElement(By.cssSelector("button.btn-red.an_ProdView")).click();
 	    Thread.sleep(5000);
+	    
+	    //Survey and Merge Cart Modal
+	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
+	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
+	    Thread.sleep(2000);
+	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
+	    	js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn"))); //Force dismiss
+	    }
+	    
 	    Assert.assertEquals(driver.findElements(By.linkText("Cloud Break Chardonnay")).isEmpty(),false);
 	    
 	    //Delete item from Shopping List (so it can be added again)
@@ -126,7 +129,7 @@ public class ShoppingListAddItem extends Browser {
 	public void ShoppingListAddItemExistingTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping List Add Item to Existing List Test");
 		SiteAccess.ActionAccessSite(driver, IP);
-		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
 		//Navigate to PDP
 	    driver.navigate().to(ConfigurationFunctions.accessURL+"/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
 	    Thread.sleep(3000);
@@ -144,20 +147,26 @@ public class ShoppingListAddItem extends Browser {
 	    driver.findElement(By.xpath("//button[@type='button']")).click();
 	    Thread.sleep(8000);
 	    
-	  //Merge Cart Modal
-	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    }
-	    
 		//Add to existing shopping list
 	    driver.findElement(By.cssSelector("div#dWishListName > div.customselect")).click();
 	    driver.findElement(By.cssSelector("div#dWishListName > div.customselect > div > div > div > ul > li[data-val=icongo]")).click();
+	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("button#addToList")).click();
 	    Thread.sleep(3000);
 	    
 		//Validate that item is present in existing shopping list
 	    driver.findElement(By.cssSelector("button.btn-red.an_ProdView")).click();
 	    Thread.sleep(5000);
+	    
+	    //Survey and Merge Cart Modal
+	    if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
+	    	js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn"))); //Force dismiss
+	    }
+	    Thread.sleep(3000);
+	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
+	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
+	    Thread.sleep(2000);
+	    
 	    Assert.assertEquals(driver.findElements(By.linkText("Cloud Break Chardonnay")).isEmpty(),false);
 	    
 	    //Delete item from Shopping List (so it can be added again)
