@@ -8,7 +8,7 @@ import com.totalwine.test.pages.PageSignInModal;
 
 public class AML {
 
-	//Login
+	//Login//
 	public static void ActionLogin (WebDriver driver, String user,String password) throws InterruptedException {
 		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
 			driver.findElement(PageGlobal.NewSiteIntroClose).click();
