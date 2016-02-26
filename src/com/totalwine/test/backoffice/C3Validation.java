@@ -61,7 +61,9 @@ public class C3Validation extends Browser {
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).clear();
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).sendKeys("Sud");
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		while (driver.findElements(By.cssSelector("div.z-loading-indicator")).size()!=0)
+			Thread.sleep(2000);
 		System.out.println("Customer search validated");
 		
 		//Validate Customer search results
@@ -78,7 +80,9 @@ public class C3Validation extends Browser {
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).clear();
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys("28122029");
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		while (driver.findElements(By.cssSelector("div.z-loading-indicator")).size()!=0)
+			Thread.sleep(2000);
 		System.out.println("Order search validated");
 		
 		//Validate Order search results
@@ -91,6 +95,7 @@ public class C3Validation extends Browser {
 		
 		//Logout
 		driver.findElement(By.xpath("//span[text()[contains(.,'Menu')]]")).click();
+		Thread.sleep(3000);
 		driver.findElement(By.xpath("//a[text()[contains(.,'Logout')]]")).click();
 		System.out.println("Sucessfully logged out");
 	}
