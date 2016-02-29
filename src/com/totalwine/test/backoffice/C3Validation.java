@@ -24,6 +24,9 @@ package com.totalwine.test.backoffice;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;
@@ -107,6 +110,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.cssSelector("input[name=j_password]")).clear();
 		driver.findElement(By.cssSelector("input[name=j_password]")).sendKeys(ConfigurationFunctions.TESTPWD);
 		driver.findElement(By.cssSelector("td.z-button-cm")).click();
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
+		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Find Customer")));
 	}
 }
