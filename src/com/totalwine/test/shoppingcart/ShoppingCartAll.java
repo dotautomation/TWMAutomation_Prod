@@ -62,7 +62,7 @@ public class ShoppingCartAll extends Browser {
 	  } 
 	
 	@Test
-	public void ShoppingListAddItemNewTest () throws InterruptedException, BiffException, IOException {
+	public void ShoppingCartAllTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping Cart Add / Remove Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
