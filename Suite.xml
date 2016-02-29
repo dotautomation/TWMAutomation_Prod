@@ -109,6 +109,14 @@
        <class name="com.totalwine.test.shoppinglist.ShoppingListBrowse"/>
     </classes>
   </test>
+  <!--Shopping Cart all flows -->
+	<test name="Shopping Cart all flows">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
+		</classes>
+	</test>
     <!--Age Gating Test (executed on Cross-Browsers)-->
     <test name="AgeGate on FF">
 	<parameter name="browser" value="FF">
