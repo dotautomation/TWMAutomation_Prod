@@ -7,7 +7,7 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
-       <class name="com.totalwine.test.brandpages.AllBrands"/>
+       <class name="com.totalwine.test.backoffice.C3Validation"/>
     </classes>
   </test>
  </suite>

@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -164,21 +165,22 @@ public class Browser {
 			}
 		}
 		//Grid - iOS (iPhone 6)
-				if (browser.equalsIgnoreCase("iOSGrid")) {
-					DesiredCapabilities cap = DesiredCapabilities.chrome();
-					Map<String, String> mobileEmulation = new HashMap<String, String>();
-					mobileEmulation.put("deviceName", "Apple iPhone 6");
-					Map<String, Object> chromeOptions = new HashMap<String, Object>();
-					chromeOptions.put("mobileEmulation", mobileEmulation);
-					cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-				    cap.setBrowserName("chrome");
-				    cap.setPlatform(Platform.VISTA);
-				    try {
-						driver = new RemoteWebDriver(new URL(hubURL),cap); //Hub URL
-					} catch (MalformedURLException e) {
-						e.printStackTrace();
-					} 
-				}
+		if (browser.equalsIgnoreCase("iOSGrid")) {
+			DesiredCapabilities cap = DesiredCapabilities.chrome();
+			Map<String, String> mobileEmulation = new HashMap<String, String>();
+			mobileEmulation.put("deviceName", "Apple iPhone 6");
+			Map<String, Object> chromeOptions = new HashMap<String, Object>();
+			chromeOptions.put("mobileEmulation", mobileEmulation);
+			cap.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+		    cap.setBrowserName("chrome");
+		    cap.setPlatform(Platform.VISTA);
+		    try {
+				driver = new RemoteWebDriver(new URL(hubURL),cap); //Hub URL
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} 
+		}
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //Global 10 Seconds wait time
 	}
 	
 	@AfterMethod
