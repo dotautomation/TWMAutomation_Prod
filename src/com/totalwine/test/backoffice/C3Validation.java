@@ -72,7 +72,8 @@ public class C3Validation extends Browser {
 		//Validate Customer search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'WebMember')]]")).isEmpty(), false);
 		driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.ahp-rewardsClub")));
 		Assert.assertEquals(driver.findElements(By.xpath("//span[text()[contains(.,'Customer Email ID')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-rewardsClub")).isEmpty(),false);
 		System.out.println("Customer record validated");
@@ -91,7 +92,8 @@ public class C3Validation extends Browser {
 		//Validate Order search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'Cancelled')]]")).isEmpty(), false);
 		driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
+		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated((By.cssSelector("img.listViewCellImage"))));
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("img.listViewCellImage")).isEmpty(),false);
 		System.out.println("Order record validated");
