@@ -63,7 +63,7 @@ public class ShoppingCartAll extends Browser {
 	
 	@Test
 	public void ShoppingCartAllTest () throws InterruptedException, BiffException, IOException {
-		logger=report.startTest("Shopping Cart Add / Remove Test");
+		logger=report.startTest("Shopping Cart All");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
