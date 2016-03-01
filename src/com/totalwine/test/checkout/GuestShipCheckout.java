@@ -61,7 +61,7 @@ public class GuestShipCheckout extends Browser {
 			String Phone,String CreditCard,String ExpirationMonth,String ExpirationYear,String CVV)
 					throws InterruptedException, BiffException, IOException {
 
-		logger=report.startTest("Ship Registered Checkout Test");
+		logger=report.startTest("Guest Ship Checkout");
 		
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);
