@@ -1,5 +1,6 @@
 package com.totalwine.test.actions;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.totalwine.test.config.ConfigurationFunctions;
@@ -13,5 +14,14 @@ public class SiteAccess {
 		Thread.sleep(2000);
 	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
 	    Thread.sleep(2000);
+	}
+	
+	public static void ActionAccessMobileSite(WebDriver driver,String IP) throws InterruptedException {
+		driver.get(ConfigurationFunctions.locationSet+IP);
+		Thread.sleep(5000);
+		if (driver.findElement(By.id("btn-continue")).isDisplayed())
+			driver.findElement(By.id("btn-continue")).click();
+		driver.findElement(By.id("btnYes")).click();
+		Thread.sleep(5000);
 	}
 }
