@@ -80,16 +80,14 @@ public class MobilePLPSort extends Browser {
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.pdpRatingStars > a > span > span[style=\"width:100.0%\"]")).isEmpty(),false); //First result is 5-star
 	    
-	    
 		//Verify "Price (highest first)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
 	    //SortOption.selectByVisibleText("Price (highest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
 	    Thread.sleep(3000);
-	    double TopPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
-	    double SecondPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    long TopPrice = Long.parseLong(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    long SecondPrice = Long.parseLong(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
 	    Assert.assertTrue(TopPrice>SecondPrice);
-	    
 	    
 		//Verify "Price (lowest first)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
