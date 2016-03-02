@@ -69,4 +69,8 @@ public class PageProductList {
 	public static final By GridPickupBadge =By.cssSelector("div.plp-product-delivery"); //Pickup badge
 	public static final By GridATC =By.cssSelector("form.add_to_cart_form.clear_fix"); // Add to cart
 	public static final By GridATL =By.cssSelector("button.btn.btn-brown-pattern.anAddToListInit"); //Add to listBy.cssSelector("div.plp-list-img-wdlogo"); //WD Logo
+	
+	//Mobile
+	public static final By MobilePLPSort = By.cssSelector("select#sortOptions");
+	public static final By MobilePLPFilter = By.cssSelector("button.btn-brown.anFilterProd");
 }
