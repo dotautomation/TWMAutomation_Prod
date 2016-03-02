@@ -55,6 +55,10 @@ public class SearchNullTerms {
 	    for (int i=1;i<rowCount;i++) { //Consider title row
 	    	SearchTerm = inputSheet.getCell(0,i).getContents();
 	    	SearchType = inputSheet.getCell(1,i).getContents();
+	    	if (SearchType.equals(""))
+	    		SearchType = "all";
+	    	if (SearchTerm.equals(""))
+	    		SearchTerm = "invalid search term";
 	    	System.out.println("Searching for: "+SearchTerm+"|"+SearchType);
 	    	writer.write(SearchTerm+",");
 	    	writer.write(SearchType+",");
