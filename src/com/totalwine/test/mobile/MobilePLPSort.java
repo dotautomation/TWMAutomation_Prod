@@ -86,8 +86,8 @@ public class MobilePLPSort extends Browser {
 	    //SortOption.selectByVisibleText("Price (highest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
 	    Thread.sleep(3000);
-	    float TopPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
-	    float SecondPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    double TopPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    double SecondPrice = Integer.parseInt(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
 	    Assert.assertTrue(TopPrice>SecondPrice);
 	    
 	    
