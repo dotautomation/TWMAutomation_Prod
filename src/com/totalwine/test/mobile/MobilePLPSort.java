@@ -91,8 +91,8 @@ public class MobilePLPSort extends Browser {
 	    //SortOption.selectByVisibleText("Price (highest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
 	    Thread.sleep(3000);
-	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
-	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", ""));
 	    Assert.assertTrue(TopPrice>SecondPrice);
 	    logger.log(LogStatus.PASS, "Descending price sort displays highest priced item on top followed by lower priced items");
 	    
@@ -101,8 +101,8 @@ public class MobilePLPSort extends Browser {
 	    //SortOption.selectByVisibleText("Price (lowest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-asc\"]")).click();
 	    Thread.sleep(3000);
-	    TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
-	    SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", ""));
+	    SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", ""));
 	    Assert.assertTrue(TopPrice<SecondPrice);
 	    logger.log(LogStatus.PASS, "Ascending price sort displays lowest priced item on top followed by higher priced items");
 	    
