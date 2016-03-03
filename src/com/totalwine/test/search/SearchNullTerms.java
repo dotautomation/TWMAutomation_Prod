@@ -17,6 +17,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.trials.Browser;
 
 import jxl.*;
 import jxl.read.biff.BiffException;
@@ -31,7 +32,7 @@ public class SearchNullTerms {
 		
 		//Instantiate output file
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
-		writer.write("Search term,Search Type,All stores count,Did you mean?,Top results");
+		writer.write("Search term,Search Type,All stores count,Did you mean?,Top results,Categories");
 		writer.newLine();
 		
 		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
@@ -66,11 +67,11 @@ public class SearchNullTerms {
 	    	driver.findElement(By.cssSelector("span.search-left-cont-three-Lines")).click();
 	    	Thread.sleep(2000);
 	    	driver.findElement(By.cssSelector("div.suggestion.flyover > a[data-href=\""+SearchType+"\"]")).click();
-	    	Thread.sleep(2000);
+	    	Browser.PageLoad(driver);//Thread.sleep(2000);
 			driver.findElement(By.id("header-search-text")).clear();
 		    driver.findElement(By.id("header-search-text")).sendKeys(SearchTerm); //Enter Search Term in box
 		    driver.findElement(By.cssSelector("a[class=\"search-right-cont-mini-search-logo analyticsSearch\"]")).click(); //Click search button
-		    Thread.sleep(3000);
+		    Browser.PageLoad(driver);//Thread.sleep(3000);
 		    if (driver.findElements(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).size()!=0) //Check for All stores tab
 		    {
 			    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText(); //Extract text from All stores tab
@@ -86,15 +87,24 @@ public class SearchNullTerms {
 				if (driver.findElements(By.cssSelector("a#plp-productfull-tabs")).size()!=0)
 					driver.findElement(By.cssSelector("a#plp-productfull-tabs")).click();
 				else driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
-				Thread.sleep(3000);
+				Browser.PageLoad(driver);//Thread.sleep(3000);
+				driver.get(driver.getCurrentUrl()+"&pagesize=32");//Top 32 results
+				Browser.PageLoad(driver);
 				int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
 				String searchResult = "";
+				String facetResult = "";
 				for (int elementCount=1;elementCount<=searchResultsCount;elementCount++) {
-					searchResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/h2/a")).getText()
+					for (int catCount=1;catCount<=driver.findElements(By.xpath("//li["+elementCount+"]/div/div/div/div/a")).size();catCount++) {
+						facetResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/a["+catCount+"]")).getText()+"|";
+					}
+					searchResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/h2/a")).getText().replaceAll(",", "")
 							+"("
 							+driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/div[contains(@class,'plp-product-qty')]")).getText()
 							+")"
-							+"\r";
+							+","
+							+facetResult
+							+"\r\n"+","+","+","+","; //Ensure that output is formatted
+					facetResult="";//Reset facet result for next search result
 				}
 				//System.out.println(searchResult);
 				writer.write(searchResult);
@@ -113,7 +123,7 @@ public class SearchNullTerms {
 		    }
 		    else
 		    	writer.write(driver.getCurrentUrl());
-		    	writer.newLine();
+		    writer.newLine();
     	}
 	    	
 	    /*

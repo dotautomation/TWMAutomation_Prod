@@ -235,7 +235,7 @@ public class Browser {
 		return log;
 	}
 	
-	public void PageLoad(WebDriver driver) {
+	public static void PageLoad(WebDriver driver) {
 	    new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) wd ->
 	            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 	}
