@@ -37,6 +37,13 @@
 			<class name="com.totalwine.test.mobile.MobilePDP" />
 		</classes>
 	</test>
+	<test name="Mobile PLP Sort on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobilePLPSort" />
+		</classes>
+	</test>
 	<!--Mobile Browse Event Test -->
 	<test name="Mobile Events on Android">
 		<parameter name="browser" value="Android">
