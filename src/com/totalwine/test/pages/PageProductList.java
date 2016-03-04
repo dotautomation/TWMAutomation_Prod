@@ -71,6 +71,21 @@ public class PageProductList {
 	public static final By GridATL =By.cssSelector("button.btn.btn-brown-pattern.anAddToListInit"); //Add to listBy.cssSelector("div.plp-list-img-wdlogo"); //WD Logo
 	
 	//Mobile
-	public static final By MobilePLPSort = By.cssSelector("select#sortOptions");
-	public static final By MobilePLPFilter = By.cssSelector("button.btn-brown.anFilterProd");
+	public static final By MobilePLPSort = By.cssSelector("select#sortOptions"); //Sort dropdown
+	public static final By MobilePLPFilter = By.cssSelector("button.btn-brown.anFilterProd");//Filter button
+	public static final By MobilePLPFilterApply = By.cssSelector("div.btn-apply");
+	public static final By MobilePLPFilterClear = By.cssSelector("div.btn-clearall");
+	public static final By FacetStores = By.cssSelector("li[data-facet=storename]");
+	public static final By FacetCategory = By.cssSelector("li[data-facet=producttype]");
+	public static final By FacetVarietal = By.cssSelector("li[data-facet=varietaltype]");
+	public static final By FacetStyle = By.cssSelector("li[data-facet=subtype]");
+	public static final By FacetBrand = By.cssSelector("li[data-facet=brandcode]");
+	public static final By FacetCountry = By.cssSelector("li[data-facet=state]");
+	public static final By FacetRegion = By.cssSelector("li[data-facet=wineregion]");
+	public static final By FacetAppellation = By.cssSelector("li[data-facet=appellation]");
+	public static final By FacetTopRated = By.cssSelector("li[data-facet=ratingrange]");
+	public static final By FacetRatingSource = By.cssSelector("li[data-facet=ratingsource]");
+	public static final By FacetPrice = By.cssSelector("li[data-facet=plppricevalue]");
+	public static final By FacetSize = By.cssSelector("li[data-facet=volume]");
+	
 }

@@ -16,9 +16,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -32,6 +32,8 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -44,10 +46,11 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 
+
 public class Browser {
 
 	protected WebDriver driver;
-	protected String hubURL = "http://prt-6rkhd12.totalwine.com:5566/wd/hub";
+	protected String hubURL = "http://prt-dotautotest.totalwine.com:5566/wd/hub";
 	protected ExtentTest logger;
 	protected static ExtentReports report = getReporter(); //Reporting v2
 	
@@ -230,5 +233,10 @@ public class Browser {
 		else if (exception.contains("ElementNotVisibleException"))
 			log = "Interaction with an expected element did not happen";
 		return log;
+	}
+	
+	public static void PageLoad(WebDriver driver) {
+	    new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) wd ->
+	            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 	}
 }
