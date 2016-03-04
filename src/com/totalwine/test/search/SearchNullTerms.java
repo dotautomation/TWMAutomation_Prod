@@ -32,7 +32,7 @@ public class SearchNullTerms {
 		
 		//Instantiate output file
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
-		writer.write("Search term,Search Type,All stores count,Did you mean?,Top results,Categories");
+		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Top results,Categories");
 		writer.newLine();
 		
 		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
@@ -84,6 +84,14 @@ public class SearchNullTerms {
 				else
 					writer.write(""+",");
 				
+				//Report whether SRP or BLP (redirect)
+				if (driver.getCurrentUrl().contains("brand"))
+					writer.write("Brand Page"+",");
+				else if (driver.getCurrentUrl().contains("search"))
+					writer.write("Search Page"+",");
+				else
+					writer.write("PLP Page"+",");
+				
 				if (driver.findElements(By.cssSelector("a#plp-productfull-tabs")).size()!=0)
 					driver.findElement(By.cssSelector("a#plp-productfull-tabs")).click();
 				else driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
@@ -103,7 +111,7 @@ public class SearchNullTerms {
 							+")"
 							+","
 							+facetResult
-							+"\r\n"+","+","+","+","; //Ensure that output is formatted
+							+"\r\n"+","+","+","+","+","; //Ensure that output is formatted
 					facetResult="";//Reset facet result for next search result
 				}
 				//System.out.println(searchResult);
@@ -115,7 +123,7 @@ public class SearchNullTerms {
 		    	Thread.sleep(3000);
 		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 		    	Thread.sleep(3000);
-		    	writer.write("HTTP500"); //Indicate HTTP500 occurance for search term in output file 
+		    	writer.write("HTTP500"); //Indicate HTTP500 occurrence for search term in output file 
 		    }
 		  //Events search 
 		    else if (driver.findElements(By.cssSelector("div.js-event-item")).size()!=0) { 
