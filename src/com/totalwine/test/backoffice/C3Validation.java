@@ -93,7 +93,7 @@ public class C3Validation extends Browser {
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'Cancelled')]]")).isEmpty(), false);
 		driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
 		//Thread.sleep(3000);
-		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated((By.cssSelector("img.listViewCellImage"))));
+		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]"))));
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("img.listViewCellImage")).isEmpty(),false);
 		System.out.println("Order record validated");
