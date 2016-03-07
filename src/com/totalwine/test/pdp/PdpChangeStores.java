@@ -7,7 +7,7 @@ package com.totalwine.test.pdp;
  * Click on view Cart
  * Change Store / Shipping location 
  * Verify that Shipping or in-store pickup address is changed for the same selected product.  
-
+ * 
  *** Technical Modules:
  * BeforeMethod (Test Pre-requisites):
  * 		Invoke webdriver
@@ -19,7 +19,6 @@ package com.totalwine.test.pdp;
  * AfterClass
  * 		Quit webdriver
  */
-
 import java.io.IOException;
 import jxl.read.biff.BiffException;
 import org.testng.*;
@@ -34,6 +33,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageChangingStore;
 import com.totalwine.test.trials.Browser;
+import com.totalwine.test.actions.*;
 
 public class PdpChangeStores extends Browser {
 	private String IP="71.193.51.0";
@@ -51,13 +51,13 @@ public class PdpChangeStores extends Browser {
 	
 	@Test (dataProvider = "PDPParameters")
 	public void PdpChangeStoresTest (String toplevel,String plp,String zip) throws InterruptedException, BiffException, IOException {
-		logger=report.startTest("Pdp Change Stores Test");
+		logger=report.startTest("Pdp Change Stores");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
+		
 	    Actions action=new Actions(driver);
 		
 	    // **  Browse to PLP
@@ -107,7 +107,7 @@ public class PdpChangeStores extends Browser {
 	    Thread.sleep(6000);
 		String winename2 = driver.findElement(By.cssSelector("span.color-dim.analyticsProductCode")).getText();
 		System.out.println(winename2);
-		Assert.assertEquals(driver.findElements(By.cssSelector("span.color-dim.analyticsProductCode")).isEmpty(),false);
+		Assert.assertEquals(driver.findElements(By.cssSelector("span.color-dim.analyticsProductCode")).isEmpty(),false, "if after changing the store item doesn't remain same then the test will fail");
 		logger.log(LogStatus.PASS, "Verified item before and after changing store");
 		Thread.sleep(2000);
 	  }

@@ -27,8 +27,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
-
 import com.relevantcodes.extentreports.LogStatus;
+import com.totalwine.test.actions.Checkout;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -47,10 +47,8 @@ public class AccountProfile extends Browser {
 		logger=report.startTest("AML - Registered users Account Home ( Dashboard) verification. ");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
 	    
 	    //**Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
@@ -86,19 +84,18 @@ public class AccountProfile extends Browser {
 	    	    
 	    //** Editing and verifying "Sign-in information" 
 	    driver.findElement(PageAccountHome.EditSignInInfo).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditSignInInfo).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.EditSignInInfo).isEmpty(),false,"Verifying Edit Signin information");
 	    Thread.sleep(6000);
 	    driver.findElement(PageAccountHome.EditSignInClose).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditSignInClose).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.EditSignInClose).isEmpty(),false,"Verifying Signin popup closing button");
 	    Thread.sleep(5000);
 	    logger.log(LogStatus.PASS, "verifying Sign-in information");
 	    
 	    //** Editing and verifying "Store delivery information" 
 	    driver.findElement(PageAccountHome.EditStoreDeliveryInfo).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditStoreDeliveryInfo).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.EditStoreDeliveryInfo).isEmpty(),false,"Verifying Store Delivery");
 	    Thread.sleep(6000);
 	    driver.findElement(PageAccountHome.EditStoreDeliveryClose).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditStoreDeliveryClose).isEmpty(),false);
 	    Thread.sleep(5000);
 	    logger.log(LogStatus.PASS, "verifying Store delivery information");
 	}
