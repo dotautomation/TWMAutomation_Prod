@@ -77,6 +77,11 @@ public class StoreDetail extends Browser {
 	    driver.findElement(By.cssSelector("a.analyticsStoreLink > p")).click(); //First result - McLean
 	    Thread.sleep(3000);
 	    
+	    //Validate the Get Directions link
+	    driver.findElement(By.cssSelector("a.getdir.analyticsGetDir")).click();
+	    Thread.sleep(2000);
+	    Assert.assertEquals(driver.findElement(By.cssSelector("input#SUBMIT")).isDisplayed(), true,"The map view didn't load upon clicking the Get Directions link");
+	    
 	    //Validate the presence of all elements
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#notificationDiv")).isEmpty(), false); //State-wide notification
 	    Assert.assertEquals(driver.findElements(By.cssSelector("img.jumbo-image")).isEmpty(), false); //Store image
@@ -112,6 +117,11 @@ public class StoreDetail extends Browser {
 	    
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.events-classes-items-content")).isEmpty(), false);//Upcoming Store Events
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a#upcomingEventLink")).isEmpty(), false);//See all events
+	    
+	    //Validate the Get Directions link
+	    driver.findElement(By.cssSelector("a.getdir.analyticsGetDir")).click();
+	    Thread.sleep(2000);
+	    Assert.assertEquals(driver.findElement(By.cssSelector("input#SUBMIT")).isDisplayed(), true,"The map view didn't load upon clicking the Get Directions link");
 	    
 		//Click Make this my store button and validate store session change
 	    driver.findElement(By.cssSelector("button#startInStoreBtn")).sendKeys(Keys.ARROW_DOWN);
