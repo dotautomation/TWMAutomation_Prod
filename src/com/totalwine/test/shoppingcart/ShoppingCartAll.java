@@ -66,10 +66,9 @@ public class ShoppingCartAll extends Browser {
 		logger=report.startTest("Shopping Cart All");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
 
 	    ShoppingCart.MouseHoverWine(driver);
 
@@ -191,7 +190,7 @@ public class ShoppingCartAll extends Browser {
 	    Thread.sleep (1000);
 	    
 	    driver.findElement(By.cssSelector(".undefined.anOption[data-val='Shopping List 02/26/2016']")).click();
-	    Assert.assertEquals(driver.findElements(By.cssSelector(".alert.positive")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector(".alert.positive")).isEmpty(),false, "If Move to shopping list confirmation doesn't display then test will fail");
 	    logger.log(LogStatus.PASS, "Validated item moved from cart to list");
 	    Thread.sleep (5000);
 	}

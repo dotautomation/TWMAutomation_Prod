@@ -29,18 +29,17 @@ package com.totalwine.test.checkout;
  */
 
 import java.io.IOException;
+import org.testng.Assert;
 import jxl.read.biff.BiffException;
-import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.openqa.selenium.Keys;
-
-import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
+import com.totalwine.test.actions.*;
 
 public class GuestShipCheckout extends Browser {
 
@@ -65,24 +64,17 @@ public class GuestShipCheckout extends Browser {
 		
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
-	    logger.log(LogStatus.PASS, "The site is configured for an Guest Ship Checkout order");
-	    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
+		
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
     
-		// **  Add to Cart
+	    // **  Selecting a product from PDP
 		driver.get(ConfigurationFunctions.accessURL+PDP);
 		Thread.sleep(3000);
 		
-		String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
-		System.out.println(productId);
-		Thread.sleep(2000);
-
-	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
-		Thread.sleep (3000);
-		
-	    driver.get(ConfigurationFunctions.accessURL+"/cart");
+		// **  Add to Cart	
+		ShoppingCart.ATC(driver);
+		driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
 
 	    //  ** Shopping Cart
@@ -93,13 +85,9 @@ public class GuestShipCheckout extends Browser {
 	    driver.findElement(By.id("zipCode")).sendKeys(Zip);
 	    driver.findElement(By.cssSelector("input.anZipForm")).click();
 	    Thread.sleep(5000);
-
 	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
 	    driver.findElement(By.cssSelector("li[data-val="+ShipOption+"]")).click();
 	    Thread.sleep(5000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div[class=\"width-100 totalDotBorder noBorder ship-cost\"]")).isEmpty(),false); //Validate appearance of shipping cost
-	    Assert.assertEquals(driver.findElements(By.cssSelector("input.anVoucherForm")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.name("qty")).isEmpty(),false);
 	    driver.findElement(By.id("checkout")).click();
 	    Thread.sleep(3000);
 
@@ -155,17 +143,9 @@ public class GuestShipCheckout extends Browser {
 	    Thread.sleep(10000);
 
 	    // **  Checkout Tab 3
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_1\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
-
-	    driver.findElement(By.id("check_box_age")).click();
-	    driver.findElement(By.cssSelector("button.btn-red.btn-place-order.anPlaceOrder")).click();
-	    Thread.sleep(10000);
+	    Checkout.GuestCheckoutTab3(driver);
 
 	    //  ** Order Confirmation
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false, "If Order confirmation msg doesn't appear then test will fail");
 	}
 	}

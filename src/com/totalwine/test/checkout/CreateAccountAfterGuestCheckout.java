@@ -41,10 +41,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.openqa.selenium.Keys;
-
-import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
+import com.totalwine.test.actions.*;
 
 public class CreateAccountAfterGuestCheckout extends Browser {
 
@@ -69,41 +68,29 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 		Random rand = new Random();
 	    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 	    int randomNum_2 = rand.nextInt((1000 - 1) + 1) + 1;
-	    
 	    logger=report.startTest("Creating account after Guest Checkout");
 	    
 		driver.get(ConfigurationFunctions.locationSet+Location);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    
-		Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText()); 
-		logger.log(LogStatus.PASS, "The site is configured for a Shipping order");
-	    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
+		
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
 	    	    
 	    // **  Selecting a product from PDP
 		driver.get(ConfigurationFunctions.accessURL+PDP);
 		Thread.sleep(3000);
 				
-		// **  Add to Cart
-		String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
-		System.out.println(productId);
-		Thread.sleep(2000);
-			    
-	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
-		Thread.sleep (3000);
-		
+		// **  Adding item to Cart
+		ShoppingCart.ATC(driver);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
 
 	    //  ** Shopping Cart
 	    WebElement scroll0 = driver.findElement(By.cssSelector("input[id='zipCode']")); 
 	    scroll0.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
-
 	    WebElement element = driver.findElement(By.cssSelector("input[id='zipCode']"));  
 	    new Actions(driver).moveToElement(element).perform();  
 	    element.click();
-//	    driver.findElement(By.cssSelector("input[id='zipCode']")).click();
 	    driver.findElement(By.cssSelector("input[id='zipCode']")).clear();
 	    driver.findElement(By.cssSelector("input[id='zipCode']")).sendKeys(Zip);    
 	    Thread.sleep(2000);
@@ -114,10 +101,6 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
 	    driver.findElement(By.cssSelector("li[data-val="+ShipOption+"]")).click();
 	    Thread.sleep(3000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div[class=\"width-100 totalDotBorder noBorder ship-cost\"]")).isEmpty(),false); //**Validate appearance of shipping cost
-	    Assert.assertEquals(driver.findElements(By.cssSelector("input.anVoucherForm")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.name("qty")).isEmpty(),false);
-	      
 	    driver.findElement(By.id("checkout")).click();
 	    Thread.sleep(3000);
   
@@ -142,8 +125,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("shipping-email")).sendKeys("autoemail_"+randomNum+"."+randomNum_2+"@totalwine.com");
 	    	String email = driver.findElement(By.id("shipping-email")).getAttribute("value");
 	    	System.out.println("Registered Email Address: "+email);
-	    
-	    	
+
 	    driver.findElement(By.id("shipping-emailmsg")).click();  // ** Need to Unsubscribe Marketing message only in UAT
 	    Thread.sleep(1000);
 	    
@@ -163,7 +145,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.xpath("//td[2]/div[2]/div/div/div/div/div/ul/li[3]")).click();
 	    driver.findElement(By.id("ssl_cvv2cvc2")).clear();
 	    driver.findElement(By.id("ssl_cvv2cvc2")).sendKeys(CVV);
-//	    driver.findElement(By.id("ssl_first_name")).clear();   // ** In UAT by default these information are selected
+//	    driver.findElement(By.id("ssl_first_name")).clear();   // *** In UAT by default these information are selected
 //	    driver.findElement(By.id("ssl_first_name")).sendKeys(FirstName);
 //	    driver.findElement(By.id("ssl_last_name")).clear();
 //	    driver.findElement(By.id("ssl_last_name")).sendKeys(LastName);
@@ -175,46 +157,32 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 //	    driver.findElement(By.id("ssl_address2")).sendKeys(Address2);
 //	    driver.findElement(By.id("ssl_city")).clear();
 //	    driver.findElement(By.id("ssl_city")).sendKeys(City);
-//	    
 //	    driver.findElement(By.xpath("//table[@id='tblAddress']/tbody/tr[7]/td[2]/div/div/span")).click(); // ** Adding State from drop-down menu
 //	    driver.findElement(By.cssSelector("li[data-val=\""+State+"\"]")).click();
-//	    
 //	    driver.findElement(By.id("ssl_avs_zip")).clear();
 //	    driver.findElement(By.id("ssl_avs_zip")).sendKeys(Zip);
 	    driver.findElement(By.name("process")).click();
 	    Thread.sleep(5000);
 
 	    // **  Checkout Tab 3
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_1\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
-	    	    
-	    driver.findElement(By.id("check_box_age")).click();
-	    driver.findElement(By.cssSelector("button.btn-red.btn-place-order.anPlaceOrder")).click();
-	    Thread.sleep(3000);
+	    Checkout.GuestCheckoutTab3(driver);
 
 	    //  ** Order Confirmation
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false, "If Order confirmation msg doesn't appear then test will fail");
 
 	    //  ** Creating Account
 	    driver.findElement(By.id("btnCreateAcc")).sendKeys(Keys.ARROW_DOWN);
 	    driver.findElement(By.id("btnCreateAcc")).click();
 
-	    //  ** Checking for survey Popup
-	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
-	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
-	    Thread.sleep(10000);
-
+	    //  ** Checking for survey pop-up
+	    Checkout.SurverPopup(driver);
 	    driver.findElement(By.xpath(".//*[@id='co-pass']")).sendKeys("grapes123");
 	    driver.findElement(By.xpath(".//*[@id='co-pass-re']")).sendKeys("grapes123");
 	    
-	    //Check for survey pop-up
-	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
-	    	driver.findElement(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).click();
-	    Thread.sleep(2000);
+	    // ** Checking for survey pop-up
+	    Checkout.SurverPopup(driver);
 	    
+	    // **Creating account after guest check out
 	    WebElement element1 = driver.findElement(By.xpath(".//*[@id='frmCOCreateAcc']/table/tbody/tr[5]/td[2]/div/div/div/span/span"));  
         	new Actions(driver).moveToElement(element1).perform();   //  ** Selecting element from drop-down
         	element1.click();
@@ -228,5 +196,6 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    Thread.sleep(2000);
 	    driver.findElement(By.id("btnCOSaveAuth")).click();
 	    Thread.sleep(5000);
+	    Assert.assertEquals(driver.findElements(By.cssSelector(".ahp-welcomeHeading")).isEmpty(),false, "If account doesn't create then test will fail");
 	}
 	}

@@ -4,17 +4,16 @@ package com.totalwine.test.checkout;
  ****  Registered ISP Checkout using New address
  ****  Work flow : 
  *  1. Access “Change location”
- *  2. Click on Choose a shipping destination
- *  3. Choose a state from the drop down and click on “Make this my shipping state”
- *  4. Access PDP for item
- *  5. Add to cart
- *  6. View Cart
- *  7. Initiate registered user Checkout
- *  8. Tab 1 Checkout ( Pickup Address)
- *  9. Tab 2 Checkout (Click on Edit and add New Billing Address)
- *  10. Tab 3 Checkout (Review and Submit)
- *  11. Order Confirmation Page
- *  12. Verify welcome message (We're happy you've joined the Total Discovery program, ---) displays
+ *  2. Choose a Store to pickup
+ *  3. Access PDP for item
+ *  4. Add to cart
+ *  5. View Cart
+ *  6. Initiate registered user Checkout
+ *  7. Tab 1 Checkout ( Pickup Address)
+ *  8. Tab 2 Checkout (Click on Edit and add New Billing Address)
+ *  9. Tab 3 Checkout (Review and Submit)
+ *  10. Order Confirmation Page
+ *  11. Verify welcome message (We're happy you've joined the Total Discovery program, ---) displays
 
  **** Technical Modules:
  * 	1. DataProvider: Checkout test input parameters
@@ -38,10 +37,10 @@ package com.totalwine.test.checkout;
 	import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.DataProvider;
 	import org.testng.annotations.Test;
-	import com.relevantcodes.extentreports.LogStatus;
 	import com.totalwine.test.config.ConfigurationFunctions;
 	import com.totalwine.test.trials.Browser;
 	import jxl.read.biff.BiffException;
+	import com.totalwine.test.actions.*;
 
 			public class RegisteredIspCheckOutUsingNewAddress extends Browser {
 
@@ -70,47 +69,26 @@ package com.totalwine.test.checkout;
 				    logger=report.startTest("Registered ISP Checkout using New address");
 					driver.get(ConfigurationFunctions.locationSet+Location);
 					Thread.sleep(5000);
-					driver.findElement(By.id("btnYes")).click();
-					Thread.sleep(5000);
-
-				    Assert.assertEquals(StoreName, driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
-				    logger.log(LogStatus.PASS, "The site is configured for an ISP order");
-				    ConfigurationFunctions.highlightElement(driver,driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")));
+					
+					//** By Passing Age Gate and Welcome Modal
+					Checkout.AgeGateWelcome(driver);
 
 			   	 	// **  Selecting a product from PDP
 					driver.get(ConfigurationFunctions.accessURL+PDP);
 					Thread.sleep(3000);
 
 					// **  Adding item to Cart
-					String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
-					System.out.println(productId);
-					Thread.sleep(1000);
-
-				    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click();   //** Clicking the ATC button
-					Thread.sleep (3000);
-					
+					ShoppingCart.ATC(driver);
 				    driver.get(ConfigurationFunctions.accessURL+"/cart");
 				    Thread.sleep(3000);
-
+				    
+				    //  ** Shopping Cart
 				    WebElement scroll3 = driver.findElement(By.id("checkout")); // ** Scrolling page down upto the element
 				    scroll3.sendKeys(Keys.PAGE_DOWN);  
-
 				    driver.findElement(By.cssSelector("#deliveryModeInStore > div.customselect > span.itemval")).click();
 				    driver.findElement(By.cssSelector("li[data-val="+ISPOption+"]")).click();
-				    
-				    Assert.assertEquals(driver.findElements(By.cssSelector("input.anVoucherForm")).isEmpty(),false);
-				    Assert.assertEquals(driver.findElements(By.name("qty")).isEmpty(),false);
-				    
 				    driver.findElement(By.id("checkout")).click();
 				    Thread.sleep(3000);
-
-				    // **  Next Page (Verification Login/Checkout as a registered user)
-				    Assert.assertEquals(driver.findElements(By.id("j_username")).isEmpty(),false);
-				    Assert.assertEquals(driver.findElements(By.id("j_password")).isEmpty(),false);
-				    Assert.assertEquals(driver.findElements(By.cssSelector("div.checkStyle > label")).isEmpty(),false);
-				    Assert.assertEquals(driver.findElements(By.id("forgotPasswordCheckout")).isEmpty(),false);
-				    Assert.assertEquals(driver.findElements(By.id("checkoutSignIn")).isEmpty(),false);
-//				    logger.log(LogStatus.PASS, "Selecting registered checkout");
 				    
 				    // **  Login
 				    driver.findElement(By.id("j_username")).clear();
@@ -123,7 +101,6 @@ package com.totalwine.test.checkout;
 				    // **  Checkout Tab-1
 				    WebElement scroll5 = driver.findElement(By.id("btnPickup")); //  ** Scrolling down page
 				    scroll5.sendKeys(Keys.PAGE_DOWN);
-				    
 				    driver.findElement(By.id("btnPickup")).click();
 				    Thread.sleep(2000);
 				    
@@ -144,18 +121,14 @@ package com.totalwine.test.checkout;
 				    driver.findElement(By.id("fName")).click();
 				    driver.findElement(By.id("fName")).clear();
 				    driver.findElement(By.id("fName")).sendKeys(FirstName);
-				    
 				    driver.findElement(By.id("lName")).click();
 				    driver.findElement(By.id("lName")).clear();
 				    driver.findElement(By.id("lName")).sendKeys(LastName);
-				    
 				    driver.findElement(By.id("addressLineOne")).click();
 				    driver.findElement(By.id("addressLineOne")).clear();
 				    driver.findElement(By.id("addressLineOne")).sendKeys(Address1);
-				    
 				    WebElement scroll6 = driver.findElement(By.id("city")); //  ** Scrolling down page
 				    scroll6.sendKeys(Keys.PAGE_DOWN);
-
 				    driver.findElement(By.id("city")).click();
 				    driver.findElement(By.id("city")).clear();
 				    driver.findElement(By.id("city")).sendKeys(City);
@@ -167,13 +140,10 @@ package com.totalwine.test.checkout;
 				    driver.findElement(By.id("zipCode")).sendKeys(Zip);
 				    driver.findElement(By.id("btnCOSave")).click();  	    
 				    Thread.sleep(3000);
-
 				    driver.findElement(By.id("card_8813001375786")).click();
-				    
 				    WebElement scroll7 = driver.findElement(By.cssSelector(".btn.btn-red.anContinue")); //  ** Scrolling down page
 				    scroll7.sendKeys(Keys.PAGE_DOWN);
 				    Thread.sleep(1000);
-				    
 				    driver.findElement(By.cssSelector(".btn.btn-red.anContinue")).click();
 				    Thread.sleep(2000);
 
@@ -181,14 +151,9 @@ package com.totalwine.test.checkout;
 				    WebElement scroll8 = driver.findElement(By.cssSelector(".btn-red.btn-place-order.anPlaceOrder")); //  ** Scrolling down page
 				    scroll8.sendKeys(Keys.PAGE_DOWN);
 				    Thread.sleep(1000);
+				    Checkout.GuestCheckoutTab3(driver);
 				    
-				    driver.findElement(By.id("check_box_age")).click();
-				    
-				    driver.findElement(By.cssSelector(".btn-red.btn-place-order.anPlaceOrder")).click();
-				    Thread.sleep(2000);
-
-				    // Order Confirmation
-//				    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
-//				    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
+				    //  ** Order Confirmation
+				    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false, "If Order confirmation msg doesn't appear then test will fail");
 				}
 			}

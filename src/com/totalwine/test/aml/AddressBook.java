@@ -26,8 +26,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
-
 import com.relevantcodes.extentreports.LogStatus;
+import com.totalwine.test.actions.Checkout;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -46,10 +46,8 @@ public class AddressBook extends Browser {
 		logger=report.startTest("AML - Registered users Account Home ( Dashboard) verification. ");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
 	    
 	    //**Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
@@ -76,19 +74,19 @@ public class AddressBook extends Browser {
 	    
 	    //** Editing and verifying "Profile Address" 
 	    driver.findElement(PageAccountHome.EditProfileAddress).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditProfileAddress).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.EditProfileAddress).isEmpty(),false,"Verifying Editing of the Profile");
 	    Thread.sleep(6000);
 	    driver.findElement(PageAccountHome.EditAddressClose).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.EditAddressClose).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.EditAddressClose).isEmpty(),false,"Verifying Editing Popup Closing");
 	    Thread.sleep(5000);
 	    logger.log(LogStatus.PASS, "verifying Profile Address");
 	    	    
 	    //** Adding and verifying "New Address" insertion 
 	    driver.findElement(PageAccountHome.AddNewAddress).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.AddNewAddress).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.AddNewAddress).isEmpty(),false,"Verifying Adding new address");
 	    Thread.sleep(5000);
 	    driver.findElement(PageAccountHome.AddAddressClose).click();
-	    Assert.assertEquals(driver.findElements(PageAccountHome.AddAddressClose).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(PageAccountHome.AddAddressClose).isEmpty(),false,"Verifying address popup closing");
 	    Thread.sleep(5000);
 	    logger.log(LogStatus.PASS, "verifying Profile Address");
 		}
