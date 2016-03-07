@@ -110,7 +110,7 @@ public class SearchNullTerms {
 							+driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/div[contains(@class,'plp-product-qty')]")).getText()
 							+")"
 							+","
-							+facetResult
+							+facetResult.replaceAll(",","")
 							+"\r\n"+","+","+","+","+","; //Ensure that output is formatted
 					facetResult="";//Reset facet result for next search result
 				}
