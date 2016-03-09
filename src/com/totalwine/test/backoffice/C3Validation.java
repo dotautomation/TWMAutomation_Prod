@@ -24,7 +24,6 @@ package com.totalwine.test.backoffice;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
@@ -92,7 +91,10 @@ public class C3Validation extends Browser {
 		//Validate Order search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'Cancelled')]]")).isEmpty(), false);
 		driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
-		//Thread.sleep(3000);
+		Thread.sleep(3000);
+		//Handling Active Customer popup (new with 3/9/2016 hotfix)
+		driver.findElement(By.xpath("//td[text()[contains(.,'Yes')]]")).click();
+		Thread.sleep(2000);
 		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]"))));
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'AUTHORIZATION')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("img.listViewCellImage")).isEmpty(),false);
