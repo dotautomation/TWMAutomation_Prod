@@ -54,8 +54,8 @@ public class SLPages extends Browser {
 		Thread.sleep(2000);
 		
 		//Access Corporate Philantropy page
-		driver.findElement(By.cssSelector("a[href*=\"/about-us/corporate-philanthropy\"]")).click(); //Corporate Philantropy
-		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("a[href*=\"corporate-philanthropy\"]")).click(); //Corporate Philantropy
+		Thread.sleep(3000);//http://www.totalwine.com/about-us/corporate-philanthropy
 		
 		WebElement scroll = driver.findElement(By.cssSelector("a.btn.btn-red.analyticsDownloadForm")); //Page Down
 	    scroll.sendKeys(Keys.ARROW_DOWN);

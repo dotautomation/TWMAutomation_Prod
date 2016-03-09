@@ -150,6 +150,7 @@ public class Filter extends Browser {
 	    //scroll = driver.findElement(By.linkText("Rating Range"));
 	    WebElement scroll_RatingRange = driver.findElement(By.linkText("Top Rated"));
 	 	scroll_RatingRange.sendKeys(Keys.ARROW_DOWN);
+	 	scroll_RatingRange.sendKeys(Keys.ARROW_DOWN);
 	    //driver.findElement(By.xpath("//a[contains(text(),'Rating Range')]")).click();
 	 	driver.findElement(By.xpath("//a[contains(text(),'Top Rated')]")).click();
 	    driver.findElement(By.id("check_box_showmore89 and Belowratingrange")).click();
