@@ -77,9 +77,9 @@ public class TopLevelMenu extends Browser {
 		//WebElement subMenuItem = driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li[2]/div/ul/li/a"));
 		//int iCount = 0;
 		int menuCount = driver.findElements(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul")).size(); //No. of Menus
-		if (menu.contains("Beer")||menu.contains("Accessories") )
-			menuCount = menuCount - 1; //Beer and Accessories & More menus do not have banner
-		else 
+		//if (menu.contains("Beer")||menu.contains("Accessories") )
+			//menuCount = menuCount - 1; //Beer and Accessories & More menus do not have banner
+		//else 
 			menuCount = menuCount - 2; //Wine and Spirits menus have banner
 		System.out.println("No. of menus: "+menuCount);
 		int itemCount = 0;
@@ -87,8 +87,8 @@ public class TopLevelMenu extends Browser {
 			itemCount = driver.findElements(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/li/a")).size(); //No. of Items within each menu
 			System.out.println(">>>>>>>>>>>>>>>>>>"+driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/div")).getText());
 			//System.out.println("Expected: "+menuHeadings[i-1]);
-			Thread.sleep(1000);
-			Assert.assertEquals(driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/div")).getText(), menuHeadings[i-1]);
+			Thread.sleep(2000);
+			Assert.assertEquals(driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/div")).getText(), menuHeadings[i-1],"Expected:"+menuHeadings[i-1]+" Actual:"+driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/div")).getText());
 			for (int j=1;j<=itemCount;j++) {
 				System.out.println(driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/li["+j+"]/a")).getText());
 				//Assert.assertEquals(driver.findElement(By.xpath("//ul[contains(@class,'nav')]/li["+position+"]/div/ul["+i+"]/li["+j+"]/a")).getText(),menuItems[j-1]);
