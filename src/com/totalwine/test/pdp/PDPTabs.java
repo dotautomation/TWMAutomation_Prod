@@ -64,9 +64,7 @@ public class PDPTabs extends Browser {
 		WebElement plpnav=driver.findElement(By.xpath("//a[contains(@href,'"+plp+"')]"));
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", plpnav);
-		Thread.sleep(5000);
-		
-		
+		PageLoad(driver);
 		
 		//Access the PDP
 		WebElement plpmove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
@@ -74,13 +72,13 @@ public class PDPTabs extends Browser {
 		
 		//driver.findElement(By.xpath("//a[contains(@href,'"+plp+"?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
-		Thread.sleep(5000);
+		PageLoad(driver);
 		
 		String winename = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 		System.out.println(winename);
 		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP
 		//driver.findElement(By.xpath("//div/h2/a")).click();
-		Thread.sleep(5000);
+		PageLoad(driver);
 		
 		//Tab 1 - Overview
 		Assert.assertEquals(driver.findElements(By.cssSelector("section.pdp-tab-overview-prod-img > div.pdp-tab-overview-prod-img-bottle-img.pdp-img-zoom-modal-zoom-reset > img.anPDPImage")).isEmpty(),false);

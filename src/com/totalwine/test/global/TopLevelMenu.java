@@ -57,7 +57,7 @@ public class TopLevelMenu extends Browser {
 	  }  
 	
 	@Test (dataProvider = "TopLevelMenuParameters")
-	public void ISPCheckoutTest (String menu,String position,String tlcontent,String contents) throws InterruptedException, IOException {
+	public void TopLevelMenuTest (String menu,String position,String tlcontent,String contents) throws InterruptedException, IOException {
 		logger=report.startTest("Top Level Menu Test");
 		SiteAccess.ActionAccessSite(driver, IP);
 		
