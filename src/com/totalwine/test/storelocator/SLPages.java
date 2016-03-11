@@ -21,6 +21,7 @@ package com.totalwine.test.storelocator;
  */
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -62,8 +63,10 @@ public class SLPages extends Browser {
 	    scroll.sendKeys(Keys.ARROW_DOWN);
 	    scroll.sendKeys(Keys.ARROW_DOWN);
 		
-		driver.findElement(By.cssSelector("a[href*=\"/about-us/donation-requests\"]")).click(); //Donation Requests
-		Thread.sleep(3000);
+	    JavascriptExecutor js = (JavascriptExecutor)driver;
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")));
+		//driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")).click(); //Donation Requests
+		PageLoad(driver);
 		Assert.assertEquals(driver.findElements(By.cssSelector("a[href*=\"totalwine.requestitem.com\"]")).isEmpty(),false); //Submit a request button
 	}
 	

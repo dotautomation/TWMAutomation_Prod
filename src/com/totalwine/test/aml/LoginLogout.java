@@ -12,6 +12,7 @@ public class LoginLogout {
 		SiteAccess.ActionAccessSite(driver,"71.193.51.0");
 		for (int i=0;i<15;i++) {
 			AML.ActionLogin(driver,ConfigurationFunctions.TESTLOGIN,ConfigurationFunctions.TESTPWD);
+			Thread.sleep(2000);
 			AML.ActionLogout(driver);
 			Thread.sleep(3000);
 		}

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.pages.PageSignInModal;
-
+import com.totalwine.test.trials.*;
 public class AML {
 
 	//Login//
@@ -23,7 +23,7 @@ public class AML {
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys(ConfigurationFunctions.TESTPWD);
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
-	    Thread.sleep(6000);
+	    Browser.PageLoad(driver);
 	}
 	
 	//Logout
