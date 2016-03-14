@@ -53,8 +53,8 @@ public class SearchNullTerms {
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+	    //driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+	    //Thread.sleep(5000);
 	    
 	    
 	    //Input file (excel)

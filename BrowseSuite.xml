@@ -343,4 +343,12 @@
 			<class name="com.totalwine.test.global.TopLevelMenu" />
 		</classes>
 	</test>
+	<!-- SEO: Bot Traffic -->
+	<test name="Bots Traffic Validation">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.seo.UserAgentSimulator" />
+		</classes>
+	</test>
 </suite>

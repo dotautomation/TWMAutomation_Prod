@@ -12,7 +12,7 @@ public class SiteAccess {
 		Thread.sleep(2000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(2000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
+	    //driver.findElement(PageGlobal.NewSiteIntroClose).click();
 	    Thread.sleep(2000);
 	}
 	

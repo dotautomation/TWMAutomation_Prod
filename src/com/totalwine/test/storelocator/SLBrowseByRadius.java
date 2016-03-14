@@ -27,6 +27,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -44,12 +45,7 @@ public class SLBrowseByRadius extends Browser {
 	public void SLBrowseByRadiusTest () throws InterruptedException {
 		logger=report.startTest("Store Locator Browse by Radius Test");
 		String IP = "98.169.134.0"; //McLean
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		    
 	    //Navigate to the Store Locator page
 	    driver.findElement(PageGlobal.TopNavFindStore).click();
