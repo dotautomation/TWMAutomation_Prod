@@ -26,6 +26,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -42,12 +43,7 @@ public class OrderHistory extends Browser {
 	@Test
 	public void OrderHistoryTest () throws InterruptedException {
 		logger=report.startTest("Order History Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();

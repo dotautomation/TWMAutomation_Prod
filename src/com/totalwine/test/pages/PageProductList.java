@@ -39,6 +39,10 @@ public class PageProductList {
 	public static final By ListATC = By.cssSelector("button.anAddToCartInit");
 	public static final By ListATL = By.cssSelector("button.anAddToListInit");
 	public static final By ListPrice = By.cssSelector("div.plp-product-buy-price-mix");
+	public static final By ShipAvailable = By.xpath("//img[contains(@src,'shippingavailable.png')]");//Ship available badge
+	public static final By ShipUnavailable = By.xpath("//img[contains(@src,'shippingnotavailable.png')]");//Ship unavailable badge
+	public static final By ISPAvailable = By.xpath("//img[contains(@src,'instorePickupAvailable.png')]");//ISP available badge
+	public static final By IPSunavailable = By.xpath("//img[contains(@src,'instorePickupNotAvailable.png')]");//ISP unavailable badge
 	
 	//ATC Interstitial
 	public static final By InterTitle = By.cssSelector("h1.product-name");

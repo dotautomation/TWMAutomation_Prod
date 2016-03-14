@@ -37,6 +37,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -57,12 +58,8 @@ public class EmailSignup extends Browser {
 	public void EmailSignupTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Email Signup Test (using existing email address");
 		//String [] emailAddresses = {"automate1@totalwine.com","automate2@totalwine.com","automate3@totalwine.com","automate4@totalwine.com"};
-		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
-		Thread.sleep(2000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(2000);
+	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
+	    
     	driver.findElement(By.cssSelector("span.footer-Email-text.analyticsJoinOurEmail")).click();
     	Thread.sleep(2000);
     	driver.switchTo().frame(driver.findElement(By.id("iframe-signup-overlay")));

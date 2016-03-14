@@ -33,6 +33,7 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
@@ -72,12 +73,7 @@ public class AgeGate extends Browser {
 		System.out.println(url);
 		Assert.assertEquals(url, "http://responsibility.org/");
 		
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#homeCarousel")).isEmpty(),false); //HomePage validation
 	}
 }

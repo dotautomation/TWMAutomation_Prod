@@ -30,6 +30,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -52,13 +53,7 @@ public class Search extends Browser {
 	@Test (dataProvider = "SearchParameters")
 	public void SearchTest (String searchTerm) throws InterruptedException {
 		logger=report.startTest("Search Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		//driver.findElement(By.cssSelector("div.modal-content > div.modal-body > div.pdp-store-modal-wrapper > div.store-modal-content > div.ageGatingMain > div.ageGatingContainer > div.ageGatingButtons > form.add_to_cart_form.clear_fix > button.btn.btn-red")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 		driver.findElement(By.id("header-search-text")).clear();
 	    driver.findElement(By.id("header-search-text")).sendKeys(searchTerm);

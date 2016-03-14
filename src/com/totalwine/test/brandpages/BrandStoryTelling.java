@@ -29,6 +29,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -49,12 +50,7 @@ public class BrandStoryTelling extends Browser {
 	@Test 
 	public void BrandStoryTellingTest () throws InterruptedException, BiffException, IOException, AWTException {
 		logger=report.startTest("Brand Story Telling Page Test");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //Access Brand Story Telling page via PDP's View All link
 	    driver.get(ConfigurationFunctions.accessURL+"/wine/champagne-sparkling-wine/champagne/champagne-mailly-grand-cru-o-de-mailly/p/148096750");
