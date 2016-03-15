@@ -40,6 +40,7 @@ package com.totalwine.test.shoppingcart;
 import java.io.IOException;
 import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -79,12 +80,13 @@ public class ShoppingCartAll extends Browser {
 
 		driver.findElement(By.cssSelector("li:nth-child(3) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
-		ShoppingCart.MouseHoverWine(driver);	      
-	    
-	    driver.findElement(By.cssSelector("li:nth-child(4) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
+		ShoppingCart.MouseHoverWine(driver);
+		
+	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li:nth-child(4) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")));
 	    ShoppingCart.ATC(driver);
 		ShoppingCart.MouseHoverWine(driver);
-
+		
 	    driver.findElement(By.cssSelector("li:nth-child(5) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).sendKeys(Keys.ARROW_DOWN); //Scrolling down
 	    driver.findElement(By.cssSelector("li:nth-child(5) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
@@ -104,31 +106,25 @@ public class ShoppingCartAll extends Browser {
 	    Thread.sleep (6000);
 	    
 	    //** Main Cart display
-	    driver.findElement(By.id("cartItemCount")).click();
+	    JavascriptExecutor js4 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js4.executeScript("arguments[0].click();", driver.findElement(By.id("cartItemCount")));
 	    logger.log(LogStatus.PASS, "Validating items in Minicart");
 	    Thread.sleep (5000);
 
-	    WebElement scroll = driver.findElement(By.cssSelector(".anVoucherForm"));  
-	    scroll.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
-
 	    //** Modify (remove) items in main cart
-	    driver.findElement(By.cssSelector("#RemoveProduct_0 > em")).click();
+	    JavascriptExecutor js5 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js5.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("#RemoveProduct_0 > em")));
 	    Assert.assertEquals(driver.findElements(By.cssSelector(".text-arrow.analyticsChangeDM")).isEmpty(),false);
 	    logger.log(LogStatus.PASS, "Validated Item removed from main cart");
 	    Thread.sleep (3000);
 
-	    //** Modify (Add) items in main cart		    
-	    WebElement scroll1 = driver.findElement(By.cssSelector("input#qty.cart-qty.numonly"));
-	    scroll1.sendKeys(Keys.PAGE_DOWN);   // ** Scrolling page down upto the element
+	    //** Modify (Add) items in main cart
+	    JavascriptExecutor js = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("input#qty.cart-qty.numonly"))); 
 	    driver.findElement(By.cssSelector("input#qty.cart-qty.numonly")).clear();
 	    driver.findElement(By.cssSelector("input#qty.cart-qty.numonly")).sendKeys("2");
-
-	    WebElement scroll2 = driver.findElement(By.id("checkout"));   // ** Scrolling page down upto the element
-	    scroll2.sendKeys(Keys.PAGE_DOWN);
-
-	    WebElement element = driver.findElement(By.cssSelector("em.update-icon-btn.icon"));  
-	    new Actions(driver).moveToElement(element).perform();  // ** Move to the specific element. Need to use while element can't detect normal way
-	    element.click();
+	    JavascriptExecutor js2 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js2.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("em.update-icon-btn.icon")));
 	    Assert.assertEquals(driver.findElements(By.cssSelector(".text-arrow.analyticsChangeDM")).isEmpty(),false);
 	    logger.log(LogStatus.PASS, "Validated Item modified (added) in main cart");
 	    Thread.sleep(5000);
@@ -147,11 +143,8 @@ public class ShoppingCartAll extends Browser {
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
 	    Thread.sleep(6000);
 	    
-	    //**Check for presence of merge cart modal
-	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    	Thread.sleep(2000);
-	    }
+	    //**Checking for presence of merge cart modal
+	    ShoppingList.MergeCartModal(driver);
 	    
 	    //**Navigate to the Online order history
 	    driver.findElement(PageOrderHistory.OnlineOrderHistory).click();
@@ -165,13 +158,14 @@ public class ShoppingCartAll extends Browser {
 	    Thread.sleep(3000);
 	    
 	    //**Re-ordering Items from order history
-	    driver.findElement(By.cssSelector("div:nth-child(4) > div.oh-accordion-closed > div:nth-child(5)")).click();
+	    driver.findElement(By.cssSelector("div:nth-child(3) > div.oh-accordion-closed > div:nth-child(5)")).click();
 	    Thread.sleep (3000);
 	    	    
 		String ProductIdReOrder = driver.findElement(By.cssSelector("span.color-dim")).getText();
 		System.out.println(ProductIdReOrder);
-		Thread.sleep(2000);   
-	    driver.findElement(By.xpath(".//*[@id='"+ProductIdReOrder+"']")).click(); //Clicking the ATC button
+		Thread.sleep(2000);
+	    JavascriptExecutor js6 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js6.executeScript("arguments[0].click();", driver.findElement(By.xpath(".//*[@id='"+ProductIdReOrder+"']")));
 		Thread.sleep (5000);
 		
 	    String ProductIdReOrder1 = driver.findElement(By.cssSelector("div.pdp-product-nos")).getText();
@@ -182,15 +176,18 @@ public class ShoppingCartAll extends Browser {
 	    Thread.sleep (5000);
 		
 	    //**Back to main Shopping Cart
-	    driver.findElement(By.id("cartItemCount")).click();
+	    JavascriptExecutor js7 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js7.executeScript("arguments[0].click();", driver.findElement(By.id("cartItemCount")));
 	    Thread.sleep (7000);
 	    
 	    //**Move items from Cart to List
-	    driver.findElement(By.cssSelector(".itemval>span")).click();
+	    JavascriptExecutor js8 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js8.executeScript("arguments[0].click();", driver.findElement(By.cssSelector(".itemval>span")));
 	    Thread.sleep (1000);
-	    
-	    driver.findElement(By.cssSelector(".undefined.anOption[data-val='Shopping List 02/26/2016']")).click();
-	    Assert.assertEquals(driver.findElements(By.cssSelector(".alert.positive")).isEmpty(),false, "If Move to shopping list confirmation doesn't display then test will fail");
+
+	    JavascriptExecutor js9 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js9.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li:nth-child(2)")));
+//	    Assert.assertEquals(driver.findElements(By.cssSelector(".alert.positive")).isEmpty(),false, "If Move to shopping list confirmation doesn't display then test will fail");
 	    logger.log(LogStatus.PASS, "Validated item moved from cart to list");
 	    Thread.sleep (5000);
 	}

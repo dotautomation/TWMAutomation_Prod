@@ -37,7 +37,6 @@ import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -170,8 +169,8 @@ public class ShoppingListAddItem extends Browser {
 	    Assert.assertEquals(driver.findElements(By.linkText("Cloud Break Chardonnay")).isEmpty(),false);
 	    
 	    //Delete item from Shopping List (so it can be added again)
-	    driver.findElement(By.linkText("Cloud Break Chardonnay")).sendKeys(Keys.ARROW_DOWN);
-	    driver.findElement(By.xpath("//a[@onclick=\"setDeleteLineItemForm('110892750-1','205','icongo','Cloud Break Chardonnay')\"]")).click();
+	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js1.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@onclick=\"setDeleteLineItemForm('110892750-1','205','icongo','Cloud Break Chardonnay')\"]")));  
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("#frmDeleteProduct > div.send-list-btn > button.btn-red")).click();
 	    Thread.sleep(2000);

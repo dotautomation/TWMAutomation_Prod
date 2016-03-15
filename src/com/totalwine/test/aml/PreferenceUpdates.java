@@ -109,7 +109,7 @@ public class PreferenceUpdates extends Browser {
         Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"If Preferrence save confirmation does't display then the test will fail");
 	    
 	    //** Logout
-	    driver.findElement(By.linkText("Welcome, Checkout")).click();
+        driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(4) > a")).click();
 	    driver.findElement(By.linkText("Log out")).click();
 	}
 }

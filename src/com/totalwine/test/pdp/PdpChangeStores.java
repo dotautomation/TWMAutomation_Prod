@@ -73,7 +73,6 @@ public class PdpChangeStores extends Browser {
 		action.moveToElement(plpmove).build().perform();
 		driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
 		Thread.sleep(5000);
-		
 		String winename = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 		System.out.println(winename);
 		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP

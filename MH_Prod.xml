@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="MH - Prod Regression Test Suite" verbose="2">
+<!-- Desktop Tests -->
+<test name="MH_Prod_Scripts">
+<parameter name="browser" value="Chrome"> </parameter>
+<classes>
+<class name="com.totalwine.test.checkout.GuestShipCheckout"/>
+<class name="com.totalwine.test.checkout.CreateAccountAfterGuestCheckout"/>
+<class name="com.totalwine.test.checkout.RegisteredShipCheckOutUsingSavedCc"/>
+<class name="com.totalwine.test.checkout.RegisteredISPCheckOutUsingSavedCc"/>
+<class name="com.totalwine.test.checkout.ModifyShoppingCartDuringCheckout"/>
+<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingSavedAddress"/> 
+<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingNewAddress"/>
+<class name="com.totalwine.test.aml.PreferenceUpdates"/> 
+<class name="com.totalwine.test.aml.AccountHome"/>
+<class name="com.totalwine.test.aml.AccountProfile"/>
+<class name="com.totalwine.test.aml.AddressBook"/>
+<class name="com.totalwine.test.pdp.PdpChangeStores"/>
+<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
+<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
+<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
+<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
+</classes>
+</test>
+<!-- End of Desktop -->
+</suite>

@@ -9,9 +9,10 @@ public class ShoppingCart {
 
 	//** Mouse Hover Actions on header tabs
 	public static void MouseHoverWine (WebDriver driver) throws InterruptedException {
-	    Actions action = new Actions(driver);
+		Thread.sleep(7000);
+		Actions action = new Actions(driver);
 	    WebElement WineTab = driver.findElement(By.cssSelector("nav > ul > li:nth-child(2) > a"));
-	    action.moveToElement(WineTab).moveToElement(driver.findElement(By.cssSelector("ul:nth-child(1) > li:nth-child(9) > a > b"))).click().build().perform();
+	    action.moveToElement(WineTab).moveToElement(driver.findElement(By.cssSelector("li:nth-child(2) > div > ul:nth-child(1) > li:nth-child(9) > a > b"))).click().build().perform();
 	    Thread.sleep(5000);   	    
 	}
 	

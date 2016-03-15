@@ -25,9 +25,11 @@ package com.totalwine.test.aml;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
 import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.actions.Checkout;
+import com.totalwine.test.actions.ShoppingList;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -61,13 +63,10 @@ public class AddressBook extends Browser {
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
-	    Thread.sleep(6000);
+	    Thread.sleep(8000);
 	    
-	    //**Check for presence of merge cart modal
-	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    	Thread.sleep(2000);
-	    }
+	    //**Checking for presence of merge cart modal
+	    ShoppingList.MergeCartModal(driver);
 	    
 	    //**Navigate to the User Address book link
 	    driver.findElement(PageAccountHome.AddressBook).click();  
@@ -82,7 +81,8 @@ public class AddressBook extends Browser {
 	    logger.log(LogStatus.PASS, "verifying Profile Address");
 	    	    
 	    //** Adding and verifying "New Address" insertion 
-	    driver.findElement(PageAccountHome.AddNewAddress).click();
+	    JavascriptExecutor js = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js.executeScript("arguments[0].click();", driver.findElement(PageAccountHome.AddNewAddress)); 
 	    Assert.assertEquals(driver.findElements(PageAccountHome.AddNewAddress).isEmpty(),false,"Verifying Adding new address");
 	    Thread.sleep(5000);
 	    driver.findElement(PageAccountHome.AddAddressClose).click();
