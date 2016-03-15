@@ -160,12 +160,7 @@ public class LeftNavigation extends Browser {
 		
 		String[] searchTerms = {"red wine","walker"};
 		String[] srpfacets = {"/search/product?","/search/event?","/search/content?"};
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Thread.sleep(5000);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    for (String searchTerm : searchTerms) {
 		    //Search for wine
