@@ -11,9 +11,10 @@ public class SiteAccess {
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(2000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
-		Thread.sleep(2000);
-	    //driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(2000);
+		Thread.sleep(5000);
+//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
+//			driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//		Thread.sleep(5000);
 	}
 	
 	public static void ActionAccessMobileSite(WebDriver driver,String IP) throws InterruptedException {

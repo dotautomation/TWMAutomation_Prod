@@ -66,13 +66,9 @@ public class DefaultTabsBehavior extends Browser {
 		Thread.sleep(5000);
 		
 	    //Click a link under the "Wine Category"
-		//driver.findElement(By.linkText("red wine")).click(); //Red Wine
 		driver.findElement(By.xpath("//a[contains(@href,'/c/000270?producttype=red-wine&viewall=true')]")).click(); //Red Wine
-	    
-	    //Validate the appearance of the Wine PLP (DPS-1930: Site Navigation | 500 error when trying to subcategory from CLP)
 		Assert.assertEquals(driver.findElements(By.cssSelector("li.active > h2 > a#plp-aty-tab")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("li.active > h2 > a#plp-productfull-tabs")).isEmpty(),true);
-		
 	}
 	
 	@Test (dataProvider = "PLPTabParameters")
@@ -81,9 +77,6 @@ public class DefaultTabsBehavior extends Browser {
 			String ATYSpiritsSubTab,String ATYAccSubTab) throws InterruptedException {
 		logger=report.startTest("PLP Default Tabs Test");
 		SiteAccess.ActionAccessSite(driver, IP);
-	    String storeName = driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText();
-	    Assert.assertEquals(storeName, Store);
-	    
 	    Actions action=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 
@@ -94,10 +87,6 @@ public class DefaultTabsBehavior extends Browser {
 		WebElement winePLPNav=driver.findElement(By.xpath("//a[contains(@href,'"+WinePLP+"')]"));
 		js.executeScript("arguments[0].click();", winePLPNav);
 		Thread.sleep(5000);
-		
-		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
-		//Thread.sleep(5000);
-		
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
 	    //Validate default tab
@@ -132,9 +121,9 @@ public class DefaultTabsBehavior extends Browser {
 		
 		driver.findElement(By.xpath("//a[contains(@href,'41513?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		Thread.sleep(5000);
-		
 		WebElement beerMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(beerMove).build().perform(); 
+		
 		//Validate default tab
 		if (DefaultBeer.equalsIgnoreCase("ATY")) {
 			Assert.assertEquals(driver.findElements(By.cssSelector("li.active > h2 > a#plp-aty-tab")).isEmpty(),false);

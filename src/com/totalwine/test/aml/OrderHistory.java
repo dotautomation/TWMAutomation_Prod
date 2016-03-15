@@ -104,7 +104,7 @@ public class OrderHistory extends Browser {
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailISPPoints).isEmpty(), false);
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailAddress).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailTotal).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailProduct).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailProduct).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailUnitPrice).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailItemTotal).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailReorder).isEmpty(),false);

@@ -5,14 +5,14 @@ import org.openqa.selenium.WebDriver;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.pages.PageSignInModal;
-import com.totalwine.test.trials.*;
+
 public class AML {
 
-	//Login//
+	//Login
 	public static void ActionLogin (WebDriver driver, String user,String password) throws InterruptedException {
-		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
-			driver.findElement(PageGlobal.NewSiteIntroClose).click();
-		Thread.sleep(2000);
+//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
+//			driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//		Thread.sleep(5000);
 		driver.findElement(PageGlobal.TopNavAccount).click();
 		Thread.sleep(2000);
 		driver.findElement(PageGlobal.SignInto).click();
@@ -23,7 +23,7 @@ public class AML {
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys(ConfigurationFunctions.TESTPWD);
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();
-	    Browser.PageLoad(driver);
+	    Thread.sleep(6000);
 	}
 	
 	//Logout

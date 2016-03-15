@@ -2,9 +2,6 @@ package com.totalwine.test.actions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-import com.relevantcodes.extentreports.LogStatus;
-import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 
 public class Checkout {
@@ -13,8 +10,9 @@ public class Checkout {
 	public static void AgeGateWelcome (WebDriver driver) throws InterruptedException {
 		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
-	    driver.findElement(PageGlobal.NewSiteIntroClose).click();
-	    Thread.sleep(5000);
+//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
+//			driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//		Thread.sleep(5000);
 	}
 	
 	//** Guest Checkout Tab-1
