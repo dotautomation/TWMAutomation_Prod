@@ -10,9 +10,9 @@ public class AML {
 
 	//Login
 	public static void ActionLogin (WebDriver driver, String user,String password) throws InterruptedException {
-//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
-//			driver.findElement(PageGlobal.NewSiteIntroClose).click();
-//		Thread.sleep(5000);
+		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
+			driver.findElement(PageGlobal.NewSiteIntroClose).click();
+		Thread.sleep(5000);
 		driver.findElement(PageGlobal.TopNavAccount).click();
 		Thread.sleep(2000);
 		driver.findElement(PageGlobal.SignInto).click();
