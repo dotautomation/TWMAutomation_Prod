@@ -93,7 +93,7 @@ public class Sort extends Browser {
 	    //Name (Z-A)
 	    driver.findElement(PageProductList.SortDropdown).click();
 	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("div.contSelect.jspScrollable")).sendKeys(Keys.ARROW_DOWN);
+	    //driver.findElement(By.cssSelector("div.contSelect.jspScrollable")).sendKeys(Keys.ARROW_DOWN);
 	    //driver.findElement(By.cssSelector("li[data-val=name-desc]")).click();
 	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-desc]")));
 	    Thread.sleep(3000);
