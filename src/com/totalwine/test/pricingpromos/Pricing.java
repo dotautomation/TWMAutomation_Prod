@@ -94,7 +94,7 @@ public class Pricing extends Browser {
 		//String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
 	    Thread.sleep (2000);
-	    driver.get("http://www.totalwine.com/cart");
+	    driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
 	    String cartUnitPrice = driver.findElement(By.cssSelector("span.price-text")).getText();
 	    String cartTotalPrice = driver.findElement(By.cssSelector("span.price-text.item-total")).getText();
