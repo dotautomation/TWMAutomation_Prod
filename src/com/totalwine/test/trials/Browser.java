@@ -130,6 +130,18 @@ public class Browser {
 			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 			driver = new ChromeDriver(capabilities);
 		}
+		//iPad
+		if (browser.equalsIgnoreCase("iPad")) {
+			File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
+			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+			Map<String, String> mobileEmulation = new HashMap<String, String>();
+			mobileEmulation.put("deviceName", "Apple iPad");
+			Map<String, Object> chromeOptions = new HashMap<String, Object>();
+			chromeOptions.put("mobileEmulation", mobileEmulation);
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+			driver = new ChromeDriver(capabilities);
+		}
 		//Headless
 		if (browser.equalsIgnoreCase("Headless")) {
 			// Declaring and initialising the HtmlUnitWebDriver

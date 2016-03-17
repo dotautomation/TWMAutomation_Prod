@@ -166,13 +166,4 @@ public class ISPCheckout extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.co-conf-thank-text")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div")).isEmpty(),false);
 	}
-	
-	/*@AfterMethod 
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException { 
-		if(testResult.getStatus() == ITestResult.FAILURE) { 
-			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File("c:\\totalwine\\TWMAutomation\\FailureScreenshots\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
-		}
-		driver.close();
-	}*/
 }

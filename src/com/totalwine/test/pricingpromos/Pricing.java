@@ -94,7 +94,7 @@ public class Pricing extends Browser {
 		//String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
 	    Thread.sleep (2000);
-	    driver.get("http://www.totalwine.com/cart");
+	    driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
 	    String cartUnitPrice = driver.findElement(By.cssSelector("span.price-text")).getText();
 	    String cartTotalPrice = driver.findElement(By.cssSelector("span.price-text.item-total")).getText();
@@ -109,9 +109,11 @@ public class Pricing extends Browser {
 	    driver.findElement(By.cssSelector("a.analyticsEventName")).click();
 	    Thread.sleep(3000);
 	    String edpPrice = driver.findElement(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls > div.search-product-buy-price > span.price")).getText();
-	    
 	    //System.out.println("PLP Price: "+plpPrice+"\n"+"ATC Interstitial Price: "+atcInterPrice+"\n"+"PDP Price: "+pdpPrice+"\n"+"Cart Unit Price: "+cartUnitPrice+"\n"+"Cart Total Price: "+"\n"+cartTotalPrice+"Cart Total Incl. Taxes Price: "+cartTotalinclTax+"\n"+"ELP Price: "+"\n"+elpPrice+"EDP Price: "+edpPrice);
 	    System.out.println("PLP Price: "+plpPrice+"\n"+"PDP Price: "+pdpPrice+"\n"+"Cart Unit Price: "+cartUnitPrice+"\n"+"Cart Total Price: "+cartTotalPrice+"\n"+"Cart Total Incl. Taxes Price: "+cartTotalinclTax+"\n"+"ELP Price: "+elpPrice+"\n"+"EDP Price: "+edpPrice);
-	    Assert.assertTrue(plpPrice.equals(pdpPrice)&&pdpPrice.equals(cartUnitPrice)&&cartUnitPrice.equals("$ "+cartTotalPrice)&&elpPrice.equals(edpPrice));
+	    Assert.assertTrue(plpPrice.equals(pdpPrice),"PLP price is not the same as PDP price");
+	    Assert.assertTrue(pdpPrice.equals(cartUnitPrice),"PDP price is not the same as unit price in cart");
+	    Assert.assertTrue(cartUnitPrice.equals(cartTotalPrice),"Unit price in cart is not the same as total price in cart for the single item");
+	    Assert.assertTrue(elpPrice.equals(edpPrice),"ELP price is not the same as EDP price");
 	}
 }
