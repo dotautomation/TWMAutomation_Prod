@@ -21,6 +21,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -49,13 +50,13 @@ public class SearchNullTerms {
 		//WebDriver driver = new ChromeDriver();
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0");
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
+		//driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0");
+		//Thread.sleep(5000);
+		//driver.findElement(By.id("btnYes")).click();
+		//Thread.sleep(5000);
 	    //driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 	    //Thread.sleep(5000);
-	    
+	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
 	    
 	    //Input file (excel)
 	    inputWorkbook = Workbook.getWorkbook(new File("Search.xls"));
