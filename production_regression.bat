@@ -1,1 +1,1 @@
-java -cp bin;lib/* org.testng.TestNG BrowseSuite.xml
+java -cp bin;lib/* org.testng.TestNG ReBrowseSuite.xml
