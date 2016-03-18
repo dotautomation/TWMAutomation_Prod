@@ -33,7 +33,7 @@ import com.totalwine.test.trials.Browser;
 public class LARERules extends Browser {
 	
 	private String IP="71.193.51.0"; //Sacramento
-	private String UnknownIP="12.71.77.208"; //Unknown IP
+	private String UnknownIP="10.150.16.1"; //Unknown IP
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
@@ -57,7 +57,7 @@ public class LARERules extends Browser {
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("button#changeStoreBtn")).click();
 	    Thread.sleep(5000);
-	    Assert.assertEquals("Towson (Beltway), MD", driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
+	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"Towson (Beltway), MD","The site session wasn't correctly displayed");
 	    
 	    Actions action=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -71,7 +71,7 @@ public class LARERules extends Browser {
 		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		//Thread.sleep(5000);
 		
-		Assert.assertEquals("Towson (Beltway), MD (0.0 miles)", driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li.act > a > span.checkStyle > label")).getText());
+		Assert.assertEquals(driver.findElement(By.cssSelector("div.inner-items-wrapper > ul > li.act > a > span.checkStyle > label")).getText(),"Towson (Beltway), MD (0.0 miles)","The site session wasn't correctly displayed");
 	}
 	
 	@Test
@@ -85,7 +85,7 @@ public class LARERules extends Browser {
 		Thread.sleep(3000);
 		driver.navigate().refresh();
 		Thread.sleep(2000);
-		Assert.assertEquals("McLean, VA", driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
+		Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"McLean, VA","The site session wasn't correctly displayed");
 	}
 		
 	@Test
@@ -110,10 +110,10 @@ public class LARERules extends Browser {
 	    driver.findElement(By.cssSelector("button.btn.btn-red.anLoginSubmit")).click();
 	    Thread.sleep(5000);
 	    driver.switchTo().activeElement();
-	    Assert.assertEquals("McLean, VA", driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
+	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"McLean, VA","The site session wasn't correctly displayed");
 	}
 	
-	/*@Test
+	@Test
 	public void LAREDWSTest () throws InterruptedException {
 		//Rule: Default Web Store
 		//Action: User accesses the site from outside the US or user's location cannot be determined
@@ -129,8 +129,8 @@ public class LARERules extends Browser {
 	    //driver.findElement(By.cssSelector("div.ChooseStoreButtons > #btnNo")).click();
 	    driver.findElement(By.cssSelector("button.btn.btn-gray")).click();
 	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-	    Assert.assertEquals("Sacramento (Arden) , CA", driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText());
-	}*/
+	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"Sacramento (Arden), CA","The site session wasn't correctly displayed");
+	}
 
 	public void connect(String Address) throws InterruptedException {
 		SiteAccess.ActionAccessSite(driver, Address);
