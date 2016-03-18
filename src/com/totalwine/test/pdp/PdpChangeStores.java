@@ -67,8 +67,8 @@ public class PdpChangeStores extends Browser {
 		// **  Access the PDP
 		WebElement plpmove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(plpmove).build().perform();
-		driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
-		Thread.sleep(5000);
+		//driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
+		//Thread.sleep(5000);
 		String winename = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 		System.out.println(winename);
 		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP
