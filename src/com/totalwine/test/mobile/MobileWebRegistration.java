@@ -36,6 +36,7 @@ public class MobileWebRegistration extends Browser {
 	
 	@Test 
 	public void MobileWebRegistrationTest () throws InterruptedException {
+		System.out.println (new Object(){}.getClass().getEnclosingMethod().getName()+" in progress");
 		logger=report.startTest("Mobile Web Registration Test");
 		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
 		Thread.sleep(5000);

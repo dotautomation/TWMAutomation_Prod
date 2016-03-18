@@ -55,11 +55,7 @@ public class PreferenceUpdates extends Browser {
 			
 			throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Preference Updates Test");
-		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
-		Thread.sleep(5000);
-
-		//** By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);
+		SiteAccess.ActionAccessSite(driver, "71.193.51.0");
 		
 	    driver.findElement(By.linkText("Sign In/Register")).click();
 	    Thread.sleep(2000);
