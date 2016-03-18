@@ -39,7 +39,6 @@
 		<parameter name="browser" value="FF">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.aml.WebAccountRegistration" />
 			<class name="com.totalwine.test.events.BrowseEvent" />
 			<class name="com.totalwine.test.productlist.Filter" />
 			<class name="com.totalwine.test.productlist.Sort" />
@@ -51,6 +50,7 @@
 			<class name="com.totalwine.test.lare.LARERules" />
 			<class name="com.totalwine.test.productlist.PLPListView" />
 			<class name="com.totalwine.test.pricingpromos.Pricing"/>
+			<class name="com.totalwine.test.aml.OrderHistory" />
 		</classes>
 	</test>
 	<!-- Chrome Tests -->
@@ -80,7 +80,6 @@
 			<class name="com.totalwine.test.brandpages.BrandList" />
 			<class name="com.totalwine.test.brandpages.BrandStoryTelling" />
 			<class name="com.totalwine.test.brandpages.AllBrands" />
-			<class name="com.totalwine.test.aml.EmailSignup" />
 			<class name="com.totalwine.test.sitenav.LeftNavigation" />
 			<class name="com.totalwine.test.storelocator.SLGeoLocate" />
 			<class name="com.totalwine.test.storelocator.SLSearch" />
