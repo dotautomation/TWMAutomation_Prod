@@ -97,7 +97,8 @@ public class SLPages extends Browser {
 	public void SLAllStoresPageTest () throws InterruptedException {
 		logger=report.startTest("Store Locator All Stores Page Test");
 		AccessStoreLocator();
-		driver.findElement(By.cssSelector("a.analyticsFindAllStores")).click();
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsFindAllStores")));
 		Thread.sleep(3000);
 		//Validate state list
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.our-store-map")).isEmpty(),false);

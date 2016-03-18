@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="DOT Desktop Regression Test Suite" verbose="2">
+	<!-- Results Archiving -->
+	<test name="Archiving Results">
+		<classes>
+			<class name="com.totalwine.test.trials.Results" />
+		</classes>
+	</test>
+	<!-- Android Tests -->
+	<test name="Mobile Tests on Android">
+		<parameter name="browser" value="Android">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileHomePage" />
+			<class name="com.totalwine.test.mobile.MobilePDP" />
+			<class name="com.totalwine.test.mobile.MobileBrowseEvent" />
+			<class name="com.totalwine.test.mobile.MobileStoreLocator" />
+		</classes>
+	</test>
+	<!-- iPhone (iOS) Tests -->
+	<test name="Mobile Tests on iOS">
+		<parameter name="browser" value="iOS">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.mobile.MobileHomePage" />
+			<class name="com.totalwine.test.mobile.MobilePDP" />
+			<class name="com.totalwine.test.mobile.MobilePLPSort" />
+			<class name="com.totalwine.test.mobile.MobilePLPFilter" />
+			<class name="com.totalwine.test.mobile.MobileBrowseEvent" />
+			<class name="com.totalwine.test.mobile.MobileWebRegistration" />
+			<class name="com.totalwine.test.mobile.MobileStoreLocator" />
+		</classes>
+	</test>
+	<!-- End of Mobile -->
+	<!-- Firefox Tests -->
+	<test name="Tests on FF">
+		<parameter name="browser" value="FF">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.events.BrowseEvent" />
+			<class name="com.totalwine.test.productlist.Filter" />
+			<class name="com.totalwine.test.productlist.Sort" />
+			<class name="com.totalwine.test.search.Search" />
+			<class name="com.totalwine.test.categorylanding.CatLandNav" />
+			<class name="com.totalwine.test.shoppinglist.ShoppingListBrowse" />
+			<class name="com.totalwine.test.agegating.AgeGate" />
+			<class name="com.totalwine.test.pdp.PDPTabs" />
+			<class name="com.totalwine.test.lare.LARERules" />
+			<class name="com.totalwine.test.productlist.PLPListView" />
+			<class name="com.totalwine.test.pricingpromos.Pricing"/>
+			<class name="com.totalwine.test.aml.OrderHistory" />
+		</classes>
+	</test>
+	<!-- Chrome Tests -->
+	<test name="Tests on Chrome">
+		<parameter name="browser" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.aml.GoodBadPassword" />
+			<class name="com.totalwine.test.aml.PreferenceUpdates" />
+			<class name="com.totalwine.test.aml.AccountHome"/>
+			<class name="com.totalwine.test.aml.AccountProfile"/>
+			<class name="com.totalwine.test.aml.AddressBook"/>
+			<class name="com.totalwine.test.events.BrowseEvent" />
+			<class name="com.totalwine.test.productlist.PLPGridView" />
+			<class name="com.totalwine.test.search.Search" />
+			<class name="com.totalwine.test.categorylanding.CatLandNav" />
+			<class name="com.totalwine.test.shoppinglist.ShoppingListAddItem" />
+			<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
+			<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
+			<class name="com.totalwine.test.agegating.AgeGate" />
+			<class name="com.totalwine.test.pdp.PDPTabs" />
+			<class name="com.totalwine.test.pdp.PdpChangeStores"/>
+			<class name="com.totalwine.test.productlist.DefaultTabsBehavior" />
+			<class name="com.totalwine.test.lare.LARERules" />
+			<class name="com.totalwine.test.brandpages.BrandList" />
+			<class name="com.totalwine.test.brandpages.BrandStoryTelling" />
+			<class name="com.totalwine.test.brandpages.AllBrands" />
+			<class name="com.totalwine.test.sitenav.LeftNavigation" />
+			<class name="com.totalwine.test.storelocator.SLGeoLocate" />
+			<class name="com.totalwine.test.storelocator.SLSearch" />
+			<class name="com.totalwine.test.storelocator.SLBrowseState" />
+			<class name="com.totalwine.test.storelocator.SLPages" />
+			<class name="com.totalwine.test.storelocator.StoreDetail" />
+			<class name="com.totalwine.test.storelocator.SLBrowseByRadius" />
+			<class name="com.totalwine.test.global.TopLevelMenu" />
+			<class name="com.totalwine.test.seo.UserAgentSimulator" />
+		</classes>
+	</test>
+	<!-- IE Tests -->
+	<test name="Tests on IE">
+		<parameter name="browser" value="IE">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.events.BrowseEvent" />
+		</classes>
+	</test>
+	<!-- iPad Tests -->
+	<test name="Tests on iPad">
+		<parameter name="browser" value="iPad">
+		</parameter>
+		<classes>
+			<class name="com.totalwine.test.pricingpromos.Pricing" />
+		</classes>
+	</test>
+</suite>

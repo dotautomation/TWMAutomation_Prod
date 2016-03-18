@@ -40,6 +40,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import com.relevantcodes.extentreports.DisplayOrder;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -54,6 +55,7 @@ public class Browser {
 	protected String hubURL = "http://prt-dotautotest.totalwine.com:5566/wd/hub";
 	protected ExtentTest logger;
 	protected static ExtentReports report = getReporter(); //Reporting v2
+	protected SoftAssert sAssert = new SoftAssert(); //Soft assertion
 	
 	@BeforeMethod
 	

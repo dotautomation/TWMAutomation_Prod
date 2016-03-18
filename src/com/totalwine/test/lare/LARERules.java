@@ -118,17 +118,17 @@ public class LARERules extends Browser {
 		//Rule: Default Web Store
 		//Action: User accesses the site from outside the US or user's location cannot be determined
 		//Validation: Global store header is DWS (1108)
+		logger=report.startTest("LARE DWS Test");
 		driver.get(ConfigurationFunctions.locationSet+UnknownIP);
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
 		//Location Intercept
-		//Assert.assertEquals(driver.findElements(By.cssSelector("div.ChooseStoreButtons > #btnNo")).isEmpty(),false);
-		Assert.assertEquals(driver.findElements(By.cssSelector("button.btn.btn-gray")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.id("btnSelectLocation")).isEmpty(),false);
+		Assert.assertEquals(driver.findElements(By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray")).isEmpty(),false,"Location intercept's \"No thanks\" wasn't found");
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.ChooseStoreButtons > button#btnSelectLocation")).isEmpty(),false,"Location intercept's Select button wasn't found");
 	    //driver.findElement(By.cssSelector("div.ChooseStoreButtons > #btnNo")).click();
-	    driver.findElement(By.cssSelector("button.btn.btn-gray")).click();
-	    driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+	    driver.findElement(By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray")).click();
+	    //driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"Sacramento (Arden), CA","The site session wasn't correctly displayed");
 	}
 
