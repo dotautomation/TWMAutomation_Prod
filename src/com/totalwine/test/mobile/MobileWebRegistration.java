@@ -36,13 +36,13 @@ public class MobileWebRegistration extends Browser {
 	
 	@Test 
 	public void MobileWebRegistrationTest () throws InterruptedException {
-		
+		logger=report.startTest("Mobile Web Registration Test");
 		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
 		Thread.sleep(5000);
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
 		
-		driver.findElement(By.xpath("//a[contains(@href,'.totalwine.com/my-account')]")).click(); //Click "My Account"
+		driver.findElement(By.xpath("//a[contains(@title,'My Account')]")).click(); //Click "My Account"
 		Thread.sleep(3000);
 		
 		//Validate Login Screen
@@ -113,26 +113,22 @@ public class MobileWebRegistration extends Browser {
 	    Thread.sleep(3000);
 	    
 	    //Account homepage (same as desktop)
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Your Account")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("(//a[contains(text(),'Learn More')])[4]")).isEmpty(),false);
-	    //Assert.assertEquals(driver.findElements(By.xpath("//div[3]/span[3]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"Account home page heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Your account")).isEmpty(),false,"Your account left facet heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false,"Orders left facet heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false,"Your shopping lists left facet heading");
+	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false,"Total Discovery heading");
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false,"Analytics section");
+	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false,"Online order history");
+	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false,"Preferred store section");
 	    
 	    //Logout
 	    driver.findElement(By.linkText("Welcome, Automated")).click();
 	    driver.findElement(By.linkText("Log out")).click();
 	    Thread.sleep(3000);
-	    driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
 	    
 	    //Relogin using the credentials above
-	    driver.findElement(By.xpath("//a[contains(@href,'.totalwine.com/my-account')]")).click(); //Click "My Account"
+	    driver.findElement(By.xpath("//a[contains(@title,'My Account')]")).click(); //Click "My Account"
 		Thread.sleep(3000);
 		driver.findElement(By.id("j_usernameforLogin")).sendKeys(email);
 		driver.findElement(By.id("j_passwordforLogin")).sendKeys("grapes123!");
@@ -140,15 +136,14 @@ public class MobileWebRegistration extends Browser {
 		Thread.sleep(3000);
 		
 		 //Account homepage (same as desktop)
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Your Account")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("(//a[contains(text(),'Learn More')])[4]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false);
+		sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"Account home page heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Your account")).isEmpty(),false,"Your account left facet heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false,"Orders left facet heading");
+	    sAssert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false,"Your shopping lists left facet heading");
+	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false,"Total Discovery heading");
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false,"Analytics section");
+	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false,"Online order history");
+	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false,"Preferred store section");
 		
 	    //Logout
 	    driver.findElement(By.linkText("Welcome, Automated")).click();
