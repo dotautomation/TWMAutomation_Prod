@@ -148,5 +148,6 @@ public class MobileWebRegistration extends Browser {
 	    //Logout
 	    driver.findElement(By.linkText("Welcome, Automated")).click();
 	    driver.findElement(By.linkText("Log out")).click();
+	    sAssert.assertAll();
 	}
 }
