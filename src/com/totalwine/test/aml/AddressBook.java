@@ -27,9 +27,11 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.BeforeMethod;
+
 import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.actions.Checkout;
 import com.totalwine.test.actions.ShoppingList;
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -46,10 +48,7 @@ public class AddressBook extends Browser {
 	@Test
 	public void AddressBookTest() throws InterruptedException {
 		logger=report.startTest("AML - Registered users Account Home ( Dashboard) verification. ");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		//** By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);
+		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //**Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();

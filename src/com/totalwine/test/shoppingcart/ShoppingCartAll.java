@@ -65,11 +65,7 @@ public class ShoppingCartAll extends Browser {
 	@Test
 	public void ShoppingCartAllTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Shopping Cart All");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		
-		//** By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);
+		SiteAccess.ActionAccessSite(driver, IP);
 
 	    ShoppingCart.MouseHoverWine(driver);
 

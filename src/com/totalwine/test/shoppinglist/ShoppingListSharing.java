@@ -50,13 +50,8 @@ public class ShoppingListSharing extends Browser {
 	@Test (dataProvider = "CheckoutParameters")
 	public void ShoppingListSharingTest (String Location,String Email,String Password,String RecipientName,String RecipientEmail,String Message)		
 					throws InterruptedException, BiffException, IOException {		    
-		driver.get(ConfigurationFunctions.locationSet+Location);
 		logger=report.startTest("Shopping List - Sharing via Email");
-		PageLoad(driver); // Will not trigger the next control until loading the page
-
-		//**By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);  
-		
+		SiteAccess.ActionAccessSite(driver, Location);
 	    //**Accessing Shopping List
 	    driver.findElement(By.cssSelector("li.shipping-cont.loggedin-not-list > a > span.list-text")).click();
 				

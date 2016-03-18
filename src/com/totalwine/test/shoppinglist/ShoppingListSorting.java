@@ -48,13 +48,9 @@ public class ShoppingListSorting extends Browser {
 	@Test (dataProvider = "CheckoutParameters")
 	public void ShoppingListSortingTest (String Location,String Email, String Password)		
 					throws InterruptedException, BiffException, IOException {		    
-		driver.get(ConfigurationFunctions.locationSet+Location);
-		logger=report.startTest("Shopping List Sorting Test");
-		Browser.PageLoad(driver); // Will not trigger the next control until loading the page
-
-		//**By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);  
 		
+		logger=report.startTest("Shopping List Sorting Test");
+		SiteAccess.ActionAccessSite(driver, Location);		
 	    //**Accessing Shopping List
 	    driver.findElement(By.cssSelector("li.shipping-cont.loggedin-not-list > a > span.list-text")).click();
 				

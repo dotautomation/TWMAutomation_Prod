@@ -52,11 +52,7 @@ public class PdpChangeStores extends Browser {
 	@Test (dataProvider = "PDPParameters")
 	public void PdpChangeStoresTest (String toplevel,String plp,String zip) throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Pdp Change Stores");
-		driver.get(ConfigurationFunctions.locationSet+IP);
-		Thread.sleep(5000);
-		
-		//** By Passing Age Gate and Welcome Modal
-		Checkout.AgeGateWelcome(driver);
+		SiteAccess.ActionAccessSite(driver, IP);
 		
 	    Actions action=new Actions(driver);
 		
