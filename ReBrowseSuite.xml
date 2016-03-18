@@ -59,7 +59,6 @@
 		</parameter>
 		<classes>
 			<class name="com.totalwine.test.aml.GoodBadPassword" />
-			<class name="com.totalwine.test.aml.PreferenceUpdates" />
 			<class name="com.totalwine.test.aml.AccountHome"/>
 			<class name="com.totalwine.test.aml.AccountProfile"/>
 			<class name="com.totalwine.test.aml.AddressBook"/>
@@ -71,7 +70,6 @@
 			<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
 			<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
 			<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
-			<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
 			<class name="com.totalwine.test.agegating.AgeGate" />
 			<class name="com.totalwine.test.pdp.PDPTabs" />
 			<class name="com.totalwine.test.pdp.PdpChangeStores"/>
