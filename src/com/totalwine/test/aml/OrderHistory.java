@@ -79,13 +79,13 @@ public class OrderHistory extends Browser {
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryAccordian).isEmpty(),false);
 	    driver.findElement(PageOrderHistory.OrderDetailAccess).click();
 	    Thread.sleep(2000);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailAddress).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailTotal).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailProduct).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailUnitPrice).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailItemTotal).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailReorder).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryPagination).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailAddress).isEmpty(),false,"Order History detail address not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailTotal).isEmpty(),false,"Order History detail total not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailProduct).isEmpty(),false,"Order History detail product not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailUnitPrice).isEmpty(),false,"Order History detail unit price not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailItemTotal).isEmpty(),false,"Order History detail item total not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailReorder).isEmpty(),false,"Order History detail reorder button not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryPagination).isEmpty(),false,"Order History detail pagination not found");
 	    
 	    //Navigate to the In-store purchase history
 	    driver.findElement(PageOrderHistory.InStorePurchaseHistory).click();
@@ -101,14 +101,15 @@ public class OrderHistory extends Browser {
 	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryAccordian).isEmpty(),false);
 	    driver.findElement(PageOrderHistory.OrderDetailAccess).click();
 	    Thread.sleep(2000);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailISPPoints).isEmpty(), false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailAddress).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailTotal).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailISPPoints).isEmpty(), false,"Order History detail ISP points not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailAddress).isEmpty(),false,"Order History detail address not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailTotal).isEmpty(),false,"Order History detail total not found");
 //	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailProduct).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailUnitPrice).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailItemTotal).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailReorder).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryPagination).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailUnitPrice).isEmpty(),false,"Order History detail unit price not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailItemTotal).isEmpty(),false,"Order History detail item total not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryDetailReorder).isEmpty(),false,"Order History detail reorder button not found");
+	    sAssert.assertEquals(driver.findElements(PageOrderHistory.OrderHistoryPagination).isEmpty(),false,"Order History detail pagination not found");
+	    sAssert.assertAll();
 	}
 
 }
