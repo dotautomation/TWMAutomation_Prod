@@ -31,6 +31,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.Checkout;
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
@@ -39,6 +40,7 @@ public class Pricing extends Browser {
 
 	//private WebDriver driver;
 	private String IP="98.169.134.0";
+	private String FutureEvent = "/events/apr-2016/virginia/mclean?storestatename=214,203,202,201,205";
 	//ProfilesIni profile = new ProfilesIni();
 	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 
@@ -50,7 +52,13 @@ public class Pricing extends Browser {
 	@Test 
 	public void PricingTest () throws InterruptedException, BiffException, IOException, AWTException {
 		logger=report.startTest("Pricing Test");
-		SiteAccess.ActionAccessSite(driver, IP);
+		
+		driver.get(ConfigurationFunctions.locationSet + IP);
+		PageLoad(driver); // Will not trigger the next control until loading the page
+
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
+		PageLoad(driver); // Will not trigger the next control until loading the page
 	    
 	    Actions action=new Actions(driver);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -85,13 +93,8 @@ public class Pricing extends Browser {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		Thread.sleep(5000);
-		//driver.findElement(By.cssSelector("btn.btn-red.mini-cart-popup-plp.anAddToCartInit")).click();
-		
 		String atcInterPrice = driver.findElement(By.cssSelector("span.price-style-mid")).getText();
 		driver.findElement(By.cssSelector("section.pdp-tab-overview-type > span.pdp-emailmodal-emailwrapper-emailclose")).click();*/
-		
-		//Add to cart, navigate to cart and validate pricing in Cart
-		//String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 	    driver.findElement(By.xpath("(//button[@id='"+productId+"'])[2]")).click(); //Clicking the ATC button
 	    Thread.sleep (2000);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
@@ -103,6 +106,11 @@ public class Pricing extends Browser {
 		//Navigate to ELP
 	    driver.findElement(By.linkText("Classes & Events")).click();
 	    Thread.sleep(3000);
+	    
+	    // **  Selecting future events from PDP
+		driver.get(ConfigurationFunctions.accessURL+FutureEvent);
+		Thread.sleep(3000);
+	    
 	    String elpPrice = driver.findElement(By.cssSelector("span.price")).getText();
 	    		
 		//Click through to first available EDP and validate pricing match on EDP against ELP
