@@ -22,7 +22,7 @@ import org.openqa.selenium.By;
 		public static final By EditStoreDeliveryInfo = By.cssSelector(".account-edit.analyticsEditProf[data-target='#editStore']");
 		public static final By EditStoreDeliveryClose  = By.cssSelector("#editStore > div > div > div > p > a");
 
-		public static final By AddressBook = By.cssSelector("li:nth-child(4) > a > span");
+		public static final By AddressBook = By.cssSelector("li:nth-child(1) > ul > li:nth-child(4) > a > span");
 		public static final By EditProfileAddress = By.cssSelector("span.account-edit.account-edit-address");
 		public static final By EditAddressClose  = By.cssSelector("#btnClose[title='close']");
 		public static final By AddNewAddress = By.cssSelector(".icon.icon-add-new-address.analyticsAddFunc");

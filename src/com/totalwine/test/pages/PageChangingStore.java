@@ -3,7 +3,7 @@ package com.totalwine.test.pages;
 import org.openqa.selenium.By;
 	
 public class PageChangingStore {
-		public static final By YourStore = By.cssSelector("span.store-details-store.store-header");
+		public static final By YourStore = By.cssSelector(".store-details-store-name.flyover-src");
 		public static final By ChangeLocation = By.cssSelector("tr:nth-child(1) > td:nth-child(2) > a");
 		public static final By FindStoreTab = By.cssSelector("div.store-filter-wrapper > ul > li:nth-child(1) > a");
 		public static final By ChooseShipingDistinationTab = By.cssSelector("li:nth-child(2) > a");
