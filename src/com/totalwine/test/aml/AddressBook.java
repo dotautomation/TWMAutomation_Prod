@@ -69,6 +69,7 @@ public class AddressBook extends Browser {
 	    
 	    //**Navigate to the User Address book link
 	    driver.findElement(PageAccountHome.AddressBook).click();  
+	    Thread.sleep(3000);
 	    
 	    //** Editing and verifying "Profile Address" 
 	    driver.findElement(PageAccountHome.EditProfileAddress).click();
