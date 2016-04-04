@@ -3,11 +3,11 @@ package com.totalwine.test.pages;
 import org.openqa.selenium.By;
 
 	public class PageAccountHome {
-		public static final By AccountHome = By.cssSelector("li:nth-child(1) > ul > li:nth-child(1) > a > span");
+		public static final By AccountHome = By.cssSelector("ul:nth-child(1) > li:nth-child(1) > ul > li:nth-child(1) > a > span");
 		public static final By UpdateAccountDetails = By.cssSelector("#topLink1[class='analyticsUpdateAcc']");
 		public static final By RequestMissingPoints = By.cssSelector("#topLink2 > div > div > a");
 		public static final By BreadcrumbAccountHome  = By.cssSelector("div > ul > li:nth-child(3) > a");
-		public static final By OnlineOrders  = By.cssSelector("span:nth-child(1) > a:nth-child(2)");
+		public static final By OnlineOrders  = By.cssSelector("ul:nth-child(1) > li:nth-child(2) > ul > li:nth-child(1) > a > span");
 		public static final By InStoreOrders  = By.cssSelector("span:nth-child(1) > a:nth-child(3)");
 		public static final By ChangeStore  = By.cssSelector("#topLink1[data-target='#editStore']");
 		public static final By BrowseEvents  = By.cssSelector(".analyticsRegisterEvent");
@@ -22,8 +22,8 @@ import org.openqa.selenium.By;
 		public static final By EditStoreDeliveryInfo = By.cssSelector(".account-edit.analyticsEditProf[data-target='#editStore']");
 		public static final By EditStoreDeliveryClose  = By.cssSelector("#editStore > div > div > div > p > a");
 
-		public static final By AddressBook = By.cssSelector("li:nth-child(1) > ul > li:nth-child(4) > a > span");
-		public static final By EditProfileAddress = By.cssSelector("span.account-edit.account-edit-address");
+		public static final By AddressBook = By.cssSelector("ul:nth-child(1) > li:nth-child(1) > ul > li:nth-child(4) > a > span");
+		public static final By EditProfileAddress = By.cssSelector("span.account-edit.account-edit-address > a");
 		public static final By EditAddressClose  = By.cssSelector("#btnClose[title='close']");
 		public static final By AddNewAddress = By.cssSelector(".icon.icon-add-new-address.analyticsAddFunc");
 		public static final By AddAddressClose  = By.cssSelector("#newAddress > div > div > div > p > a");
