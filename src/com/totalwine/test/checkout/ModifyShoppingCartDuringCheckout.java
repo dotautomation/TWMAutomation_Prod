@@ -77,8 +77,9 @@ public class ModifyShoppingCartDuringCheckout extends Browser {
 
 		// **  Adding item to Cart
 		ShoppingCart.ATC(driver);
+		Thread.sleep(3000);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
-	    Thread.sleep(3000);
+	    Thread.sleep(7000);
 
 	    //  ** Shopping Cart Modification during checkout  		    
 	    WebElement scroll = driver.findElement(By.cssSelector("form#updateCartForm0 > input#qty.cart-qty.numonly"));
@@ -119,7 +120,7 @@ public class ModifyShoppingCartDuringCheckout extends Browser {
 	    Thread.sleep(2000);
 
 	    // **  Checkout Tab-2
-	    driver.findElement(By.id("card_8813001375786")).click();
+	    driver.findElement(By.cssSelector(".shippingaddress-option>span")).click();
 	    
 	    WebElement scroll6 = driver.findElement(By.cssSelector(".btn.btn-red.anContinue")); //  ** Scrolling down page
 	    scroll6.sendKeys(Keys.PAGE_DOWN);

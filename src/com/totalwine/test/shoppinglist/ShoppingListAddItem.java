@@ -184,9 +184,9 @@ public class ShoppingListAddItem extends Browser {
 	    Thread.sleep(2000);
 	    
 	    //Validate Login and then Log out
-	    Assert.assertEquals(driver.findElements(By.linkText("Welcome, Rajat")).isEmpty(),false);
-	    driver.findElement(By.linkText("Welcome, Rajat")).click();
-	    driver.findElement(By.linkText("Log out")).click();
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).isEmpty(),false);
+	    driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).click();
+	    driver.findElement(By.cssSelector("div.loggedin-wrapper > div.signinup-items > div > ul > li:nth-child(1) > a")).click();
 	    Thread.sleep(5000);
 	    Assert.assertEquals(driver.findElements(PageGlobal.TopNavAccount).isEmpty(),false);
 	}

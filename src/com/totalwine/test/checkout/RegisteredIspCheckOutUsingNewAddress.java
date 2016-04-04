@@ -80,8 +80,9 @@ public class RegisteredIspCheckOutUsingNewAddress extends Browser {
 
 		// **  Adding item to Cart
 		ShoppingCart.ATC(driver);
+		Thread.sleep(3000);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    
 	    //  ** Shopping Cart
 	    JavascriptExecutor js = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
@@ -128,6 +129,7 @@ public class RegisteredIspCheckOutUsingNewAddress extends Browser {
 	    driver.findElement(By.id("addressLineOne")).sendKeys(Address1);
 	    WebElement scroll6 = driver.findElement(By.id("city")); //  ** Scrolling down page
 	    scroll6.sendKeys(Keys.PAGE_DOWN);
+	    Thread.sleep(3000);
 	    driver.findElement(By.id("city")).click();
 	    driver.findElement(By.id("city")).clear();
 	    driver.findElement(By.id("city")).sendKeys(City);
@@ -136,7 +138,6 @@ public class RegisteredIspCheckOutUsingNewAddress extends Browser {
 	    driver.findElement(By.id("zipCode")).sendKeys(Zip);
 	    driver.findElement(By.id("btnCOSave")).click();  	    
 	    Thread.sleep(3000);
-	    driver.findElement(By.id("card_8813001375786")).click();
 	    WebElement scroll7 = driver.findElement(By.cssSelector(".btn.btn-red.anContinue")); //  ** Scrolling down page
 	    scroll7.sendKeys(Keys.PAGE_DOWN);
 	    Thread.sleep(1000);
