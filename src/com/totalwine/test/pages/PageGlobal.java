@@ -28,7 +28,18 @@ import org.openqa.selenium.By;
 		//Top Level Menu
 		
 		//Footer
-		
+			public static final By FooterEmailSignup = By.cssSelector("span.footer-Email-text.analyticsJoinOurEmail");
+			
+			public static final By CustomerService = By.cssSelector("body > footer > div > div.footer-third-cont > ul > li:nth-child(4)");
+			
+			public static final By FB = By.cssSelector("#footer-customer_services > div.social-icons > div > a.social-follow-facebook.analyticsFB");
+			public static final By Twitter = By.cssSelector("#footer-customer_services > div.social-icons > div > a.social-follow-twitter.analyticsTwi");
+			public static final By GooglePlus = By.cssSelector("#footer-customer_services > div.social-icons > div > a.social-follow-googleplus.analyticsGPlus");
+			public static final By YouTube = By.cssSelector("#footer-customer_services > div.social-icons > div > a.social-follow-youtube.analyticsYTube");
+			public static final By Pinterest = By.cssSelector("#footer-customer_services > div.social-icons > div > a.social-follow-pinterest.analyticsPIn");
+			public static final By Instagram = By.cssSelector("#footer-customer_services > div.social-icons > div > a:nth-child(8)");
+			public static final By Blog = By.cssSelector("#footer-customer_services > div.social-icons > div > a:nth-child(9)");
+
 		//Location Intercept
 		public static final By LocationInterceptNo = By.cssSelector("div.ChooseStoreButtons > button.btn.btn-gray");
 		
