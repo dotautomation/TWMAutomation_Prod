@@ -6,22 +6,23 @@
 <test name="MH_Prod_Scripts">
 <parameter name="browser" value="Chrome"> </parameter>
 <classes>
-<class name="com.totalwine.test.checkout.GuestShipCheckout"/>
-<class name="com.totalwine.test.checkout.CreateAccountAfterGuestCheckout"/>
-<class name="com.totalwine.test.checkout.RegisteredShipCheckOutUsingSavedCc"/>
-<class name="com.totalwine.test.checkout.RegisteredISPCheckOutUsingSavedCc"/>
-<class name="com.totalwine.test.checkout.ModifyShoppingCartDuringCheckout"/>
-<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingSavedAddress"/> 
-<class name="com.totalwine.test.checkout.RegisteredIspCheckOutUsingNewAddress"/>
+
 <class name="com.totalwine.test.aml.PreferenceUpdates"/> 
-<class name="com.totalwine.test.aml.AccountHome"/>
-<class name="com.totalwine.test.aml.AccountProfile"/>
 <class name="com.totalwine.test.aml.AddressBook"/>
 <class name="com.totalwine.test.pdp.PdpChangeStores"/>
 <class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
 <class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
 <class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
 <class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
+<class name="com.totalwine.test.events.AddEventToShoppingList"/>
+<class name="com.totalwine.test.events.AddMultiEventsDifferentStoreToCart"/>
+<class name="com.totalwine.test.events.AddMultiEventsSameStoreToCart"/>
+<class name="com.totalwine.test.events.BrowseSoldOutEvent"/>
+<class name="com.totalwine.test.events.PastEvents"/>    
+<class name="com.totalwine.test.events.ValidateLareOnElp"/>
+<class name="com.totalwine.test.pricingpromos.RemovePromoCode"/> 
+<class name="com.totalwine.test.review.CustomerReview"/>
+<class name="com.totalwine.test.review.SocialWidget"/>
 </classes>
 </test>
 <!-- End of Desktop -->
