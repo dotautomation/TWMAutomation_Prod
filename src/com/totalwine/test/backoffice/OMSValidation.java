@@ -93,7 +93,7 @@ public class OMSValidation extends Browser {
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).clear();
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).sendKeys("rsud");;
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).clear();
-		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).sendKeys(ConfigurationFunctions.TESTPWD);
+		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).sendKeys("yoyo55");
 		driver.findElement(By.id("lgBtn")).click();
 		Thread.sleep(3000);
 	}
