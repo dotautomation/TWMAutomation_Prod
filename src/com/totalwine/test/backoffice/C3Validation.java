@@ -112,7 +112,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.cssSelector("input[name=j_username]")).clear();
 		driver.findElement(By.cssSelector("input[name=j_username]")).sendKeys("rsud");;
 		driver.findElement(By.cssSelector("input[name=j_password]")).clear();
-		driver.findElement(By.cssSelector("input[name=j_password]")).sendKeys(ConfigurationFunctions.TESTPWD);
+		driver.findElement(By.cssSelector("input[name=j_password]")).sendKeys("yoyo55");
 		driver.findElement(By.cssSelector("td.z-button-cm")).click();
 		//Thread.sleep(10000);
 		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Find Customer")));
