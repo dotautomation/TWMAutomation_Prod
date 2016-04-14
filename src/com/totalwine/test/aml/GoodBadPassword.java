@@ -38,7 +38,7 @@ import com.totalwine.test.trials.Browser;
 public class GoodBadPassword extends Browser {
 	
 	private String IP="71.193.51.0";
-	private String AMLPageHeading = "div.ahp-heading";
+	private String AMLPageHeading = "div:nth-child(2) > div.ahp-heading";
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
@@ -77,10 +77,10 @@ public class GoodBadPassword extends Browser {
 	    			"Please enter a valid email address in the format example@domain.com"); //Invalid email format validation
 	    }
 	    else if (valid.equals("Y"))
-	    	Assert.assertEquals(driver.findElement(By.cssSelector(AMLPageHeading)).getText(), "Account Home");
+	    	Assert.assertEquals(driver.findElement(By.cssSelector(AMLPageHeading)).getText(), "Account home");
 	    else {
 	    	Assert.assertEquals(driver.findElements(By.cssSelector(AMLPageHeading)).isEmpty(), true);
-	    	Assert.assertEquals(driver.findElement(By.cssSelector("p.error-msg")).getText(), 
+	    	Assert.assertEquals(driver.findElement(By.cssSelector("#sign-in-overlay > div.sign-in-container > div.twm-error-msg > p")).getText(), 
 	    			"Sorry, the user name or password entered is incorrect. Please try again."); // Invalid password validation
 	    }
 	}
