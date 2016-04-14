@@ -19,14 +19,12 @@ package com.totalwine.test.mobile;
  * 	4. AfterClass
  * 			Quit webdriver
  */
-
 import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
-
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
-
 
 public class MobileBrowseEvent extends Browser {
 	
@@ -34,16 +32,14 @@ public class MobileBrowseEvent extends Browser {
 	
 	@Test 
 	public void MobileBrowseEventTest () throws InterruptedException {
-		logger=report.startTest("Mobile Browse Events Test");
+		logger=report.startTest("Mobile Browse Event Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		if (driver.findElement(By.id("btn-continue")).isDisplayed())
-			driver.findElement(By.id("btn-continue")).click();
-		driver.findElement(By.id("btnYes")).click();
+		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
-
 	    driver.findElement(By.partialLinkText("Events near you")).click();
 	    Thread.sleep(3000);
+
 	    //Validate Mobile ELP
 	    Assert.assertEquals(driver.findElements(By.cssSelector("section.elp-pagetitle")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("button.btn-brown.anFilter")).isEmpty(),false);
@@ -59,6 +55,5 @@ public class MobileBrowseEvent extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.right-rail-typo > li")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("li.print-container.anPrintEventDetails")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.linkText("Events")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='eventInfoIcs']/button")).isEmpty(),false);
 	}
 }
