@@ -68,6 +68,10 @@ public class PreferenceUpdates extends Browser {
 	    driver.findElement(By.id("j_password")).sendKeys(Password);
 	    driver.findElement(By.cssSelector(".btn.btn-red.anLoginSubmit")).click();
 	    Thread.sleep(1000);
+	    
+	    //**Checking for presence of merge cart modal
+	    ShoppingList.MergeCartModal(driver);
+	    
 	    driver.findElement(By.xpath("html/body/main/section/section[1]/div/aside/section/ul[1]/li[1]/ul/li[5]/a/span")).click();
 	    Thread.sleep(1000);
 	    
@@ -105,7 +109,7 @@ public class PreferenceUpdates extends Browser {
         Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"If Preferrence save confirmation does't display then the test will fail");
 	    
 	    //** Logout
-        driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(4) > a")).click();
+        driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).click();
 	    driver.findElement(By.linkText("Log out")).click();
 	}
 }
