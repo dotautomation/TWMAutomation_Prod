@@ -33,7 +33,7 @@ public class RedirectURL {
 		is.close();*/
 		BufferedWriter writer;
 		Workbook inputWorkbook;
-		
+		String baseURL = "";
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
 		
@@ -42,7 +42,7 @@ public class RedirectURL {
 		writer.write("Base URL,Redirected URL,Response Code,Expected Result,P/F");
 		writer.newLine();
 		
-		inputWorkbook = Workbook.getWorkbook(new File("URL.xls"));
+		inputWorkbook = Workbook.getWorkbook(new File("URL1.xls"));
 	    Sheet inputSheet = inputWorkbook.getSheet(0);
 	    int rowCount = inputSheet.getRows();
 		String redirectURL;
@@ -50,14 +50,14 @@ public class RedirectURL {
 	    for (int i=1;i<rowCount;i++) { //Consider title row
 	    	redirectURL = inputSheet.getCell(0,i).getContents();
 	    	expRedirectURL = inputSheet.getCell(1,i).getContents();
-	    	HttpURLConnection con = (HttpURLConnection)(new URL(ConfigurationFunctions.accessURL+redirectURL).openConnection());
+	    	HttpURLConnection con = (HttpURLConnection)(new URL(baseURL+redirectURL).openConnection());
 			con.setInstanceFollowRedirects(false);
 			con.connect();
 			int responseCode = con.getResponseCode();
 			String location = con.getHeaderField("Location");
-			System.out.println(ConfigurationFunctions.accessURL+redirectURL+"\t"+responseCode+"\t"+location);
-			writer.write(ConfigurationFunctions.accessURL+redirectURL+","+location+","+responseCode+","+ConfigurationFunctions.accessURL+expRedirectURL+",");
-			if (location.equals(ConfigurationFunctions.accessURL+expRedirectURL))
+			System.out.println(baseURL+redirectURL+"\t"+responseCode+"\t"+location);
+			writer.write(baseURL+redirectURL+","+location+","+responseCode+","+baseURL+expRedirectURL+",");
+			if (location.equals(baseURL+expRedirectURL))
 				writer.write("P");
 			else
 				writer.write("F");
