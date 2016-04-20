@@ -35,8 +35,8 @@ import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
-
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 public class MobileHomePage extends Browser {
@@ -53,14 +53,11 @@ public class MobileHomePage extends Browser {
 		logger=report.startTest("Mobile Homepage Test");
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		
-		if (driver.findElement(By.id("btn-continue")).isDisplayed())
-			driver.findElement(By.id("btn-continue")).click();
-		driver.findElement(By.id("btnNo")).click();
+		driver.findElement(PageGlobal.AgeGateNo).click();
 		Thread.sleep(1000);
 		//Splash screen validation
-		Assert.assertEquals(driver.findElements(By.cssSelector("div.ageGatingError")).isEmpty(),false);
-		
+		Assert.assertEquals(driver.findElements(By.cssSelector(".info-red-box")).isEmpty(),false);
+
 		//Validate URL for responsibility.org
 		Thread.sleep(10000);
 		String url = driver.getCurrentUrl();
@@ -69,7 +66,7 @@ public class MobileHomePage extends Browser {
 		
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
+		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
 		
 		//HomePage validation
