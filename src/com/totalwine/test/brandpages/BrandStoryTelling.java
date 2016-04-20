@@ -24,13 +24,13 @@ import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
 public class BrandStoryTelling extends Browser {
@@ -49,7 +49,7 @@ public class BrandStoryTelling extends Browser {
 	
 	@Test 
 	public void BrandStoryTellingTest () throws InterruptedException, BiffException, IOException, AWTException {
-		logger=report.startTest("Brand Story Telling Page Test");
+		logger=report.startTest("Brand StoryTelling Page Test");
 		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //Access Brand Story Telling page via PDP's View All link
@@ -72,10 +72,8 @@ public class BrandStoryTelling extends Browser {
 	    //Validate elements of Brand List page are absent
 	    Assert.assertEquals(driver.findElements(By.id("plp-aty-tab")).isEmpty(),true);
 	    
-	    WebElement scroll_ProductName = driver.findElement(By.cssSelector("a.analyticsProductName"));
-	 	scroll_ProductName.sendKeys(Keys.ARROW_DOWN);
-	    
 	    //Click the first link and validate that the PDP appears
+	    driver.findElement(By.cssSelector("a.analyticsProductName")).sendKeys(Keys.ARROW_DOWN);
 	    String BrandSPName = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 	    driver.findElement(By.cssSelector("a.analyticsProductName")).click();
 	    Thread.sleep(3000);
