@@ -20,7 +20,7 @@ public class SiteAccess {
 	public static void ActionAccessMobileSite(WebDriver driver,String IP) throws InterruptedException {
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		if (driver.findElement(By.id("btn-continue")).isDisplayed())
+		if (driver.findElements(By.id("btn-continue")).size()!=0);
 			driver.findElement(By.id("btn-continue")).click();
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);

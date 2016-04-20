@@ -49,31 +49,31 @@
 		<parameter name="browser" value="Chrome">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.aml.GoodBadPassword" />
+			<class name="com.totalwine.test.aml.GoodBadPassword"/>
 			<class name="com.totalwine.test.aml.AccountHome"/>
 			<class name="com.totalwine.test.aml.AccountProfile"/>
 			<class name="com.totalwine.test.aml.AddressBook"/>
 			<class name="com.totalwine.test.aml.PreferenceUpdates"/>
-			<class name="com.totalwine.test.events.BrowseEvent" />
-			<class name="com.totalwine.test.productlist.PLPGridView" />
-			<class name="com.totalwine.test.search.Search" />
-			<class name="com.totalwine.test.categorylanding.CatLandNav" />
-			<class name="com.totalwine.test.shoppinglist.ShoppingListAddItem" />
+			<class name="com.totalwine.test.events.BrowseEvent"/>
+			<class name="com.totalwine.test.productlist.PLPGridView"/>
+			<class name="com.totalwine.test.search.Search"/>
+			<class name="com.totalwine.test.categorylanding.CatLandNav"/>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/>
 			<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
 			<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
 			<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
 			<class name="com.totalwine.test.events.ValidateLareOnElp"/> 
-			<class name="com.totalwine.test.agegating.AgeGate" />
-			<class name="com.totalwine.test.pdp.PDPTabs" />
+			<class name="com.totalwine.test.agegating.AgeGate"/>
+			<class name="com.totalwine.test.pdp.PDPTabs"/>
 			<class name="com.totalwine.test.pdp.PdpChangeStores"/>
 			<class name="com.totalwine.test.productlist.DefaultTabsBehavior" />
 			<class name="com.totalwine.test.pricingpromos.RemovePromoCode"/>
 			<class name="com.totalwine.test.review.SocialWidget"/>
-			<class name="com.totalwine.test.lare.LARERules" />
+			<class name="com.totalwine.test.lare.LARERules"/>
 			<class name="com.totalwine.test.brandpages.BrandList" />
 			<class name="com.totalwine.test.brandpages.BrandStoryTelling" />
-			<class name="com.totalwine.test.brandpages.AllBrands" />
-			<class name="com.totalwine.test.sitenav.LeftNavigation" />
+			<class name="com.totalwine.test.brandpages.AllBrands"/>
+			<class name="com.totalwine.test.sitenav.LeftNavigation"/>
 			<class name="com.totalwine.test.storelocator.SLGeoLocate" />
 			<class name="com.totalwine.test.storelocator.SLSearch" />
 			<class name="com.totalwine.test.storelocator.SLBrowseState" />

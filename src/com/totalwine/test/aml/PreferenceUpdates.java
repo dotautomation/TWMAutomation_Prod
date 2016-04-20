@@ -27,50 +27,33 @@ package com.totalwine.test.aml;
 import java.io.IOException;
 import jxl.read.biff.BiffException;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.actions.*;
 
 public class PreferenceUpdates extends Browser {
-
-	@DataProvider(name="amlParameters")
-    public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"aml", "PreferenceUpdatesUAT");
-        return(retObjArr);
-    } 
+	
+	public String IP = "72.66.119.61";
 
 	@BeforeMethod
 	  public void setUp() throws Exception {
 	    driver.manage().window().maximize();	
 	}  
 
-	@Test (dataProvider = "amlParameters") 
-	public void PreferenceUpdatesTest (String Email,String Password,String StoreNumber )
-			
-			throws InterruptedException, BiffException, IOException {
+	@Test
+	public void PreferenceUpdatesTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Preference Updates Test");
-		SiteAccess.ActionAccessSite(driver, "71.193.51.0");
+		SiteAccess.ActionAccessSite(driver, IP);
 		
-	    driver.findElement(By.linkText("Sign In/Register")).click();
-	    Thread.sleep(2000);
-	    driver.findElement(By.linkText("Sign into your account")).click();
-	    Thread.sleep(1000);
-
-	    driver.switchTo().frame(driver.findElement(By.id("iframe-signin-overlay")));
-	    driver.findElement(By.id("j_username")).clear();
-	    driver.findElement(By.id("j_username")).sendKeys(Email);
-	    driver.findElement(By.id("j_password")).sendKeys(Password);
-	    driver.findElement(By.cssSelector(".btn.btn-red.anLoginSubmit")).click();
-	    Thread.sleep(1000);
+	    //**Sign in modal with credential which has pre-existing order history, shopping list etc. 
+	    Events.CustomLogin(driver);
 	    
 	    //**Checking for presence of merge cart modal
 	    ShoppingList.MergeCartModal(driver);
+	    Thread.sleep(1000);
 	    
 	    driver.findElement(By.xpath("html/body/main/section/section[1]/div/aside/section/ul[1]/li[1]/ul/li[5]/a/span")).click();
 	    Thread.sleep(1000);
@@ -90,26 +73,20 @@ public class PreferenceUpdates extends Browser {
         
         // ** Selecting radio button using if/else statement
         WebElement checkBox1 = driver.findElement(By.id("c0020"));
-        WebElement checkBox3 = driver.findElement(By.xpath(".//*[@id='c0050']"));
-
         if(!checkBox1.isSelected()){
             checkBox1.click();
         }
-
-        WebElement scroll = driver.findElement(By.xpath(".//*[@id='c0050']"));  
-        scroll.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
-
-        if(!checkBox3.isSelected()){
-            checkBox3.click();
-        }
 	    Thread.sleep(2000);
 	    
-	    driver.findElement(By.xpath(".//*[@id='prefFormSubmit']/div[3]/div/div[4]/div/div/span")).click();
-        driver.findElement(By.cssSelector(".btn.btn-red.anPrefSave")).click();
-        Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"If Preferrence save confirmation does't display then the test will fail");
+	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js1.executeScript("arguments[0].click();", driver.findElement(By.xpath(".//*[@id='prefFormSubmit']/div[3]/div/div[4]/div/div/span")));     
+	    JavascriptExecutor js2 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js2.executeScript("arguments[0].click();", driver.findElement(By.cssSelector(".btn.btn-red.anPrefSave"))); 
+        sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"If Preferrence save confirmation does't display then the test will fail");
 	    
 	    //** Logout
-        driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).click();
+        driver.findElement(By.cssSelector(".analyticsHeaderLink[data-modal-id='loggedin-wrapper']")).click();
 	    driver.findElement(By.linkText("Log out")).click();
+//	    sAssert.assertAll();
 	}
 }

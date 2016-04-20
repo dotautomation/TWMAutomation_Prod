@@ -46,7 +46,7 @@ public class ConfigurationFunctions {
 	public static final String CHROMEDRIVERPATH = "C:/twmautomation/lib/lib/chromedriver.exe";
 	public static final String IEDRIVERPATH = "C:/twmautomation/lib/lib/IEDriverServer.exe";
 	public static final String RESULTSPATH = "C:\\autoreports\\";
-	public static final String TESTLOGIN = "rsud@live.com";
+	public static final String TESTLOGIN = "mhossain@totalwine.com";
 	public static final String TESTPWD = "grapes123";
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
 	
