@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -42,7 +43,7 @@ public class SearchNullTerms {
 		
 		//Instantiate output file
 		writer = new BufferedWriter(new FileWriter(logFile));
-		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Top results,Categories");
+		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Visual Accuracy Score,Top results,Categories");
 		writer.newLine();
 		
 		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
@@ -109,6 +110,9 @@ public class SearchNullTerms {
 				driver.get(driver.getCurrentUrl()+"&pagesize=32");//Top 32 results
 				Browser.PageLoad(driver);
 				int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
+				int visualAccuracy = driver.findElements(By.xpath("//*[text()[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'"+SearchTerm.toLowerCase()+"')]]")).size();//Extract visual accuracy
+				//System.out.println("VA:"+visualAccuracy);
+				writer.write(visualAccuracy+",");
 				String searchResult = "";
 				String facetResult = "";
 				for (int elementCount=1;elementCount<=searchResultsCount;elementCount++) {
@@ -121,7 +125,7 @@ public class SearchNullTerms {
 							+")"
 							+","
 							+facetResult.replaceAll(",","")
-							+"\r\n"+","+","+","+","+","; //Ensure that output is formatted
+							+"\r\n"+","+","+","+","+","+","; //Ensure that output is formatted
 					facetResult="";//Reset facet result for next search result
 				}
 				//System.out.println(searchResult);
