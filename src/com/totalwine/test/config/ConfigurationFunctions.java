@@ -48,6 +48,7 @@ public class ConfigurationFunctions {
 	public static final String RESULTSPATH = "C:\\autoreports\\";
 	public static final String TESTLOGIN = "mhossain@totalwine.com";
 	public static final String TESTPWD = "grapes123";
+	public static final String RRFORCEDISPLAY = "?forcedisplay=true";
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
 	
 	public static void DeleteCookies() {
