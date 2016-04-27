@@ -7,22 +7,41 @@
 <parameter name="browser" value="Chrome"> </parameter>
 <classes>
 
-<class name="com.totalwine.test.aml.PreferenceUpdates"/> 
-<class name="com.totalwine.test.aml.AddressBook"/>
-<class name="com.totalwine.test.pdp.PdpChangeStores"/>
-<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
-<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
-<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
-<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
-<class name="com.totalwine.test.events.AddEventToShoppingList"/>
-<class name="com.totalwine.test.events.AddMultiEventsDifferentStoreToCart"/>
-<class name="com.totalwine.test.events.AddMultiEventsSameStoreToCart"/>
-<class name="com.totalwine.test.events.BrowseSoldOutEvent"/>
-<class name="com.totalwine.test.events.PastEvents"/>    
-<class name="com.totalwine.test.events.ValidateLareOnElp"/>
-<class name="com.totalwine.test.pricingpromos.RemovePromoCode"/> 
-<class name="com.totalwine.test.review.CustomerReview"/>
-<class name="com.totalwine.test.review.SocialWidget"/>
+			<!-- aml -->
+			<class name="com.totalwine.test.aml.PreferenceUpdates"/>
+			<class name="com.totalwine.test.aml.AccountHome"/>
+			<class name="com.totalwine.test.aml.AccountProfile"/>
+			<class name="com.totalwine.test.aml.AddressBook"/>
+
+			<!-- checkout -->
+			<class name="com.totalwine.test.checkout.NewUserRegistration"/>
+			
+			<!-- events -->
+			<class name="com.totalwine.test.events.AddEventToShoppingList"/>
+			<class name="com.totalwine.test.events.AddMultiEventsDifferentStoreToCart"/>
+			<class name="com.totalwine.test.events.AddMultiEventsSameStoreToCart"/>
+			<class name="com.totalwine.test.events.BrowseSoldOutEvent"/>
+			<class name="com.totalwine.test.events.PastEvents"/>    
+			<class name="com.totalwine.test.events.ValidateLareOnElp"/>
+			
+			<!-- pdp -->
+			<class name="com.totalwine.test.pdp.PdpChangeStores"/>
+
+			<!-- pricingpromos -->
+			<class name="com.totalwine.test.pricingpromos.RemovePromoCode"/>
+
+			<!-- review -->
+			<class name="com.totalwine.test.review.CustomerReview"/>
+			<class name="com.totalwine.test.review.SocialWidget"/>
+
+			<!-- shoppinglist -->
+			<class name="com.totalwine.test.shoppinglist.ShoppingListSorting"/>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListMoveToCart"/>
+			<class name="com.totalwine.test.shoppinglist.ShoppingListSharing"/>
+			
+			<!-- shoppingcart -->
+			<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
+			
 </classes>
 </test>
 <!-- End of Desktop -->
