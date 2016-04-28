@@ -28,7 +28,7 @@ public class ConvergeSetUpPaymentForm {
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	private Integer implicitlyWaitSeconds = 5;
-
+/*
 	// Change these variables as needed to control the script
 
 	private Boolean isTestMode = false; // If true, it will just loop through
@@ -41,7 +41,7 @@ public class ConvergeSetUpPaymentForm {
 										// (demo.myvirtualmerchant.com). If
 										// false, it will use the PRODUCTION
 										// environment.
-
+*/
 	// Demo login credentials
 	private String demoAccountNumber = "005485";
 	private String demoUserID = "cpavetto";
@@ -60,8 +60,7 @@ public class ConvergeSetUpPaymentForm {
 		driver = new FirefoxDriver();
 
 		// Change baseUrl based on doing demo/prod
-		baseUrl = isDemoURL ? "https://demo.myvirtualmerchant.com" : "https://www.myvirtualmerchant.com";
-		password = isDemoURL ? demoPassword : prodPassword;
+		
 
 		driver.manage().timeouts().implicitlyWait(implicitlyWaitSeconds, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
@@ -70,7 +69,22 @@ public class ConvergeSetUpPaymentForm {
 
 	@Test
 	public void testSearch() throws Exception {
+		
+		Boolean isTestMode = false; // If true, it will just loop through
+		// the terminals, but won't update any
+		// fields. If false, it will make
+		// updates/changes
 
+		Boolean isDemoURL = true; // If true, it will use the DEMO
+		// environment
+		// (demo.myvirtualmerchant.com). If
+		// false, it will use the PRODUCTION
+		// environment.
+		
+		
+		baseUrl = isDemoURL ? "https://demo.myvirtualmerchant.com" : "https://www.myvirtualmerchant.com";
+		password = isDemoURL ? demoPassword : prodPassword;
+		
 		Boolean isDemo = baseUrl.contains("demo") ? true : false;
 
 		if (isDemo) {
