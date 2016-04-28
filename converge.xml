@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ConvergeSetupSuite" verbose="2">
+   <test name="Converge Terminal Setup">
+    <classes>
+       <class name="com.totalwine.test.thirdparty.ConvergeSetUpPaymentForm"/>
+    </classes>
+  </test>
+ </suite>
