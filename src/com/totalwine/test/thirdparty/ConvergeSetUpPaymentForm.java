@@ -2,10 +2,14 @@ package com.totalwine.test.thirdparty;
 
 import static org.junit.Assert.fail;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import jxl.*;
+import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -51,9 +55,10 @@ public class ConvergeSetUpPaymentForm {
 	private String prodAccountNumber = "555799";
 	private String prodUserID = "cpavetto";
 	private String prodPassword = "Grapes001!&";
-
+	Workbook inputWorkbook;
 	// Stores that need to be set up
-	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
+	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
+	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 1606"));
 
 	@BeforeTest
 	public void setUp() throws Exception {
@@ -75,13 +80,23 @@ public class ConvergeSetUpPaymentForm {
 		// fields. If false, it will make
 		// updates/changes
 
-		Boolean isDemoURL = true; // If true, it will use the DEMO
+		Boolean isDemoURL = false; // If true, it will use the DEMO
 		// environment
 		// (demo.myvirtualmerchant.com). If
 		// false, it will use the PRODUCTION
 		// environment.
 		
-		
+		 //Input file (excel)
+	    inputWorkbook = Workbook.getWorkbook(new File("converge.xls"));
+	    Sheet inputSheet = inputWorkbook.getSheet(0);
+	    int rowCount = inputSheet.getRows();
+	    String storeString = null; 
+	    for (int count=1;count<rowCount;count++) { //Consider title row
+	    	storeString = inputSheet.getCell(0,count).getContents();
+	    }
+	    	System.out.println(storeString);
+	    	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
+    	List<String> terminals = new ArrayList<String>(Arrays.asList(storeString));
 		baseUrl = isDemoURL ? "https://demo.myvirtualmerchant.com" : "https://www.myvirtualmerchant.com";
 		password = isDemoURL ? demoPassword : prodPassword;
 		
