@@ -68,14 +68,14 @@ public class ConvergeSetUpPaymentForm {
 	}
 
 	@Test
-	public void testSearch(boolean isTestMode,boolean isDemoURL) throws Exception {
+	public void testSearch() throws Exception {
 		
-		//Boolean isTestMode = false; // If true, it will just loop through
+		Boolean isTestMode = false; // If true, it will just loop through
 		// the terminals, but won't update any
 		// fields. If false, it will make
 		// updates/changes
 
-		//Boolean isDemoURL = true; // If true, it will use the DEMO
+		Boolean isDemoURL = true; // If true, it will use the DEMO
 		// environment
 		// (demo.myvirtualmerchant.com). If
 		// false, it will use the PRODUCTION
