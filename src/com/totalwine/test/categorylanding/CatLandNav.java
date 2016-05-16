@@ -53,12 +53,16 @@ public class CatLandNav extends Browser {
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
+		//this.driver = ConfigurationFunctions.driver;
+		//driver = new FirefoxDriver(testProfile);
+		//testProfile.setEnableNativeEvents(true);
 	    driver.manage().window().maximize();
 	  }  
 	
 	@Test (dataProvider = "CatLandParameters")
 	public void CatLandNavTest (String toplevel,String plp,String catlandpage) throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Category Landing Page Test");
+		//ConfigurationFunctions.initialStartUp("71.193.51.0");
 		SiteAccess.ActionAccessSite(driver, IP);
 	    
 		Actions action=new Actions(driver);
@@ -87,6 +91,6 @@ public class CatLandNav extends Browser {
 		Thread.sleep(5000);
 		//Validate PLP presence and CatLand absence
 		Assert.assertEquals(driver.findElements(By.id("plp-aty-tab")).isEmpty(),true);
-		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
+		//Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
 	}
 }

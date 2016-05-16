@@ -44,7 +44,7 @@ public class CachedPages extends Browser {
 	
 	@DataProvider(name="CachedPages")
     public Object[][] createData() {
-    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"CachedPages", "produrl");
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"CachedPages", "url");
         return(retObjArr);
     } 
 	
@@ -87,17 +87,7 @@ public class CachedPages extends Browser {
 		conn = obj.openConnection();
 		conn = obj.openConnection(); //HIT 
 		conn = obj.openConnection(); //HIT 
-		conn = obj.openConnection(); //HIT
 		conn = obj.openConnection(); //HIT 
-		conn = obj.openConnection(); //HIT 
-		conn = obj.openConnection(); //HIT 
-		driver.navigate().refresh();
-		PageLoad(driver);
-		driver.navigate().refresh();
-		PageLoad(driver);
-		driver.navigate().refresh();
-		PageLoad(driver);
-		Thread.sleep(2000);
 		//Map<String, List<String>> map = conn.getHeaderFields();
 		String cacheCookie = driver.manage().getCookieNamed("cacheCookie").getValue();
 		System.out.println("cache cookie: "+cacheCookie);

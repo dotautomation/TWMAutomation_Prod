@@ -42,7 +42,7 @@ public class SLBrowseState extends Browser {
 	
 	@Test //Stores by State dropdown
 	public void SLBrowseStateTest () throws InterruptedException {
-		logger=report.startTest("Store Locator Browse by State Test");
+		logger=report.startTest("SL: Stores by State dropdown Test");
 		String IP = "71.193.51.0";
 		SiteAccess.ActionAccessSite(driver, IP);
 		    

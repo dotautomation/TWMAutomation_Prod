@@ -12,17 +12,27 @@ public class SiteAccess {
 		Thread.sleep(2000);
 		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
-//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())/
-//			driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//		if (driver.findElement(PageGlobal.NewSiteIntroClose).isDisplayed())
+//		driver.findElement(PageGlobal.NewSiteIntroClose).click();
 //		Thread.sleep(5000);
 	}
 	
 	public static void ActionAccessMobileSite(WebDriver driver,String IP) throws InterruptedException {
 		driver.get(ConfigurationFunctions.locationSet+IP);
 		Thread.sleep(5000);
-		if (driver.findElements(By.id("btn-continue")).size()!=0);
-			driver.findElement(By.id("btn-continue")).click();
+//		if (driver.findElement(By.id("btn-continue")).isDisplayed())
+//			driver.findElement(By.id("btn-continue")).click();
 		driver.findElement(By.id("btnYes")).click();
 		Thread.sleep(5000);
 	}
+
+	public static void ActionAccessMobileAgeGate(WebDriver driver) throws InterruptedException {	
+		if (driver.findElement(PageGlobal.AgeGateYes).isDisplayed())
+			driver.findElement(PageGlobal.AgeGateYes).click();
+		else {
+            System.out.println("Age gate is not displaying");
+		}
+		Thread.sleep(4000);
+	}
+	
 }

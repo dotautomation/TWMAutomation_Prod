@@ -21,7 +21,9 @@ public class PageProductList {
 	public static final By ListView = By.cssSelector("a.analyticsViewAsList"); //View as list
 	public static final By ListViewDefault = By.cssSelector("a.analyticsViewAsList.active.activeicon"); //Default list view
 	public static final By GridView = By.cssSelector("a.analyticsViewAsGrid"); //View as grid
-	
+	//Messaging
+	public static final By GlobalMessaging = By.cssSelector("section.plp-product-tabs > p.msg-noitems");
+	public static final By PLPMessaging = By.cssSelector("section#plp-product-tab1 > p.msg-noitems");
 	
 	
 	//List View
@@ -39,10 +41,6 @@ public class PageProductList {
 	public static final By ListATC = By.cssSelector("button.anAddToCartInit");
 	public static final By ListATL = By.cssSelector("button.anAddToListInit");
 	public static final By ListPrice = By.cssSelector("div.plp-product-buy-price-mix");
-	public static final By ShipAvailable = By.xpath("//img[contains(@src,'shippingavailable.png')]");//Ship available badge
-	public static final By ShipUnavailable = By.xpath("//img[contains(@src,'shippingnotavailable.png')]");//Ship unavailable badge
-	public static final By ISPAvailable = By.xpath("//img[contains(@src,'instorePickupAvailable.png')]");//ISP available badge
-	public static final By ISPUnavailable = By.xpath("//img[contains(@src,'instorePickupNotAvailable.png')]");//ISP unavailable badge
 	
 	//ATC Interstitial
 	public static final By InterTitle = By.cssSelector("h1.product-name");
@@ -73,7 +71,7 @@ public class PageProductList {
 	public static final By GridPickupBadge =By.cssSelector("div.plp-product-delivery"); //Pickup badge
 	public static final By GridATC =By.cssSelector("form.add_to_cart_form.clear_fix"); // Add to cart
 	public static final By GridATL =By.cssSelector("button.btn.btn-brown-pattern.anAddToListInit"); //Add to listBy.cssSelector("div.plp-list-img-wdlogo"); //WD Logo
-	
+
 	//Mobile
 	public static final By MobilePLPSort = By.cssSelector("select#sortOptions"); //Sort dropdown
 	public static final By MobilePLPFilter = By.cssSelector("button.btn-brown.anFilterProd");//Filter button
@@ -91,5 +89,4 @@ public class PageProductList {
 	public static final By FacetRatingSource = By.cssSelector("li[data-facet=ratingsource]");
 	public static final By FacetPrice = By.cssSelector("li[data-facet=plppricevalue]");
 	public static final By FacetSize = By.cssSelector("li[data-facet=volume]");
-	
 }

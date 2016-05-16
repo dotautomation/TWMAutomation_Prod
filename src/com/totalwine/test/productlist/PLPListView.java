@@ -24,7 +24,7 @@ public class PLPListView extends Browser {
 	
 	@Test 
 	public void PLPListTest () throws InterruptedException {
-		logger=report.startTest("PLP List View Test");
+		logger=report.startTest("PLP Grid Test");
 		
 		//Access site
 		SiteAccess.ActionAccessSite(driver, IP);

@@ -42,8 +42,8 @@ public class BrandList extends Browser {
 	}  
 	
 	@Test 
-	public void BrandListTest () throws InterruptedException, BiffException, IOException, AWTException {
-		logger=report.startTest("Brand List Page Test");
+	public void BrandListPageTest () throws InterruptedException, BiffException, IOException, AWTException {
+		logger=report.startTest("Brands List Page Test");
 		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    //Access Brand Story Telling page via PDP's View All link

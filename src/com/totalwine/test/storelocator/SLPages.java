@@ -22,7 +22,6 @@ package com.totalwine.test.storelocator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -49,31 +48,25 @@ public class SLPages extends Browser {
 	
 	@Test //Charity/Donations Page
 	public void SLCharityPageTest () throws InterruptedException {
-		logger=report.startTest("Store Locator Charity Page Test");
+		logger=report.startTest("Charity/Donations Page Test");
 		AccessStoreLocator();
 		//Access footer
 		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
 		Thread.sleep(2000);
 		
 		//Access Corporate Philantropy page
-		driver.findElement(By.cssSelector("a[href*=\"corporate-philanthropy\"]")).click(); //Corporate Philantropy
-		Thread.sleep(3000);//http://www.totalwine.com/about-us/corporate-philanthropy
-		
-		WebElement scroll = driver.findElement(By.cssSelector("a.btn.btn-red.analyticsDownloadForm")); //Page Down
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-	    scroll.sendKeys(Keys.ARROW_DOWN);
-		
-	    JavascriptExecutor js = (JavascriptExecutor)driver;
-	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")));
+		driver.findElement(By.cssSelector("a[href*=\"/about-us/corporate-philanthropy\"]")).click(); //Corporate Philantropy
+		Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")));
 		//driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")).click(); //Donation Requests
-		PageLoad(driver);
+		Thread.sleep(3000);
 		Assert.assertEquals(driver.findElements(By.cssSelector("a[href*=\"totalwine.requestitem.com\"]")).isEmpty(),false); //Submit a request button
 	}
 	
 	@Test //Careers Page
 	public void CareersPageTest () throws InterruptedException {
-		logger=report.startTest("Store Locator Careers Page Test");
+		logger=report.startTest("Careers Page Test");
 		AccessStoreLocator();
 		//Access footer
 		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
@@ -95,11 +88,11 @@ public class SLPages extends Browser {
 	
 	@Test //All Stores Page
 	public void SLAllStoresPageTest () throws InterruptedException {
-		logger=report.startTest("Store Locator All Stores Page Test");
+		logger=report.startTest("All Stores Page Test");
 		AccessStoreLocator();
-		JavascriptExecutor js = (JavascriptExecutor)driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsFindAllStores")));
-		Thread.sleep(3000);
+		PageLoad(driver);
 		//Validate state list
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.our-store-map")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div#our-stores-address > ul > li[data-state=\"#az\"]")).isEmpty(),false);

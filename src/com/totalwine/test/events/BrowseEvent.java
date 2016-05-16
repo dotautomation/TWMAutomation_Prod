@@ -22,6 +22,7 @@ package com.totalwine.test.events;
 
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import com.totalwine.test.actions.Checkout;
 import com.totalwine.test.config.*;
@@ -30,7 +31,7 @@ import com.totalwine.test.trials.Browser;
 public class BrowseEvent extends Browser {
 	
 	private String IP="72.66.119.61";
-	private String FutureEvent = "/events/apr-2016/virginia/mclean?storestatename=214,203,202,201,205";
+	private String FutureEvent = "/events/jun-2016/virginia/mclean?storestatename=214,203,202,201,205";
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
@@ -49,23 +50,23 @@ public class BrowseEvent extends Browser {
 		PageLoad(driver); // Will not trigger the next control until loading the page
 
 	    driver.findElement(By.linkText("Classes & Events")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    
 	    // **  Selecting future events from PDP
 		driver.get(ConfigurationFunctions.accessURL+FutureEvent);
 		Thread.sleep(3000);
 	    
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.linkText("Stores")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.linkText("Event Type")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.linkText("Event Focus")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.linkText("Stores")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.linkText("Event Type")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.linkText("Event Focus")).isEmpty(),false);
 	    driver.findElement(By.cssSelector("a.analyticsEventName")).click();
 	    Thread.sleep(3000);
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("section.event-testing-profile")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.right-rail-typo > li")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("li.print-container.anPrintEventDetails")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.linkText("Events")).isEmpty(),false);
-//	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='eventInfoIcs']/button")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("section.event-testing-profile")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.right-rail-typo > li")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("li.print-container.anPrintEventDetails")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.linkText("Events")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.xpath("//form[@id='eventInfoIcs']/button")).isEmpty(),false);
 	}
 }

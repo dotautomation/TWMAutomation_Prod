@@ -1,6 +1,6 @@
 package com.totalwine.test.aml;
 /*
- **** Account Home
+ **** Account Profile
  **** Work flow : 
  *  Click on "Account" > "Sign into your account"  (from the header) or "Account info" > "Account login" in footer section 
  *  In the Sign in popup > Signin using registered email and Password.
@@ -27,10 +27,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
-
 import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.actions.Checkout;
-import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 import com.totalwine.test.pages.*;
@@ -46,8 +44,12 @@ public class AccountProfile extends Browser {
 	
 	@Test
 	public void AccountProfileTest() throws InterruptedException {
-		logger=report.startTest("AML - Registered users Account Home ( Dashboard) verification. ");
-		SiteAccess.ActionAccessSite(driver, IP);
+		logger=report.startTest("AML - Registered users Profile verification. ");
+		driver.get(ConfigurationFunctions.locationSet+IP);
+		Thread.sleep(5000);
+		//** By Passing Age Gate and Welcome Modal
+		Checkout.AgeGateWelcome(driver);
+	    
 	    //**Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
@@ -65,11 +67,12 @@ public class AccountProfile extends Browser {
 	    //**Check for presence of merge cart modal
 	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
 	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    	Thread.sleep(2000);
+	    	Thread.sleep(3000);
 	    }
 	    
 	    //**Navigate to the User Profile link
-	    driver.findElement(PageAccountHome.YourProfile).click();  
+	    driver.findElement(PageAccountHome.YourProfile).click(); 
+	    Thread.sleep(1000);
 	    
 	    //** Editing and verifying "Personal information" 
 	    driver.findElement(PageAccountHome.EditPersonalInfo).click();

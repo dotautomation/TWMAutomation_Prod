@@ -34,7 +34,6 @@ import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.trials.Browser;
 
-
 public class GoodBadPassword extends Browser {
 	
 	private String IP="71.193.51.0";
@@ -76,13 +75,28 @@ public class GoodBadPassword extends Browser {
 	    	Assert.assertEquals(driver.findElement(By.cssSelector("p.error-msg")).getText(), 
 	    			"Please enter a valid email address in the format example@domain.com"); //Invalid email format validation
 	    }
-	    else if (valid.equals("Y"))
+	    
+	    else if (valid.equals("Y")){
 	    	Assert.assertEquals(driver.findElement(By.cssSelector(AMLPageHeading)).getText(), "Account home");
-	    else {
+	    }
+	    
+	    else if (valid.equals("L")){
 	    	Assert.assertEquals(driver.findElements(By.cssSelector(AMLPageHeading)).isEmpty(), true);
-	    	Assert.assertEquals(driver.findElement(By.cssSelector("#sign-in-overlay > div.sign-in-container > div.twm-error-msg > p")).getText(), 
+	    	Assert.assertEquals(driver.findElement(By.cssSelector("#sign-in-overlay > div.sign-in-container > div > div.twm-error-msg > p")).getText(), 
+	    			"Your account has been temporarily disabled due to multiple failed attempts to sign in. Please reset your password to continue."); // Invalid password validation
+	    }
+	    
+	    else if (valid.equals("N")){
+	    	Assert.assertEquals(driver.findElements(By.cssSelector(AMLPageHeading)).isEmpty(), true);
+	    	Assert.assertEquals(driver.findElement(By.cssSelector("#sign-in-overlay > div.sign-in-container > div > div.twm-error-msg > p")).getText(), 
 	    			"Sorry, the user name or password entered is incorrect. Please try again."); // Invalid password validation
 	    }
-	}
+	    
+	    else {
+	    	Assert.assertEquals(driver.findElements(By.cssSelector(AMLPageHeading)).isEmpty(), true);
+	    	Assert.assertEquals(driver.findElement(By.cssSelector("#sign-in-overlay > div.sign-in-container > div > div.twm-error-msg > p")).getText(), 
+	    			"Sorry, the user name or password entered is incorrect. Please try again."); // Invalid password validation
+	    }
 
+	}
 }

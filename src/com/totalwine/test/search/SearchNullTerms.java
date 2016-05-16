@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
@@ -34,7 +35,6 @@ public class SearchNullTerms {
 	WebDriver driver;
 	BufferedWriter writer;
 	Workbook inputWorkbook;
-	
 	@Test
 	public void SearchNullTermsTest () throws InterruptedException, IOException, BiffException {
 	
@@ -43,7 +43,7 @@ public class SearchNullTerms {
 		
 		//Instantiate output file
 		writer = new BufferedWriter(new FileWriter(logFile));
-		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Visual Accuracy Score,Top results,Categories");
+		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Top results,Categories");
 		writer.newLine();
 		
 		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
@@ -60,7 +60,7 @@ public class SearchNullTerms {
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
 	    
 	    //Input file (excel)
-	    inputWorkbook = Workbook.getWorkbook(new File("Search.xls"));
+	    inputWorkbook = Workbook.getWorkbook(new File("BlankDebug.xls"));
 	    Sheet inputSheet = inputWorkbook.getSheet(0);
 	    int rowCount = inputSheet.getRows();
 	    String SearchTerm,SearchType; //SearchType Options = all,product,event,content
@@ -110,14 +110,14 @@ public class SearchNullTerms {
 				driver.get(driver.getCurrentUrl()+"&pagesize=32");//Top 32 results
 				Browser.PageLoad(driver);
 				int searchResultsCount = driver.findElements(By.cssSelector("h2.plp-product-title > a.analyticsProductName")).size();//Extract results
-				int visualAccuracy = driver.findElements(By.xpath("//*[text()[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'"+SearchTerm.toLowerCase()+"')]]")).size();//Extract visual accuracy
-				//System.out.println("VA:"+visualAccuracy);
-				writer.write(visualAccuracy+",");
 				String searchResult = "";
 				String facetResult = "";
 				for (int elementCount=1;elementCount<=searchResultsCount;elementCount++) {
 					for (int catCount=1;catCount<=driver.findElements(By.xpath("//li["+elementCount+"]/div/div/div/div/a")).size();catCount++) {
 						facetResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/a["+catCount+"]")).getText()+"|";
+						//Debugging
+						if (facetResult.equals("")) Assert.assertTrue(false);
+						//
 					}
 					searchResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/h2/a")).getText().replaceAll(",", "")
 							+"("
@@ -125,7 +125,7 @@ public class SearchNullTerms {
 							+")"
 							+","
 							+facetResult.replaceAll(",","")
-							+"\r\n"+","+","+","+","+","+","; //Ensure that output is formatted
+							+"\r\n"+","+","+","+","+","; //Ensure that output is formatted
 					facetResult="";//Reset facet result for next search result
 				}
 				//System.out.println(searchResult);
@@ -138,6 +138,14 @@ public class SearchNullTerms {
 		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 		    	Thread.sleep(3000);
 		    	writer.write("HTTP500"); //Indicate HTTP500 occurrence for search term in output file 
+		    }
+		    //Check for Fastly error page
+		    else if (driver.getPageSource().contains("between 500 and 600")) { 
+		    	driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
+		    	Thread.sleep(3000);
+		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
+		    	Thread.sleep(3000);
+		    	writer.write("HTTP500 - Fastly Error Page"); //Indicate HTTP500 occurrence for search term in output file 
 		    }
 		  //Events search 
 		    else if (driver.findElements(By.cssSelector("div.js-event-item")).size()!=0) { 

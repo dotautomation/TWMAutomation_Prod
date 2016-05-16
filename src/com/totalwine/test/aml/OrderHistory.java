@@ -53,7 +53,7 @@ public class OrderHistory extends Browser {
 	    //Enter valid credentials for an account having an online and in-store order history
 	    driver.switchTo().frame("iframe-signin-overlay");
 	    driver.findElement(PageSignInModal.ModalUsername).clear();
-	    driver.findElement(PageSignInModal.ModalUsername).sendKeys("rsud@totalwine.com");
+	    driver.findElement(PageSignInModal.ModalUsername).sendKeys("mhossain@totalwine.com");
 	    driver.findElement(PageSignInModal.ModalPassword).clear();
 	    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 	    driver.findElement(PageSignInModal.ModalSigninButton).click();

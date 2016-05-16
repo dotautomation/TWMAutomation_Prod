@@ -80,25 +80,26 @@ public class CustomerReview extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("section.css-details-pd")).isEmpty(),false);
 	    
 	    driver.findElement(By.cssSelector("span.tabs-right.anPDPTab")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    
 	    driver.findElement(By.cssSelector("span.tabs-right.anPDPTab")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 
 	    driver.findElement(By.cssSelector("#BVRRRatingSummaryLinkWriteID>a")).click();
 	    Thread.sleep(6000);
 
 	    //** Registering new email for writing review as for a specific product one review can write from one email
 	    driver.switchTo().frame(driver.findElement(By.id("iframe-signin-overlay")));
-	    driver.findElement(By.cssSelector(".custom-arrow.analyticsGetStarted.post-links.post-links-bv")).click();
-	    Thread.sleep(6000);
+	    driver.findElement(By.cssSelector(".btn.btn-red.analyticsGetStarted.post-links.post-links-bv")).click();
+	    Thread.sleep(2000);
 	    
 	    // ** Filling up "Create your account" page
 	    driver.findElement(By.cssSelector("#firstName")).sendKeys(FirstName);
 	    driver.findElement(By.cssSelector("#lastName")).sendKeys(LastName);
+	    Thread.sleep(2000);
 
-	    WebElement scroll1 = driver.findElement(By.cssSelector("#email"));  
-	    scroll1.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page   
+//	    WebElement scroll1 = driver.findElement(By.cssSelector("#email"));  
+//	    scroll1.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page   
 
 	    // *** Register Email from DB
 //	    driver.findElement(By.cssSelector("#email")).sendKeys(Email);
@@ -109,39 +110,65 @@ public class CustomerReview extends Browser {
     	String email = driver.findElement(By.cssSelector("#email")).getAttribute("value");
     	System.out.println("Registered Email Address: "+email);
 	    
-	    driver.findElement(By.cssSelector("#checkEmail")).sendKeys("autoemail_"+randomNum+"."+randomNum_2+"@totalwine.com");
-//    	String email = driver.findElement(By.cssSelector("#email")).getAttribute("value");
+//	    driver.findElement(By.cssSelector("#checkEmail")).sendKeys("autoemail_"+randomNum+"."+randomNum_2+"@totalwine.com");
+////    	String email = driver.findElement(By.cssSelector("#email")).getAttribute("value");
+//	    Thread.sleep(2000);
 
 	    driver.findElement(By.cssSelector("#pwd")).sendKeys(Password);
-	    driver.findElement(By.cssSelector("#checkPwd")).sendKeys(Password);
+//	    driver.findElement(By.cssSelector("#checkPwd")).sendKeys(Password);
 	    driver.findElement(By.cssSelector("#phone")).sendKeys(Phone);
+	    Thread.sleep(2000);
 
-	    WebElement scroll2 = driver.findElement(By.cssSelector("#address1"));  
+	    WebElement scroll2 = driver.findElement(By.cssSelector("#btnnuregisteration"));  
 	    scroll2.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
-	    driver.findElement(By.cssSelector("#address1")).sendKeys(Address1);
-	    driver.findElement(By.cssSelector("#city")).sendKeys(City);
-	    driver.findElement(By.cssSelector("div:nth-child(10) > div > div > span > i")).click();
-	    Thread.sleep(1000);
-	    WebElement element1 = driver.findElement(By.cssSelector("div:nth-child(10) > div > div > div > div > div.jspPane > ul > li:nth-child(54)"));  
-	    new Actions(driver).moveToElement(element1).perform();  
-	    element1.click();
-
-	    driver.findElement(By.cssSelector("#zipCode")).sendKeys(Zip);
-	    WebElement scroll3 = driver.findElement(By.cssSelector("#btnnuregisteration"));  
-	    scroll3.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
+//	    driver.findElement(By.cssSelector("#address1")).sendKeys(Address1);
+//	    driver.findElement(By.cssSelector("#city")).sendKeys(City);
 	    
-	    driver.findElement(By.cssSelector("div.form_field-elements > div:nth-child(2) > div > div > span > i")).click();
-	    Thread.sleep(5000);
-	    WebElement element2 = driver.findElement(By.cssSelector(".opt-ship-state-data.anOption[data-val='1005']"));  
-	    new Actions(driver).moveToElement(element2).perform();  
-	    element2.click();
-
+	    driver.findElement(By.cssSelector("div.dropdown.inst-state > div > span > span")).click();
+	    Thread.sleep(4000);
+	    WebElement element7 = driver.findElement(By.cssSelector(".undefined.undefined.anOption.js-hover-li[data-val='US-VA']"));  
+	    new Actions(driver).moveToElement(element7).perform();
+	    element7.click();
+	    Thread.sleep(4000);
+	    
+	    driver.findElement(By.cssSelector("div.labelHolder.store > div > div > span > span")).click();
+	    Thread.sleep(4000);
+	    WebElement element8 = driver.findElement(By.cssSelector(".US-VA.anOption[data-val='205']"));  
+	    new Actions(driver).moveToElement(element8).perform();  
+	    element8.click();
+	    Thread.sleep(4000);
+	    
 	    driver.findElement(By.cssSelector("#checkbox2")).click();
 	    driver.findElement(By.cssSelector("#checkbox3")).click();
-	    
+	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("#btnnuregisteration")).click();
-	    PageLoad(driver); // Will not trigger the next control until loading the page
-	    Thread.sleep(5000);
+	    Thread.sleep(3000);
+	    
+//	    WebElement element1 = driver.findElement(By.cssSelector("div:nth-child(10) > div > div > div > div > div.jspPane > ul > li:nth-child(54)"));  
+//	    new Actions(driver).moveToElement(element1).perform();  
+//	    Thread.sleep(2000);
+//	    element1.click();
+//	    Thread.sleep(2000);
+//
+//	    driver.findElement(By.cssSelector("#zipCode")).sendKeys(Zip);
+//	    Thread.sleep(1000);
+//	    WebElement scroll3 = driver.findElement(By.cssSelector("#btnnuregisteration"));  
+//	    scroll3.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
+	    
+//	    driver.findElement(By.cssSelector("div.form_field-elements > div:nth-child(2) > div > div > span > i")).click();
+//	    Thread.sleep(5000);
+//	    WebElement element2 = driver.findElement(By.cssSelector(".opt-ship-state-data.anOption[data-val='1005']"));  
+//	    new Actions(driver).moveToElement(element2).perform();  
+//	    Thread.sleep(2000);
+//	    element2.click();
+//	    Thread.sleep(2000);
+//
+//	    driver.findElement(By.cssSelector("#checkbox2")).click();
+//	    driver.findElement(By.cssSelector("#checkbox3")).click();
+//	    
+//	    driver.findElement(By.cssSelector("#btnnuregisteration")).click();
+//	    PageLoad(driver); // Will not trigger the next control until loading the page
+//	    Thread.sleep(5000);
 
 	    //** Filling Customer Ratings & Reviews form
 	    driver.findElement(By.cssSelector("#star_link_rating_5")).click();
@@ -164,7 +191,8 @@ public class CustomerReview extends Browser {
 	    driver.findElement(By.cssSelector("#BVProTextBox1ID")).sendKeys(DescribeItem);
 	    Thread.sleep(1000);
 
-	    driver.findElement(By.cssSelector("#BVFieldUsernicknameID")).sendKeys(NickName);
+//	    driver.findElement(By.cssSelector("#BVFieldUsernicknameID")).sendKeys(NickName);
+	    driver.findElement(By.cssSelector("#BVFieldUsernicknameID")).sendKeys("nick"+randomNum+"name"+randomNum_2+"test");
 	    Thread.sleep(1000);
 
 	    JavascriptExecutor js = (JavascriptExecutor)driver;  // Finding out elements that are out of site

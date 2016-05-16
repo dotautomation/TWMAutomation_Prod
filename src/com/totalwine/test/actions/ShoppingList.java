@@ -8,7 +8,7 @@ public class ShoppingList {
 	//** Clicking on Shopping List Sorting drop-down
 	public static void SortingDropDown (WebDriver driver) throws InterruptedException {
 	    driver.findElement(By.cssSelector("#shoppingListSort > div > span")).click(); 
-	    Thread.sleep(2000);
+	    Thread.sleep(4000);
 	}
 	
 	//**Checking for presence of merge cart modal

@@ -106,7 +106,7 @@ public class PDPTabs extends Browser {
 	    Thread.sleep(3000);
 	    
 	    //Tab 3 - BazaarVoice
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.BVDITitle.BVDI_QTTitle")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("div.BVDITitle.BVDI_QTTitle")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVImgOrSprite")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVRRTrustMarkOverlayImage")).isEmpty(), false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#BVRRRatingSummaryLinkWriteID")).isEmpty(),false);
