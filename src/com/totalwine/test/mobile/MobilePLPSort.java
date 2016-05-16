@@ -49,10 +49,22 @@ public class MobilePLPSort extends Browser {
 	public void MobileSortTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Mobile PLP Sort Test");
 		SiteAccess.ActionAccessMobileSite(driver, "98.169.134.0");
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(5000);
+
+		// **  By passing location
+		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+		Thread.sleep(1000);
+		
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(5000);
 		
 		//Access Mobile PLP
 		driver.findElement(PageHomepage.MobileWineButton).click();
 		Thread.sleep(3000);
+		
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(5000);
 		
 		//Verify default sort "Most Popular"
 		Assert.assertEquals(driver.findElement(By.cssSelector("select#sortOptions > option[selected=selected]")).getText().replaceAll("^\\s+", ""), "Most Popular","Most Popular wasn't the default selected option");
@@ -60,9 +72,12 @@ public class MobilePLPSort extends Browser {
 		logger.log(LogStatus.PASS, "Most Popular sort is the default. Kendall Jackson Chardonnay appears in the top few results");
 		
 		//Verify "Our Favorites" sort
+		SiteAccess.ActionAccessMobileAgeGate(driver);
 		driver.findElement(PageProductList.MobilePLPSort).click();
-	    //SortOption.selectByVisibleText("Our Favorites");
+
+		//SortOption.selectByVisibleText("Our Favorites");
 	    driver.findElement(By.cssSelector("option[value=\"our-favorites\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    for (int i=1;i<=10;i++) {
 	    	Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child("+i+") > div > div > div.plp-list-img-wdlogo")).isEmpty(),false); //Top 10 results are WD
@@ -71,8 +86,11 @@ public class MobilePLPSort extends Browser {
 
 	    //Verify "Expert Ratings" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Expert Ratings");
 	    driver.findElement(By.cssSelector("option[value=\"expert-ratings\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div > span.plp-list-img-wineSpec-badge > span")).getText(), "100"); //First result is 100 rated
 	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div > span.plp-list-img-wineSpec-text")).isEmpty(), false);
@@ -80,16 +98,22 @@ public class MobilePLPSort extends Browser {
 	    
 		//Verify "Customer Ratings" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Customer Ratings");
 	    driver.findElement(By.cssSelector("option[value=\"customer-ratings\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.pdpRatingStars > a > span > span[style=\"width:100.0%\"]")).isEmpty(),false); //First result is 5-star
 	    logger.log(LogStatus.PASS, "Customer Ratings sort displays 5-star product on top");
 	    
 		//Verify "Price (highest first)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Price (highest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
 	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
@@ -98,8 +122,11 @@ public class MobilePLPSort extends Browser {
 	    
 		//Verify "Price (lowest first)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Price (lowest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-asc\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
 	    SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
@@ -108,16 +135,22 @@ public class MobilePLPSort extends Browser {
 	    
 		//Verify "Name (A-Z)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Name (A-Z)");
 	    driver.findElement(By.cssSelector("option[value=\"name-asc\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    Assert.assertTrue(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > h2 > a.analyticsProductName")).getText().startsWith("1"));
 	    logger.log(LogStatus.PASS, "Alpha sort displays items with numerals in their title on top");
 	    
 		//Verify "Name (Z-A)" sort
 	    driver.findElement(PageProductList.MobilePLPSort).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
+	    
 	    //SortOption.selectByVisibleText("Name (Z-A)");
 	    driver.findElement(By.cssSelector("option[value=\"name-desc\"]")).click();
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 	    Assert.assertTrue(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > h2 > a.analyticsProductName")).getText().startsWith("Z"));
 	    logger.log(LogStatus.PASS, "Reverse alpha sort displays items with names beginning with Z on top");

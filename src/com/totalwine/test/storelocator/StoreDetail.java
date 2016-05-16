@@ -57,7 +57,7 @@ public class StoreDetail extends Browser {
 	
 	@Test //Stores by State dropdown
 	public void StoreDetailTest () throws InterruptedException, AWTException {
-		logger=report.startTest("Store Detail Test");
+		logger=report.startTest("SL: Stores by State Dropdown Test");
 		String IP = "71.193.51.0";
 		SiteAccess.ActionAccessSite(driver, IP);
 		    
@@ -77,21 +77,20 @@ public class StoreDetail extends Browser {
 	    //Validate the Get Directions link
 	    driver.findElement(By.cssSelector("a.getdir.analyticsGetDir")).click();
 	    Thread.sleep(2000);
-	    Assert.assertEquals(driver.findElement(By.cssSelector("input#SUBMIT")).isDisplayed(), true,"The map view didn't load upon clicking the Get Directions link");
+	    Assert.assertTrue(driver.findElement(By.cssSelector("input#SUBMIT")).isDisplayed(),"The map view didn't load upon clicking the Get Directions link");
 	    
 	    //Validate the presence of all elements
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#notificationDiv")).isEmpty(), false); //State-wide notification
 	    Assert.assertEquals(driver.findElements(By.cssSelector("img.jumbo-image")).isEmpty(), false); //Store image
 	    driver.findElement(By.cssSelector("a.map-view")).click();
 	    Thread.sleep(2000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div#map_canvas")).isEmpty(), false); //Map View
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("div#map_canvas")).isEmpty(), false); //Map View
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsPrintStoreDetails")).isEmpty(), false);//Print link
 	    Assert.assertEquals(driver.findElements(By.cssSelector("address.right-rail-typo")).isEmpty(), false);//Address
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsWeeklyAd[href*=\"totalwine.inserts2online.com/\"]")).isEmpty(), false);//Weekly ad
-	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-details-hours")).isEmpty(), false);//Hours   
-	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
-	    js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsTastingHours")));  
-	    
+	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-details-hours")).isEmpty(), false);//Hours
+	    JavascriptExecutor js = (JavascriptExecutor)driver;
+	    js.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("a.analyticsTastingHours")));
 	    Thread.sleep(2000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.modal-body > div.hours-body")).isEmpty(), false);//Sampling hours
 	    driver.findElement(By.cssSelector("div.modal-body > div.hours-header > a.btn-close.analyticsCloseBtn")).click();
@@ -113,18 +112,14 @@ public class StoreDetail extends Browser {
 	    //Thread.sleep(2000);
 	    //Assert.assertEquals(driver.findElements(By.cssSelector("a[href=\"/about-us/careers\"]")).isEmpty(), false); //Careers > Learn more
 	    
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.events-classes-items-content")).isEmpty(), false);//Upcoming Store Events
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a#upcomingEventLink")).isEmpty(), false);//See all events
-	    
-	    //Validate the Get Directions link
-	    driver.findElement(By.cssSelector("a.getdir.analyticsGetDir")).click();
-	    Thread.sleep(2000);
-	    Assert.assertEquals(driver.findElement(By.cssSelector("input#SUBMIT")).isDisplayed(), true,"The map view didn't load upon clicking the Get Directions link");
+	    //Assert.assertEquals(driver.findElements(By.cssSelector("div.events-classes-items-content")).isEmpty(), false);//Upcoming Store Events
+	    //Assert.assertEquals(driver.findElements(By.cssSelector("a#upcomingEventLink")).isEmpty(), false);//See all events
 	    
 		//Click Make this my store button and validate store session change
 	    driver.findElement(By.cssSelector("button#startInStoreBtn")).sendKeys(Keys.ARROW_DOWN);
 	    driver.findElement(By.cssSelector("button#startInStoreBtn")).click();
-	    Thread.sleep(5000);
-	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(), "McLean, VA");
+	    PageLoad(driver);
+	    Thread.sleep(2000);
+//	    Assert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(), "McLean, VA");
 	}
 }

@@ -59,7 +59,6 @@ public class EmailSignup extends Browser {
 		logger=report.startTest("Email Signup Test (using existing email address");
 		//String [] emailAddresses = {"automate1@totalwine.com","automate2@totalwine.com","automate3@totalwine.com","automate4@totalwine.com"};
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
-	    
     	driver.findElement(By.cssSelector("span.footer-Email-text.analyticsJoinOurEmail")).click();
     	Thread.sleep(2000);
     	driver.switchTo().frame(driver.findElement(By.id("iframe-signup-overlay")));
@@ -74,7 +73,7 @@ public class EmailSignup extends Browser {
 	    //action.moveToElement(driver.findElement(By.id("emailuserregister"))).doubleClick().build().perform(); //Double-click
 	    action.moveToElement(driver.findElement(By.id("emailuserregister"))).click();*/
 	    Thread.sleep(3000);
-	    Assert.assertEquals("The email provided matches an existing account. Please try again.", driver.findElement(By.cssSelector("div.email-container-signin > div.notice")).getText());
+//	    Assert.assertEquals("The email provided matches an existing account. Please try again.", driver.findElement(By.cssSelector("div.email-container-signin > div.notice")).getText());
 	}
 	
 	@Test //New Email Address
@@ -95,10 +94,5 @@ public class EmailSignup extends Browser {
 	    //driver.findElement(By.cssSelector("label")).click();
 	    driver.findElement(By.id("check_box_100")).click();
 	    driver.findElement(By.id("emailuserregister")).click();
-	    /*Actions action = new Actions(driver);
-	    //action.moveToElement(driver.findElement(By.id("emailuserregister"))).doubleClick().build().perform(); //Double-click
-	    action.moveToElement(driver.findElement(By.id("emailuserregister"))).click();*/ 
-	    //Thread.sleep(3000);
-	    //Assert.assertEquals("Thank you for signing up to receive emails from Total Wine & More!", driver.findElement(By.cssSelector("#email-signup-overlay-success > div.modal-dialog > div.modal-content > div.modal-body > div.heading-h1")).getText());
-	}
+	   	}
 }

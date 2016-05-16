@@ -59,31 +59,31 @@ public class Sort extends Browser {
 		WebElement winePLPNav=driver.findElement(By.xpath("//a[contains(@href,'/white-wine/')]"));
 		js.executeScript("arguments[0].click();", winePLPNav);
 		Thread.sleep(5000);
-		
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
-		//driver.findElement(By.cssSelector("a.btn.btn-red.clpviewall")).click();
 		Thread.sleep(5000);
 	    
 		//Our Favorites
 		driver.findElement(PageProductList.SortDropdown).click();
-		Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("li[data-val=our-favorites]")).click();
-	    Thread.sleep(2000);
+		Thread.sleep(3000);
+//	    driver.findElement(By.cssSelector("li[data-val=our-favorites]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=our-favorites]")));
+	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("option[value=our-favorites]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.plp-list-img-wdlogo")).isEmpty(),false);
 	    
 	    //Expert Ratings
 	    driver.findElement(PageProductList.SortDropdown).click();
-	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("li[data-val=expert-ratings]")).click();
-	    Thread.sleep(2000);
+	    Thread.sleep(3000);
+//	    driver.findElement(By.cssSelector("li[data-val=expert-ratings]")).click();
+	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=expert-ratings]")));
+	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span.plp-product-desc-winespec-left-badge")).isEmpty(),false);
 	    
 	    
 	    //Name (A-Z)
 	    driver.findElement(PageProductList.SortDropdown).click();
-	    Thread.sleep(2000);
+	    Thread.sleep(3000);
 	    //driver.findElement(By.cssSelector("li[data-val=name-asc]")).click();
 	    js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li[data-val=name-asc]")));
 	    Thread.sleep(3000);

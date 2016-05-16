@@ -13,7 +13,7 @@ public class ShoppingCart {
 		Actions action = new Actions(driver);
 	    WebElement WineTab = driver.findElement(By.cssSelector("nav > ul > li:nth-child(2) > a"));
 	    action.moveToElement(WineTab).moveToElement(driver.findElement(By.cssSelector("li:nth-child(2) > div > ul:nth-child(1) > li:nth-child(9) > a > b"))).click().build().perform();
-	    Thread.sleep(5000);   	    
+	    Thread.sleep(7000);   	    
 	}
 	
 	//** Adding items into cart

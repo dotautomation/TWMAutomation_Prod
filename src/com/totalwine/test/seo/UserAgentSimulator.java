@@ -47,7 +47,7 @@ public class UserAgentSimulator extends Browser{
 	@Test (dataProvider = "BotsParameters")
 	public void UserAgentValidation (String userAgent) throws InterruptedException, IOException {
 		logger=report.startTest("Google/Bing Bots Test");
-		File file = new File("C:/twmautomation/lib/lib/chromedriver.exe");
+		File file = new File("C:/totalwine/Library/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		Map<String, String> mobileEmulation = new HashMap<String, String>();
 		mobileEmulation.put("userAgent", userAgent);

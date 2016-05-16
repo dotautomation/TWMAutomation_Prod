@@ -24,11 +24,13 @@ package com.totalwine.test.mobile;
  * 			Quit webdriver
  */
 
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -36,18 +38,22 @@ public class MobileWebRegistration extends Browser {
 	
 	@Test 
 	public void MobileWebRegistrationTest () throws InterruptedException {
-		System.out.println (new Object(){}.getClass().getEnclosingMethod().getName()+" in progress");
 		logger=report.startTest("Mobile Web Registration Test");
 		driver.get(ConfigurationFunctions.locationSet+"71.193.51.0");
-		Thread.sleep(5000);
-		driver.findElement(By.id("btnYes")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(2000);
 		
-		driver.findElement(By.xpath("//a[contains(@title,'My Account')]")).click(); //Click "My Account"
+		// **  By passing location
+		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+		Thread.sleep(1000);
+
+		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+		js1.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[contains(@href,'.totalwine.com/my-account')]")));        
 		Thread.sleep(3000);
 		
 		//Validate Login Screen
-    	Assert.assertEquals(driver.findElements(By.cssSelector("em.icon.icon-login")).isEmpty(),false); //Login Icon
+    	Assert.assertEquals(driver.findElements(By.cssSelector("em.icon.icon-login")).isEmpty(),true); //Login Icon
 	    Assert.assertEquals(driver.findElements(By.cssSelector("input#j_usernameforLogin")).isEmpty(),false); //Email address
 	    Assert.assertEquals(driver.findElements(By.cssSelector("input#j_passwordforLogin")).isEmpty(),false); //Password
 	    Assert.assertEquals(driver.findElements(By.cssSelector("input#check_bx_mobile_1")).isEmpty(),false); //Remember Me
@@ -55,8 +61,9 @@ public class MobileWebRegistration extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.lg-btns-frgt")).isEmpty(),false); //Reset password
 	    Assert.assertEquals(driver.findElements(By.cssSelector("a.btn.btn-red.anGetStarted")).isEmpty(),false); //Create an account
 	    
+	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    driver.findElement(By.cssSelector("a.btn.btn-red.anGetStarted")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(2000);
 	    
 	    //Create an account - Step 1
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.lg-crte-acc-hd-t")).isEmpty(),false);
@@ -68,87 +75,42 @@ public class MobileWebRegistration extends Browser {
 	    driver.findElement(By.id("email")).sendKeys("automatedtester_"+ConfigurationFunctions.randInt()+"."+ConfigurationFunctions.randInt()+"@totalwine.com");
 	    	String email = driver.findElement(By.id("email")).getAttribute("value");
 	    	System.out.println("Registered Email Address: "+email);
-	    driver.findElement(By.id("checkEmail")).clear();
-	    driver.findElement(By.id("checkEmail")).sendKeys(email);
 	    driver.findElement(By.id("pwd")).clear();
 	    driver.findElement(By.id("pwd")).sendKeys("grapes123!");
-	    driver.findElement(By.id("checkPwd")).sendKeys("grapes123!");
 	    driver.findElement(By.id("phone")).sendKeys("3015470004");
-	    
-	    driver.findElement(By.cssSelector("button#btnRegNext")).click();
+	    driver.findElement(By.cssSelector("#storeState")).click();
+	    Thread.sleep(3000);
+	    WebElement element5 = driver.findElement(By.cssSelector("#storeState > option:nth-child(1)"));  
+	    new Actions(driver).moveToElement(element5).perform();
+	    element5.click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.cssSelector("#preferredStore")).click();
+	    Thread.sleep(3000);
+	    WebElement element8 = driver.findElement(By.cssSelector("#preferredStore > option:nth-child(1)"));  
+	    new Actions(driver).moveToElement(element8).perform();  
+	    element8.click();
+	    Thread.sleep(3000);
+	    driver.findElement(By.cssSelector("#ageCheck")).click();
+	    driver.findElement(By.cssSelector("#termsAndCondCheck")).click();
 	    Thread.sleep(2000);
-	    
-	    //Create an account - Step 2
-	    Assert.assertEquals(driver.findElements(By.cssSelector("select.store-loc-search-by-state")).isEmpty(),false); //Preferred Store dropdown
-	    driver.findElement(By.cssSelector("select.store-loc-search-by-state")).click();
-	    Select preferredStoreOption = new Select(driver.findElement(By.cssSelector("select.store-loc-search-by-state")));
-	    preferredStoreOption.selectByIndex(1);
-	    driver.findElement(By.cssSelector("button#btnNextNoStores")).click();
-	    
-	    //Create an account - Step 3
-	    driver.findElement(By.id("address1")).clear();
-	    driver.findElement(By.id("address1")).sendKeys("6600 Rockledge Dr.");
-	    driver.findElement(By.id("address2")).clear();
-	    driver.findElement(By.id("address2")).sendKeys("Suite 210");
-	    driver.findElement(By.id("city")).clear();
-	    driver.findElement(By.id("city")).sendKeys("Bethesda");
-	    Select stateOption = new Select(driver.findElement(By.cssSelector("select.createAccount-search-by-state")));
-	    stateOption.selectByValue("US-MD");
-	    driver.findElement(By.id("zipCode")).clear();
-	    driver.findElement(By.id("zipCode")).sendKeys("20817");
-	    driver.findElement(By.cssSelector("input#ageCheck")).click();
-	    driver.findElement(By.cssSelector("input#termsAndCondCheck")).click();
-	    driver.findElement(By.cssSelector("button#btnRegNextstep3")).click();
-	    Thread.sleep(6000);
-	    
+	    driver.findElement(By.cssSelector("#btnRegNext")).click();
+	    Thread.sleep(3000);
 	    
 	    //Confirmation Screen
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a.btn-continue.clearfix")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.id("c0010")).isEmpty(),false); //Beer
-	    Assert.assertEquals(driver.findElements(By.id("c0020")).isEmpty(),false); //Wine
-	    Assert.assertEquals(driver.findElements(By.id("c0030")).isEmpty(),false); //Spirits
-	    Assert.assertEquals(driver.findElements(By.id("c0050")).isEmpty(),false); //Accessories
-	    Assert.assertEquals(driver.findElements(By.cssSelector("select#birthMonth")).isEmpty(),false); //Birth Month
-	    Assert.assertEquals(driver.findElements(By.cssSelector("select#birthDay")).isEmpty(),false); //Birth Day
-	    driver.findElement(By.id("btnSaveAccount")).click();
+	    Assert.assertEquals(driver.findElements(By.cssSelector(".wel-heading")).isEmpty(),false);
+
+	    // Filling up "Tell us about yourself"
+	    driver.findElement(By.cssSelector("#address1")).sendKeys("6600 rockledge dr");
+	    driver.findElement(By.cssSelector("#city")).sendKeys("Bethesda");
+	    WebElement element9 = driver.findElement(By.cssSelector("#state > option:nth-child(2)"));  
+	    new Actions(driver).moveToElement(element9).perform();  
+	    element9.click();
 	    Thread.sleep(3000);
-	    
-	    //Account homepage (same as desktop)
-	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"Account home page heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Your account")).isEmpty(),false,"Your account left facet heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false,"Orders left facet heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false,"Your shopping lists left facet heading");
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false,"Total Discovery heading");
-	    sAssert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false,"Analytics section");
-	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false,"Online order history");
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false,"Preferred store section");
-	    
-	    //Logout
-	    driver.findElement(By.linkText("Welcome, Automated")).click();
-	    driver.findElement(By.linkText("Log out")).click();
+	    driver.findElement(By.cssSelector("#zipCode")).sendKeys("20817");
+	    driver.findElement(By.cssSelector("#btnSaveAccount")).click();
 	    Thread.sleep(3000);
-	    
-	    //Relogin using the credentials above
-	    driver.findElement(By.xpath("//a[contains(@title,'My Account')]")).click(); //Click "My Account"
-		Thread.sleep(3000);
-		driver.findElement(By.id("j_usernameforLogin")).sendKeys(email);
-		driver.findElement(By.id("j_passwordforLogin")).sendKeys("grapes123!");
-		driver.findElement(By.id("btnAccLoginfrmLogin")).click();
-		Thread.sleep(3000);
-		
-		 //Account homepage (same as desktop)
-		sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"Account home page heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Your account")).isEmpty(),false,"Your account left facet heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Orders")).isEmpty(),false,"Orders left facet heading");
-	    sAssert.assertEquals(driver.findElements(By.linkText("Your shopping lists")).isEmpty(),false,"Your shopping lists left facet heading");
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span.rewards-title")).isEmpty(),false,"Total Discovery heading");
-	    sAssert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsUpdateAcc]")).isEmpty(),false,"Analytics section");
-	    Assert.assertEquals(driver.findElements(By.linkText("Online order history")).isEmpty(),false,"Online order history");
-	    Assert.assertEquals(driver.findElements(By.cssSelector("a[class=analyticsPrefStore]")).isEmpty(),false,"Preferred store section");
-		
-	    //Logout
-	    driver.findElement(By.linkText("Welcome, Automated")).click();
-	    driver.findElement(By.linkText("Log out")).click();
-	    sAssert.assertAll();
+
+	    //Confirmation Screen
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.ahp-welcome > div.ahp-welcomeHeading")).isEmpty(),false);
 	}
 }
