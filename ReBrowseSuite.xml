@@ -49,7 +49,7 @@
 		<parameter name="browser" value="Chrome">
 		</parameter>
 		<classes>
-			<class name="com.totalwine.test.aml.GoodBadPassword"/>
+			<!-- <class name="com.totalwine.test.aml.GoodBadPassword"/> -->
 			<class name="com.totalwine.test.aml.AccountHome"/>
 			<class name="com.totalwine.test.aml.AccountProfile"/>
 			<class name="com.totalwine.test.aml.AddressBook"/>
