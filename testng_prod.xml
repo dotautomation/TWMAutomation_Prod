@@ -4,7 +4,7 @@
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
 <suite name="MultiBrowserSuite" verbose="2">
    <test name="Product List Sort">
-	<parameter name="browser" value="Chrome">
+	<parameter name="browser" value="ios">
 	</parameter>
     <classes>
 <!-- <class name="com.totalwine.test.review.CustomerReview"/>-->
@@ -20,7 +20,8 @@
 <!-- <class name="com.totalwine.test.events.BrowseEvent"/> -->
 <!-- <class name="com.totalwine.test.pricingpromos.Pricing"/>-->
 
-      <class name="com.totalwine.test.lare.LARERules" />
+      			<class name="com.totalwine.test.mobile.MobileHomePage" />
+			<class name="com.totalwine.test.mobile.MobilePLPSort" />
     
     </classes>
   </test>
