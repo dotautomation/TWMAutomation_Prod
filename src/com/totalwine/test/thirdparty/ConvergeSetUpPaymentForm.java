@@ -2,15 +2,14 @@ package com.totalwine.test.thirdparty;
 
 import static org.junit.Assert.fail;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import jxl.*;
-import jxl.read.biff.BiffException;
-
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -19,9 +18,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 public class ConvergeSetUpPaymentForm {
 	private WebDriver driver;
@@ -32,7 +28,7 @@ public class ConvergeSetUpPaymentForm {
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 	private Integer implicitlyWaitSeconds = 5;
-/*
+
 	// Change these variables as needed to control the script
 
 	private Boolean isTestMode = false; // If true, it will just loop through
@@ -45,7 +41,7 @@ public class ConvergeSetUpPaymentForm {
 										// (demo.myvirtualmerchant.com). If
 										// false, it will use the PRODUCTION
 										// environment.
-*/
+
 	// Demo login credentials
 	private String demoAccountNumber = "005485";
 	private String demoUserID = "cpavetto";
@@ -55,17 +51,17 @@ public class ConvergeSetUpPaymentForm {
 	private String prodAccountNumber = "555799";
 	private String prodUserID = "cpavetto";
 	private String prodPassword = "Grapes001!&";
-	Workbook inputWorkbook;
-	// Stores that need to be set up
-	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
-	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 1606"));
 
-	@BeforeTest
+	// Stores that need to be set up
+	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
+
+	@Before
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
 
 		// Change baseUrl based on doing demo/prod
-		
+		baseUrl = isDemoURL ? "https://demo.myvirtualmerchant.com" : "https://www.myvirtualmerchant.com";
+		password = isDemoURL ? demoPassword : prodPassword;
 
 		driver.manage().timeouts().implicitlyWait(implicitlyWaitSeconds, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
@@ -74,32 +70,7 @@ public class ConvergeSetUpPaymentForm {
 
 	@Test
 	public void testSearch() throws Exception {
-		
-		Boolean isTestMode = false; // If true, it will just loop through
-		// the terminals, but won't update any
-		// fields. If false, it will make
-		// updates/changes
 
-		Boolean isDemoURL = false; // If true, it will use the DEMO
-		// environment
-		// (demo.myvirtualmerchant.com). If
-		// false, it will use the PRODUCTION
-		// environment.
-		
-		 //Input file (excel)
-	    inputWorkbook = Workbook.getWorkbook(new File("converge.xls"));
-	    Sheet inputSheet = inputWorkbook.getSheet(0);
-	    int rowCount = inputSheet.getRows();
-	    String storeString = null; 
-	    for (int count=1;count<rowCount;count++) { //Consider title row
-	    	storeString = inputSheet.getCell(0,count).getContents();
-	    }
-	    	System.out.println(storeString);
-	    	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
-    	List<String> terminals = new ArrayList<String>(Arrays.asList(storeString));
-		baseUrl = isDemoURL ? "https://demo.myvirtualmerchant.com" : "https://www.myvirtualmerchant.com";
-		password = isDemoURL ? demoPassword : prodPassword;
-		
 		Boolean isDemo = baseUrl.contains("demo") ? true : false;
 
 		if (isDemo) {
@@ -316,6 +287,29 @@ public class ConvergeSetUpPaymentForm {
 				driver.findElement(By.xpath("//a[contains(@onclick, \"'U','custom_card_type'\")]/*[1]")).click();
 			}
 
+			// Re-define these since the page will have been refreshed by the
+			// reordering
+			table = driver.findElement(By.name("paymentFields"));
+			allRows = table.findElements(By.tagName("tr"));
+
+			// Company name field should be below last name fields
+
+			Integer lastNameRowPosition = getRowNumber(allRows, By.linkText("ssl_last_name"));
+			currentRowPosition = getRowNumber(allRows,
+					By.xpath(".//a[contains(@onclick, \"'D','ssl_company'\")]/*[1]"));
+
+			// If company name is too far up, then move it down
+			if (currentRowPosition < lastNameRowPosition) {
+				for (int i = 0; i < (lastNameRowPosition - currentRowPosition); i++) {
+					driver.findElement(By.xpath("//a[contains(@onclick, \"'D','ssl_company'\")]/*[1]")).click();
+				}
+				// Else, it's too far down, so move it up
+			} else {
+				for (int i = 0; i < (currentRowPosition - lastNameRowPosition - 1); i++) {
+					driver.findElement(By.xpath("//a[contains(@onclick, \"'U','ssl_company'\")]/*[1]")).click();
+				}
+			}
+
 			// Part 3 - change system generated fields
 			//
 			// Note, some unnecessary fields may or may not be there,
@@ -509,7 +503,7 @@ public class ConvergeSetUpPaymentForm {
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).sendKeys("Last name");
 			driver.findElement(By.name("AddField.X")).click();
 
-			driver.findElement(By.linkText("ssl_last_name")).click();
+			driver.findElement(By.linkText("ssl_company")).click();
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).clear();
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).sendKeys("Company name");
 			driver.findElement(By.name("AddField.X")).click();
@@ -672,7 +666,7 @@ public class ConvergeSetUpPaymentForm {
 
 	}
 
-	@AfterTest
+	@After
 	public void tearDown() throws Exception {
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
