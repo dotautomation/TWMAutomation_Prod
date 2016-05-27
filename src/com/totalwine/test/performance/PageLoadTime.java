@@ -367,7 +367,6 @@ public class PageLoadTime /*extends Browser*/ {
 		driver.quit();
 	}
 	
-	
 	//Function to detect HTTP500
 	public static int catch500(int count500) {
 		//String pageTitle = driver.getTitle();
