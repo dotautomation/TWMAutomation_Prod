@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
-
 import jxl.write.WriteException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -20,15 +18,15 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.Events;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
+import com.totalwine.test.pages.PageSignInModal;
 
 
 public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
-	
-	
-	
+
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
 		int count=49;//Take 50 measures
@@ -69,19 +67,17 @@ public class PageLoadTime /*extends Browser*/ {
 				//JSESSIONID
 			    String jsessionIdCookieValue = driver.manage().getCookieNamed("JSESSIONID").getValue();
 			    System.out.println(jsessionIdCookieValue);
-			    
-				
+
 				System.out.println("Initial page with Age Gate,"+totalTime); 
 				String s = Objects.toString(totalTime, null);
 				writer.write(s+",");
 				
 				driver.findElement(PageGlobal.AgeGateYes).click();
 				Thread.sleep(5000);
-				driver.findElement(By.id("doNotShowCheck")).click();
-				driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//				driver.findElement(By.id("doNotShowCheck")).click();
+//				driver.findElement(PageGlobal.NewSiteIntroClose).click();
 			    Thread.sleep(5000);
-			    
-			    
+
 			    //Homepage
 			    start = System.currentTimeMillis();
 			    driver.get("http://www.totalwine.com");
@@ -142,14 +138,32 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				Thread.sleep(2000);
 				
-				//Account Login
-				driver.findElement(PageGlobal.TopNavAccount).click();
-		        driver.findElement(By.linkText("Sign into your account")).click();
-		        driver.switchTo().frame("iframe-signin-overlay");
-		        driver.findElement(By.id("j_username")).clear();
-			    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
-			    driver.findElement(By.id("j_password")).clear();
-			    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
+				
+//			    //**Sign in modal with credential which has pre-existing order history, shopping list etc. 
+//			    Events.CustomLogin(driver);
+				
+			    //Access the sign in modal
+			    driver.findElement(PageGlobal.TopNavAccount).click();
+			    Thread.sleep(2000);
+			    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
+			    
+			    //Enter valid credentials for an account having an online and in-store order history
+			    driver.switchTo().frame("iframe-signin-overlay");
+			    driver.findElement(PageSignInModal.ModalUsername).clear();
+			    driver.findElement(PageSignInModal.ModalUsername).sendKeys("mhossain@totalwine.com");
+			    driver.findElement(PageSignInModal.ModalPassword).clear();
+			    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
+//			    driver.findElement(PageSignInModal.ModalSigninButton).click();
+//			    Thread.sleep(6000);
+				
+//				//Account Login
+//				driver.findElement(PageGlobal.TopNavAccount).click();
+//		        driver.findElement(By.linkText("Sign In/Register")).click();
+//		        driver.switchTo().frame("iframe-signin-overlay");
+//		        driver.findElement(By.id("j_username")).clear();
+//			    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
+//			    driver.findElement(By.id("j_password")).clear();
+//			    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
 				start = System.currentTimeMillis();
 				driver.findElement(By.xpath("//button[@type='button']")).click();
 				finish = System.currentTimeMillis();
@@ -160,15 +174,26 @@ public class PageLoadTime /*extends Browser*/ {
 				writer.write(s+",");
 				
 				Thread.sleep(2000);
+				
+				
+
+				
+				
 				//Merge Cart Modal
 				if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
 					driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
 					Thread.sleep(2000);
 				}
 				
+
+				
+				
 				//ATC
 			    driver.get("http://www.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
 			    Thread.sleep(2000);
+			    
+
+			    
 			    String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 				Thread.sleep(1000);
 			    start = System.currentTimeMillis();
@@ -379,7 +404,7 @@ public class PageLoadTime /*extends Browser*/ {
 			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\Performance\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
 			
 		}
-		//driver.quit();
+		driver.quit();
 	}
 	
 	//Function to detect HTTP500
@@ -389,5 +414,4 @@ public class PageLoadTime /*extends Browser*/ {
 			//count500++;
 		return count500;
 	}
-}
-				
+}	

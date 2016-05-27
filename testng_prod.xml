@@ -20,9 +20,8 @@
 <!-- <class name="com.totalwine.test.events.BrowseEvent"/> -->
 <!-- <class name="com.totalwine.test.pricingpromos.Pricing"/>-->
 
-      			<class name="com.totalwine.test.mobile.MobileHomePage" />
-			<class name="com.totalwine.test.mobile.MobilePLPSort" />
-    
+<class name="com.totalwine.test.performance.PageLoadTime" />
+
     </classes>
   </test>
  </suite>
