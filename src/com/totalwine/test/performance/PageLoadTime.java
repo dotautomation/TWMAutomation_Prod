@@ -28,7 +28,6 @@ public class PageLoadTime /*extends Browser*/ {
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
 		int count=49;//Take 50 measures
-		
 		Runtime rt = Runtime.getRuntime();
 		try {
 			rt.exec("taskkill /f /im chromedriver.exe /t");
