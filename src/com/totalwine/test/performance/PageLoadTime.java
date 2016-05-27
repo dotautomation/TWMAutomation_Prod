@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
-
 import jxl.write.WriteException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -19,20 +17,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
+import com.totalwine.test.actions.Events;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
-
+import com.totalwine.test.pages.PageSignInModal;
 
 public class PageLoadTime /*extends Browser*/ {
 	protected WebDriver driver;
-	
-	
-	
+
 	@Test //(invocationCount=5)
 	public void PageTimingTest () throws InterruptedException, IOException, WriteException {
 		int count=49;//Take 50 measures
-		
 		Runtime rt = Runtime.getRuntime();
 		try {
 			rt.exec("taskkill /f /im chromedriver.exe /t");
@@ -69,19 +64,17 @@ public class PageLoadTime /*extends Browser*/ {
 				//JSESSIONID
 			    String jsessionIdCookieValue = driver.manage().getCookieNamed("JSESSIONID").getValue();
 			    System.out.println(jsessionIdCookieValue);
-			    
-				
+
 				System.out.println("Initial page with Age Gate,"+totalTime); 
 				String s = Objects.toString(totalTime, null);
 				writer.write(s+",");
 				
 				driver.findElement(PageGlobal.AgeGateYes).click();
 				Thread.sleep(5000);
-				driver.findElement(By.id("doNotShowCheck")).click();
-				driver.findElement(PageGlobal.NewSiteIntroClose).click();
+//				driver.findElement(By.id("doNotShowCheck")).click();
+//				driver.findElement(PageGlobal.NewSiteIntroClose).click();
 			    Thread.sleep(5000);
-			    
-			    
+
 			    //Homepage
 			    start = System.currentTimeMillis();
 			    driver.get("http://www.totalwine.com");
@@ -141,16 +134,20 @@ public class PageLoadTime /*extends Browser*/ {
 				writer.write(s+",");
 				
 				Thread.sleep(2000);
-				
-				//Account Login
-				driver.findElement(PageGlobal.TopNavAccount).click();
-		        driver.findElement(By.linkText("Sign into your account")).click();
-		        driver.switchTo().frame("iframe-signin-overlay");
-		        driver.findElement(By.id("j_username")).clear();
-			    driver.findElement(By.id("j_username")).sendKeys(ConfigurationFunctions.TESTLOGIN);
-			    driver.findElement(By.id("j_password")).clear();
-			    driver.findElement(By.id("j_password")).sendKeys(ConfigurationFunctions.TESTPWD);
+
+			    //Access the sign in modal
+			    driver.findElement(PageGlobal.TopNavAccount).click();
+			    Thread.sleep(2000);
+			    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
+			    
+			    //Enter valid credentials for an account having an online and in-store order history
+			    driver.switchTo().frame("iframe-signin-overlay");
+			    driver.findElement(PageSignInModal.ModalUsername).clear();
+			    driver.findElement(PageSignInModal.ModalUsername).sendKeys("mhossain@totalwine.com");
+			    driver.findElement(PageSignInModal.ModalPassword).clear();
+			    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 				start = System.currentTimeMillis();
+//			    driver.findElement(PageSignInModal.ModalSigninButton).click();
 				driver.findElement(By.xpath("//button[@type='button']")).click();
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -158,14 +155,14 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Login,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
+
 				//Merge Cart Modal
 				if(driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
 					driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
 					Thread.sleep(2000);
 				}
-				
+
 				//ATC
 			    driver.get("http://www.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
 			    Thread.sleep(2000);
@@ -189,7 +186,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Shopping Cart,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				/* Commenting due to script issue
 				//Checkout Tab 1
@@ -201,7 +197,6 @@ public class PageLoadTime /*extends Browser*/ {
 			    Thread.sleep(2000);
 			    driver.findElement(By.cssSelector("li[data-val="+ISPOption+"]")).click();
 			    Thread.sleep(3000);
-
 			    start = System.currentTimeMillis();
 			    driver.findElement(By.id("checkout")).click();
 				finish = System.currentTimeMillis();
@@ -210,7 +205,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Checkout Tab 1,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				driver.findElement(By.linkText("Edit cart")).click();
 				Thread.sleep(1000);
@@ -220,6 +214,7 @@ public class PageLoadTime /*extends Browser*/ {
 			    driver.findElement(By.cssSelector("a#RemoveProduct_0")).click();
 			    Thread.sleep(2000);
 				*/
+				
 				//Change Store Modal
 				driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).click();
 				Thread.sleep(5000);
@@ -232,7 +227,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Change Store Modal,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Change Store
@@ -248,7 +242,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Change Store,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Spirits CatLand
@@ -261,7 +254,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Spirits Cat Land,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Spirits SubCatLand
@@ -274,7 +266,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Spirits SubCat Land,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Spirits PLP
@@ -287,7 +278,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Spirits PLP,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Sprits PDP
@@ -300,7 +290,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Spirits PDP,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Beer CatLand
@@ -312,7 +301,6 @@ public class PageLoadTime /*extends Browser*/ {
 				//catch500(count500);
 				System.out.println("Beer Cat Land,"+totalTime);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Beer SubCatLand
@@ -325,7 +313,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Beer SubCat Land,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Beer PLP
@@ -337,7 +324,6 @@ public class PageLoadTime /*extends Browser*/ {
 				//catch500(count500);
 				System.out.println("Beer PLP,"+totalTime);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Beer PDP
@@ -350,7 +336,6 @@ public class PageLoadTime /*extends Browser*/ {
 				System.out.println("Beer PDP,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				count--;
 				writer.write(timestamp+",");
@@ -376,10 +361,9 @@ public class PageLoadTime /*extends Browser*/ {
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException, InterruptedException { 
 		if(testResult.getStatus() == ITestResult.FAILURE) { 
 			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\Performance\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png")); 
-			
+			FileUtils.copyFile(scrFile, new File("C:\\Users\\rsud\\.jenkins\\userContent\\FailureScreenshots\\Performance\\FAIL "+testResult.getName()+"  "+ConfigurationFunctions.now()+".png"));
 		}
-		//driver.quit();
+		driver.quit();
 	}
 	
 	//Function to detect HTTP500
@@ -389,5 +373,4 @@ public class PageLoadTime /*extends Browser*/ {
 			//count500++;
 		return count500;
 	}
-}
-				
+}	
