@@ -45,16 +45,16 @@ public class MobilePDP extends Browser {
 		
 		// **  By passing location
 		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(2000);
 		
 		//Click on Wine
 //		driver.findElement(By.xpath("//a[contains(@href,'.totalwine.com/c/c0020/')]")).click();
-		driver.findElement(By.cssSelector("section.wrapper-data > section.hp-way-fndg > section.mb > div.hp-way-fndg-cat > a.btn.btn-red.analyticsLinkComp")).click();
 		SiteAccess.ActionAccessMobileAgeGate(driver);
+		driver.findElement(By.cssSelector("section.wrapper-data > section.hp-way-fndg > section.mb > div.hp-way-fndg-cat > a.btn.btn-red.analyticsLinkComp")).click();
 		Thread.sleep(2000);
 	    
 	    //Access Mobile PDP for first item on PLP
+		SiteAccess.ActionAccessMobileAgeGate(driver);
 	    driver.findElement(By.cssSelector("a.analyticsProductName")).click();
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(2000);
