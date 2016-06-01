@@ -3,10 +3,10 @@
 
 <suite name="Suite1" verbose="1">
   <test name="ABCTest">
-	<parameter name="browser" value="Chrome">
+	<parameter name="browser" value="ios">
 	</parameter>
 	<classes>
-       <class name="com.totalwine.test.productlist.Filter"/>
+       <class name="com.totalwine.test.mobile.MobilePDP" />
     </classes>
   </test>
 </suite>	
