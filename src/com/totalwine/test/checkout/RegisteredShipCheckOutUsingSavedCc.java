@@ -77,6 +77,7 @@ public class RegisteredShipCheckOutUsingSavedCc extends Browser {
 
 		// **  Adding item to Cart
 		ShoppingCart.ATC(driver);
+		Thread.sleep(3000);
 	    driver.get(ConfigurationFunctions.accessURL+"/cart");
 	    Thread.sleep(3000);
 
@@ -85,14 +86,18 @@ public class RegisteredShipCheckOutUsingSavedCc extends Browser {
 	    js.executeScript("arguments[0].click();", driver.findElement(By.id("zipCode")));  
 	    driver.findElement(By.id("zipCode")).clear();
 	    driver.findElement(By.id("zipCode")).sendKeys(Zip);
+	    PageLoad(driver); 
 	    driver.findElement(By.cssSelector("input.anZipForm")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(7000);
+	    PageLoad(driver); 
 	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
+	    Thread.sleep(7000);
 	    driver.findElement(By.cssSelector("li[data-val="+ShipOption+"]")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(7000);
 	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 	    js1.executeScript("arguments[0].click();", driver.findElement(By.id("checkout"))); 
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
+	    PageLoad(driver); 
 
 	    // **  Login
 	    driver.findElement(By.id("j_username")).clear();

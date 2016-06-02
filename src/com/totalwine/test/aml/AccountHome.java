@@ -3,7 +3,7 @@ package com.totalwine.test.aml;
  ****  Account Home
  ****  Work flow : 
  *  Click on "Account" > "Sign into your account"  (from the header) or "Account info" > "Account login" in footer section 
- *  In the Sign in popup > Sign in using registered email and password.
+ *  In the Sign in popup > Signin using registered email and password.
  *  Member's Account Home page appear
  *  Click on the "Account home" link from the left navigation panel.  
  *  Verify Member number appear

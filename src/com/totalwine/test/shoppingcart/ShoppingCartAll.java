@@ -132,7 +132,7 @@ public class ShoppingCartAll extends Browser {
 	    //**Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
+//	    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
 	    
 	    //**Enter valid credentials for an account having an online and in-store order history
 	    driver.switchTo().frame("iframe-signin-overlay");

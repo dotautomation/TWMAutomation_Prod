@@ -85,8 +85,6 @@ public class PreferenceUpdates extends Browser {
         sAssert.assertEquals(driver.findElements(By.cssSelector("div.ahp-heading")).isEmpty(),false,"If Preferrence save confirmation does't display then the test will fail");
 	    
 	    //** Logout
-        driver.findElement(By.cssSelector(".analyticsHeaderLink[data-modal-id='loggedin-wrapper']")).click();
-	    driver.findElement(By.linkText("Log out")).click();
-//	    sAssert.assertAll();
+        Events.LogOut(driver);
 	}
 }

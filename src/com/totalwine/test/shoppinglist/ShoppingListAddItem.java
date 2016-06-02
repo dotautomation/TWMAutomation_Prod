@@ -43,6 +43,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.totalwine.test.actions.Events;
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
@@ -130,8 +131,6 @@ public class ShoppingListAddItem extends Browser {
 //	    Assert.assertEquals(driver.findElements(PageGlobal.TopNavAccount).isEmpty(),false);
 //	}
 
-	
-	
 	//Add item to existing shopping list
 	@Test
 	public void ShoppingListAddItemExistingTest () throws InterruptedException, BiffException, IOException {
@@ -183,11 +182,8 @@ public class ShoppingListAddItem extends Browser {
 	    driver.findElement(By.cssSelector("#frmDeleteProduct > div.send-list-btn > button.btn-red")).click();
 	    Thread.sleep(2000);
 	    
-	    //Validate Login and then Log out
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).isEmpty(),false);
-	    driver.findElement(By.cssSelector("div.parent-header-wrapper > div > ul > li:nth-child(3) > a")).click();
-	    driver.findElement(By.cssSelector("div.loggedin-wrapper > div.signinup-items > div > ul > li:nth-child(1) > a")).click();
-	    Thread.sleep(5000);
+    	 //** Logout
+	    Events.LogOut(driver);
 	    Assert.assertEquals(driver.findElements(PageGlobal.TopNavAccount).isEmpty(),false);
 	}
 }

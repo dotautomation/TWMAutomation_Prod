@@ -138,6 +138,7 @@ public class RegisteredIspCheckOutUsingNewAddress extends Browser {
 	    driver.findElement(By.id("zipCode")).sendKeys(Zip);
 	    driver.findElement(By.id("btnCOSave")).click();  	    
 	    Thread.sleep(3000);
+	    driver.findElement(By.cssSelector(".shippingaddress-option>span")).click();
 	    WebElement scroll7 = driver.findElement(By.cssSelector(".btn.btn-red.anContinue")); //  ** Scrolling down page
 	    scroll7.sendKeys(Keys.PAGE_DOWN);
 	    Thread.sleep(1000);

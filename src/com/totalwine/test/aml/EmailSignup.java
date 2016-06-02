@@ -25,18 +25,14 @@ package com.totalwine.test.aml;
  * 			Quit webdriver
  */
 
-
 import java.io.IOException;
 import java.util.Random;
-
 import jxl.read.biff.BiffException;
-
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
@@ -57,21 +53,17 @@ public class EmailSignup extends Browser {
 	@Test //(dataProvider = "EmailSignup") //Existing Email Address
 	public void EmailSignupTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Email Signup Test (using existing email address");
-		//String [] emailAddresses = {"automate1@totalwine.com","automate2@totalwine.com","automate3@totalwine.com","automate4@totalwine.com"};
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
-    	driver.findElement(By.cssSelector("span.footer-Email-text.analyticsJoinOurEmail")).click();
+    	driver.findElement(By.cssSelector(".join-email-btn.analyticsJoinOurEmail")).click();
     	Thread.sleep(2000);
     	driver.switchTo().frame(driver.findElement(By.id("iframe-signup-overlay")));
 	    driver.findElement(By.id("emailAnonomous")).clear();
-	    driver.findElement(By.id("emailAnonomous")).sendKeys("automate1@totalwine.com");
+	    driver.findElement(By.id("emailAnonomous")).sendKeys("mhossain@totalwine.com");
 	    driver.findElement(By.id("checkEmailAnonomous")).clear();
-	    driver.findElement(By.id("checkEmailAnonomous")).sendKeys("automate1@totalwine.com");
+	    driver.findElement(By.id("checkEmailAnonomous")).sendKeys("mhossain@totalwine.com");
 	    //driver.findElement(By.cssSelector("label")).click();
 	    driver.findElement(By.id("check_box_100")).click();
 	    driver.findElement(By.id("emailuserregister")).click();
-	    /*Actions action = new Actions(driver);
-	    //action.moveToElement(driver.findElement(By.id("emailuserregister"))).doubleClick().build().perform(); //Double-click
-	    action.moveToElement(driver.findElement(By.id("emailuserregister"))).click();*/
 	    Thread.sleep(3000);
 //	    Assert.assertEquals("The email provided matches an existing account. Please try again.", driver.findElement(By.cssSelector("div.email-container-signin > div.notice")).getText());
 	}
@@ -83,7 +75,7 @@ public class EmailSignup extends Browser {
 	    int randomNum = rand.nextInt((1000 - 1) + 1) + 1;
 	    int randomNum2 = rand.nextInt((1000 - 1) + 1) + 1;
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
-    	driver.findElement(By.cssSelector("span.footer-Email-text.analyticsJoinOurEmail")).click();
+    	driver.findElement(By.cssSelector(".join-email-btn.analyticsJoinOurEmail")).click();
     	Thread.sleep(2000);
     	driver.switchTo().frame(driver.findElement(By.id("iframe-signup-overlay")));
     	Thread.sleep(2000);

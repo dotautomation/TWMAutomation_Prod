@@ -55,10 +55,10 @@ public class ValidateLareOnElp extends Browser {
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false, "If Event title not appear then test will fail");
 
 	    // **  Changing Store location
-	 	driver.findElement(PageChangingStore.YourStore).click();
-	    Thread.sleep(5000);
-	    driver.findElement(PageChangingStore.ChangeLocation).click();
-	    Thread.sleep(5000);
+//	 	driver.findElement(PageChangingStore.YourStore).click();
+//	    Thread.sleep(5000);
+//	    driver.findElement(PageChangingStore.ChangeLocation).click();
+//	    Thread.sleep(5000);
 	 	driver.findElement(PageChangingStore.ChooseShipingDistinationTab).click();
 	    Thread.sleep(3000);
 	 	driver.findElement(PageChangingStore.ClickingDropDown).click();
@@ -71,16 +71,16 @@ public class ValidateLareOnElp extends Browser {
 	    Thread.sleep(7000);
 
 		//** Clicking on the Classes & Events
-	    driver.findElement(By.cssSelector("div.parent-header-wrapper > div > nav > ul > li:nth-child(6) > a")).click();
+	    driver.findElement(By.cssSelector(".event-url.analyticsHeaderLink.analyticsHeaderLink")).click();
 	    Thread.sleep(3000);
 
-	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(2) > a")).click();
+	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(17)")).click();
 	    Thread.sleep(3000);
 	    
-	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(2) > ul > div > div > li:nth-child(1) > a")).click();
+	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(17) > ul > div > div > li:nth-child(8)")).click();
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false, "If Event title not appear then test will fail");
 	    logger.log(LogStatus.PASS, "Validated LARE on ELP");
-	    Thread.sleep(3000);
+	    Thread.sleep(4000);
 //	    sAssert.assertAll();
 	}
 }

@@ -46,7 +46,7 @@ public class LeftNavigation extends Browser {
 		js.executeScript("arguments[0].click();", toplevelnav); //Click on Wine to display CLP
 		Thread.sleep(5000);
 		
-		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
+//		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		String viewMoreLink = "li:nth-child(2) > div > ul > li.show-more.nav-links > a > span";
@@ -73,7 +73,7 @@ public class LeftNavigation extends Browser {
 		js.executeScript("arguments[0].click();", toplevelnav);
 		Thread.sleep(5000);
 		
-		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
+//		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String beerclplink : beerclplinks) {
@@ -98,7 +98,7 @@ public class LeftNavigation extends Browser {
 		js.executeScript("arguments[0].click();", toplevelnav);
 		Thread.sleep(5000);
 		
-		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
+//		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
 		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String spiritsclplink : spiritsclplinks) {

@@ -76,7 +76,7 @@ public class MobileWebRegistration extends Browser {
 	    	String email = driver.findElement(By.id("email")).getAttribute("value");
 	    	System.out.println("Registered Email Address: "+email);
 	    driver.findElement(By.id("pwd")).clear();
-	    driver.findElement(By.id("pwd")).sendKeys("grapes123!");
+	    driver.findElement(By.id("pwd")).sendKeys("grapes123");
 	    driver.findElement(By.id("phone")).sendKeys("3015470004");
 	    driver.findElement(By.cssSelector("#storeState")).click();
 	    Thread.sleep(3000);

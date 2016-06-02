@@ -51,11 +51,12 @@ public class SLPages extends Browser {
 		logger=report.startTest("Charity/Donations Page Test");
 		AccessStoreLocator();
 		//Access footer
-		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
-		Thread.sleep(2000);
+//		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
+//		Thread.sleep(2000);
 		
 		//Access Corporate Philantropy page
-		driver.findElement(By.cssSelector("a[href*=\"/about-us/corporate-philanthropy\"]")).click(); //Corporate Philantropy
+//		driver.findElement(By.cssSelector("a[href*=\"/about-us/corporate-philanthropy\"]")).click(); //Corporate Philanthropy
+		driver.findElement(By.cssSelector("div.footer-wrapper > div > div.footer-second-cont > div:nth-child(1) > ul > li:nth-child(3) > a")).click(); //Corporate Philanthropy
 		Thread.sleep(3000);
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a[href*=\"donation-requests\"]")));
@@ -69,11 +70,12 @@ public class SLPages extends Browser {
 		logger=report.startTest("Careers Page Test");
 		AccessStoreLocator();
 		//Access footer
-		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
-		Thread.sleep(2000);
+//		driver.findElement(By.cssSelector("ul.footer-tabs > li:nth-child(1)")).click(); //About Us
+//		Thread.sleep(2000);
 		
 		//Access Careers page
-		driver.findElement(By.cssSelector("a[href*=\"/about-us/careers\"]")).click(); //Careers
+//		driver.findElement(By.cssSelector("a[href*=\"/about-us/careers\"]")).click(); //Careers
+		driver.findElement(By.cssSelector("div.footer-wrapper > div > div.footer-second-cont > div:nth-child(1) > ul > li:nth-child(6) > a")).click(); //Careers
 		Thread.sleep(3000);
 		int tileCount = driver.findElements(By.cssSelector("section.yCmsComponent > section.yCmsComponent.lister-component")).size();
 		

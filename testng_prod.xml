@@ -7,7 +7,7 @@
 	<parameter name="browser" value="ios">
 	</parameter>
     <classes>
-<!-- <class name="com.totalwine.test.review.CustomerReview"/>-->
+<!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> -->
 <!-- <class name="com.totalwine.test.events.AddMultiEventsDifferentStoreToCart"/>-->
 <!-- <class name="com.totalwine.test.events.AddMultiEventsSameStoreToCart"/> -->
 
@@ -20,7 +20,7 @@
 <!-- <class name="com.totalwine.test.events.BrowseEvent"/> -->
 <!-- <class name="com.totalwine.test.pricingpromos.Pricing"/>-->
 
-<class name="com.totalwine.test.performance.PageLoadTime" />
+<class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/>
 
     </classes>
   </test>
