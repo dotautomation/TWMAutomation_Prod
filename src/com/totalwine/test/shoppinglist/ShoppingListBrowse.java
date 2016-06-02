@@ -22,11 +22,10 @@ package com.totalwine.test.shoppinglist;
 
 import java.io.File;
 import java.io.IOException;
-
 import jxl.read.biff.BiffException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -35,7 +34,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
@@ -43,14 +41,9 @@ import com.totalwine.test.trials.Browser;
 public class ShoppingListBrowse extends Browser {
 	
 	public String IP = "71.193.51.0";
-	//public WebDriver driver;
-	//ProfilesIni profile = new ProfilesIni();
-	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 
 	@BeforeMethod
 	public void setUp() throws Exception {
-		//this.driver = ConfigurationFunctions.driver;
-		//driver = new FirefoxDriver(testProfile);
 		driver.manage().window().maximize();
 	  } 
 
@@ -60,7 +53,7 @@ public class ShoppingListBrowse extends Browser {
 		SiteAccess.ActionAccessSite(driver, IP);
 	    
 	    driver.findElement(By.linkText("Shopping List")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(7000);
 
 	    //Login to retrieve Shopping List
 	    driver.switchTo().frame(0);
@@ -71,17 +64,14 @@ public class ShoppingListBrowse extends Browser {
 	    driver.findElement(By.id("j_password")).clear();
 	    driver.findElement(By.id("j_password")).sendKeys("grapes123");
 	    driver.findElement(By.xpath("//button[@type='button']")).click();
-	    //driver.findElement(By.cssSelector("html")).click();
-	    Thread.sleep(6000);
+	    Thread.sleep(7000);
 
-	  //Check for the merge cart modal
+	    //Check for the merge cart modal
 	    if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0)
 	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
-	    Thread.sleep(2000);
+	    Thread.sleep(3000);
 	    
 	    //Verify Page Elements on Shopping List 
-        //WebElement webelement1= driver.switchTo().activeElement();
-	    //webelement1.click();
 	    
 	    //Check for survey popup
 	    if (driver.findElements(By.xpath("//img[contains(@src,'https://qdistribution.qualtrics.com/WRQualtricsShared/Graphics//black_popup_x.png')]")).size()!=0)
@@ -103,8 +93,10 @@ public class ShoppingListBrowse extends Browser {
 	    
 	    //Validate Login and then Log out
 	    Assert.assertEquals(driver.findElements(By.linkText("Welcome, Md")).isEmpty(),false);
-	    driver.findElement(By.linkText("Welcome, Md")).click();
-	    driver.findElement(By.linkText("Log out")).click();
+	    driver.findElement(By.cssSelector(".fluid-sign-in-logo.fluid-icons")).click();
+	    
+	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector(".analyticsHeaderLink[href='http://uat.totalwine.com/logout']")));        
 	    Thread.sleep(5000);
 	    Assert.assertEquals(driver.findElements(By.linkText("Sign In/Register")).isEmpty(),false);
 	}

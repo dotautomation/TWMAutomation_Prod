@@ -139,14 +139,14 @@ public void MobileISPGuestCheckoutTest () throws InterruptedException {
     Thread.sleep(10000);
     
     // Checkout Tab 3
-//    Assert.assertEquals(driver.findElements(By.cssSelector("a.review-tab")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("li[class=\"co-rvw co-rvw-instore\"]")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("li[class=\"co-rvw co-rvw-pymnt\"]")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("li.co-rvw.co-rvw-billing")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_1\"]")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
-//    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("a.review-tab")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("li[class=\"co-rvw co-rvw-instore\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("li[class=\"co-rvw co-rvw-pymnt\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("li.co-rvw.co-rvw-billing")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_1\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("span[data-attr=\"itemPrice_2\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total anTax\"]")).isEmpty(),false);
+    Assert.assertEquals(driver.findElements(By.cssSelector("span[class=\"price-text item-total co-pr-item-total\"]")).isEmpty(),false);
     
     driver.findElement(By.id("check_box_age")).click();
     driver.findElement(By.cssSelector("button.btn-red.btn-place-order.anPlaceOrder")).click();

@@ -17,7 +17,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import com.totalwine.test.actions.Events;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.pages.PageSignInModal;
@@ -43,7 +42,6 @@ public class PageLoadTime /*extends Browser*/ {
 		String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())+".csv";
 		File logFile=new File(timeLog);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(logFile));
-		//writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Checkout Tab 1,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
 		writer.write("Initial page with Age Gate,Homepage,Wine Category Landing,Wine SubCat Landing,Wine PLP,Wine PDP,Login,Add to Cart,Shopping Cart,Change Store Modal,Change Store,Spirits Cat Land,Spirits SubCat Land,Spirits PLP,Spirits PDP,Beer Cat Land,Beer SubCat Land,Beer PLP,Beer PDP,Timestamp");
 		writer.newLine();
 		do {
@@ -57,7 +55,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				long start = System.currentTimeMillis();
 				//Initial Load
-				driver.get("http://www.totalwine.com/?remoteTestIPAddress=98.169.134.0");
+				driver.get("http://uat.totalwine.com/?remoteTestIPAddress=98.169.134.0");
 				long finish = System.currentTimeMillis();
 				long totalTime = finish-start;
 				//catch500(count500);
@@ -77,7 +75,7 @@ public class PageLoadTime /*extends Browser*/ {
 
 			    //Homepage
 			    start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com");
+			    driver.get("http://uat.totalwine.com");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
@@ -89,31 +87,29 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Wine CatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/wine/c/c0020");
+			    driver.get("http://uat.totalwine.com/wine/c/c0020");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
 				System.out.println("Wine Category Landing,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Wine SubCatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/wine/champagne-sparkling-wine/c/000005");
+			    driver.get("http://uat.totalwine.com/wine/champagne-sparkling-wine/c/000005");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
 				System.out.println("Wine SubCat Landing,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 				
 				//Wine PLP
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/wine/champagne-sparkling-wine/c/000005?viewall=true");
+			    driver.get("http://uat.totalwine.com/wine/champagne-sparkling-wine/c/000005?viewall=true");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
@@ -124,21 +120,19 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Wine PDP
 				start = System.currentTimeMillis();
-			    //driver.get("http://www.totalwine.com/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
-			    driver.get("http://www.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
+			    //driver.get("http://uat.totalwine.com/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750");
+			    driver.get("http://uat.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
 				System.out.println("Wine PDP,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				
 				Thread.sleep(2000);
 
 			    //Access the sign in modal
 			    driver.findElement(PageGlobal.TopNavAccount).click();
 			    Thread.sleep(2000);
-			    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
 			    
 			    //Enter valid credentials for an account having an online and in-store order history
 			    driver.switchTo().frame("iframe-signin-overlay");
@@ -147,8 +141,7 @@ public class PageLoadTime /*extends Browser*/ {
 			    driver.findElement(PageSignInModal.ModalPassword).clear();
 			    driver.findElement(PageSignInModal.ModalPassword).sendKeys("grapes123");
 				start = System.currentTimeMillis();
-//			    driver.findElement(PageSignInModal.ModalSigninButton).click();
-				driver.findElement(By.xpath("//button[@type='button']")).click();
+			    driver.findElement(PageSignInModal.ModalSigninButton).click();
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
@@ -164,7 +157,7 @@ public class PageLoadTime /*extends Browser*/ {
 				}
 
 				//ATC
-			    driver.get("http://www.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
+			    driver.get("http://uat.totalwine.com/wine/red-wine/cabernet-sauvignon/radius-cabernet/p/109682750");
 			    Thread.sleep(2000);
 			    String productId = driver.findElement(By.cssSelector("div.anProductId")).getText();
 				Thread.sleep(1000);
@@ -179,14 +172,14 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Cart Access
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/cart");
+			    driver.get("http://uat.totalwine.com/cart");
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
 				//catch500(count500);
 				System.out.println("Shopping Cart,"+totalTime);
 				s = Objects.toString(totalTime, null);
 				writer.write(s+",");
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 				/* Commenting due to script issue
 				//Checkout Tab 1
 				String ISPOption="StandardPickup24Hr";
@@ -216,10 +209,10 @@ public class PageLoadTime /*extends Browser*/ {
 				*/
 				
 				//Change Store Modal
-				driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).click();
+				driver.findElement(By.cssSelector("div.parent-header-wrapper > div > nav > ul > li.header-chg-loc.nav-li.toggle-cont > a")).click();
 				Thread.sleep(5000);
 				start = System.currentTimeMillis();
-				driver.findElement(By.cssSelector("a.header-change-location")).click();
+				driver.findElement(By.cssSelector("#changeLocation > div > div > div > div > div > div.store-filter-wrapper > ul > li:nth-child(1) > a")).click();
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -246,7 +239,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Spirits CatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/spirits/c/c0030");
+			    driver.get("http://uat.totalwine.com/spirits/c/c0030");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -258,7 +251,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Spirits SubCatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/spirits/scotch/c/000885");
+			    driver.get("http://uat.totalwine.com/spirits/scotch/c/000885");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -270,7 +263,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Spirits PLP
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/spirits/scotch/c/000885?viewall=true");
+			    driver.get("http://uat.totalwine.com/spirits/scotch/c/000885?viewall=true");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -282,7 +275,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Sprits PDP
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/spirits/scotch/blended-scotch/johnnie-walker-black/p/636175");
+			    driver.get("http://uat.totalwine.com/spirits/scotch/blended-scotch/johnnie-walker-black/p/636175");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -294,7 +287,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Beer CatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/beer/c/c0010");
+			    driver.get("http://uat.totalwine.com/beer/c/c0010");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -305,7 +298,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Beer SubCatLand
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/beer/big-breweries/c/41513");
+			    driver.get("http://uat.totalwine.com/beer/big-breweries/c/41513");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -317,7 +310,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Beer PLP
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/beer/big-breweries/c/41513?viewall=true");
+			    driver.get("http://uat.totalwine.com/beer/big-breweries/c/41513?viewall=true");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 
@@ -328,7 +321,7 @@ public class PageLoadTime /*extends Browser*/ {
 				
 				//Beer PDP
 				start = System.currentTimeMillis();
-			    driver.get("http://www.totalwine.com/beer/lager/light-lager/coors-light/p/3283124");
+			    driver.get("http://uat.totalwine.com/beer/lager/light-lager/coors-light/p/3283124");
 				//element = driver.findElement(By.cssSelector("div.carousel-indicators-wrapper"));
 				finish = System.currentTimeMillis();
 				totalTime = finish-start; 

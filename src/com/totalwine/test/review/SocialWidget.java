@@ -20,6 +20,9 @@ package com.totalwine.test.review;
  */
 
 import java.io.IOException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -48,10 +51,11 @@ public class SocialWidget extends Browser {
 		//** By Passing Age Gate and Welcome Modal
 		Checkout.AgeGateWelcome(driver);
 		PageLoad(driver); // Will not trigger the next control until loading the page
-		Thread.sleep(7000);
-	    
-		driver.findElement(PageGlobal.CustomerService).click();
-		PageLoad(driver); // Will not trigger the next control until loading the page
+		Thread.sleep(2000);
+
+		WebElement element = driver.findElement(By.cssSelector(".secure-icon>img"));  
+		new Actions(driver).moveToElement(element).perform();  
+//		element.click();
 
 //		driver.findElement(PageGlobal.FB).click();
 		Assert.assertEquals(driver.findElements(PageGlobal.FB).isEmpty(),false, "If social widget link doesn't exist then test will fail");
@@ -80,5 +84,6 @@ public class SocialWidget extends Browser {
 //		driver.findElement(PageGlobal.Blog).click();
 		Assert.assertEquals(driver.findElements(PageGlobal.Blog).isEmpty(),false, "If social widget link doesn't exist then test will fail");
 		logger.log(LogStatus.PASS, "Validating Social Widget");
+		Thread.sleep(3000);
 	 }
 }

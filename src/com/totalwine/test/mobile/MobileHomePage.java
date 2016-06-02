@@ -59,7 +59,7 @@ public class MobileHomePage extends Browser {
 		Assert.assertEquals(driver.findElements(By.cssSelector(".info-red-box")).isEmpty(),false);
 
 		//Validate URL for responsibility.org
-		Thread.sleep(10000);
+		Thread.sleep(13000);
 		String url = driver.getCurrentUrl();
 		System.out.println(url);
 		Assert.assertEquals(url, "http://responsibility.org/");

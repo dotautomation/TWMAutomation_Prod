@@ -22,6 +22,7 @@ package com.totalwine.test.backoffice;
  */
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,16 +31,23 @@ import org.testng.annotations.BeforeMethod;
 
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
+import com.totalwine.test.trials.ParallelBrowser;
 
-public class C3Validation extends Browser {
+public class C3Validation extends ParallelBrowser {
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
 	    driver.manage().window().maximize();
 	  }  
 	
-	@Test
-	public void C3LoginTest () throws InterruptedException {
+	@DataProvider(name="CSParameters")
+    public Object[][] createData() {
+    	Object[][] retObjArr=ConfigurationFunctions.getTableArray(ConfigurationFunctions.resourcePath,"CS", "CSParameters");
+        return(retObjArr);
+    } 
+	
+	@Test (invocationCount=5,dataProvider = "CSParameters")
+	public void C3LoginTest (String customer,String order) throws InterruptedException {
 		logger=report.startTest("CS Cockpit Login Test");
 		driver.get(ConfigurationFunctions.backofficeURL+"/cscockpit");
 		Thread.sleep(5000);
@@ -59,9 +67,9 @@ public class C3Validation extends Browser {
 		driver.findElement(By.linkText("Find Customer")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).clear();
-		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys("Rajat");
-		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).clear();
-		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).sendKeys("Sud");
+		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys(customer);
+		//driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).clear();
+		//driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[2]")).sendKeys("Sud");
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
 		Thread.sleep(2000);
 		while (driver.findElements(By.cssSelector("div.z-loading-indicator")).size()!=0)
@@ -81,7 +89,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.linkText("Find Order")).click();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).clear();
-		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys("28122029");
+		driver.findElement(By.xpath("//div[contains(@class, 'csSearchPane')]/input[1]")).sendKeys(order);
 		driver.findElement(By.xpath("//td[text()[contains(.,'Search')]]")).click();
 		Thread.sleep(2000);
 		while (driver.findElements(By.cssSelector("div.z-loading-indicator")).size()!=0)
@@ -90,7 +98,8 @@ public class C3Validation extends Browser {
 		
 		//Validate Order search results
 		Assert.assertEquals(driver.findElements(By.xpath("//div[text()[contains(.,'Cancelled')]]")).isEmpty(), false);
-		driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
+		//driver.findElement(By.xpath("//td[text()[contains(.,'Select')]]")).click();
+		driver.findElement(By.xpath("//td[contains(@class, 'z-button-cm') and text() = 'Select']")).click();
 		Thread.sleep(3000);
 		//Handling Active Customer popup (new with 3/9/2016 hotfix)
 		driver.findElement(By.xpath("//td[text()[contains(.,'Yes')]]")).click();
@@ -112,7 +121,7 @@ public class C3Validation extends Browser {
 		driver.findElement(By.cssSelector("input[name=j_username]")).clear();
 		driver.findElement(By.cssSelector("input[name=j_username]")).sendKeys("rsud");;
 		driver.findElement(By.cssSelector("input[name=j_password]")).clear();
-		driver.findElement(By.cssSelector("input[name=j_password]")).sendKeys("yoyo55");
+		driver.findElement(By.cssSelector("input[name=j_password]")).sendKeys(ConfigurationFunctions.TESTPWD);
 		driver.findElement(By.cssSelector("td.z-button-cm")).click();
 		//Thread.sleep(10000);
 		new WebDriverWait(driver, 50).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Find Customer")));

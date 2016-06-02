@@ -58,7 +58,7 @@ public class GoodBadPassword extends Browser {
 	    //Access the sign in modal
 	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
+//	    driver.findElement(By.cssSelector("a.btn.btn-red.acc-link.analyticsSignIn")).click();
 	    
 	    //Enter the email/password combination
 	    driver.switchTo().frame("iframe-signin-overlay");

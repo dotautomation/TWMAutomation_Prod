@@ -92,10 +92,13 @@ public class Filter extends Browser {
 		action.moveToElement(wineMove1).build().perform(); 
 	    WebElement scroll_Price = driver.findElement(By.linkText("Price Range"));
 	 	scroll_Price.sendKeys(Keys.ARROW_DOWN);
-	 	driver.findElement(By.xpath("//a[contains(text(),'Price')]")).click();
-	 	
-	    JavascriptExecutor js3 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
-	    js3.executeScript("arguments[0].click();", driver.findElement(By.id("check_box_showmoreUp to $10plppricevalue")));  
+	 	Thread.sleep(5000);
+
+	    JavascriptExecutor js7 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js7.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("section.wrapper > section.plp-leftnav-wrapper > aside > section > ul > li:nth-child(11) > a > em")));  
+	    Thread.sleep(3000);	
+	    JavascriptExecutor js4 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+	    js4.executeScript("arguments[0].click();", driver.findElement(By.id("check_box_showmoreUp to $10plppricevalue")));  
 	    Thread.sleep(3000);
 	    facetValue = driver.findElement(By.cssSelector("span.filter-value")).getText();
 	    String priceValue = driver.findElement(By.cssSelector("span.price")).getText();

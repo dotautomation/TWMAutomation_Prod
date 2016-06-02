@@ -4,10 +4,12 @@ package com.totalwine.test.aml;
  *  New User Registration using random credentials or credential from DB 
  *  Work flow : 
  *  1. Click on Sign In / Register link on the header
- *  2. Click on Register button
- *  3. Fill up all the required information in  "Create your account" page
+ *  2. Click on Need to create an account? "Start here" button
+ *  3. Fill up all the required information in  "Your TotalWine.com account" page
  *  5. Click on the Register button
- *  6. Verify welcome message displays after account creation. 
+ *  6. Fillup form in "Tell us about yourself" page
+ *  7. Click on "Save" button 
+ *  8. Verify welcome message displays after account creation. 
 
  * Technical Modules:
  * 	1. DataProvider: Checkout test input parameters
@@ -56,7 +58,7 @@ public class WebAccountRegistration extends Browser {
 			String LastName,String Company,String Address1,String Address2,String City,String State,String Zip,String Email,String Password,
 			String Phone,String CreditCard,String ExpirationMonth,String ExpirationYear,String CVV)
 					
-					throws InterruptedException, BiffException, IOException {
+						throws InterruptedException, BiffException, IOException {
 		
 		logger=report.startTest("New User Registration using random credentials or credential from DB");
 		
@@ -74,32 +76,33 @@ public class WebAccountRegistration extends Browser {
 		
 	    // ** Checking for survey pop-up
 	    Checkout.SurverPopup(driver);
+	    
+	    
 	    driver.findElement(PageGlobal.TopNavAccount).click();
 	    Thread.sleep(2000);
+	    driver.switchTo().frame(driver.findElement(By.id("iframe-signin-overlay")));
 	    driver.findElement(PageGlobal.SignUp).click();
 	    Thread.sleep(2000);
 	
-	 // ** Filling up "Create your account" page
+	    // ** Filling up "Create your account" page
 	    driver.findElement(By.cssSelector("#firstName")).sendKeys(FirstName);
 	    driver.findElement(By.cssSelector("#lastName")).sendKeys(LastName);
 	    Thread.sleep(2000);
 
 	    // *** Register Email from DB
 //	    driver.findElement(By.cssSelector("#email")).sendKeys(Email);
-//	    driver.findElement(By.cssSelector("#checkEmail")).sendKeys(Email);
 	    
 	    // *** Register Random Email
 	    driver.findElement(By.cssSelector("#email")).sendKeys("autoemail_"+randomNum+"."+randomNum_2+"@totalwine.com");
     	String email = driver.findElement(By.cssSelector("#email")).getAttribute("value");
     	System.out.println("Registered Email Address: "+email);
+    	
 	    driver.findElement(By.cssSelector("#pwd")).sendKeys(Password);
 	    driver.findElement(By.cssSelector("#phone")).sendKeys(Phone);
 	    Thread.sleep(2000);
-	    WebElement scroll2 = driver.findElement(By.cssSelector("#btnnuregisteration"));  
-	    scroll2.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
-	    driver.findElement(By.cssSelector("div.dropdown.inst-state > div > span > span")).click();
+	    driver.findElement(By.cssSelector("#shipToStateDropdown > div > div.dropdown.inst-state > div > span > i")).click();
 	    Thread.sleep(4000);
-	    WebElement element7 = driver.findElement(By.cssSelector(".undefined.undefined.anOption.js-hover-li[data-val='US-VA']"));  
+	    WebElement element7 = driver.findElement(By.cssSelector(".undefined.undefined.anOption[data-val='US-VA']"));  
 	    new Actions(driver).moveToElement(element7).perform();
 	    Thread.sleep(2000);
 	    element7.click();
@@ -115,14 +118,19 @@ public class WebAccountRegistration extends Browser {
 	    driver.findElement(By.cssSelector("#checkbox3")).click();
 	    Thread.sleep(2000);
 	    driver.findElement(By.cssSelector("#btnnuregisteration")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 
-	    // Filling "Tell us about yourself" page
+	    // Filling "Let's complete your Total Discovery profile" page
+	    
 	    driver.findElement(By.cssSelector("#address1")).sendKeys(Address1);
 	    driver.findElement(By.cssSelector("#address2")).sendKeys(Address2);
 	    WebElement scroll = driver.findElement(By.cssSelector("#city"));  
 	    scroll.sendKeys(Keys.PAGE_DOWN); //  ** Scrolling down page
 	    Thread.sleep(1000);
+	    
+	    // ** Checking for survey pop-up
+	    Checkout.SurverPopup(driver);
+	    
 	    driver.findElement(By.cssSelector("#city")).sendKeys(City);
 	    driver.findElement(By.cssSelector("div.labelHolder.state-drop > div > div > span > span")).click();
 	    Thread.sleep(7000);
@@ -142,8 +150,6 @@ public class WebAccountRegistration extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector(".ahp-heading")).isEmpty(),false, "If Account home doesn't shows up then test will fail");
 		}
 	}
-
-
 
 //package com.totalwine.test.aml;
 //

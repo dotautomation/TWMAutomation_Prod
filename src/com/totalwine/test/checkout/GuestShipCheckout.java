@@ -29,7 +29,6 @@ package com.totalwine.test.checkout;
  */
 
 import java.io.IOException;
-import org.testng.Assert;
 import jxl.read.biff.BiffException;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
@@ -62,37 +61,47 @@ public class GuestShipCheckout extends Browser {
 		logger=report.startTest("Guest Ship Checkout");
 		
 		driver.get(ConfigurationFunctions.locationSet+Location);
-		Thread.sleep(5000);
+		PageLoad(driver); // Will not trigger the next control until loading the page
 		
 		//** By Passing Age Gate and Welcome Modal
 		Checkout.AgeGateWelcome(driver);
-    
+		PageLoad(driver); // Will not trigger the next control until loading the page
+		
 	    // **  Selecting a product from PDP
 		driver.get(ConfigurationFunctions.accessURL+PDP);
-		Thread.sleep(3000);
-		
-		// **  Add to Cart	
+		Thread.sleep(7000);
+		PageLoad(driver); // Will not trigger the next control until loading the page
+				
+		// **  Adding item to Cart
 		ShoppingCart.ATC(driver);
-		driver.get(ConfigurationFunctions.accessURL+"/cart");
-	    Thread.sleep(3000);
+		Thread.sleep(3000);
+	    driver.get(ConfigurationFunctions.accessURL+"/cart");
+	    Thread.sleep(7000);
+	    PageLoad(driver); // Will not trigger the next control until loading the page
 
 	    //  ** Shopping Cart
 	    JavascriptExecutor js = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 	    js.executeScript("arguments[0].click();", driver.findElement(By.id("zipCode")));  
 	    driver.findElement(By.id("zipCode")).clear();
 	    driver.findElement(By.id("zipCode")).sendKeys(Zip);
+	    PageLoad(driver); 
 	    driver.findElement(By.cssSelector("input.anZipForm")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(9000);
+	    PageLoad(driver); 
 	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
+	    Thread.sleep(7000);
 	    driver.findElement(By.cssSelector("li[data-val="+ShipOption+"]")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(7000);
 	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 	    js1.executeScript("arguments[0].click();", driver.findElement(By.id("checkout"))); 
-	    Thread.sleep(3000);
-
+	    Thread.sleep(5000);
+	    PageLoad(driver); 
+  
 	    //  **  Next Page (Login/Checkout as Guest)
-	    driver.findElement(By.cssSelector("#checkoutGuestForm > div.button-container > button.btn.btn-red")).click();
+	    JavascriptExecutor js3 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
+	    js3.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("#checkoutGuestForm > div.button-container > button.btn.btn-red")));     
 	    Thread.sleep(3000);
+	    PageLoad(driver); 
 
 	    // **  Checkout Tab 1
 	    driver.findElement(By.id("firstName")).clear();

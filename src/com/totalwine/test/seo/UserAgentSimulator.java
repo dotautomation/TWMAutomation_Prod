@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,7 +21,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
 
@@ -47,7 +45,8 @@ public class UserAgentSimulator extends Browser{
 	@Test (dataProvider = "BotsParameters")
 	public void UserAgentValidation (String userAgent) throws InterruptedException, IOException {
 		logger=report.startTest("Google/Bing Bots Test");
-		File file = new File("C:/totalwine/Library/chromedriver.exe");
+//		File file = new File("C:/totalwine/Library/chromedriver.exe");
+		File file = new File("C:/twmautomation/lib/lib/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		Map<String, String> mobileEmulation = new HashMap<String, String>();
 		mobileEmulation.put("userAgent", userAgent);

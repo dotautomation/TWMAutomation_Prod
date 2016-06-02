@@ -42,6 +42,8 @@
 			<!-- shoppingcart -->
 			<class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/>
 			
+			<!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> -->
+			
 </classes>
 </test>
 <!-- End of Desktop -->

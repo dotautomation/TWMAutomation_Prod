@@ -13,7 +13,7 @@ public class PageProductList {
 	public static final By SortDropdown = By.cssSelector("div.plp-product-sorting-sortby-dropdown > div > span.itemval");
 	public static final By PLPHero = By.cssSelector("div.plp-opt-hero"); //Hero component
 	public static final By PLPATY = By.cssSelector("a#plp-aty-tab"); //ATY
-	public static final By PLPAllStores = By.cssSelector("a#plp-productfull-tabs"); //All stores
+	public static final By PLPAllStores = By.cssSelector("#plp-productfull-tabs"); //All stores
 	public static final By ATYISP = By.cssSelector("a[href*=\"tab=aty_isp\"]"); //ATY > ISP
 	public static final By ATYShip = By.cssSelector("a[href*=\"tab=aty_shipping\"]"); //ATY > Ship
 	public static final By ATYBoth = By.cssSelector("a[href*=\"tab=aty_both\"]"); //ATY > Both

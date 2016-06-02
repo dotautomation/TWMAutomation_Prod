@@ -38,7 +38,7 @@ import com.totalwine.test.actions.*;
 public class BrowseSoldOutEvent extends Browser {
 	
 	public String IP = "72.66.119.61";
-	public String Event = "/events/may-2016/virginia/mclean?storestatename=214,203,202,201,205";
+	public String Event = "/events/jul-2016/virginia/mclean?storestatename=214,203,202,201,205";
 
 	@BeforeMethod
 	public void setUp() throws Exception {

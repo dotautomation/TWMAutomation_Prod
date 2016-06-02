@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 	
 	
 public class PageSignInModal {
-	public static final By ModalUsername = By.id("j_username");
-	public static final By ModalPassword = By.id("j_password");
-	public static final By ModalSigninButton = By.xpath("//button[@type='button']");
-	
+	public static final By ModalUsername = By.cssSelector("#j_username");
+	public static final By ModalPassword = By.cssSelector("#j_password");
+	public static final By ModalSigninButton = By.cssSelector(".btn.btn-red.anLoginSubmit");
 }

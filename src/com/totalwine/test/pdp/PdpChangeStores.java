@@ -82,12 +82,12 @@ public class PdpChangeStores extends Browser {
 	 	Thread.sleep (3000);
 	 	driver.get(ConfigurationFunctions.accessURL+"/cart");
 	 	Thread.sleep(3000);
-	 	driver.findElement(By.cssSelector("div.search-right-cont-add-to-cart.analyticsViewCart")).click();
+	 	driver.findElement(By.cssSelector(".fluid-icons.fluid-add-to-cart-bg.analyticsViewCart")).click();
 	    Thread.sleep(3000);
 	    
 	    // **  Changing Store location
-	 	driver.findElement(PageChangingStore.YourStore).click();
-	    Thread.sleep(5000);
+//	 	driver.findElement(PageChangingStore.YourStore).click();
+//	    Thread.sleep(5000);
 	    driver.findElement(PageChangingStore.ChangeLocation).click();
 	    Thread.sleep(5000);
 	 	driver.findElement(PageChangingStore.FindStoreTab).click();

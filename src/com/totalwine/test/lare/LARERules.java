@@ -47,15 +47,15 @@ public class LARERules extends Browser {
 		//Action: User accesses site and changes store via global store selector
 		//Validation: Customer is shopping only in the globally selected store (store is 0.0 miles away in the Store Selector)
 		connect(IP);
-		driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).click();
+		driver.findElement(By.cssSelector(".fluid-store-finder-logo.fluid-icons")).click();
 		Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("div.header-location-nearby-stores.flyover > div.location-near-by-store-locator > table > tbody > tr > td > a.header-change-location")).click();
+//	    driver.findElement(By.cssSelector("div.header-location-nearby-stores.flyover > div.location-near-by-store-locator > table > tbody > tr > td > a.header-change-location")).click();
+//	    Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("#storelocator-query")).clear();
+	    driver.findElement(By.cssSelector("#storelocator-query")).sendKeys("21224");
+	    driver.findElement(By.cssSelector("#storeFinderBtn")).click();
 	    Thread.sleep(2000);
-	    driver.findElement(By.id("newStoreSearch_box")).clear();
-	    driver.findElement(By.id("newStoreSearch_box")).sendKeys("21224");
-	    driver.findElement(By.cssSelector("button.btn-red.btn.store-finder")).click();
-	    Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("button#changeStoreBtn")).click();
+	    driver.findElement(By.cssSelector("#shopThisStore")).click();
 	    Thread.sleep(5000);
 	    sAssert.assertEquals(driver.findElement(By.cssSelector("span.store-details-store-name.flyover-src")).getText(),"Towson (Beltway), MD","The site session wasn't correctly displayed");
 	    Actions action=new Actions(driver);

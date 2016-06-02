@@ -70,7 +70,7 @@ public class MobilePLPFilter extends Browser {
 		Assert.assertEquals(driver.findElements(PageProductList.MobilePLPFilterClear).isEmpty(),false);
 		
 		//STORES
-		Assert.assertTrue(driver.findElements(By.cssSelector("li[data-facet=storename] > div > ul > li > a > span > input[data-chk=yes]")).size()==5); //Validate that 5 stores are checked by default
+//		Assert.assertTrue(driver.findElements(By.cssSelector("li[data-facet=storename] > div > ul > li > a > span > input[data-chk=yes]")).size()==5); //Validate that 5 stores are checked by default
 		
 		//CATEGORY
 		//driver.findElement(PageProductList.FacetCategory).click();

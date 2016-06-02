@@ -91,7 +91,7 @@ public class PDPTabs extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("button.anAddToListInit")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div#overview-qty")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("#pdpTabs > section.item.pdp-tab-overview > section.pdp-tab-overview-type > #variantForm > #overview-mililitres > div.customselect > span.itemval")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span.pdp-tabs-ind-left")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("span.pdp-tabs-ind-left")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("img.anPDPImage.active")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.breadcrumbs")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span.tabs-right.anPDPTab")).isEmpty(),false);
@@ -107,9 +107,9 @@ public class PDPTabs extends Browser {
 	    
 	    //Tab 3 - BazaarVoice
 //	    Assert.assertEquals(driver.findElements(By.cssSelector("div.BVDITitle.BVDI_QTTitle")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVImgOrSprite")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVRRTrustMarkOverlayImage")).isEmpty(), false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div#BVRRRatingSummaryLinkWriteID")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVImgOrSprite")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("img.BVRRTrustMarkOverlayImage")).isEmpty(), false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("div#BVRRRatingSummaryLinkWriteID")).isEmpty(),false);
 	    
 	    
 	    //Commenting since RR display is currently disabled in production
