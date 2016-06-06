@@ -76,9 +76,13 @@ public class PDPTabs extends Browser {
 		
 		String winename = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 		System.out.println(winename);
-		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP
-		//driver.findElement(By.xpath("//div/h2/a")).click();
+		
+		
+		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
+		js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsProductName")));        
+//		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP
 		PageLoad(driver);
+		Thread.sleep(2000);
 		
 		//Tab 1 - Overview
 		Assert.assertEquals(driver.findElements(By.cssSelector("section.pdp-tab-overview-prod-img > div.pdp-tab-overview-prod-img-bottle-img.pdp-img-zoom-modal-zoom-reset > img.anPDPImage")).isEmpty(),false);
