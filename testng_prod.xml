@@ -4,21 +4,13 @@
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
 <suite name="MultiBrowserSuite" verbose="2">
    <test name="Product List Sort">
-	<parameter name="browser" value="ios">
+	<parameter name="browser" value="Chrome">
 	</parameter>
     <classes>
 <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> -->
-<!-- <class name="com.totalwine.test.events.AddMultiEventsDifferentStoreToCart"/>-->
-<!-- <class name="com.totalwine.test.events.AddMultiEventsSameStoreToCart"/> -->
-
-
-
 <!-- <class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/> -->
 <!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>" -->
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
-     
-<!-- <class name="com.totalwine.test.events.BrowseEvent"/> -->
-<!-- <class name="com.totalwine.test.pricingpromos.Pricing"/>-->
 
 <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/>
 
