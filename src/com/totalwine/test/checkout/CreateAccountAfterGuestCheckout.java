@@ -137,7 +137,7 @@ public class CreateAccountAfterGuestCheckout extends Browser {
 	    driver.findElement(By.id("shipping-phoneNumber")).sendKeys(Phone);
 	    
 	    driver.findElement(By.id("btnShipAuth1")).click();
-	    Thread.sleep(5000);
+	    Thread.sleep(7000);
 
 	    // ** Checkout Tab 2
 	    driver.findElement(By.id("ssl_account_data")).click();

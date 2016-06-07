@@ -57,7 +57,8 @@ public class ShoppingListSorting extends Browser {
 		
 	    //**Accessing Shopping List
 	    driver.findElement(By.cssSelector("li.shipping-cont.loggedin-not-list > a > span.list-text")).click();
-				
+		Browser.PageLoad(driver); // Will not trigger the next control until loading the page
+
 	    //**Enter valid credentials for an account having Pre-created shopping list
 	    driver.switchTo().frame("iframe-signin-overlay");
 	    driver.findElement(PageSignInModal.ModalUsername).clear();
