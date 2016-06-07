@@ -12,7 +12,7 @@
 <!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>" -->
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 
-<class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/>
+<class name="com.totalwine.test.checkout.NewUserRegistrationCustomAcMR9"/>
 
     </classes>
   </test>
