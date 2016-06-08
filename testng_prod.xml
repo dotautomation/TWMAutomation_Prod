@@ -12,9 +12,7 @@
 <!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>" -->
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 
-<class name="com.totalwine.test.aml.AccountProfile"/>
-<class name="com.totalwine.test.aml.AddressBook"/>
-<class name="com.totalwine.test.aml.AccountHome"/>
+
 <class name="com.totalwine.test.aml.PreferenceUpdates"/>
     </classes>
   </test>
