@@ -15,7 +15,8 @@ public class PageGlobal {
 	public static final By TopNavClassesEvents = By.cssSelector("a.analyticsHeaderLink[href*=\"/events/\"]");
 	public static final By TopNavGuidesAdvice = By.cssSelector("a[href*=\"/guides-and-advice\"]");
 	public static final By TopNavFindStore = By.cssSelector("a.analyticsHeaderLink[href*=\"/store-finder\"]");
-	public static final By TopNavAccount = By.cssSelector("div.top-header-wrapper > div.header-wrapper > ul:nth-child(3) > li:nth-child(2) > a > span.list-text");
+//	public static final By TopNavAccount = By.cssSelector("div.top-header-wrapper > div.header-wrapper > ul:nth-child(3) > li:nth-child(2) > a > span.list-text");
+	public static final By TopNavAccount = By.cssSelector("div.top-header-wrapper > div.header-wrapper > ul:nth-child(2) > li:nth-child(2) > a > span.list-text");
 	public static final By TopNavAccountLoggedin = By.cssSelector("a.analyticsHeaderLink[data-modal-id=loggedin-wrapper]");
 	public static final By TopNavShoppingList = By.cssSelector("a.analyticsHeaderLink[href*=\"/shoppinglist\"]");
 	public static final By StoreSelection = By.cssSelector("span.store-details-store-name.flyover-src");
