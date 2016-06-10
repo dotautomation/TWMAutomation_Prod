@@ -13,7 +13,7 @@
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 
 
-<class name="com.totalwine.test.aml.PreferenceUpdates"/>
+<class name="com.totalwine.test.backoffice.OMSValidation"/>
     </classes>
   </test>
  </suite>
