@@ -13,7 +13,9 @@
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 
 
-<class name="com.totalwine.test.backoffice.OMSValidation"/>
+<class name="com.totalwine.test.thirdparty.ConvergeSetUpPaymentForm"/>
+
+
     </classes>
   </test>
  </suite>
