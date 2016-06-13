@@ -44,8 +44,8 @@ public class ConvergeSetUpPaymentForm {
 
 	// Demo login credentials
 	private String demoAccountNumber = "005485";
-	private String demoUserID = "cpavetto";
-	private String demoPassword = "Grapes001!^";
+	private String demoUserID = "sduecaster";
+	private String demoPassword = "Grapes101!!";
 
 	// Prod login credentials
 	private String prodAccountNumber = "555799";
