@@ -49,8 +49,8 @@ public class ConvergeSetUpPaymentForm {
 
 	// Prod login credentials
 	private String prodAccountNumber = "555799";
-	private String prodUserID = "cpavetto";
-	private String prodPassword = "Grapes001!&";
+	private String prodUserID = "rtennamthotam";
+	private String prodPassword = "YamahaR1.";
 
 	// Stores that need to be set up
 	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
