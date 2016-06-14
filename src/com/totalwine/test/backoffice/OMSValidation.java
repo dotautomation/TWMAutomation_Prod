@@ -91,7 +91,7 @@ public class OMSValidation extends Browser {
 	public void OMSLogin() throws InterruptedException {
 		//OMS Login
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).clear();
-		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).sendKeys("rsud");;
+		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).sendKeys("rsud");
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).clear();
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).sendKeys("yoyo55");
 		driver.findElement(By.id("lgBtn")).click();

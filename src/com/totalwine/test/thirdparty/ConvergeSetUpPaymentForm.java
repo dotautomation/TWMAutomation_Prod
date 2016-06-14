@@ -32,20 +32,7 @@ public class ConvergeSetUpPaymentForm {
 	private boolean acceptNextAlert = false;
 	private StringBuffer verificationErrors = new StringBuffer();
 	private Integer implicitlyWaitSeconds = 5;
-/*
-	// Change these variables as needed to control the script
 
-	private Boolean isTestMode = false; // If true, it will just loop through
-										// the terminals, but won't update any
-										// fields. If false, it will make
-										// updates/changes
-
-	private Boolean isDemoURL = true; // If true, it will use the DEMO
-										// environment
-										// (demo.myvirtualmerchant.com). If
-										// false, it will use the PRODUCTION
-										// environment.
-*/
 	// Demo login credentials
 	private String demoAccountNumber = "005485";
 	private String demoUserID = "cpavetto";
@@ -56,20 +43,18 @@ public class ConvergeSetUpPaymentForm {
 	private String prodUserID = "rtennamthotam";
 	private String prodPassword = "YamahaR1.";
 	Workbook inputWorkbook;
+	
 	// Stores that need to be set up
 	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
-	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 1606"));
+	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 1504"));
 
 	@BeforeTest
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
 
 		// Change baseUrl based on doing demo/prod
-		
-
 		driver.manage().timeouts().implicitlyWait(implicitlyWaitSeconds, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
-
 	}
 
 	@Test
@@ -316,6 +301,31 @@ public class ConvergeSetUpPaymentForm {
 				driver.findElement(By.xpath("//a[contains(@onclick, \"'U','custom_card_type'\")]/*[1]")).click();
 			}
 
+			// ** Added by Chris
+			// Re-define these since the page will have been refreshed by the
+			// reordering
+			table = driver.findElement(By.name("paymentFields"));
+			allRows = table.findElements(By.tagName("tr"));
+
+			// Company name field should be below last name fields
+			Integer lastNameRowPosition = getRowNumber(allRows, By.linkText("ssl_last_name"));
+			currentRowPosition = getRowNumber(allRows,
+					By.xpath(".//a[contains(@onclick, \"'D','ssl_company'\")]/*[1]"));
+
+			// If company name is too far up, then move it down
+			if (currentRowPosition < lastNameRowPosition) {
+				for (int i = 0; i < (lastNameRowPosition - currentRowPosition); i++) {
+					driver.findElement(By.xpath("//a[contains(@onclick, \"'D','ssl_company'\")]/*[1]")).click();
+				}
+				// Else, it's too far down, so move it up
+			} else {
+				for (int i = 0; i < (currentRowPosition - lastNameRowPosition - 1); i++) {
+					driver.findElement(By.xpath("//a[contains(@onclick, \"'U','ssl_company'\")]/*[1]")).click();
+				}
+			}
+			
+
+			
 			// Part 3 - change system generated fields
 			//
 			// Note, some unnecessary fields may or may not be there,
@@ -509,7 +519,7 @@ public class ConvergeSetUpPaymentForm {
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).sendKeys("Last name");
 			driver.findElement(By.name("AddField.X")).click();
 
-			driver.findElement(By.linkText("ssl_last_name")).click();
+			driver.findElement(By.linkText("ssl_company")).click();
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).clear();
 			driver.findElement(By.name("paymentFieldDto.fieldDisplayName")).sendKeys("Company name");
 			driver.findElement(By.name("AddField.X")).click();
