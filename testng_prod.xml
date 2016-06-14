@@ -8,12 +8,12 @@
 	</parameter>
     <classes>
 <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAcMR9"/> -->
-<!-- <class name="com.totalwine.test.shoppingcart.ShoppingCartAll"/> -->
-<!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>" -->
+<!-- <class name="com.totalwine.test.thirdparty.ConvergeSetUpPaymentForm"/>-->
+<!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/> -->
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 
 
-<class name="com.totalwine.test.thirdparty.ConvergeSetUpPaymentForm"/>
+<class name="com.totalwine.test.checkout.GuestShipCheckout"/> 
 
 
     </classes>
