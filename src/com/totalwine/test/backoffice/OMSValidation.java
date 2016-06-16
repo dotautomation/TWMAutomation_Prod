@@ -51,7 +51,7 @@ public class OMSValidation extends Browser {
 	    Thread.sleep(5000);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Inventory')]]")).isEmpty(),false);
 	    Thread.sleep(3000);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by SKU')]]")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by SKU')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by Location')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Stockroom Locations')]]")).isEmpty(),false);
 	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Imports')]]")).isEmpty(),false);
