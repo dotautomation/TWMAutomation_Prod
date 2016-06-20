@@ -3,10 +3,15 @@
 
 <suite name="Suite1" verbose="1">
   <test name="ABCTest">
-	<parameter name="browser" value="ios">
+	<parameter name="browser" value="Chrome">
 	</parameter>
 	<classes>
-       <class name="com.totalwine.test.mobile.MobilePDP" />
+            <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> --> 
+      <!-- <class name="com.totalwine.test.checkout.NewUserRegistration"/> --> 
+      <!-- <class name="com.totalwine.test.review.CustomerReview"/> --> 
+
+		
+		<class name="com.totalwine.test.review.CustomerReview"/> 
     </classes>
   </test>
 </suite>	
