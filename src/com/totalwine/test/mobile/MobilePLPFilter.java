@@ -57,11 +57,13 @@ public class MobilePLPFilter extends Browser {
 
 		//Access the Mobile PLP
 		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(1000);
 		driver.findElement(PageHomepage.MobileWineButton).click();
 		PageLoad(driver);
 		
 		//Click the Filter button
 		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(1000);
 		driver.findElement(PageProductList.MobilePLPFilter).click();
 		Thread.sleep(3000);
 		

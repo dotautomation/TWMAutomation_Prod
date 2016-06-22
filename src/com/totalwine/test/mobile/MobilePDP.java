@@ -53,7 +53,7 @@ public class MobilePDP extends Browser {
 		//Click on Wine
 		driver.findElement(By.cssSelector("section.wrapper-data > section.hp-way-fndg > section.mb > div.hp-way-fndg-cat > a.btn.btn-red.analyticsLinkComp")).click();
 		SiteAccess.ActionAccessMobileAgeGate(driver);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 	    
 	    //Access Mobile PDP for first item on PLP
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight

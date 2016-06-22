@@ -37,7 +37,7 @@ import com.totalwine.test.actions.*;
 public class AddMultiEventsDifferentStoreToCart extends Browser {
 	
 	public String IP = "72.66.119.61";
-	public String Event = "/events/jun-2016/virginia/mclean?storestatename=205,203,201,402,401";
+	public String Event = "/events/jul-2016/virginia/mclean?storestatename=205,214,203,202,201";
 
 	@BeforeMethod
 	public void setUp() throws Exception {
@@ -78,7 +78,7 @@ public class AddMultiEventsDifferentStoreToCart extends Browser {
 		Thread.sleep(3000);
 		
 	    JavascriptExecutor js3 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
-	    js3.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li:nth-child(1) > div > div.search-main-cont > div:nth-child(3) > div.search-desc > div.search-title > h2 > a")));
+	    js3.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li:nth-child(3) > div > div.search-main-cont > div:nth-child(1) > div.search-desc > div.search-title > h2 > a")));
 	    Thread.sleep (3000);
 	    
 	    JavascriptExecutor js4 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight

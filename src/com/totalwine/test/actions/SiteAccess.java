@@ -35,4 +35,15 @@ public class SiteAccess {
 		Thread.sleep(4000);
 	}
 	
+	
+	public static void ActionAccessMobileLocation(WebDriver driver) throws InterruptedException {	
+//		driver.switchTo().frame(driver.findElement(By.cssSelector("#modal_location > div")));
+		if (driver.findElement(PageGlobal.AgeGateNo).isDisplayed())
+			driver.findElement(PageGlobal.AgeGateNo).click();
+		else {
+            System.out.println("Location Selection is not displaying");
+		}
+		Thread.sleep(4000);
+	}
+
 }
