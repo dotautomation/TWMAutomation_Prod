@@ -94,7 +94,7 @@ public class GuestShipCheckout extends Browser {
 	    Thread.sleep(7000);
 	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 	    js1.executeScript("arguments[0].click();", driver.findElement(By.id("checkout"))); 
-	    Thread.sleep(5000);
+	    Thread.sleep(6000);
 	    PageLoad(driver); 
   
 	    //  **  Next Page (Login/Checkout as Guest)

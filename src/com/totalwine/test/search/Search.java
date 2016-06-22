@@ -61,10 +61,10 @@ public class Search extends Browser {
 	    Thread.sleep(3000);
 	    
 	    //Search Page Elements
-	    Assert.assertEquals(driver.findElements(By.linkText("Search categories")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a > span")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//li[2]/a/span")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//li[3]/a/span")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.linkText("Search categories")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("div.inner-items-wrapper > ul > li > a > span")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.xpath("//li[2]/a/span")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.xpath("//li[3]/a/span")).isEmpty(),false);
 
 	    //Search Term Presence on Page
 	    List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + searchTerm + "')]"));

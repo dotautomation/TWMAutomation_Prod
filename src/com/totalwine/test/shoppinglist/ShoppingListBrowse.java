@@ -92,7 +92,7 @@ public class ShoppingListBrowse extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("section.pdp-wrapper")).isEmpty(),false);
 	    
 	    //Validate Login and then Log out
-	    Assert.assertEquals(driver.findElements(By.linkText("Welcome, Md")).isEmpty(),false);
+	    Assert.assertEquals(driver.findElements(By.cssSelector("div.header-wrapper > ul:nth-child(2) > li.loggedin-user > a > span.list-text")).isEmpty(),false);
 	    driver.findElement(By.cssSelector(".fluid-sign-in-logo.fluid-icons")).click();
 	    
 	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight

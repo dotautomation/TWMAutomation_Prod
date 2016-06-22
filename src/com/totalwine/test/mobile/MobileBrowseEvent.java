@@ -41,9 +41,15 @@ public class MobileBrowseEvent extends Browser {
 		driver.findElement(PageGlobal.AgeGateYes).click();
 		Thread.sleep(5000);
 
+		// **  By passing location
+		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
 		SiteAccess.ActionAccessMobileAgeGate(driver);
+		
+		// **  Clicking on Hamburger menu
+		driver.findElement(By.cssSelector("header > section > section > section > section.header-banner-wrapper > section > div > div.mobile-logo-left > div")).click();
+		Thread.sleep(3000);
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
-		js1.executeScript("arguments[0].click();", driver.findElement(By.partialLinkText("Events near you")));        
+		js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("#pdp-left-nav > li:nth-child(11) > a > span")));        
 	    Thread.sleep(3000);
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 

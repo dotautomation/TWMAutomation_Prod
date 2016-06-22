@@ -79,12 +79,12 @@ public class CustomerReview extends Browser {
 		PageLoad(driver); // Will not trigger the next control until loading the page
 
 	    //** Accessing Customer Ratings & Reviews Page
-//	    Assert.assertEquals(driver.findElements(By.cssSelector("section.css-details-pd")).isEmpty(),false);
-
-	    driver.findElement(By.cssSelector("section > span.tabs-right.anPDPTab")).click();
+	    Assert.assertEquals(driver.findElements(By.cssSelector("section.css-details-pd")).isEmpty(),false);
+	    
+	    driver.findElement(By.cssSelector("span.tabs-right.anPDPTab")).click();
 	    Thread.sleep(5000);
 	    
-	    driver.findElement(By.cssSelector("section > span.tabs-right.anPDPTab")).click();
+	    driver.findElement(By.cssSelector("span.tabs-right.anPDPTab")).click();
 	    Thread.sleep(5000);
 
 	    driver.findElement(By.cssSelector("#BVRRRatingSummaryLinkWriteID>a")).click();
