@@ -36,6 +36,7 @@ import org.testng.annotations.Test;
 
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
+import com.totalwine.test.pages.PageGlobal;
 import com.totalwine.test.pages.PageHomepage;
 import com.totalwine.test.pages.PageProductList;
 import com.totalwine.test.trials.Browser;
@@ -54,18 +55,22 @@ public class MobilePLPFilter extends Browser {
 		// **  By passing location
 		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
 		Thread.sleep(1000);
+		PageLoad(driver);
 
 		//Access the Mobile PLP
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(1000);
 		driver.findElement(PageHomepage.MobileWineButton).click();
+		Thread.sleep(2000);
+		PageLoad(driver);
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(2000);
 		PageLoad(driver);
 		
 		//Click the Filter button
-		SiteAccess.ActionAccessMobileAgeGate(driver);
-		Thread.sleep(1000);
 		driver.findElement(PageProductList.MobilePLPFilter).click();
-		Thread.sleep(3000);
+		SiteAccess.ActionAccessMobileAgeGate(driver);
+		Thread.sleep(2000);
 		
 		//Validate available filters
 		Assert.assertEquals(driver.findElements(PageProductList.MobilePLPFilterApply).isEmpty(),false);
@@ -76,11 +81,12 @@ public class MobilePLPFilter extends Browser {
 		
 		//CATEGORY
 		//driver.findElement(PageProductList.FacetCategory).click();
-		SiteAccess.ActionAccessMobileAgeGate(driver);
 		js.executeScript("arguments[0].click();", driver.findElement(PageProductList.FacetCategory));
+		SiteAccess.ActionAccessMobileAgeGate(driver);
 		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//label[text()[contains(.,'Rose & Blush Wine')]]")));
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		driver.findElement(PageProductList.MobilePLPFilterApply).click();
+		SiteAccess.ActionAccessMobileAgeGate(driver);
 		PageLoad(driver);
 		Assert.assertEquals(driver.findElements(By.xpath("//a[contains(@class,'analyticsProductName') and text()[contains(.,'Blush')]]")).isEmpty(), false);
 		Assert.assertEquals(driver.findElements(By.xpath("//a[contains(@class,'analyticsProductName') and text()[contains(.,'Rose')]]")).isEmpty(), false);

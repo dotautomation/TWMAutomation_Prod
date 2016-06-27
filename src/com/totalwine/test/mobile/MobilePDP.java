@@ -47,12 +47,13 @@ public class MobilePDP extends Browser {
 		
 		// **  By passing location
 		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+		PageLoad(driver);
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(5000);
 		
 		//Click on Wine
 		driver.findElement(By.cssSelector("section.wrapper-data > section.hp-way-fndg > section.mb > div.hp-way-fndg-cat > a.btn.btn-red.analyticsLinkComp")).click();
-		SiteAccess.ActionAccessMobileAgeGate(driver);
+//		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(7000);
 	    
 	    //Access Mobile PDP for first item on PLP
@@ -71,14 +72,14 @@ public class MobilePDP extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span.pdp-wine-spec-text-desc")).isEmpty(),false); //Review
 	    Assert.assertEquals(driver.findElements(By.cssSelector("select.pdp-dropdown-amount")).isEmpty(),false); //Volume Dropdown
 	    
-	    SiteAccess.ActionAccessMobileAgeGate(driver);
+//	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Robot robot = new Robot(); //for scrolling
 	    
 	    robot.keyPress(KeyEvent.VK_PAGE_DOWN);
         robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 	    //Assert.assertEquals(driver.findElements(By.cssSelector("div.BVRRRatingNormalImage")).isEmpty(),false); //BV Average Rating
 	    //Assert.assertEquals(driver.findElements(By.cssSelector("div.BVRRHistogramBarRow.BVRRHistogramBarRow4")).isEmpty(),false); //BV 4 Star Rating Histogram
-	    
+        Thread.sleep(1000);
         SiteAccess.ActionAccessMobileAgeGate(driver);
 	    robot.keyPress(KeyEvent.VK_PAGE_DOWN);
         robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
@@ -87,7 +88,7 @@ public class MobilePDP extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.pdp-pickup")).isEmpty(),false); //ISP Option
 	    Assert.assertEquals(driver.findElements(By.cssSelector("div.pdp-pickup-ship-item")).isEmpty(),false); //Ship Option
 	    
-	    SiteAccess.ActionAccessMobileAgeGate(driver);
+//	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    robot.keyPress(KeyEvent.VK_PAGE_DOWN);
         robot.keyRelease(KeyEvent.VK_PAGE_DOWN);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("select.pdp-dropdown-quantity")).isEmpty(),false); //Quantity Dropdown

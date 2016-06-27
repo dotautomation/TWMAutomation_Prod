@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public class PageGlobal {
 	
 	//Age Gate
-	public static final By AgeGateYes = By.id("btnYes");
+	public static final By AgeGateYes = By.cssSelector("#btnYes");
 //	public static final By AgeGateNo = By.id("btnNo");
 	public static final By AgeGateNo = By.cssSelector("#btnNo");
 	
