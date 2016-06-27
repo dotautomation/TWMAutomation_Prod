@@ -61,7 +61,7 @@ public void MobileStoreLocatorTest () throws InterruptedException {
     
     //Store selecting Options
     driver.findElement(By.cssSelector(".find-store-txt")).click();
-	SiteAccess.ActionAccessMobileAgeGate(driver);
+//	SiteAccess.ActionAccessMobileAgeGate(driver);
 	Thread.sleep(3000);
     
     //Search by Zip
@@ -75,7 +75,7 @@ public void MobileStoreLocatorTest () throws InterruptedException {
     Assert.assertEquals(storeResult,"Stephanie Street Power Center");
     Assert.assertEquals(driver.findElements(By.xpath("//a[contains(@href,'/maps.google.com/')]")).isEmpty(),false); //Get Directions link
     driver.findElement(By.cssSelector(".store-locater-button.cart-change-store.anShopThisStore")).click();
-	SiteAccess.ActionAccessMobileAgeGate(driver);
+//	SiteAccess.ActionAccessMobileAgeGate(driver);
     Thread.sleep(5000);
 	 }
 }

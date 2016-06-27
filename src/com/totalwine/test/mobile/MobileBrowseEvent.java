@@ -23,7 +23,6 @@ import org.testng.*;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.pages.PageGlobal;
@@ -46,7 +45,7 @@ public class MobileBrowseEvent extends Browser {
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		
 		// **  Clicking on Hamburger menu
-		driver.findElement(By.cssSelector("header > section > section > section > section.header-banner-wrapper > section > div > div.mobile-logo-left > div")).click();
+		driver.findElement(By.cssSelector("section.mobile-header.fluid-mobile-header > section > section > section.header-banner-wrapper > section > div > div.mobile-logo-left > div")).click();
 		Thread.sleep(3000);
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 		js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("#pdp-left-nav > li:nth-child(11) > a > span")));        

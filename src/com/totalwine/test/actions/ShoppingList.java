@@ -13,11 +13,9 @@ public class ShoppingList {
 	
 	//**Checking for presence of merge cart modal
 	public static void MergeCartModal (WebDriver driver) throws InterruptedException {
-	     if (driver.findElements(By.cssSelector("button.btn.btn-red.cartMergeBtn")).size()!=0) {
-	    	driver.findElement(By.cssSelector("button.btn.btn-red.cartMergeBtn")).click();
+	     if (driver.findElements(By.cssSelector("button.btn.btn-brown.cartMergeBtn")).size()!=0) {
+	    	driver.findElement(By.cssSelector("button.btn.btn-brown.cartMergeBtn")).click();
 	    	Thread.sleep(3000);
 	    }
 	}
-	
-	
 }
