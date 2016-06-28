@@ -11,7 +11,7 @@
       <!-- <class name="com.totalwine.test.review.CustomerReview"/> --> 
 
 		
-		<class name="com.totalwine.test.review.CustomerReview"/> 
+		<class name="com.totalwine.test.events.BrowseEvent"/> 
     </classes>
   </test>
 </suite>	
