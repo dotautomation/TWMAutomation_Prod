@@ -40,7 +40,7 @@ public class Pricing extends Browser {
 
 	//private WebDriver driver;
 	private String IP="98.169.134.0";
-	private String FutureEvent = "/events/apr-2016/virginia/mclean?storestatename=214,203,202,201,205";
+	private String FutureEvent = "/events/sep-2016/virginia/mclean?storestatename=201,205,203,215,401";
 	//ProfilesIni profile = new ProfilesIni();
 	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 
