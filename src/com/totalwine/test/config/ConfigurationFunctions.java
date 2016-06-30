@@ -46,13 +46,13 @@ public class ConfigurationFunctions {
 	public static final String CHROMEDRIVERPATH = "C:/twmautomation/lib/lib/chromedriver.exe";
 	public static final String IEDRIVERPATH = "C:/twmautomation/lib/lib/IEDriverServer.exe";
 	public static final String RESULTSPATH = "C:\\autoreports\\";
-	public static final String TESTLOGIN = "mhossain@totalwine.com";
+	public static final String TESTLOGIN = "rsud@live.com";
 	public static final String TESTPWD = "grapes123";
 	public static final String RRFORCEDISPLAY = "?forcedisplay=true";
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
 	
 	public static void DeleteCookies() {
-		WebDriver driver=new FirefoxDriver(testProfile);
+		WebDriver driver=new FirefoxDriver();
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		WebElement element = null;
 		executor.executeScript("function deleteAllCookies() { var cookies = document.cookie.split(\";\"); for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf(\"=\");var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie; document.cookie = name + \"=;expires=Thu, 01 Jan 1970 00:00:00 GMT\";}}",element);
@@ -60,7 +60,7 @@ public class ConfigurationFunctions {
 	
 	//Initial Startup
 	public static void initialStartUpPL(String ipAddress) throws InterruptedException {
-		WebDriver driver=new FirefoxDriver(testProfile);
+		WebDriver driver=new FirefoxDriver();
 		driver.get(ConfigurationFunctions.URL+ipAddress);
 		Thread.sleep(5000);
 		WebElement html = driver.findElement(By.tagName("html"));
@@ -93,7 +93,7 @@ public class ConfigurationFunctions {
 	
 	//Initial Startup
 		public static void initialStartUp(String IP) throws InterruptedException {
-			WebDriver driver=new FirefoxDriver(testProfile);
+			WebDriver driver=new FirefoxDriver();
 			driver.get(ConfigurationFunctions.URL+IP);
 			Thread.sleep(5000);
 			if (driver.findElements(By.linkText("here")).isEmpty()==false) //Phased Launch Screen Handling
@@ -127,8 +127,8 @@ public class ConfigurationFunctions {
         }
 	
 	public static boolean isElementPresent(By by) {
-		WebDriver driver=new FirefoxDriver(testProfile);
 	    try {
+	      WebDriver driver=new FirefoxDriver();
 	      driver.findElements(by);
 	      return true;
 	    } catch (org.openqa.selenium.NoSuchElementException e) {
