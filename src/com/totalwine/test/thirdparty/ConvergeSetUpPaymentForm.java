@@ -46,7 +46,7 @@ public class ConvergeSetUpPaymentForm {
 	
 	// Stores that need to be set up
 	//List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM DEMO 1108"));
-	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 0217"));
+	List<String> terminals = new ArrayList<String>(Arrays.asList("TOTAL WINE COM 217"));
 
 	@BeforeTest
 	public void setUp() throws Exception {
