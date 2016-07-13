@@ -1,32 +1,26 @@
 package com.totalwine.test.search;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
-
-import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.actions.SiteAccess;
 import com.totalwine.test.config.ConfigurationFunctions;
 import com.totalwine.test.trials.Browser;
-
 import jxl.*;
 import jxl.read.biff.BiffException;
 
@@ -35,6 +29,7 @@ public class SearchNullTerms {
 	WebDriver driver;
 	BufferedWriter writer;
 	Workbook inputWorkbook;
+	
 	@Test
 	public void SearchNullTermsTest () throws InterruptedException, IOException, BiffException {
 	
@@ -46,10 +41,10 @@ public class SearchNullTerms {
 		writer.write("Search term,Search Type,All stores count,Did you mean?,Page Type,Top results,Categories");
 		writer.newLine();
 		
-		//File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
-		//System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-		//WebDriver driver = new ChromeDriver();
-		driver = new FirefoxDriver();
+		File file = new File(ConfigurationFunctions.CHROMEDRIVERPATH);
+		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+		WebDriver driver = new ChromeDriver();
+//		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
 		//driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0");
 		//Thread.sleep(5000);
@@ -60,7 +55,7 @@ public class SearchNullTerms {
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
 	    
 	    //Input file (excel)
-	    inputWorkbook = Workbook.getWorkbook(new File("BlankDebug.xls"));
+	    inputWorkbook = Workbook.getWorkbook(new File("MisspellingsAutomation1.xls"));
 	    Sheet inputSheet = inputWorkbook.getSheet(0);
 	    int rowCount = inputSheet.getRows();
 	    String SearchTerm,SearchType; //SearchType Options = all,product,event,content
@@ -75,10 +70,10 @@ public class SearchNullTerms {
 	    	writer.write(SearchTerm+",");
 	    	writer.write(SearchType+",");
 	    	//Select Search Type
-	    	driver.findElement(By.cssSelector("span.search-left-cont-three-Lines")).click();
-	    	Thread.sleep(2000);
-	    	driver.findElement(By.cssSelector("div.suggestion.flyover > a[data-href=\""+SearchType+"\"]")).click();
-	    	Browser.PageLoad(driver);//Thread.sleep(2000);
+//	    	driver.findElement(By.cssSelector("span.search-left-cont-three-Lines")).click();
+//	    	Thread.sleep(2000);
+//	    	driver.findElement(By.cssSelector("div.suggestion.flyover > a[data-href=\""+SearchType+"\"]")).click();
+//	    	Browser.PageLoad(driver);//Thread.sleep(2000);
 			driver.findElement(By.id("header-search-text")).clear();
 		    driver.findElement(By.id("header-search-text")).sendKeys(SearchTerm); //Enter Search Term in box
 		    driver.findElement(By.cssSelector("a[class=\"search-right-cont-mini-search-logo analyticsSearch\"]")).click(); //Click search button
@@ -102,10 +97,12 @@ public class SearchNullTerms {
 					writer.write("Search Page"+",");
 				else
 					writer.write("PLP Page"+",");
-				
+				JavascriptExecutor js = (JavascriptExecutor)driver;
 				if (driver.findElements(By.cssSelector("a#plp-productfull-tabs")).size()!=0)
-					driver.findElement(By.cssSelector("a#plp-productfull-tabs")).click();
-				else driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
+					//driver.findElement(By.cssSelector("a#plp-productfull-tabs")).click();
+					js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a#plp-productfull-tabs")));
+				else //driver.findElement(By.cssSelector("a#search-productfull-tabs")).click();
+					js.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a#search-productfull-tabs")));
 				Browser.PageLoad(driver);//Thread.sleep(3000);
 				driver.get(driver.getCurrentUrl()+"&pagesize=32");//Top 32 results
 				Browser.PageLoad(driver);
@@ -115,9 +112,6 @@ public class SearchNullTerms {
 				for (int elementCount=1;elementCount<=searchResultsCount;elementCount++) {
 					for (int catCount=1;catCount<=driver.findElements(By.xpath("//li["+elementCount+"]/div/div/div/div/a")).size();catCount++) {
 						facetResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/div/a["+catCount+"]")).getText()+"|";
-						//Debugging
-						if (facetResult.equals("")) Assert.assertTrue(false);
-						//
 					}
 					searchResult+=driver.findElement(By.xpath("//li["+elementCount+"]/div/div/div/h2/a")).getText().replaceAll(",", "")
 							+"("
@@ -138,14 +132,6 @@ public class SearchNullTerms {
 		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
 		    	Thread.sleep(3000);
 		    	writer.write("HTTP500"); //Indicate HTTP500 occurrence for search term in output file 
-		    }
-		    //Check for Fastly error page
-		    else if (driver.getPageSource().contains("between 500 and 600")) { 
-		    	driver.get(ConfigurationFunctions.accessURL+"/?remoteTestIPAddress=71.193.51.0"); //Reaccess homepage
-		    	Thread.sleep(3000);
-		    	driver.findElement(By.cssSelector("#email-signup-overlay-new-site > div.modal-dialog > div.modal-content > div.modal-body > p.close > a.btn-close")).click();
-		    	Thread.sleep(3000);
-		    	writer.write("HTTP500 - Fastly Error Page"); //Indicate HTTP500 occurrence for search term in output file 
 		    }
 		  //Events search 
 		    else if (driver.findElements(By.cssSelector("div.js-event-item")).size()!=0) { 
