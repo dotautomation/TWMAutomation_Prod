@@ -52,7 +52,7 @@ public class ConfigurationFunctions {
 	//public static final WebDriver driver = new FirefoxDriver(testProfile);
 	
 	public static void DeleteCookies() {
-		WebDriver driver=new FirefoxDriver();
+		WebDriver driver=new FirefoxDriver(testProfile);
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		WebElement element = null;
 		executor.executeScript("function deleteAllCookies() { var cookies = document.cookie.split(\";\"); for (var i = 0; i < cookies.length; i++) {var cookie = cookies[i];var eqPos = cookie.indexOf(\"=\");var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie; document.cookie = name + \"=;expires=Thu, 01 Jan 1970 00:00:00 GMT\";}}",element);
@@ -60,7 +60,7 @@ public class ConfigurationFunctions {
 	
 	//Initial Startup
 	public static void initialStartUpPL(String ipAddress) throws InterruptedException {
-		WebDriver driver=new FirefoxDriver();
+		WebDriver driver=new FirefoxDriver(testProfile);
 		driver.get(ConfigurationFunctions.URL+ipAddress);
 		Thread.sleep(5000);
 		WebElement html = driver.findElement(By.tagName("html"));
@@ -93,7 +93,7 @@ public class ConfigurationFunctions {
 	
 	//Initial Startup
 		public static void initialStartUp(String IP) throws InterruptedException {
-			WebDriver driver=new FirefoxDriver();
+			WebDriver driver=new FirefoxDriver(testProfile);
 			driver.get(ConfigurationFunctions.URL+IP);
 			Thread.sleep(5000);
 			if (driver.findElements(By.linkText("here")).isEmpty()==false) //Phased Launch Screen Handling
@@ -107,7 +107,6 @@ public class ConfigurationFunctions {
 			    Thread.sleep(5000);
 			}
 		}
-	
 	
 	//Random number generator
 	public static int randInt() {
@@ -127,8 +126,8 @@ public class ConfigurationFunctions {
         }
 	
 	public static boolean isElementPresent(By by) {
-	    try {
-	      WebDriver driver=new FirefoxDriver();
+	      WebDriver driver=new FirefoxDriver(testProfile);
+	      try {
 	      driver.findElements(by);
 	      return true;
 	    } catch (org.openqa.selenium.NoSuchElementException e) {
@@ -194,7 +193,6 @@ public class ConfigurationFunctions {
 	    Calendar cal = Calendar.getInstance();
 	    SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 	    return sdf.format(cal.getTime());
-
 	  }
 	
 	//Reads and assimilates input parameters from Excel file

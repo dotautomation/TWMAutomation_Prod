@@ -143,7 +143,6 @@ public class SearchNullTerms {
     	}
 	    	
 	    /*
-	    
 	    //Input file (text)
 	    File inputFile = new File("SearchTerms.txt"); //Input file containing search terms
 		BufferedReader br = new BufferedReader(new FileReader(inputFile)); 
