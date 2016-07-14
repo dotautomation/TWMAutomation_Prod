@@ -80,8 +80,8 @@ public class SearchNullTerms {
 		    Browser.PageLoad(driver);//Thread.sleep(3000);
 		    if (driver.findElements(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).size()!=0) //Check for All stores tab
 		    {
-//			    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText(); //Extract text from All stores tab
-			    String allStoreCount = driver.findElement(By.xpath(".//*[@id='search-productfull-tabs']")).getText(); //Extract text from All stores tab
+			    String allStoreCount = driver.findElement(By.xpath("//ul[@class=\"plp-product-tabs-wrapper\"]/li[2]/h2/a")).getText(); //Extract text from All stores tab
+//			    String allStoreCount = driver.findElement(By.xpath(".//*[@id='search-productfull-tabs']")).getText(); //Extract text from All stores tab
 			    //System.out.println(SearchTerm+":"+allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")"))); 
 			    String s = Objects.toString(allStoreCount.substring(allStoreCount.indexOf("(") + 1, allStoreCount.indexOf(")")), null); //Extract count of search results from All store tab
 				writer.write(s+",");
