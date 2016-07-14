@@ -10,8 +10,9 @@
       <!-- <class name="com.totalwine.test.checkout.NewUserRegistration"/> --> 
       <!-- <class name="com.totalwine.test.review.CustomerReview"/> --> 
 
-		
-		<class name="com.totalwine.test.pricingpromos.Pricing"/> 
+			<class name="com.totalwine.test.productlist.Sort" />
+			<class name="com.totalwine.test.search.Search" /> 
+			<class name="com.totalwine.test.categorylanding.CatLandNav"/> 
     </classes>
   </test>
 </suite>	
