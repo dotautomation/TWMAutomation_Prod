@@ -71,7 +71,7 @@ public class Pricing extends Browser {
 		Thread.sleep(5000);
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		//Thread.sleep(5000);
 		

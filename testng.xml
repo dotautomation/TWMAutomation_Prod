@@ -6,12 +6,13 @@
 	<parameter name="browser" value="Chrome">
 	</parameter>
 	<classes>
-            <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> --> 
+      <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAC"/> --> 
       <!-- <class name="com.totalwine.test.checkout.NewUserRegistration"/> --> 
       <!-- <class name="com.totalwine.test.review.CustomerReview"/> --> 
 
-		
-		<class name="com.totalwine.test.productlist.Sort"/> 
+			<class name="com.totalwine.test.productlist.Sort" />
+			<class name="com.totalwine.test.search.Search" /> 
+			<class name="com.totalwine.test.categorylanding.CatLandNav"/> 
     </classes>
   </test>
 </suite>	

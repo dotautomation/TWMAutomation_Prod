@@ -49,9 +49,9 @@
 		</parameter>
 		<classes>
 			<class name="com.totalwine.test.events.BrowseEvent" />
-			<!-- <class name="com.totalwine.test.productlist.Sort" /> -->
-			<!-- <class name="com.totalwine.test.search.Search" /> -->
-			<!-- <class name="com.totalwine.test.categorylanding.CatLandNav"/> -->
+			<class name="com.totalwine.test.productlist.Sort" />
+			<class name="com.totalwine.test.search.Search" />
+			<class name="com.totalwine.test.categorylanding.CatLandNav"/>
 			<class name="com.totalwine.test.agegating.AgeGate" />
 			<class name="com.totalwine.test.pdp.PDPTabs" />
 			<class name="com.totalwine.test.lare.LARERules" />
@@ -71,7 +71,7 @@
 			<class name="com.totalwine.test.aml.AccountProfile"/>
 			<class name="com.totalwine.test.aml.AddressBook"/>
 			<class name="com.totalwine.test.aml.WebAccountRegistration"/>
-			<!-- <class name="com.totalwine.test.aml.EmailSignup"/> -->
+			<class name="com.totalwine.test.aml.EmailSignup"/>
 			<!-- <class name="com.totalwine.test.checkout.ShipCheckout"/>  -->
 			<!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>  -->
 			<!-- <class name="com.totalwine.test.checkout.CreateAccountAfterGuestCheckout"/>  -->
@@ -106,9 +106,9 @@
 			<class name="com.totalwine.test.productlist.Filter"/>
 			<class name="com.totalwine.test.productlist.Sort"/>
 			<class name="com.totalwine.test.lare.LARERules"/>
-			<!-- <class name="com.totalwine.test.pricingpromos.Promotion"/>  -->
+			<class name="com.totalwine.test.pricingpromos.Promotion"/>
 			<class name="com.totalwine.test.pricingpromos.Pricing"/>
-			<!-- <class name="com.totalwine.test.pricingpromos.RemovePromoCode"/>  -->
+			<class name="com.totalwine.test.pricingpromos.RemovePromoCode"/>
 			<class name="com.totalwine.test.brandpages.BrandList"/>
 			<class name="com.totalwine.test.brandpages.BrandStoryTelling"/>
 			<class name="com.totalwine.test.brandpages.AllBrands"/>
@@ -121,7 +121,7 @@
 			<class name="com.totalwine.test.storelocator.SLBrowseByRadius"/>
 			<class name="com.totalwine.test.global.TopLevelMenu" />
 			<class name="com.totalwine.test.seo.UserAgentSimulator"/>
-			<!-- <class name="com.totalwine.test.review.CustomerReview"/> -->
+			<class name="com.totalwine.test.review.CustomerReview"/>
 			<class name="com.totalwine.test.review.SocialWidget"/>
 		</classes>
 	</test>
