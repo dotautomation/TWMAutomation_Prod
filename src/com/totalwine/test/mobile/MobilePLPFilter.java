@@ -53,8 +53,8 @@ public class MobilePLPFilter extends Browser {
 		SiteAccess.ActionAccessMobileSite(driver, IP);
 
 		// **  By passing location
-		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-		Thread.sleep(1000);
+//		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+//		Thread.sleep(1000);
 		PageLoad(driver);
 
 		//Access the Mobile PLP

@@ -47,13 +47,13 @@ public void MobileISPGuestCheckoutTest () throws InterruptedException {
 	Thread.sleep(3000);
 	
 	// **  By passing location
-	driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-	Thread.sleep(2000);
+//	driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+//	Thread.sleep(2000);
 	SiteAccess.ActionAccessMobileAgeGate(driver);
 	Thread.sleep(4000);
 	
 	//Navigate to test PDP
-	driver.get(ConfigurationFunctions.accessURL+"/beer/lager/light-lager/coors-light/p/3283125?s=1108&igrules=true");
+	driver.get(ConfigurationFunctions.accessURL+"/wine/white-wine/chardonnay/cloud-break-chardonnay/p/110892750?s=205&igrules=true");
 	Thread.sleep(3000);
 	SiteAccess.ActionAccessMobileAgeGate(driver);
 	Thread.sleep(2000);

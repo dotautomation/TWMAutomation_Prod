@@ -35,8 +35,8 @@ public void MobileStoreLocatorTest () throws InterruptedException {
 	Thread.sleep(5000);
 	
 	// **  By passing location
-	driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-	Thread.sleep(1000);
+//	driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+//	Thread.sleep(1000);
 	SiteAccess.ActionAccessMobileAgeGate(driver);
 	Thread.sleep(2000);
 	

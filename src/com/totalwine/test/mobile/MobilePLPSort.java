@@ -43,24 +43,24 @@ import com.totalwine.test.trials.Browser;
 
 public class MobilePLPSort extends Browser {
 
-	//private String IP="71.193.51.0";
+	private String IP="71.193.51.0";
 
 	@Test 
 	public void MobileSortTest () throws InterruptedException, BiffException, IOException {
 		logger=report.startTest("Mobile PLP Sort Test");
-		SiteAccess.ActionAccessMobileSite(driver, "198.24.30.115");
+		SiteAccess.ActionAccessMobileSite(driver, IP);
 //		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(5000);
 
 		// **  By passing location
-		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-		Thread.sleep(1000);
+//		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+//		Thread.sleep(1000);
 		
 		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(5000);
 		
 		//Access Mobile PLP
-		driver.findElement(PageHomepage.MobileSpiritsButton).click();
+		driver.findElement(PageHomepage.MobileWineButton).click();
 		Thread.sleep(3000);
 		
 		SiteAccess.ActionAccessMobileAgeGate(driver);
@@ -93,7 +93,7 @@ public class MobilePLPSort extends Browser {
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
 //	    Assert.assertEquals(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div > span.plp-list-img-wineSpec-badge > span")).getText(), "100"); //First result is 100 rated
-	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div > span.plp-list-img-wineSpec-text")).isEmpty(), false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div > span.plp-list-img-wineSpec-text")).isEmpty(), false);
 	    logger.log(LogStatus.PASS, "Expert Ratings sort displays top rated product on top");
 	    
 		//Verify "Customer Ratings" sort
@@ -104,7 +104,7 @@ public class MobilePLPSort extends Browser {
 	    driver.findElement(By.cssSelector("option[value=\"customer-ratings\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.pdpRatingStars > a > span > span[style=\"width:100.0%\"]")).isEmpty(),false); //First result is 5-star
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.pdpRatingStars > a > span > span[style=\"width:100.0%\"]")).isEmpty(),false); //First result is 5-star
 	    logger.log(LogStatus.PASS, "Customer Ratings sort displays 5-star product on top");
 	    
 		//Verify "Price (highest first)" sort
@@ -115,9 +115,9 @@ public class MobilePLPSort extends Browser {
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
-	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
-	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
-//	    Assert.assertTrue(TopPrice>SecondPrice);
+	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(2) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
+	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(3) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
+	    Assert.assertTrue(TopPrice>SecondPrice);
 	    logger.log(LogStatus.PASS, "Descending price sort displays highest priced item on top followed by lower priced items");
 	    
 		//Verify "Price (lowest first)" sort
@@ -128,8 +128,8 @@ public class MobilePLPSort extends Browser {
 	    driver.findElement(By.cssSelector("option[value=\"price-asc\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
-	    TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
-	    SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(2) > div > div.plp-product-price >ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
+	    TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(1) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
+	    SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(2) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
 	    Assert.assertTrue(TopPrice<=SecondPrice,"Ascending Price sort didn't appear correctly");
 	    logger.log(LogStatus.PASS, "Ascending price sort displays lowest priced item on top followed by higher priced items");
 	    
@@ -141,7 +141,7 @@ public class MobilePLPSort extends Browser {
 	    driver.findElement(By.cssSelector("option[value=\"name-asc\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
-	    Assert.assertTrue(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > h2 > a.analyticsProductName")).getText().startsWith("(ri)1"));
+	    sAssert.assertTrue(driver.findElement(By.cssSelector("li:nth-child(1) > div.plp-product-desc > h2 > a")).getText().startsWith("(ri)1"));
 	    logger.log(LogStatus.PASS, "Alpha sort displays items with numerals in their title on top");
 	    
 		//Verify "Name (Z-A)" sort
@@ -152,7 +152,7 @@ public class MobilePLPSort extends Browser {
 	    driver.findElement(By.cssSelector("option[value=\"name-desc\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
 	    Thread.sleep(3000);
-	    Assert.assertTrue(driver.findElement(By.cssSelector("ul.plp-list > li:nth-child(1) > div > h2 > a.analyticsProductName")).getText().startsWith("Z"));
+	    sAssert.assertTrue(driver.findElement(By.cssSelector("li:nth-child(1) > div.plp-product-desc > h2 > a")).getText().startsWith("Z"));
 	    logger.log(LogStatus.PASS, "Reverse alpha sort displays items with names beginning with Z on top");
 	}
 }

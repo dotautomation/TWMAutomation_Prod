@@ -37,7 +37,7 @@ import com.totalwine.test.actions.*;
 public class AddMultiEventsDifferentStoreToCart extends Browser {
 	
 	public String IP = "72.66.119.61";
-	public String Event = "/events/jul-2016/virginia/mclean?storestatename=205,214,203,202,201";
+	public String Event = "/events/oct-2016/virginia/mclean?storestatename=205,214,203,202,201";
 
 	@BeforeMethod
 	public void setUp() throws Exception {

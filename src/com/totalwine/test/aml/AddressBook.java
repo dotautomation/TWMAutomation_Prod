@@ -77,7 +77,6 @@ public class AddressBook extends Browser {
 	    Assert.assertEquals(driver.findElements(PageAccountHome.EditProfileAddress).isEmpty(),false,"Verifying Editing of the Profile");
 	    Thread.sleep(6000);
 	    JavascriptExecutor js2 = (JavascriptExecutor)driver;  // Finding out elements that are out of site
-	    Thread.sleep(1000);
 	    js2.executeScript("arguments[0].click();", driver.findElement(PageAccountHome.EditAddressClose));
 	    Assert.assertEquals(driver.findElements(PageAccountHome.EditAddressClose).isEmpty(),false,"Verifying Editing Popup Closing");
 	    Thread.sleep(5000);
