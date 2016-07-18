@@ -121,8 +121,11 @@ public class Filter extends Browser {
 	    //Rating Range
 	    WebElement scroll_RatingRange = driver.findElement(By.linkText("Top Rated"));
 	 	scroll_RatingRange.sendKeys(Keys.ARROW_DOWN);
+	    Thread.sleep(1000);
 	 	scroll_RatingRange.sendKeys(Keys.ARROW_DOWN);
+	    Thread.sleep(1000);
 	 	driver.findElement(By.xpath("//a[contains(text(),'Top Rated')]")).click();
+	    Thread.sleep(1000);
 	    driver.findElement(By.id("check_box_showmore89 and Belowratingrange")).click();
 	    Thread.sleep(3000);
 	    facetValue = driver.findElement(By.cssSelector("span.filter-value")).getText();

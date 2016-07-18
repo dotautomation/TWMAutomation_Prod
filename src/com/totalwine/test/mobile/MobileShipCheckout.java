@@ -3,7 +3,7 @@ package com.totalwine.test.mobile;
 /*
  * Mobile Checkout Workflow
  * Workflow:
- * 	1. Access the Mobile PDP for item via the mobile homepage /PLP
+ * 	1. Access the Mobile PDP for item via the mobile homepage/PLP
  * 	2. Add to cart
  * 	3. View Cart
  * 	4. Initiate Guest Checkout

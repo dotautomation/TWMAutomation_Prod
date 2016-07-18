@@ -40,7 +40,7 @@ public class Pricing extends Browser {
 
 	//private WebDriver driver;
 	private String IP="98.169.134.0";
-	private String FutureEvent = "/events/sep-2016/virginia/mclean?storestatename=201,205,203,215,401";
+	private String FutureEvent = "/events/oct-2016/virginia/mclean?storestatename=214,205,203,201,215";
 	//ProfilesIni profile = new ProfilesIni();
 	//FirefoxProfile testProfile = profile.getProfile("WebDriver");
 
@@ -71,7 +71,7 @@ public class Pricing extends Browser {
 		Thread.sleep(5000);
 		WebElement wineMove = driver.findElement(By.cssSelector("ul.header-classes")); //Moving the mouse away from the top level menu 
 		action.moveToElement(wineMove).build().perform(); 
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		//Thread.sleep(5000);
 		

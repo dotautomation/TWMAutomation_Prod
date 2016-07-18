@@ -45,8 +45,8 @@ public class MobileWebRegistration extends Browser {
 		Thread.sleep(2000);
 		
 		// **  By passing location
-		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
-		Thread.sleep(1000);
+//		driver.findElement(By.cssSelector("div.ChooseStoreButtons > button#btnNo.btn.btn-gray")).click();
+//		Thread.sleep(1000);
 
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 		js1.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[contains(@href,'.totalwine.com/my-account')]")));        
