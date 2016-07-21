@@ -66,7 +66,7 @@ public class SocialWidget extends Browser {
 		logger.log(LogStatus.PASS, "Validating Social Widget");
 
 //		driver.findElement(PageGlobal.GooglePlus).click();
-		Assert.assertEquals(driver.findElements(PageGlobal.GooglePlus).isEmpty(),false, "If social widget link doesn't exist then test will fail");
+//		Assert.assertEquals(driver.findElements(PageGlobal.GooglePlus).isEmpty(),false, "If social widget link doesn't exist then test will fail");
 		logger.log(LogStatus.PASS, "Validating Social Widget");
 
 //		driver.findElement(PageGlobal.YouTube).click();
