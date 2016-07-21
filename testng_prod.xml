@@ -14,8 +14,7 @@
 <!-- <class name="com.totalwine.test.backoffice.OMSValidation"/>  -->
 <!-- <class name="com.totalwine.test.backoffice.C3Validation"/> -->
 
-
-<class name="com.totalwine.test.review.SocialWidget"/>
+<class name="com.totalwine.test.productlist.Sort"/>
 
     </classes>
   </test>

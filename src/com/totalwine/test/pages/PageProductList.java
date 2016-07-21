@@ -10,7 +10,8 @@ public class PageProductList {
 	public static final By WDLogo =By.cssSelector("div.plp-list-img-wdlogo"); //WD Logo
 	public static final By ProductTitle =By.cssSelector("h2.plp-product-title"); //Title
 	public static final By ItemSize = By.cssSelector("div.plp-product-qty"); //Item Size
-	public static final By SortDropdown = By.cssSelector("div.plp-product-sorting-sortby-dropdown > div > span.itemval");
+//	public static final By SortDropdown = By.cssSelector("div.plp-product-sorting-sortby-dropdown > div > span.itemval");
+	public static final By SortDropdown = By.cssSelector("div.dropdown.plp-product-sorting-sortby-dropdown > div > span > span");
 	public static final By PLPHero = By.cssSelector("div.plp-opt-hero"); //Hero component
 	public static final By PLPATY = By.cssSelector("a#plp-aty-tab"); //ATY
 	public static final By PLPAllStores = By.cssSelector("#plp-productfull-tabs"); //All stores
