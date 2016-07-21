@@ -59,7 +59,7 @@ public class MobilePDP extends Browser {
 	    //Access Mobile PDP for first item on PLP
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 		js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsProductName")));        
-		SiteAccess.ActionAccessMobileAgeGate(driver);
+//		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(5000);
 	    
 	    //Validate contents of Mobile PLP
