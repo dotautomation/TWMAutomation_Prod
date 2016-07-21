@@ -9,13 +9,14 @@
     <classes>
 <!-- <class name="com.totalwine.test.checkout.NewUserRegistrationCustomAcMR9"/> -->
 <!-- <class name="com.totalwine.test.thirdparty.ConvergeSetUpPaymentForm"/>-->
-<!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/> -->
+<!-- <class name="com.totalwine.test.checkout.GuestShipCheckout"/>-->
 <!-- <class name="com.totalwine.test.shoppinglist.ShoppingListAddItem"/> -->
 <!-- <class name="com.totalwine.test.backoffice.OMSValidation"/>  -->
 <!-- <class name="com.totalwine.test.backoffice.C3Validation"/> -->
 
-<class name="com.totalwine.test.storelocator.SLPages"/>
 
+
+<class name="com.totalwine.test.productlist.PLPListView"/>
 
     </classes>
   </test>

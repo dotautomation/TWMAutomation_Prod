@@ -48,13 +48,13 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.totalwine.test.config.ConfigurationFunctions;
 
-
 public class Browser {
 
 	protected WebDriver driver;
 	protected String hubURL = "http://prt-dotautotest.totalwine.com:5566/wd/hub";
 	protected ExtentTest logger;
 	protected static ExtentReports report = getReporter(); //Reporting v2
+	protected JavascriptExecutor js = (JavascriptExecutor)driver;
 	protected SoftAssert sAssert = new SoftAssert(); //Soft assertion
 	
 	@BeforeMethod
@@ -198,7 +198,6 @@ public class Browser {
 				e.printStackTrace();
 			} 
 		}
-		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //Global 10 Seconds wait time
 	}
 	
 	@AfterMethod
@@ -217,7 +216,7 @@ public class Browser {
 			logger.log(LogStatus.FAIL,"Error Stack: "+testResult.getThrowable());
 			logger.log(LogStatus.FAIL,"Error Description: "+logOutput);
 		}
-		else if (testResult.getStatus() == ITestResult.SUCCESS)
+		else if (testResult.getStatus() == ITestResult.SUCCESS) 
 			logger.log(LogStatus.PASS,testResult.getName()+" passed");
 		report.endTest(logger);
 		report.flush();
@@ -232,7 +231,7 @@ public class Browser {
 	public static synchronized ExtentReports getReporter() {
 		if (report == null) {
 			//report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"BugfixTestResults "+ConfigurationFunctions.now()+".html", true, DisplayOrder.NEWEST_FIRST);
-			report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"ProductionTestResults.html", true, DisplayOrder.NEWEST_FIRST);
+			report = new ExtentReports(ConfigurationFunctions.RESULTSPATH+"UATTestResults.html", true, DisplayOrder.NEWEST_FIRST);
 		}
 		return report;
 	}
@@ -251,7 +250,7 @@ public class Browser {
 	}
 	
 	public static void PageLoad(WebDriver driver) {
-	    new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) wd ->
+	    new WebDriverWait(driver, 50).until((ExpectedCondition<Boolean>) wd ->
 	            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 	}
 }
