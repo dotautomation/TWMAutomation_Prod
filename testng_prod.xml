@@ -15,8 +15,7 @@
 <!-- <class name="com.totalwine.test.backoffice.C3Validation"/> -->
 
 
-
-<class name="com.totalwine.test.productlist.PLPListView"/>
+<class name="com.totalwine.test.review.SocialWidget"/>
 
     </classes>
   </test>
