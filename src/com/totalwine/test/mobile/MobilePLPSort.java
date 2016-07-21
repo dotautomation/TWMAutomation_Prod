@@ -63,7 +63,7 @@ public class MobilePLPSort extends Browser {
 		driver.findElement(PageHomepage.MobileWineButton).click();
 		Thread.sleep(3000);
 		
-		SiteAccess.ActionAccessMobileAgeGate(driver);
+//		SiteAccess.ActionAccessMobileAgeGate(driver);
 		Thread.sleep(5000);
 		
 		//Verify default sort "Most Popular"
@@ -72,7 +72,7 @@ public class MobilePLPSort extends Browser {
 		logger.log(LogStatus.PASS, "Most Popular sort is the default. Kendall Jackson Chardonnay appears in the top few results");
 		
 		//Verify "Our Favorites" sort
-//		SiteAccess.ActionAccessMobileAgeGate(driver);
+		SiteAccess.ActionAccessMobileAgeGate(driver);
 		driver.findElement(PageProductList.MobilePLPSort).click();
 
 		//SortOption.selectByVisibleText("Our Favorites");
