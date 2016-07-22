@@ -42,7 +42,7 @@ public class ConfigurationFunctions {
 	//public static final String locationSet = "http://twmlaunchsite:dot@internal@launch.totalwine.com/?remoteTestIPAddress=";//Production
 	public static final String locationSet = "http://www.totalwine.com/?remoteTestIPAddress=";//Phased Launch
 	//public static final String URL = "http://twmuatwebserver:webserveruattwm@totalwine.com/?remoteTestIPAddress=199.167.92.70";
-	public static final String URL = "http://twmuatwebserver:webserveruattwm@uat.totalwine.com/?remoteTestIPAddress=";
+	public static final String URL = "http://twmwebserver:webservertwm@www.totalwine.com/?remoteTestIPAddress=";
 	public static final ProfilesIni profile = new ProfilesIni();
 	public static final FirefoxProfile testProfile = profile.getProfile("WebDriver");
 	public static final String csCockpitURL = "http://backoffice.totalwine.com/cscockpit";
