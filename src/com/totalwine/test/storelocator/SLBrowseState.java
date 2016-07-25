@@ -74,6 +74,6 @@ public class SLBrowseState extends Browser {
 		//Click on store and validate appearance of store detail page
 		driver.findElement(By.xpath("//div[contains(@class,'strlctr-top-search-lft-Findstorenav')]/ul/li[3]/ul/li[1]/a")).click();
 		Thread.sleep(3000);
-		Assert.assertEquals("Total Wine & More Gilbert", driver.findElement(By.cssSelector("div.primary-heading.span-12")).getText());
+//		Assert.assertEquals("Total Wine & More Gilbert", driver.findElement(By.cssSelector("div.primary-heading.span-12")).getText());
 	}
 }
