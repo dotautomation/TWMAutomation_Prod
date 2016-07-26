@@ -40,9 +40,9 @@ public class OMSValidation extends Browser {
 		OMSLogin();
 		
 		//OMS Authority Groups Validation
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'storeuser')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'omsadmin')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'storeuser')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'omsadmin')]]")).isEmpty(),false);
 	    System.out.println("Validated the OMS Authority Groups");
 	    
 	    //Inventory Manager Validation
@@ -51,10 +51,10 @@ public class OMSValidation extends Browser {
 	    Thread.sleep(6000);
 //	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Inventory')]]")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by SKU')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by Location')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Stockroom Locations')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Imports')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("input.yw-search-box.z-textbox")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by Location')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Stockroom Locations')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Imports')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("input.yw-search-box.z-textbox")).isEmpty(),false);
 	    OMSLogout();
 	    System.out.println("Validated the apperance of the Inventory Manager menu items");
 	    
@@ -66,14 +66,14 @@ public class OMSValidation extends Browser {
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
 	    driver.findElement(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).click();
 	    Thread.sleep(5000);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Packed')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Shipped')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Ready for Pickup')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Past/Almost Due')]]")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'All Orders')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Packed')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Shipped')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Ready for Pickup')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Past/Almost Due')]]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'All Orders')]]")).isEmpty(),false);
 	    driver.findElement(By.xpath("//*[text()[contains(.,'To Be Packed')]]")).click();
 	    Thread.sleep(4000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.z-listcell-cnt")).isEmpty(),false); //to-be-packed table is populated
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.z-listcell-cnt")).isEmpty(),false); //to-be-packed table is populated
 	    OMSLogout();
 	    System.out.println("Validated the Store User interface's menu items");
 	    
@@ -82,7 +82,7 @@ public class OMSValidation extends Browser {
 	    driver.findElement(By.xpath("//*[text()[contains(.,'omsadmin')]]")).click();
 	    driver.findElement(By.cssSelector("button[ytestid=selectorButton]")).click();
 	    Thread.sleep(4000);
-	    Assert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
+	    sAssert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
 	    OMSLogout();
 	    System.out.println("Validated the OMS Admin's menu items");
 	}
