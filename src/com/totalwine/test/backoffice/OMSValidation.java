@@ -36,7 +36,8 @@ public class OMSValidation extends Browser {
 	public void OMSLoginTest () throws InterruptedException {
 		logger=report.startTest("OMS Login Test");
 		driver.get(ConfigurationFunctions.backofficeURL+"/backoffice");
-		Thread.sleep(6000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 		OMSLogin();
 		
 		//OMS Authority Groups Validation
@@ -47,8 +48,11 @@ public class OMSValidation extends Browser {
 	    
 	    //Inventory Manager Validation
 	    driver.findElement(By.xpath("//*[text()[contains(.,'inventorymanager')]]")).click();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    driver.findElement(By.cssSelector("button[ytestid=selectorButton]")).click();
-	    Thread.sleep(6000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 //	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Inventory')]]")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by SKU')]]")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Search by Location')]]")).isEmpty(),false);
@@ -56,34 +60,52 @@ public class OMSValidation extends Browser {
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Imports')]]")).isEmpty(),false);
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("input.yw-search-box.z-textbox")).isEmpty(),false);
 	    OMSLogout();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    System.out.println("Validated the apperance of the Inventory Manager menu items");
 	    
 	    //Store User Validation
 	    OMSLogin();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    driver.findElement(By.xpath("//*[text()[contains(.,'storeuser')]]")).click();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    driver.findElement(By.cssSelector("button[ytestid=selectorButton]")).click();
-	    Thread.sleep(4000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    Assert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
 	    driver.findElement(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).click();
-	    Thread.sleep(5000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Packed')]]")).isEmpty(),false);
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'To Be Shipped')]]")).isEmpty(),false);
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Ready for Pickup')]]")).isEmpty(),false);
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'Past/Almost Due')]]")).isEmpty(),false);
 	    sAssert.assertEquals(driver.findElements(By.xpath("//*[text()[contains(.,'All Orders')]]")).isEmpty(),false);
 	    driver.findElement(By.xpath("//*[text()[contains(.,'To Be Packed')]]")).click();
-	    Thread.sleep(4000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.z-listcell-cnt")).isEmpty(),false); //to-be-packed table is populated
 	    OMSLogout();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    System.out.println("Validated the Store User interface's menu items");
 	    
 	    //OMS Admin Validation
 	    OMSLogin();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    driver.findElement(By.xpath("//*[text()[contains(.,'omsadmin')]]")).click();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    driver.findElement(By.cssSelector("button[ytestid=selectorButton]")).click();
-	    Thread.sleep(4000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("span[ytestid=\"node.id.oms.orders\"]")).isEmpty(),false);
 	    OMSLogout();
+		PageLoad(driver);
+		Thread.sleep(5000);
 	    System.out.println("Validated the OMS Admin's menu items");
 	}
 	
@@ -94,11 +116,13 @@ public class OMSValidation extends Browser {
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).clear();
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_password]")).sendKeys("yoyo55");
 		driver.findElement(By.id("lgBtn")).click();
-		Thread.sleep(4000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	}
 	
 	public void OMSLogout() throws InterruptedException {
 		driver.findElement(By.cssSelector("div.yw-statusToolbar > div > div > div > div.z-toolbarbutton-cnt")).click();
-		Thread.sleep(4000);
+		PageLoad(driver);
+		Thread.sleep(5000);
 	}
 }
