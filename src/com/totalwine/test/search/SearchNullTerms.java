@@ -55,7 +55,7 @@ public class SearchNullTerms {
 	    SiteAccess.ActionAccessSite(driver, "71.193.51.0");
 	    
 	    //Input file (excel)
-	    inputWorkbook = Workbook.getWorkbook(new File("misspellings automation 2.xls"));
+	    inputWorkbook = Workbook.getWorkbook(new File("misspellings automation 3.xls"));
 	    Sheet inputSheet = inputWorkbook.getSheet(0);
 	    int rowCount = inputSheet.getRows();
 	    String SearchTerm,SearchType; //SearchType Options = all,product,event,content
