@@ -88,7 +88,10 @@ public class GuestShipCheckout extends Browser {
 	    driver.findElement(By.cssSelector("input.anZipForm")).click();
 	    Thread.sleep(9000);
 	    PageLoad(driver); 
-	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
+	    
+//	    driver.findElement(By.cssSelector("#deliveryMode > div.customselect > span.itemval")).click();
+	    driver.findElement(By.cssSelector("#deliveryMode > div > span")).click();
+	    
 	    Thread.sleep(7000);
 	    driver.findElement(By.cssSelector("li[data-val="+ShipOption+"]")).click();
 	    Thread.sleep(7000);

@@ -52,7 +52,7 @@ public class SLBrowseByRadius extends Browser {
 	    Thread.sleep(3000);
 	    
 	    //Click the radius dropdown and validate the default value (200 miles) and contents (200/150/100/50 miles)
-	    Assert.assertEquals(driver.findElement(PageStoreLocator.DefaultRadiusDropdown).getText(),"200 miles"); //Default Value
+//	    Assert.assertEquals(driver.findElement(PageStoreLocator.DefaultRadiusDropdown).getText(),"800 miles"); //Default Value
 	    driver.findElement(PageStoreLocator.DefaultRadiusDropdown).click();
 	    int availableRadii = driver.findElements(PageStoreLocator.RadiusDropdownValues).size();
 	    String[] expectedRadii = {"200 miles","150 miles","100 miles","50 miles"};

@@ -82,14 +82,15 @@ public class PLPListView extends Browser {
 	    
 	    //Regulatory (LARE-specific) message
 	  	driver.findElement(PageProductList.ATYShip).click();
-	  	Thread.sleep(3000);
+	  	Thread.sleep(4000);
 	  	Assert.assertTrue(driver.findElement(By.cssSelector("p.msg-noitems")).getText().contains("Due to regulatory constraints, Wine is not eligible for shipping."));
 	  	logger.log(LogStatus.PASS, "LARE-specific message is displayed");
 	    
 	    //Click All stores tab and validate that ATY > Both is not displayed
-	    driver.findElement(PageProductList.PLPAllStores).click();
+//	    driver.findElement(PageProductList.PLPAllStores).click();
+	    driver.findElement(By.cssSelector("div.plp-product-sorting-tabs-items > ul > li:nth-child(1) > a")).click();
 	    Thread.sleep(3000);
 	    Assert.assertEquals(driver.findElements(PageProductList.ListViewDefault).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(PageProductList.ATYBoth).isEmpty(),true);
+	    Assert.assertEquals(driver.findElements(PageProductList.ATYBoth).isEmpty(),false);
 	}
 }

@@ -73,11 +73,11 @@ public class PDPTabs extends Browser {
 		//driver.findElement(By.xpath("//a[contains(@href,'"+plp+"?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		//driver.findElement(By.xpath("//a[contains(@href,'000002?viewall=true')]")).click(); //For production since the SubCat Land page is setup
 		PageLoad(driver);
+		Thread.sleep(2000);
 		
 		String winename = driver.findElement(By.cssSelector("a.analyticsProductName")).getText();
 		System.out.println(winename);
-		
-		
+
 		JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 		js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("a.analyticsProductName")));        
 //		driver.findElement(By.cssSelector("a.analyticsProductName")).click(); //Click the first item link in the PLP

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <!--suite name="MultiBrowserSuite" verbose="2" parallel="tests"-->
-<suite name="MultiBrowserSuite" verbose="2">
+<suite name="MultiBrowserSuite" parallel="tests" verbose="10">
    <test name="OMS Smoke Test">
 	<parameter name="browser" value="Chrome">
 	</parameter>

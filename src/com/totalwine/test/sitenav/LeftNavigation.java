@@ -123,8 +123,8 @@ public class LeftNavigation extends Browser {
 		js.executeScript("arguments[0].click();", toplevelnav);
 		Thread.sleep(5000);
 		
-		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
-		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
+//		Assert.assertEquals(driver.findElements(By.cssSelector("a.analyticsHeroLink")).isEmpty(),false);
+//		Assert.assertEquals(driver.findElements(By.cssSelector("div.clpviewall-view")).isEmpty(),false);
 		
 		for (String accclplink : accclplinks) {
 			System.out.println("Accessory: "+accclplink);
