@@ -77,10 +77,12 @@ public class ShoppingCartAll extends Browser {
 	    driver.findElement(By.cssSelector("li:nth-child(2) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
 	    ShoppingCart.MouseHoverWine(driver);
-
+	    Thread.sleep(2000);
+	    
 		driver.findElement(By.cssSelector("li:nth-child(3) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")).click();
 	    ShoppingCart.ATC(driver);
 		ShoppingCart.MouseHoverWine(driver);
+		Thread.sleep(2000);
 		
 	    JavascriptExecutor js1 = (JavascriptExecutor)driver;  // Finding out elements that are out of sight
 	    js1.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("li:nth-child(4) > div > div.plp-product-desc-wrap > div.plp-product-desc > h2 > a")));

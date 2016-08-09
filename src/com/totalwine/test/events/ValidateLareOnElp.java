@@ -72,10 +72,10 @@ public class ValidateLareOnElp extends Browser {
 
 		//** Clicking on the Classes & Events
 	    driver.findElement(By.cssSelector(".event-url.analyticsHeaderLink.analyticsHeaderLink")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 
 	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(17)")).click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    
 	    driver.findElement(By.cssSelector("#Email-Modal > div > div > div > div > div > div > ul > li:nth-child(17) > ul > div > div > li:nth-child(8)")).click();
 	    sAssert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false, "If Event title not appear then test will fail");

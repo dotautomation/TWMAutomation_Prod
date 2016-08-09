@@ -114,7 +114,7 @@ public class MobilePLPSort extends Browser {
 	    //SortOption.selectByVisibleText("Price (highest first)");
 	    driver.findElement(By.cssSelector("option[value=\"price-desc\"]")).click();
 	    SiteAccess.ActionAccessMobileAgeGate(driver);
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	    int TopPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(2) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
 	    int SecondPrice = (int) Double.parseDouble(driver.findElement(By.cssSelector("#plp-product-tab1 > section.plp-product-content > div > ul > li:nth-child(3) > div.plp-product-desc > div.plp-product-price > div > ul > li.plp-product-price-actual > span.price")).getText().replaceAll("[^\\d.]+", "").replaceAll("/[^A-Za-z0-9 ]/", ""));
 	    Assert.assertTrue(TopPrice>SecondPrice);
