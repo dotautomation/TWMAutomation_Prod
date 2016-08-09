@@ -108,7 +108,6 @@ public class OMSValidation extends Browser {
 		Thread.sleep(5000);
 	    System.out.println("Validated the OMS Admin's menu items");
 	}
-	
 	public void OMSLogin() throws InterruptedException {
 		//OMS Login
 		driver.findElement(By.cssSelector("input.login.z-textbox[name=j_username]")).clear();
@@ -119,7 +118,6 @@ public class OMSValidation extends Browser {
 		PageLoad(driver);
 		Thread.sleep(5000);
 	}
-	
 	public void OMSLogout() throws InterruptedException {
 		driver.findElement(By.cssSelector("div.yw-statusToolbar > div > div > div > div.z-toolbarbutton-cnt")).click();
 		PageLoad(driver);
