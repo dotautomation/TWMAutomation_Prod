@@ -31,7 +31,7 @@ import com.totalwine.test.trials.Browser;
 public class BrowseEvent extends Browser {
 	
 	private String IP="72.66.119.61";
-	private String FutureEvent = "/events/jun-2016/virginia/mclean?storestatename=214,203,202,201,205";
+	private String FutureEvent = "/events/oct-2016/virginia/mclean?storestatename=205,203,201,215,401";
 	
 	@BeforeMethod
 	  public void setUp() throws Exception {
@@ -60,8 +60,10 @@ public class BrowseEvent extends Browser {
 //	    Assert.assertEquals(driver.findElements(By.linkText("Stores")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.linkText("Event Type")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.linkText("Event Focus")).isEmpty(),false);
+		
 	    driver.findElement(By.cssSelector("a.analyticsEventName")).click();
 	    Thread.sleep(3000);
+	    
 //	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.cssSelector("section.event-testing-profile")).isEmpty(),false);
 //	    Assert.assertEquals(driver.findElements(By.cssSelector("ul.right-rail-typo > li")).isEmpty(),false);
