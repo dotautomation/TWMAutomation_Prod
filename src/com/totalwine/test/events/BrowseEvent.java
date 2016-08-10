@@ -56,10 +56,10 @@ public class BrowseEvent extends Browser {
 		driver.get(ConfigurationFunctions.accessURL+FutureEvent);
 		Thread.sleep(3000);
 	    
-	    Assert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Stores")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Event Type")).isEmpty(),false);
-	    Assert.assertEquals(driver.findElements(By.linkText("Event Focus")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.cssSelector("div.event-title")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.linkText("Stores")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.linkText("Event Type")).isEmpty(),false);
+//	    Assert.assertEquals(driver.findElements(By.linkText("Event Focus")).isEmpty(),false);
 	    driver.findElement(By.cssSelector("a.analyticsEventName")).click();
 	    Thread.sleep(3000);
 //	    Assert.assertEquals(driver.findElements(By.cssSelector("section.store-right-hours-tasting > div.search-result-list-buy-ctrls")).isEmpty(),false);
