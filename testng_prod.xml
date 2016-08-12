@@ -14,7 +14,7 @@
 <!-- <class name="com.totalwine.test.backoffice.OMSValidation"/>  -->
 <!-- <class name="com.totalwine.test.backoffice.C3Validation"/> -->
 
-<class name="com.totalwine.test.events.BrowseEvent"/>
+<class name="com.totalwine.test.backoffice.C3Validation"/>
 
     </classes>
   </test>
