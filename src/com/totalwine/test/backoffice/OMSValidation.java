@@ -119,7 +119,8 @@ public class OMSValidation extends Browser {
 		Thread.sleep(7000);
 	}
 	public void OMSLogout() throws InterruptedException {
-		driver.findElement(By.cssSelector("div.yw-statusToolbar > div > div > div > div.z-toolbarbutton-cnt")).click();
+//		driver.findElement(By.cssSelector("div.yw-statusToolbar > div > div > div > div.z-toolbarbutton-cnt")).click();
+		driver.findElement(By.xpath(".//*[@id='jBuPb']/div/div/img")).click();
 		PageLoad(driver);
 		Thread.sleep(7000);
 	}
