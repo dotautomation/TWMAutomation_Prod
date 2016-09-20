@@ -35,6 +35,7 @@ public class CachePrimer {
 		//System.out.println(jsessionIdCookieParts[0]);
 		
 		for (int appServer=2;appServer<8;appServer++) {
+			if(appServer!=5){
 			//Edit JSESSIONID cookie to hit specific App Server
 			driver.manage().deleteCookieNamed("JSESSIONID");
 			Cookie ck = new Cookie("JSESSIONID",jsessionIdCookieParts[0]+".app"+appServer);
@@ -42,6 +43,7 @@ public class CachePrimer {
 			for (int i_row_count=0;i_row_count<sheet.getRows();i_row_count++) {
 				driver.get("http://www.totalwine.com"+sheet.getCell(0,i_row_count).getContents());
 				//Thread.sleep(2000);
+			}
 			}
 			System.out.println("After Cookie: "+driver.manage().getCookieNamed("JSESSIONID").getValue());	
 		}
